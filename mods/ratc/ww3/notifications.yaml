@@ -1,0 +1,11 @@
+Speech:
+	Notifications:
+		IonCannonCharging: audio/mionchrg
+		IonCannonReady: audio/mionredy
+		ChinaPower: sovrein1
+		Ready: audio/ready
+		Charging: audio/charging
+		SatelliteInitialized: audio/satellite_initialized_delay2s
+		SatelliteReady: audio/satellite_ready
+		SatelliteTerminated: audio/satellite_terminated
+

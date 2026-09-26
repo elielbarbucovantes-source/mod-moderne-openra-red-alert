@@ -1,0 +1,3586 @@
+icon:
+	ioncannon:
+		Filename: bits/ioncanicon.shp
+	industry:
+		Filename: 3tnkicon.shp
+	tankdrop:
+		Filename: bits/tankdropicon.shp
+	airstrike:
+		Filename: bits/astrikeicon.shp
+	insurgant:
+		Filename: bits/insurgicon.shp
+	sniperdrop:
+		Filename: bits/sniperinsertion.shp
+	cqdrop:
+		Filename: bits/cqdrop.shp
+	spartdrop:
+		Filename: bits/spartdropicon.shp
+	specopdropicon:
+		Filename: bits/specopdropicon.shp
+	cloakicon:
+		Filename: bits/cloakicon.shp
+	gpsactive:
+		Filename: bits/gpssactiveicon.shp
+
+beacon:
+	specopdropbeacon:
+		Filename: bits/specopdropbeacon.shp
+		Length: *
+		Offset: 0,-42
+
+pips:
+	pip-skull:
+		Filename: bits/pip-skull.shp
+		Offset: -2, 0
+	tag-sab:
+		Filename: bits/pip-sab.shp
+	pip-prop:
+		Filename: bits/pip-prop.shp
+		Offset: -2, 0
+	pip-toxin:
+		Filename: bits/pip-toxin.shp
+		Offset: -2, 0
+	pip-nuke:
+		Filename: bits/pip-nuke.shp
+		Offset: -2, 0
+	pip-prop-inf:
+		Filename: bits/pip-prop-inf.shp
+		Offset: -2, 0
+	fix:
+		Filename: bits/pip-fix.shp
+		Offset: -2, 0
+
+fact:
+	usflag:
+		Filename: bits/usaflag.shp
+		Start: 0
+		Length: 16
+		Tick: 80
+		Scale: 0.7
+	ukflag:
+		Filename: bits/ukflag.shp
+		Start: 0
+		Length: 16
+		Tick: 80
+		Scale: 0.7
+	gerflag:
+		Filename: bits/gerflag.shp
+		Start: 0
+		Length: 16
+		Tick: 80
+		Scale: 0.7
+	fraflag:
+		Filename: bits/franflag.shp
+		Start: 0
+		Length: 16
+		Tick: 80
+		Scale: 0.7
+	spaflag:
+		Filename: bits/spaflag.shp
+		Start: 0
+		Length: 16
+		Tick: 80
+		Scale: 0.7
+	rusflag:
+		Filename: bits/rusflag.shp
+		Start: 0
+		Length: 16
+		Tick: 80
+		Scale: 0.7
+	ukrflag:
+		Filename: bits/ukrflag.shp
+		Start: 0
+		Length: 16
+		Tick: 80
+		Scale: 0.7
+	turflag:
+		Filename: bits/turflag.shp
+		Start: 0
+		Length: 16
+		Tick: 80
+		Scale: 0.7
+	chinflag:
+		Filename: bits/chinflag.shp
+		Start: 0
+		Length: 16
+		Tick: 80
+		Scale: 0.7
+	greflag:
+		Filename: bits/greflag.shp
+		Start: 0
+		Length: 16
+		Tick: 80
+		Scale: 0.7
+
+cram:
+	idle:
+		Filename: bits/cram.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+		Offset: 0,0
+	turret:
+		Filename: bits/cram.shp
+		Facings: 32
+		UseClassicFacings: True
+		Offset: 0,0
+	make:
+		Filename: bits/crammake.shp
+		Length: *
+		Offset: 0,0
+	damaged-turret:
+		Filename: bits/cram.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		Offset: 0,0
+	muzzle:
+		Filename: gunfire2.shp
+		Start: 1
+		Length: 4
+	bib:
+		TilesetFilenames:
+			SNOW: mbAGUN.sno
+			INTERIOR: mbAGUN.int
+			TEMPERAT: mbAGUN.tem
+			DESERT: mbAGUN.des
+		Length: *
+	icon:
+		Filename: bits/cramicnh.shp
+
+mtsla:
+	idle:
+		Filename: bits/mtsla.shp
+	damaged-idle:
+		Filename: bits/mtsla.shp
+		Start: 1
+	active:
+		Filename: bits/mtsla-a.shp
+		Start: 0
+		Length: 10
+		Tick: 100
+	damaged-active:
+		Filename: bits/mtsla-a.shp
+		Start: 11
+		Length: 10
+		Tick: 100
+	bib:
+		TilesetFilenames:
+			SNOW: mbTSLA.sno
+			INTERIOR: mbTSLA.int
+			TEMPERAT: mbTSLA.tem
+			DESERT: mbTSLA.des
+		Length: *
+	make:
+		Filename: bits/mtslamake.shp
+		Length: *
+	icon:
+		Filename: bits/mtslaicon.shp
+
+prop:
+	Defaults:
+		Filename: bits/proptower.shp
+	idle:
+		Offset: 0,-14
+	damaged-idle:
+		Start: 1
+		Offset: 0,-14
+	make:
+		Filename: gapmake.shp
+		Length: *
+		Offset: 0,-14
+	bib:
+		TilesetFilenames:
+			SNOW: mbGAP.sno
+			INTERIOR: mbGAP.int
+			TEMPERAT: mbGAP.tem
+			DESERT: mbGAP.des
+		Length: *
+	icon:
+		Filename: bits/propticon.shp
+
+shpad:
+	idle:
+		Filename: bits/shpad.shp
+		Start: 0
+	damaged-idle:
+		Filename: bits/shpad.shp
+		Start: 10
+	active:
+		Filename: bits/shpad.shp
+		Start: 0
+		Length: 10
+		Tick: 100
+	damaged-active:
+		Filename: bits/shpad.shp
+		Start: 10
+		Length: 10
+		Tick: 100
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	make:
+		Filename: bits/shpadmake.shp
+		Length: *
+	icon:
+		Filename: bits/shpadicon.shp
+
+internet:
+	idle:
+		Filename: bits/internet.shp
+		Length: 16
+		Tick: 100
+	damaged-idle:
+		Filename: bits/internet.shp
+		Start: 16
+		Length: 16
+		Tick: 100
+	dead:
+		Filename: bits/internet.shp
+		Start: 32
+		Tick: 800
+	make:
+		Filename: bits/internetmake.shp
+		Length: *
+		Tick: 80
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			TEMPERAT: bib3.tem
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: bits/interneticon.shp
+
+indp:
+	Defaults:
+		Filename: bits/indp.shp
+	idle:
+		Length: 4
+		Tick: 200
+		Offset: 0, -8
+	damaged-idle:
+		Start: 4
+		Length: 4
+		Tick: 200
+		Offset: 0, -8
+	make:
+		Filename: bits/indpmake.shp
+		Length: *
+		Offset: 0, -8
+	dead:
+		Start: 4
+		Tick: 800
+		Offset: 0, -8
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	icon: 
+		Filename: bits/indpicon.shp
+
+sovpwr:
+	idle:
+		Filename: bits/sovpwr.shp
+		Scale: 0.7
+	damaged-idle:
+		Filename: bits/sovpwr.shp
+		Scale: 0.7
+		Start: 1
+	dead:
+		Filename: bits/sovpwr.shp
+		Start: 2
+	make:
+		Filename: bits/sovpwrmk.shp
+		Scale: 0.7
+		Length: 26
+		Tick: 80
+	icon:
+		Filename: bits/sovpwricon.shp
+
+ctek:
+	idle:
+		Filename: bits/ctek.shp
+	damaged-idle:
+		Filename: bits/ctek.shp
+		Start: 1
+	make:
+		Filename: bits/ctekmake.shp
+		Length: *
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	icon:
+		Filename: stekicon.shp
+
+rtek:
+	idle:
+		Filename: bits/rtek.shp
+	damaged-idle:
+		Filename: bits/rtek.shp
+		Start: 1
+	make:
+		Filename: bits/ctekmake.shp
+		Length: *
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	icon:
+		Filename: stekicon.shp
+
+utek:
+	idle:
+		Filename: bits/utek.shp
+	damaged-idle:
+		Filename: bits/utek.shp
+		Start: 1
+	make:
+		Filename: bits/ctekmake.shp
+		Length: *
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	icon:
+		Filename: stekicon.shp
+
+ttek:
+	idle:
+		Filename: bits/ttek.shp
+	damaged-idle:
+		Filename: bits/ttek.shp
+		Start: 1
+	make:
+		Filename: bits/ctekmake.shp
+		Length: *
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	icon:
+		Filename: stekicon.shp
+
+grtek:
+	idle:
+		Filename: bits/grtek.shp
+	damaged-idle:
+		Filename: bits/grtek.shp
+		Start: 1
+	make:
+		Filename: bits/ctekmake.shp
+		Length: *
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	icon:
+		Filename: stekicon.shp
+
+gtek:
+	idle:
+		Filename: bits/gtek.shp
+	damaged-idle:
+		Filename: bits/gtek.shp
+		Start: 1
+	make:
+		Filename: atekmake.shp
+		Length: *
+	active:
+		Filename: sputdoor.shp
+		Length: *
+		Offset: -4,0
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: atekicon.shp
+
+ftek:
+	idle:
+		Filename: bits/ftek.shp
+	damaged-idle:
+		Filename: bits/ftek.shp
+		Start: 1
+	make:
+		Filename: atekmake.shp
+		Length: *
+	active:
+		Filename: sputdoor.shp
+		Length: *
+		Offset: -4,0
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: atekicon.shp
+
+sptek:
+	idle:
+		Filename: bits/sptek.shp
+		Length: 5
+		Start: 0
+		Tick: 300
+		Reverses: True
+		ZOffset: 1c512
+	damaged-idle:
+		Filename: bits/sptek.shp
+		Start: 3
+	make:
+		Filename: atekmake.shp
+		Length: *
+	active:
+		Filename: sputdoor.shp
+		Length: *
+		Offset: -4,0
+	icon:
+		Filename: atekicon.shp
+
+etek:
+	idle:
+		Filename: bits/etek.shp
+	damaged-idle:
+		Filename: bits/etek.shp
+		Start: 1
+	make:
+		Filename: atekmake.shp
+		Length: *
+	active:
+		Filename: sputdoor.shp
+		Length: *
+		Offset: -4,0
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	icon:
+		Filename: atekicon.shp
+
+ustek:
+	idle:
+		Filename: bits/ustek.shp
+	damaged-idle:
+		Filename: bits/ustek.shp
+		Start: 1
+	make:
+		Filename: atekmake.shp
+		Length: *
+	active:
+		Filename: sputdoor.shp
+		Length: *
+		Offset: -4,0
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: atekicon.shp
+
+abase:
+	idle:
+		Filename: bits/abase.shp
+		Start: 0
+	active:
+		Filename: bits/abase.shp
+		Start: 2
+		Length: 4
+	damaged-idle:
+		Filename: bits/abase.shp
+		Start: 1
+	make:
+		Filename: bits/abasemake.shp
+		Start: 0
+		Length: 13
+	icon:
+		Filename: bits/abaseicon.shp
+
+adept:
+	idle:
+		Filename: bits/adept.shp
+		Start: 25
+	damaged-idle:
+		Filename: bits/adept.shp
+		Start: 26
+	dead:
+		Filename: bits/adept.shp
+		Start: 27
+		Tick: 800
+	make:
+		Filename: bits/adept.shp
+		Start: 0
+		Length: 25
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	icon:
+		Filename: bits/adepticon.shp
+
+ioncan:
+	idle:
+		Filename: bits/ioncan.shp
+		Offset: 0,-10
+	active:
+		Filename: bits/ioncan.shp
+		Length: 4
+		Offset: 0,-10
+	damaged-idle:
+		Filename: bits/ioncan.shp
+		Start: 4
+		Offset: 0,-10
+	damaged-active:
+		Filename: bits/ioncan.shp
+		Start: 4
+		Length: 4
+		Offset: 0,-10
+	make:
+		Filename: bits/ioncanmake.shp
+		Length: *
+		Offset: 0,-10
+	dead:
+		Filename: bits/ioncan.shp
+		Start: 4
+		Tick: 800
+		Offset: 0,-10
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	icon:
+		Filename: bits/ioncanicon.shp
+
+ionsfx:
+	idle:
+		Filename: bits/ionsfx.shp
+		Length: *
+		Offset: 0, -78
+		ZOff:
+
+sthgen:
+	idle:
+		Filename: bits/sthgen.shp
+		Start: 0
+	active:
+		Filename: bits/sthgen.shp
+		Start: 0
+		Length: 25
+		Tick: 80
+	damaged-active:
+		Filename: bits/sthgen.shp
+		Start: 25
+		Length: 25
+		Tick: 80
+	damaged-idle:
+		Filename: bits/sthgen.shp
+		Start: 25
+	dead:
+		Filename: bits/sthgen.shp
+		Start: 50
+	make:
+		Filename: bits/sthgenmake.shp
+		Length: *
+	bib:
+		TilesetFilenames:
+			SNOW: mbPDOX.sno
+			INTERIOR: mbPDOX.int
+			TEMPERAT: mbPDOX.tem
+			DESERT: mbPDOX.des
+		Length: *
+		Offset: 0,-4
+	icon:
+		Filename: bits/sthgenicon.shp
+
+htur:
+	idle:
+		Filename: bits/htur.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+		Offset: 0,0
+	damaged-idle:
+		Filename: bits/htur.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacingFudge: True
+		Offset: 0,0
+	make:
+		Filename: bits/hturmake.shp
+		Length: *
+		Offset: 0,0
+		Tick: 75
+	muzzle:
+		Filename: bits/smokeygun.shp
+		Length: 12
+		Tick: 30
+		Offset: 0,0
+	bib:
+		TilesetFilenames:
+			SNOW: mbSAM.sno
+			INTERIOR: mbSAM.int
+			TEMPERAT: mbSAM.tem
+			DESERT: mbSAM.des
+		Length: *
+		Offset: 0,-5
+	icon:
+		Filename: bits/hturicon.shp
+
+railturr:
+	Defaults:
+		Filename: bits/guntwr.shp
+	idle:
+		Start: 0
+	turret:
+		Filename: bits/railguntur.shp
+		Facings: 32
+		Scale: 1.2
+		UseClassicFacingFudge: True
+	muzzle: 
+		Filename: bits/prismmuzzle.shp
+		Length: 4
+	make:
+		Filename: bits/guntwrmke.shp
+		Length: *
+	damaged-idle:
+		Start: 1
+	dead:
+		Start: 2
+		Tick: 800
+	bib:
+		TilesetFilenames:
+			SNOW: mbSAM.sno
+			INTERIOR: mbSAM.int
+			TEMPERAT: mbSAM.tem
+			DESERT: mbSAM.des
+	icon:
+		Filename: bits/railturricon.shp
+
+patriot:
+	idle:
+		Filename: bits/guntwr.shp
+		Start: 0
+	turret: 
+		Filename: bits/mlrs.shp
+		Scale: 1.2
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret1:
+		Filename: bits/mlrs.shp
+		Scale: 1.2
+		Start: 64
+		Facings: 32
+		UseClassicFacings: True
+	turret0:
+		Filename: bits/mlrs.shp
+		Scale: 1.2
+		Start: 96
+		Facings: 32
+		UseClassicFacings: True
+	make:
+		Filename: bits/guntwrmke.shp
+		Length: *
+	damaged-idle:
+		Filename: bits/guntwr.shp
+		Start: 1
+	dead:
+		Filename: bits/guntwr.shp
+		Start: 2
+		Tick: 800
+	bib:
+		TilesetFilenames:
+			SNOW: mbSAM.sno
+			INTERIOR: mbSAM.int
+			TEMPERAT: mbSAM.tem
+			DESERT: mbSAM.des
+	icon:
+		Filename: bits/paticon.shp
+
+ssmmsl:
+	idle:
+		Filename: bits/ssmmsl.shp
+		Facings: 32
+		ZOffset: 2046
+
+pris:
+	idle:
+		Filename: bits/pris.shp
+		Length: 32
+		Tick: 150
+		Offset: 0,-13
+	damaged-idle:
+		Filename: bits/pris.shp
+		Start: 32
+		Length: 32
+		Tick: 150
+		Offset: 0,-13
+	active:
+		Filename: bits/prisfire.shp
+		Length: 5
+		Tick: 150
+		Offset: 0,-13
+	damaged-active:
+		Filename: bits/prisfire.shp
+		Start: 5
+		Length: 5
+		Tick: 150
+		Offset: 0,-13
+	make:
+		Filename: bits/prismake.shp
+		Length: 9
+		Tick: 60
+		Offset: 0,-13
+	bib:
+		TilesetFilenames:
+			SNOW: mbFTUR.sno
+			INTERIOR: mbFTUR.int
+			TEMPERAT: mbFTUR.tem
+			DESERT: mbFTUR.des
+		Length: *
+	icon:
+		Filename: bits/prisicon.shp
+
+barb:
+	icon:
+		Filename: bits/barbicon.shp
+
+cycl:
+	icon:
+		Filename: bits/cyclicon.shp
+
+wood:
+	icon:
+		Filename: bits/woodicon.shp
+
+vgate:
+	open:
+		Filename: bits/vgate.shp
+		Frames: 6, 5, 4, 3, 2, 1, 0
+		Length: 7
+		ZOffset: -1c511
+	idle:
+		Filename: bits/vgate.shp
+		Frames: 6, 5, 4, 3, 2, 1, 0
+		Length: 7
+		ZOffset: -1c511
+	damaged-idle:
+		Filename: bits/vgate.shp
+		Frames: 13, 12, 11, 10, 9, 8, 7
+		Length: 7
+		ZOffset: -1c511
+	make:
+		Filename: bits/vgate.shp
+		Frames: 6, 5, 4, 3, 2, 1, 0
+		Length: 7
+		ZOffset: -1c511
+	icon:
+		Filename: bits/vgateicon.shp
+
+hgate:
+	open:
+		Filename: bits/hgate.shp
+		Frames: 6, 5, 4, 3, 2, 1, 0
+		Length: 7
+		ZOffset: -1c511
+	idle:
+		Filename: bits/hgate.shp
+		Frames: 6, 5, 4, 3, 2, 1, 0
+		Length: 7
+		ZOffset: -1c511
+	damaged-idle:
+		Filename: bits/hgate.shp
+		Frames: 13, 12, 11, 10, 9, 8, 7
+		Length: 7
+		ZOffset: -1c511
+	make:
+		Filename: bits/hgate.shp
+		Frames: 6, 5, 4, 3, 2, 1, 0
+		Length: 7
+		ZOffset: -1c511
+	icon:
+		Filename: bits/hgateicon.shp
+
+maxichute:
+	open:
+		Filename: bits/maxichute.shp
+		ZOffset: 512
+	idle:
+		Filename: bits/maxichute.shp
+		Length: 20
+		ZOffset: 512
+
+twake:
+	idle:
+		Filename: bits/twake.shp
+		Length: *
+		Tick: 300
+		ZOffset: -511
+
+plasma:
+	idle:
+		Filename: bits/plasma.shp
+		Facings: 32
+		ZOffset: 33
+		BlendMode: Alpha
+		Palette: effect25alpha
+
+plaserfire:
+	idle:
+		Filename: frag1.shp
+		Offset: -2,0
+		Length: *
+		ZOffset: 511
+
+tnt:
+	idle:
+		Filename: bits/tnt.shp
+		Length: *
+		ZOffset: 1023
+
+card:
+	idle:
+		Filename: bits/card.shp
+		Length: *
+		ZOffset: 1023
+
+scudmiss:
+	idle:
+		Filename: bits/scudlmiss.shp
+		Facings: 32
+		ZOffset: 1023
+
+tbomb:
+	open:
+		Filename: bits/tbomb.shp
+		Length: 8
+		ZOffset: 1023
+	idle:
+		Filename: bits/tbomb.shp
+		Start: 8
+		Length: 5
+		ZOffset: 1023
+
+fire:
+	6:
+		Length: *
+		Offset: 0,-3
+		Tick: 105
+		ZOffset: 511
+		Filename: bits/fire6.shp
+	7:
+		Length: *
+		Offset: 0,-3
+		Tick: 105
+		ZOffset: 511
+		Filename: bits/fire6.shp
+		FlipX: true
+	8:
+		Length: *
+		Offset: 0,-3
+		Tick: 105
+		ZOffset: 511
+		Filename: bits/fire7.shp
+		FlipX: true
+
+dropbombs:
+	idle:
+		Filename: bits/dropbombs.shp
+		Start: 0
+		Length: 4
+		ZOffset: 1023
+		Tick: 130
+	open:
+		Filename: bits/dropbombs.shp
+		Start: 0
+		Length: 4
+		ZOffset: 1023
+		Tick: 130
+
+380mm:
+	idle:
+		Filename: bits/380mm.shp
+		ZOffset: 1023
+
+explosion:
+	nuke3:
+		Length: *
+		ZOffset: 2047
+		Filename: bits/atomsfx-small.shp
+	large_artillery_explosion:
+		Length: *
+		ZOffset: 2047
+		Filename: bits/art-exp2.shp
+	blue_napalm:
+		Length: *
+		ZOffset: 2047
+		Filename: bits/bluenapalm.shp
+	frag_1:
+		Length: *
+		ZOffset: 2047
+		Filename: bits/frag1cnc.shp
+	frag_3:
+		Length: *
+		ZOffset: 2047
+		Filename: bits/frag3cnc.shp
+	toxring:
+		Length: *
+		ZOffset: 2047
+		Filename: bits/toxinbomb.shp
+		Scale: 1.2
+		Tick: 60
+
+cloud:
+	idle:
+		Filename: bits/cloud1.shp
+		Length: *
+		Scale: 2
+
+thinblueflame:
+	idle:
+		Filename: bits/thinblueflame.shp
+		Length: 17
+		Facings: 16
+		Tick: 50
+		ZOffset: 1023
+		Offset: 0, 0, 6
+		BlendMode: Additive
+
+smoke_mtd:
+	idle:
+		Filename: bits/smoke_mtd.shp
+		Length: *
+		Offset: 2, -5
+		ZOffset: 512
+	loop:
+		Filename: bits/smoke_mtd.shp
+		Start: 49
+		Length: 42
+		Offset: 2, -5
+		ZOffset: 512
+	end:
+		Filename: bits/smoke_mtd.shp
+		Offset: 2, -5
+		Frames: 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0
+
+ectnk:
+	idle:
+		Filename: bits/ectnk.shp
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Filename: bits/ectnk.shp
+		Facings: 32
+		Start: 33
+	icon:
+		Filename: bits/ectnkicon.shp
+
+ectnk.destroyed:
+	idle:
+		Filename: bits/ectnk.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret:
+		Filename: bits/ectnk.shp
+		Start: 33
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+tpod:
+	idle: 
+		Filename: bits/tpod.shp
+		Facings: 1
+		Start: 32
+	turret: 
+		Filename: bits/tpod.shp
+		Facings: 32
+		UseClassicFacings: True
+	float:
+		Filename: bits/empty.shp
+	move: 
+		Filename: bits/tpod.shp
+		Start: 33
+		Facings: 8
+		Length: 14
+		Tick: 60
+	muzzle: 
+		Filename: gunfire2.shp
+		Length: *
+		Frames: 0,1,2,0,1,2,3,4
+	icon:
+		Filename: bits/tpodicon.shp
+
+tpod.destroyed:
+	idle:
+		Filename: bits/tpod.shp
+		Facings: 1
+		Start: 32
+		ZOffset: -512
+	turret:
+		Filename: bits/tpod.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+et:
+	idle:
+		Filename: bits/et.shp
+	damaged-idle:
+		Filename: bits/et.shp
+		Start: 1
+	dead:
+		Filename: bits/et.shp
+		Start: 2
+		Tick: 800
+	make:
+		Filename: bits/et.shp
+		Length: *
+
+cn:
+	Defaults:
+		Filename: bits/cn.shp
+		Scale: 1.5
+	Inherits: ^CommonDeaths
+	stand:
+		Facings: 8
+	panic-stand:
+		Facings: 8
+	panic-run:
+		Start: 8
+		Length: 6
+		Facings: 8
+	run:
+		Start: 56
+		Length: 6
+		Facings: 8
+		Tick: 120
+	fight:
+		Frames: 106, 115, 116, 117, 118, 119, 120, 121, 122, 123, 149, 150, 158, 159, 160, 161, 162, 163, 164, 165, 166
+		Length: *
+		Tick: 80
+	shoot:
+		Start: 205
+		Length: 4
+		Facings: 8
+	stand2:
+		Start: 200
+		Length: 3
+		Facings: 8
+		Tick: 120
+	die1:
+		Start: 329
+		Length: 8
+		Tick: 80
+	die2:
+		Start: 337
+		Length: 8
+		Tick: 80
+	die3:
+		Start: 337
+		Length: 8
+		Tick: 80
+	die4:
+		Start: 345
+		Length: 12
+		Tick: 80
+	die5:
+		Start: 357
+		Length: 18
+		Tick: 80
+	die7:
+		Start: 182
+		Length: 4
+		Tick: 80
+	icon:
+		Filename: bits/cnicon.shp
+
+tg:
+	Defaults:
+		Filename: bits/cn.shp
+		Scale: 1.2
+	Inherits: ^CommonDeaths
+	stand:
+		Facings: 8
+	panic-stand:
+		Facings: 8
+	panic-run:
+		Start: 8
+		Length: 6
+		Facings: 8
+	run:
+		Start: 56
+		Length: 6
+		Facings: 8
+		Tick: 120
+	shoot:
+		Start: 205
+		Length: 4
+		Facings: 8
+	stand2:
+		Start: 200
+		Length: 3
+		Facings: 8
+		Tick: 120
+	die1:
+		Start: 329
+		Length: 8
+		Tick: 80
+	die2:
+		Start: 337
+		Length: 8
+		Tick: 80
+	die3:
+		Start: 337
+		Length: 8
+		Tick: 80
+	die4:
+		Start: 345
+		Length: 12
+		Tick: 80
+	die5:
+		Start: 357
+		Length: 18
+		Tick: 80
+	die7:
+		Start: 182
+		Length: 4
+		Tick: 80
+	icon:
+		Filename: bits/tgicon.shp
+
+brut:
+	Defaults:
+		Filename: bits/brut.shp
+		Scale: 1.6
+	body:
+		Filename: bits/empty.shp
+		Length: *
+	stand:
+		Facings: 8
+	run:
+		Start: 8
+		Length: 4
+		Facings: 8
+		Tick: 160
+	bash:
+		Start: 40
+		Length: 6
+		Facings: 8
+		Tick: 100
+	idle:
+		Start: 88
+		Length: 9
+		Tick: 100
+	idle2:
+		Start: 97
+		Length: 9
+		Tick: 100
+	make:
+		Start: 156
+		Length: 14
+		Tick: 80
+	die1:
+		Start: 106
+		Length: 8
+		Tick: 100
+	die2:
+		Start: 114
+		Length: 9
+		Tick: 100
+	die5:
+		Start: 144
+		Length: 12
+		Tick: 80
+	die6:
+		Start: 131
+		Length: 13
+		Tick: 40
+	die10:
+		Start: 123
+		Length: 8
+		Tick: 100
+
+^CommonDeaths:
+	die6: electroTD
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+			SNOW: TEMPERAT
+			JUNGLE: TEMPERAT
+			WINTER: TEMPERAT
+			DUNE: TEMPERAT
+	die-crushed: corpse1
+		Length: 6
+		Tick: 1600
+		ZOffset: -511
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+			JUNGLE: TEMPERAT
+			WINTER: TEMPERAT
+			DUNE: TEMPERAT
+
+e1:
+	e1gi:
+		Filename: bits/giicon.shp
+	e1ch:
+		Filename: bits/conscripticon.shp
+
+sniper:
+	Inherits: ^CommonDeaths
+	Defaults:
+		Filename: bits/sniper.shp
+		Scale: 1.4
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
+			JUNGLE: TEMPERAT
+			WINTER: TEMPERAT
+			BARREN: DESERT
+			DUNE: DESERT
+	stand:
+		Facings: 8
+	stand2:
+		Start: 8
+		Facings: 8
+	stand3:
+		Start: 128
+		Length: 16
+	run:
+		Start: 16
+		Length: 6
+		Facings: 8
+		Tick: 100
+	shoot:
+		Start: 64
+		Length: 8
+		Facings: 8
+	aim:
+		Start: 65
+		Length: 1
+		Facings: 8
+		Stride: 8
+	prone-aim:
+		Start: 193
+		Length: 1
+		Facings: 8
+		Stride: 8
+	prone-stand:
+		Start: 144
+		Stride: 4
+		Facings: 8
+	prone-stand2:
+		Start: 144
+		Stride: 4
+		Facings: 8
+	prone-run:
+		Start: 144
+		Length: 4
+		Facings: 8
+		Tick: 100
+	standup-0:
+		Start: 176
+		Length: 2
+		Facings: 8
+	prone-shoot:
+		Start: 192
+		Length: 8
+		Facings: 8
+	parachute:
+		Start: 400
+	idle1:
+		Start: 256
+		Length: 16
+		Tick: 120
+	idle2:
+		Start: 272
+		Length: 16
+		Tick: 120
+	die1:
+		Start: 288
+		Length: 8
+	die2:
+		Start: 296
+		Length: 8
+	die3:
+		Start: 304
+		Length: 8
+	die4:
+		Start: 312
+		Length: 12
+	die5:
+		Start: 324
+		Length: 18
+	die7:
+		Start: 288
+		Length: 8
+	garrison-muzzle: minigun16
+		Length: 6
+		UseTilesetExtension: false
+		Facings: 16
+	icon: 
+		Filename: bits/snipericon.shp
+
+rmbo:
+	Inherits: ^CommonDeaths
+	Defaults:
+		Filename: bits/rmbo.shp
+		Scale: 1.4
+	stand:
+		Facings: 8
+	stand2:
+		Start: 8
+		Facings: 8
+	run:
+		Start: 16
+		Length: 6
+		Facings: 8
+		Tick: 100
+	shoot:
+		Start: 64
+		Length: 4
+		Facings: 8
+	liedown:
+		Start: 96
+		Length: 2
+		Facings: 8
+	standup:
+		Start: 144
+		Length: 2
+		Facings: 8
+	prone-stand:
+		Start: 112
+		Stride: 4
+		Facings: 8
+	prone-stand2:
+		Start: 112
+		Stride: 4
+		Facings: 8
+	prone-run:
+		Start: 112
+		Length: 4
+		Facings: 8
+		Tick: 100
+	prone-shoot:
+		Start: 160
+		Length: 4
+		Facings: 8
+	idle1:
+		Start: 192
+		Length: 16
+		Tick: 120
+	idle2:
+		Start: 208
+		Length: 16
+		Tick: 120
+	idle3:
+		Start: 224
+		Length: 15
+		Tick: 120
+	cheer:
+		Start: 396
+		Length: 3
+		Facings: 8
+		Tick: 120
+	die1:
+		Start: 318
+		Length: 8
+		Tick: 80
+	die2:
+		Start: 326
+		Length: 8
+		Tick: 80
+	die3:
+		Start: 334
+		Length: 8
+		Tick: 80
+	die4:
+		Start: 342
+		Length: 12
+		Tick: 80
+	die5:
+		Start: 354
+		Length: 18
+		Tick: 80
+	garrison-muzzle: minigun
+		Filename:
+		Length: 12
+		Facings: 8
+		Combine:
+			0:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 0,1,2,3,4,5,0,1,2,3,4,5
+			1:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 6,7,8,9,10,11,6,7,8,9,10,11
+			2:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 12,13,14,15,16,17,12,13,14,15,16,17
+			3:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 18,19,20,21,22,23,18,19,20,21,22,23
+			4:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 24,25,26,27,28,29,24,25,26,27,28,29
+			5:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 30,31,32,33,34,35,30,31,32,33,34,35
+			6:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 36,37,38,39,40,41,36,37,38,39,40,41
+			7:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 42,43,44,45,46,47,42,43,44,45,46,47
+	icon:
+		Filename: bits/rmboicnh.tem
+	deployed:
+		Filename: bits/u3bunker.shp
+		Frames: 0, 9, 16, 24, 32, 40, 48, 56
+		Facings: 8
+	deploy-shoot:
+		Filename: bits/u3bunker.shp
+		Length: 8
+		Facings: 8
+	deploy:
+		Filename: bits/u3make.shp
+		Length: *
+	empty:
+		Filename: bits/empty.shp
+
+e13:
+	Inherits: ^CommonDeaths
+	Defaults:
+		Filename: bits/e13.shp
+	stand:
+		Facings: 8
+	stand2:
+		Start: 8
+		Facings: 8
+	run:
+		Start: 16
+		Length: 6
+		Facings: 8
+		Tick: 120
+	shoot:
+		Start: 64
+		Length: 16
+		Facings: 8
+	prone-stand:
+		Start: 208
+		Stride: 4
+		Facings: 8
+	prone-stand2:
+		Start: 208
+		Stride: 4
+		Facings: 8
+	prone-run:
+		Start: 208
+		Length: 4
+		Facings: 8
+		Tick: 120
+	liedown:
+		Start: 192
+		Length: 2
+		Facings: 8
+	standup:
+		Start: 240
+		Length: 2
+		Facings: 8
+	prone-shoot:
+		Start: 256
+		Length: 16
+		Facings: 8
+	parachute:
+		Start: 528
+	idle1:
+		Start: 384
+		Length: 14
+		Tick: 120
+	idle2:
+		Start: 399
+		Length: 16
+		Tick: 120
+	die1:
+		Start: 416
+		Length: 8
+	die2:
+		Start: 424
+		Length: 8
+	die3:
+		Start: 432
+		Length: 8
+	die4:
+		Start: 440
+		Length: 12
+	die5:
+		Start: 452
+		Length: 18
+	icon:
+		Filename: bits/e13icon.shp
+
+specop:
+	Inherits: ^CommonDeaths
+	Defaults:
+		Filename: bits/specop.shp
+	stand:
+		Start: 0
+		Facings: -8
+	stand2:
+		Start: 0
+		Facings: -8
+	idle1:
+		Start: 208
+		Length: 11
+		Tick: 80
+	idle2:
+		Start: 219
+		Length: 8
+		Tick: 80
+	idle3:
+		Start: 383
+		Length: 27
+		Tick: 80
+	run:
+		Start: 8
+		Length: 6
+		Facings: -8
+		Tick: 80
+	shoot:
+		Start: 56
+		Length: 7
+		Facings: -8
+	prone-stand:
+		Frames: 152, 159, 166, 173, 180, 187, 194, 201
+		Facings: -8
+	prone-run:
+		Start: 120
+		Length: 4
+		Facings: -8
+		Tick: 110
+	standup:
+		Start: 112
+		Facings: -8
+		Tick: 120
+	prone-shoot:
+		Start: 152
+		Length: 7
+		Facings: -8
+	throw:
+		Start: 287
+		Length: 6
+		Facings: -8
+		Tick: 80
+	prone-throw:
+		Start: 335
+		Length: 6
+		Facings: -8
+		Tick: 80
+	parachute:
+		Start: 5
+	die4:
+		Start: 227
+		Length: 12
+		Tick: 80
+	die2:
+		Start: 239
+		Length: 12
+		Tick: 80
+	die3:
+		Start: 251
+		Length: 12
+		Tick: 80
+	die1:
+		Start: 263
+		Length: 12
+		Tick: 80
+	die5:
+		Filename: e1.shp
+		Start: 324
+		Length: 18
+		Tick: 80
+	garrison-muzzle: minigun
+		Filename:
+		Length: 12
+		Facings: 8
+		Combine:
+			0:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 0,1,2,3,4,5,0,1,2,3,4,5
+			1:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 6,7,8,9,10,11,6,7,8,9,10,11
+			2:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 12,13,14,15,16,17,12,13,14,15,16,17
+			3:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 18,19,20,21,22,23,18,19,20,21,22,23
+			4:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 24,25,26,27,28,29,24,25,26,27,28,29
+			5:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 30,31,32,33,34,35,30,31,32,33,34,35
+			6:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 36,37,38,39,40,41,36,37,38,39,40,41
+			7:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 42,43,44,45,46,47,42,43,44,45,46,47
+	icon:
+		Filename: bits/specopicon.shp
+
+jjet:
+	Inherits: ^CommonDeaths
+	Defaults:
+		Filename: bits/jjet.shp
+		Scale: 1.3
+		Tick: 80
+		ZOffset: 512
+	idle:
+		Facings: 8
+		Length: 6
+		Start: 310
+	stand:
+		Facings: 8
+	run:
+		Start: 8
+		Length: 6
+		Facings: 8
+	idle1:
+		Start: 56
+		Length: 15
+	idle2:
+		Start: 71
+		Length: 15
+	prone-run:
+		Start: 86
+		Length: 6
+		Facings: 8
+	prone-stand:
+		Facings: 8
+	flying:
+		Facings: 8
+		Length: 6
+		Start: 262
+	hover:
+		Facings: 8
+		Length: 6
+		Start: 310
+	die-twirling: # TODO: animation for falling from sky starts at 436
+		Start: 414
+		Length: 6
+	die-falling:
+		Start: 406
+		Length: 9
+	die-flying: # TODO: animation for falling from sky starts at 436
+		Start: 414
+		Length: 6
+	attack:
+		Start: 182
+		Length: 6
+		Facings: 8
+	flying-attack:
+		Start: 358
+		Facings: 8
+		Length: 6
+	prone-attack:
+		Start: 212
+		Length: 6
+		Facings: 8
+	standup:
+		Start: 230
+		Length: 2
+		Facings: 8
+	die1:
+		Start: 414
+		Length: 6
+		Tick: 80
+	die2:
+		Start: 414
+		Length: 6
+		Tick: 80
+	die3:
+		Start: 414
+		Length: 6
+		Tick: 80
+	die4:
+		Start: 414
+		Length: 6
+		Tick: 80
+	die5:
+		Start: 414
+		Length: 6
+		Tick: 80
+	die7:
+		Start: 318
+		Length: 8
+		Tick: 80
+	die-splash: h2o_exp1
+		Length: *
+	icon: 
+		Filename: bits/jjeticon.shp
+
+cq:
+	Inherits: ^CommonDeaths
+	Defaults:
+		Filename: bits/cq.shp
+		Scale: 1.4
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
+			JUNGLE: TEMPERAT
+			WINTER: TEMPERAT
+			BARREN: DESERT
+			DUNE: DESERT
+	stand:
+		Facings: 8
+	stand2:
+		Start: 8
+		Facings: 8
+	run:
+		Start: 16
+		Length: 6
+		Facings: 8
+		Tick: 100
+	shoot:
+		Start: 64
+		Length: 16
+		Facings: 8
+	liedown:
+		Start: 192
+		Length: 2
+		Facings: 8
+	standup:
+		Start: 240
+		Length: 2
+		Facings: 8
+	prone-stand:
+		Start: 208
+		Stride: 4
+		Facings: 8
+	prone-stand2:
+		Start: 208
+		Stride: 4
+		Facings: 8
+	prone-run:
+		Start: 208
+		Length: 4
+		Facings: 8
+		Tick: 100
+	prone-shoot:
+		Start: 256
+		Length: 16
+		Facings: 8
+	parachute:
+		Start: 622
+	idle1:
+		Start: 384
+		Length: 16
+		Tick: 120
+	idle2:
+		Start: 400
+		Length: 16
+		Tick: 120
+	cheer:
+		Start: 588
+		Length: 3
+		Facings: 8
+		Tick: 120
+	die1:
+		Start: 509
+		Length: 9
+		Tick: 80
+	die2:
+		Start: 518
+		Length: 8
+		Tick: 80
+	die3:
+		Start: 526
+		Length: 8
+		Tick: 80
+	die4:
+		Start: 534
+		Length: 12
+		Tick: 80
+	die5:
+		Start: 546
+		Length: 18
+		Tick: 80
+	die7:
+		Start: 494
+		Length: 10
+		Tick: 80
+	muzzle: 
+		Filename: bits/prismmuzzle.shp
+		Length: 4
+	icon:
+		Filename: bits/cqicon.shp
+
+mort:
+	Inherits: ^CommonDeaths
+	Defaults:
+		Filename: bits/mort.shp
+		Scale: 1.4
+	stand:
+		Facings: 8
+	stand2:
+		Facings: 8
+	run:
+		Start: 16
+		Length: 6
+		Facings: 8
+		Tick: 100
+	throw:
+		Start: 64
+		Length: 20
+		Facings: 8
+	liedown:
+		Start: 224
+		Length: 2
+		Facings: 8
+	standup:
+		Start: 272
+		Length: 2
+		Facings: 8
+	prone-stand:
+		Start: 240
+		Stride: 4
+		Facings: 8
+	prone-stand2:
+		Start: 240
+		Stride: 4
+		Facings: 8
+	prone-run:
+		Start: 240
+		Length: 4
+		Facings: 8
+		Tick: 100
+	prone-throw:
+		Start: 288
+		Length: 12
+		Facings: 8
+	parachute:
+		Start: 528
+	idle1:
+		Start: 384
+		Length: 16
+		Tick: 120
+	idle2:
+		Start: 400
+		Length: 16
+		Tick: 120
+	cheer:
+		Start: 494
+		Length: 3
+		Facings: 8
+		Tick: 120
+	die1:
+		Start: 416
+		Length: 9
+		Tick: 80
+	die2:
+		Start: 424
+		Length: 8
+		Tick: 80
+	die3:
+		Start: 432
+		Length: 8
+		Tick: 80
+	die4:
+		Start: 440
+		Length: 12
+		Tick: 80
+	die5:
+		Start: 452
+		Length: 18
+		Tick: 80
+	die7:
+		Start: 416
+		Length: 9
+		Tick: 80
+	icon:
+		Filename: bits/morticon.shp
+
+sab:
+	Inherits: ^CommonDeaths
+	Defaults:
+		Filename: bits/sab.shp
+		Scale: 1.4
+	stand:
+		Facings: 8
+	run:
+		Start: 8
+		Length: 6
+		Facings: 8
+		Tick: 100
+	shoot:
+		Start: 56
+		Length: 4
+		Facings: 8
+	prone-stand:
+		Start: 104
+		Stride: 4
+		Facings: 8
+	prone-run:
+		Start: 104
+		Length: 4
+		Facings: 8
+		Tick: 100
+	standup:
+		Start: 136
+		Length: 2
+		Facings: 8
+	prone-shoot:
+		Start: 152
+		Length: 4
+		Facings: 8
+	parachute:
+		Start: 3
+	idle:
+		Start: 184
+		Length: 26
+		Tick: 120
+	die1:
+		Start: 210
+		Length: 8
+	die2:
+		Start: 218
+		Length: 8
+	die3:
+		Start: 226
+		Length: 8
+	die4:
+		Start: 234
+		Length: 12
+	die5:
+		Start: 246
+		Length: 18
+	die7:
+		Start: 210
+		Length: 8
+	icon:
+		Filename: bits/sabicon.shp
+
+hacker:
+	Inherits: ^CommonDeaths
+	Defaults:
+		Filename: bits/hacker.shp
+	stand:
+		Facings: 8
+	run:
+		Start: 8
+		Length: 6
+		Facings: 8
+		Tick: 100
+	repair:
+		Start: 56
+		Length: 58
+		Tick: 120
+	standup:
+		Start: 114
+		Length: 2
+		Facings: 8
+	idle:
+		Start: 178
+		Length: 14
+		Tick: 120
+	die1:
+		Start: 193
+		Length: 8
+		Tick: 80
+	die2:
+		Start: 201
+		Length: 8
+		Tick: 80
+	die3:
+		Start: 209
+		Length: 8
+		Tick: 80
+	die4:
+		Start: 217
+		Length: 12
+		Tick: 80
+	die5:
+		Start: 229
+		Length: 18
+		Tick: 80
+	prone-stand:
+		Start: 130
+		Stride: 4
+		Facings: 8
+	prone-run:
+		Start: 130
+		Length: 4
+		Facings: 8
+		Tick: 100
+	icon:
+		Filename: bits/scvnicon.shp
+
+ivan:
+	Inherits: ^CommonDeaths
+	Defaults:
+		Filename: bits/ivan.shp
+		Scale: 1.4
+	stand:
+		Facings: 8
+	stand2:
+		Start: 8
+		Facings: 8
+	run:
+		Start: 16
+		Length: 6
+		Facings: 8
+		Tick: 100
+	throw:
+		Start: 64
+		Length: 20
+		Facings: 8
+	liedown:
+		Start: 224
+		Length: 2
+		Facings: 8
+	standup:
+		Start: 272
+		Length: 2
+		Facings: 8
+	prone-stand:
+		Start: 240
+		Stride: 4
+		Facings: 8
+	prone-stand2:
+		Start: 240
+		Stride: 4
+		Facings: 8
+	prone-run:
+		Start: 240
+		Length: 4
+		Facings: 8
+		Tick: 100
+	prone-throw:
+		Start: 288
+		Length: 12
+		Facings: 8
+	parachute:
+		Start: 622
+	idle1:
+		Start: 384
+		Length: 16
+		Tick: 120
+	idle2:
+		Start: 400
+		Length: 13
+		Tick: 120
+	cheer:
+		Start: 588
+		Length: 3
+		Facings: 8
+		Tick: 120
+	die1:
+		Start: 509
+		Length: 9
+		Tick: 80
+	die2:
+		Start: 518
+		Length: 8
+		Tick: 80
+	die3:
+		Start: 526
+		Length: 8
+		Tick: 80
+	die4:
+		Start: 534
+		Length: 12
+		Tick: 80
+	die5:
+		Start: 546
+		Length: 18
+		Tick: 80
+	icon:
+		Filename: bits/ivanicon.shp
+
+hop:
+	Inherits: ^CommonDeaths
+	Defaults:
+		Filename: bits/hop.shp
+		Scale: 1.4
+	stand: 
+		Facings: 8
+	stand2: 
+		Facings: 8
+		Start: 8
+	run: 
+		Start: 16
+		Length: 6
+		Facings: 8
+		Tick: 120
+	shoot: 
+		Start: 64
+		Length: 4
+		Facings: 8
+		Tick: 60
+	idle: 
+		Start: 96
+		Length: 8
+		Tick: 160
+	idle2: 
+		Start: 104
+		Length: 8
+		Tick: 160
+	die1: 
+		Start: 111
+		Length: 14
+		Tick: 80
+	die2: 
+		Start: 125
+		Length: 12
+	die3: 
+		Start: 125
+		Length: 12
+	die4: 
+		Start: 125
+		Length: 12
+	die5: 
+		Start: 125
+		Length: 12
+	die7: 
+		Start: 125
+		Length: 12
+	parachute: 
+		Start: 2
+	icon:
+		Filename: bits/hopicon.shp
+
+hopf:
+	Inherits: ^CommonDeaths
+	Defaults:
+		Filename: bits/hopflame.shp
+		Scale: 1.4
+	stand: 
+		Facings: 8
+	stand2: 
+		Facings: 8
+		Start: 8
+	run: 
+		Start: 16
+		Length: 6
+		Facings: 8
+		Tick: 120
+	shoot: 
+		Start: 64
+		Length: 4
+		Facings: 8
+		Tick: 60
+	idle: 
+		Start: 96
+		Length: 8
+		Tick: 160
+	idle2: 
+		Start: 104
+		Length: 8
+		Tick: 160
+	die1: 
+		Start: 111
+		Length: 14
+		Tick: 80
+	die2: 
+		Start: 125
+		Length: 12
+	die3: 
+		Start: 125
+		Length: 12
+	die4: 
+		Start: 125
+		Length: 12
+	die5: 
+		Start: 125
+		Length: 12
+	die7: 
+		Start: 125
+		Length: 12
+	icon:
+		Filename: bits/hopficon.shp
+
+hip:
+	idle:
+		Filename: bits/hip.shp
+		Facings: 32
+		UseClassicFacings: True
+	icon:
+		Filename: bits/hipicon.shp
+
+spart:
+	Defaults:
+		Filename: bits/spart.shp
+		Scale: 1.4
+	idle:
+		Facings: 8
+	move:
+		Start: 8
+		Length: 4
+		Facings: 8
+		Tick: 200
+	shoot:
+		Start: 40
+		Length: 2
+		Facings: 8
+		Tick: 40
+	descend:
+		Start: 56
+		Facings: 8
+		Length: 3
+	muzzle: 
+		Filename: minigun.shp
+		Length: 6
+		Facings: 8
+	icon:
+		Filename: bits/sparticon.shp
+
+ref-bot:
+	Defaults:
+		Filename: bits/ref-bot.shp
+	idle:
+		Offset: 2, 3
+		ZOffset: -1c511
+	damaged-idle:
+		Offset: 2, 3
+		ZOffset: -1c511
+		Start: 1
+	topsolid:
+		Filename: bits/ref-top.shp
+		Offset: 2, 3
+		ZOffset: 0c912
+		Start: 0
+	damaged-topsolid:
+		Filename: bits/ref-top.shp
+		Offset: 2, 3
+		ZOffset: 0c912
+		Start: 2
+	opaquetop:
+		Filename: bits/ref-top.shp
+		Offset: 2, 3
+		ZOffset: 0c912
+		Start: 1
+	damaged-opaquetop:
+		Filename: bits/ref-top.shp
+		Offset: 2, 3
+		ZOffset: 0c912
+		Start: 3
+	make:
+		Filename: bits/ref-anim.shp
+		Offset: 5, -1
+		Length: *
+	dead:
+		Filename: procdead.shp
+		Tick: 800
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Offset: 2, 8
+		ZOffset: -1c612
+		Length: *
+	icon:
+		Filename: procicon.shp
+
+hovharv:
+	Defaults:
+		Filename: bits/hovharv.shp
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	harvest:
+		Start: 32
+		Length: 8
+		Facings: 8
+	dock:
+		Start: 96
+		Length: 8
+	dock-loop:
+		Start: 104
+		Length: 7
+	icon:
+		Filename: bits/hovharvicon.shp
+
+2tnk:
+	turret2:
+		Filename: bits/ifvtur.shp
+		Start: 0
+		Facings: 32
+		UseClassicFacingFudge: True
+
+2tnk.hov:
+	idle:
+		Filename: bits/hovtnk.shp
+		Facings: 32
+	turret:
+		Filename: 2tnk.shp
+		Start: 32
+		Facings: 32
+	turret2:
+		Filename: bits/ifvtur.shp
+		Start: 0
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: bits/hovtnkicon.shp
+
+ww3howi:
+	Defaults:
+		Filename: bits/howi.shp
+		Scale: 1.1
+	idle:
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret:
+		Start: 32
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle:
+		Filename: bits/smokeygun.shp
+		Length: 12
+		Tick: 30
+	icon: 
+		Filename: bits/howiticon.shp
+
+humm:
+	idle:
+		Filename: bits/humm.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret:
+		Filename: bits/humm.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle:
+		Filename: minigun.shp
+		Length: 6
+		Facings: 8
+	garrison-muzzle:
+		Filename: minigun.shp
+		Length: 6
+		Facings: 8
+	icon:
+		Filename: bits/hummicon.shp
+
+panzer:
+	idle:
+		Filename: bits/panzer.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret:
+		Filename: bits/panzer.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 2
+	icon:
+		Filename: bits/panzericon.shp
+
+panzer.destroyed:
+	idle:
+		Filename: bits/panzer.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret:
+		Filename: bits/panzer.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacingFudge: True
+
+grizz:
+	idle:
+		Filename: bits/grizz.shp
+		Facings: 32
+		Scale: 1.2
+		UseClassicFacingFudge: True
+	turret:
+		Filename: bits/grdn.shp
+		Scale: 1.2
+		Start: 64
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret2:
+		Filename: bits/empty.shp
+	muzzle:
+		Filename: gunfire2.shp
+		Length: *
+	icon:
+		Filename: bits/grizzicon.shp
+
+grizz.destroyed:
+	idle:
+		Filename: bits/grizz.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret:
+		Filename: bits/grdn.shp
+		Start: 64
+		Facings: 32
+		UseClassicFacingFudge: True
+
+tnkd:
+	idle:
+		Filename: bits/tnkd.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle:
+		Filename: bits/cann-muzzle.shp
+		Length: 2
+		Facings: 16
+	muzzle2: 
+		Filename: bits/prismmuzzle.shp
+		Length: 4
+	icon:
+		Filename: bits/tnkdicon.shp
+
+tnkd.destroyed:
+	idle:
+		Filename: bits/tnkd.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+
+ptnk:
+	idle:
+		Filename: bits/ptnk.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret:
+		Filename: bits/ptnkt.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle: 
+		Filename: bits/prismmuzzle.shp
+		Length: 4
+	icon:
+		Filename: bits/ptnkicon.shp
+
+ptnk.destroyed:
+	idle:
+		Filename: bits/ptnk.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+		ZOffset: -512
+	turret:
+		Filename: bits/ptnkt.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+		ZOffset: -512
+
+pcan:
+	idle:
+		Filename: bits/pcan.shp
+		Facings: 32
+		UseClassicFacings: True
+	turret: 
+		Filename: bits/pcan.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: 
+		Filename: bits/prismmuzzle.shp
+		Length: 4
+	icon: 
+		Filename: bits/pcanicon.shp
+
+pcan.destroyed:
+	idle: 
+		Filename: bits/pcan.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+ifv:
+	idle:
+		Filename: bits/ifv.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret:
+		Filename: bits/ifvtur.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret2:
+		Filename: bits/ifvtur.shp
+		Start: 320
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret3:
+		Filename: bits/ifvtur.shp
+		Start: 64
+		Facings: 32
+		UseClassicFacings: True
+	turret5:
+		Filename: bits/ifvtur.shp
+		Start: 128
+		Facings: 32
+		UseClassicFacings: True
+	turret6:
+		Filename: bits/ifvtur.shp
+		Start: 289
+		Facings: 32
+		UseClassicFacings: True
+	turret8:
+		Filename: bits/ifvtur.shp
+		Start: 96
+		Facings: 32
+		UseClassicFacings: True
+	turret9:
+		Filename: bits/ifvtur.shp
+		Start: 192
+		Facings: 32
+		UseClassicFacings: True
+	turret11:
+		Filename: bits/ifvtur.shp
+		Start: 352
+		Facings: 32
+		UseClassicFacings: True
+	tesla:
+		Filename: ttnk.shp
+		Start: 32
+		Length: 32
+	spinner:
+		Filename: mrj.shp
+		Start: 32
+		Length: 32
+	open:
+		Filename: bits/ifv.shp
+		Start: 32
+		Length: 3
+	unload:
+		Filename: bits/ifv.shp
+		Start: 32
+	icon:
+		Filename: bits/ifvicon.shp
+
+ifv.destroyed:
+	idle:
+		Filename: bits/ifv.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+		ZOffset: -512
+	turret:
+		Filename: 1tnk.shp
+		Start: 32
+		Facings: 32
+
+rtnk:
+	idle:
+		Filename: bits/rtnk.shp
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Filename: bits/rtnk.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: bits/rtnkicon.shp
+
+rtnk.destroyed:
+	idle:
+		Filename: bits/rtnk.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret:
+		Filename: bits/rtnk.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+msar:
+	idle:
+		Filename: bits/msar.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	spinner:
+		Filename: bits/msarspinner.shp
+		Length: 32
+	make:
+		Filename: bits/msarmake.shp
+		Length: *
+		Tick: 50
+	idle-static:
+		Filename: bits/msardeployed.shp
+		Length: 14
+		Tick: 80
+	icon:
+		Filename: bits/msaricnh.shp
+
+batf:
+	idle:
+		Filename: bits/batf.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle:
+		Filename: bits/smokeygun.shp
+		Length: 12
+		Tick: 30
+	turret:
+		Filename: bits/batf.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret2:
+		Filename: stnk.shp
+		Start: 38
+		Facings: 32
+		UseClassicFacingFudge: True
+	icon:
+		Filename: bits/batficon.shp
+
+batf.destroyed:
+	idle:
+		Filename: bits/batf.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle:
+		Filename: bits/smokeygun.shp
+		Length: 12
+		Tick: 30
+	turret:
+		Filename: bits/batf.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret2:
+		Filename: stnk.shp
+		Start: 38
+		Facings: 32
+		UseClassicFacingFudge: True
+
+apc:
+	turret:
+		Filename: bits/vulc.shp
+		Start: 0
+		Facings: 32
+		UseClassicFacings: True
+	turret2:
+		Filename: bits/vulc.shp
+		Start: 31
+		Facings: 32
+		Scale: 1.2
+		UseClassicFacings: True
+
+3tnk:
+	turret2:
+		Filename: bits/ifvtur.shp
+		Start: 128
+		Facings: 32
+		UseClassicFacingFudge: True
+
+3tnkc:
+	idle:
+		Filename: bits/3tnkc.shp
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Filename: 3tnk.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret2:
+		Filename: bits/ifvtur.shp
+		Start: 1
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: 3tnkicon.shp
+
+4tnk.hov:
+	idle:
+		Filename: bits/hvyhovtnk.shp
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Filename: 4tnk.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: bits/hovmamicon.shp
+
+4tnk.hov.destroyed:
+	idle:
+		Filename: bits/hvyhovtnk.shp
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Filename: 4tnk.shp
+		Start: 0
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+lasher:
+	idle:
+		Filename: bits/lasher.shp
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Filename: bits/lasher.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret2:
+		Filename: 3tnk.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: bits/lashericon.shp
+
+scudl:
+	Defaults:
+		Filename: bits/scudl.shp
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	empty-idle:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	aim:
+		Facings: 32
+		UseClassicFacings: True
+	empty-aim:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	icon:
+		Filename: bits/scudlicon.shp
+
+gtnk:
+	idle:
+		Filename: bits/gtnk.shp
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Filename: bits/vulc.shp
+		Start: 0
+		Facings: 32
+		UseClassicFacings: True
+	turret2:
+		Filename: bits/vulc.shp
+		Start: 31
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: minigun.shp
+		Length: 2
+	icon:
+		Filename: bits/gtnkicon.shp
+
+gtnk.destroyed:
+	idle:
+		Filename: bits/panzer.shp
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Filename: bits/vulc.shp
+		Start: 0
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret2:
+		Filename: bits/vulc.shp
+		Start: 31
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+ww3katy:
+	idle:
+		Filename: bits/katy.shp
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: bits/smokeygun.shp
+		Length: 12
+		Tick: 30
+	move:
+		Filename: bits/katy.shp
+		Facings: 32
+		Length: 1
+		UseClassicFacings: True
+	icon:
+		Filename: bits/katyicnh.shp
+
+btr:
+	idle:
+		Filename: bits/btr.shp
+		Facings: 32
+		UseClassicFacings: True
+	float:
+		Filename: bits/1tnk_float.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret:
+		Filename: bits/btr.shp
+		Start: 33
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 2
+	icon:
+		Filename: bits/btricon.shp
+
+btr.destroyed:
+	idle:
+		Filename: bits/btr.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret:
+		Filename: bits/btr.shp
+		Start: 33
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+latnk:
+	Defaults:
+		Filename: bits/latnk.shp
+	idle:
+		Facings: 32
+	turret:
+		Filename: bits/empty.shp
+	spinner:
+		Start: 32
+		Length: 32
+	spinner-idle:
+		Start: 32
+		Length: 32
+	spinner-damaged:
+		Start: 32
+		Length: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 2
+	icon:
+		Filename: infxicon.shp
+
+latnk.husk:
+	idle:
+		Filename: bits/latnk.shp
+		Facings: 32
+		ZOffset: -512
+	turret:
+		Filename: bits/empty.shp
+	spinner-idle:
+		Filename: bits/latnk.shp
+		Start: 32
+		Facings: 32
+		ZOffset: -512
+
+explosion2:
+	Defaults:
+		Length: *
+		ZOffset: 511
+		BlendMode: Additive
+		Palette: effect50alpha
+		Tick: 44
+	bigboom4:
+		Filename: bits/bigboom4.shp
+		Length: *
+		BlendMode: Additive
+		Tick: 80
+
+v3rl:
+	idle:
+		Filename: bits/v3rl.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	empty-idle:
+		Filename: bits/v3rl.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacingFudge: True
+	icon:
+		Filename: bits/v3rlicon.shp
+
+v3:
+	idle:
+		Filename: bits/v3.shp
+		Facings: 32
+		ZOffset: 1023
+
+ftnk:
+	idle:
+		Filename: 1tnk.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret:
+		Filename: bits/ifvtur.shp
+		Start: 128
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Combine:
+			0:
+				Filename: bits/flame-n.shp
+				Length: *
+				Offset: 3,6
+			1:
+				Filename: bits/flame-nw.shp
+				Length: *
+				Offset: 8,7
+			2:
+				Filename: bits/flame-w.shp
+				Length: *
+				Offset: 8,2
+			3:
+				Filename: bits/flame-sw.shp
+				Length: *
+				Offset: 7,-2
+			4:
+				Filename: bits/flame-s.shp
+				Length: *
+				Offset: 3,-2
+			5:
+				Filename: bits/flame-se.shp
+				Length: *
+				Offset: -5,-2
+			6:
+				Filename: bits/flame-e.shp
+				Length: *
+				Offset: -7,2
+			7:
+				Filename: bits/flame-ne.shp
+				Length: *
+				Offset: -7,8
+		Facings: 8
+		Length: 13
+	icon:
+		Filename: bits/ftnkicnh.tem
+
+hftk:
+	idle:
+		Filename: bits/hftk.shp
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Filename: bits/hftk.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Combine:
+			0:
+				Filename: bits/flame-n.shp
+				Length: *
+				Offset: 3,6
+			1:
+				Filename: bits/flame-nw.shp
+				Length: *
+				Offset: 8,7
+			2:
+				Filename: bits/flame-w.shp
+				Length: *
+				Offset: 8,2
+			3:
+				Filename: bits/flame-sw.shp
+				Length: *
+				Offset: 7,-2
+			4:
+				Filename: bits/flame-s.shp
+				Length: *
+				Offset: 3,-2
+			5:
+				Filename: bits/flame-se.shp
+				Length: *
+				Offset: -5,-2
+			6:
+				Filename: bits/flame-e.shp
+				Length: *
+				Offset: -7,2
+			7:
+				Filename: bits/flame-ne.shp
+				Length: *
+				Offset: -7,8
+		Facings: 8
+		Length: 13
+	icon:
+		Filename: bits/hftkicnh.shp
+
+ttnk2:
+	idle:
+		Filename: 4tnk.shp
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Filename: bits/ttnk2.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	icon:
+		Filename: bits/ttnk2icon.shp
+
+ttnk2.destroyed:
+	idle:
+		Filename: 4tnk.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret:
+		Filename: bits/ttnk2.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+apoc:
+	idle:
+		Filename: bits/apoc.shp
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Filename: bits/apoctur.shp
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: bits/apocicon.shp
+
+apoc.destroyed:
+	idle:
+		Filename: bits/apoc.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret:
+		Filename: bits/apoctur.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+6tnk:
+	idle:
+		Filename: bits/6tnk.shp
+		Facings: 32
+		Scale: 1.1
+		UseClassicFacings: True
+	muzzle:
+		Filename: bits/smokeygun.shp
+		Length: 12
+		Tick: 30
+	icon:
+		Filename: bits/6tnkicon.shp
+
+empor:
+	idle:
+		Filename: bits/empor.shp
+		Facings: 32
+		Scale: 1.2
+	turret:
+		Filename: bits/apoctur.shp
+		Facings: 32
+		Scale: 1
+	turret2:
+		Filename: bits/vulc.shp
+		Facings: 32
+		Scale: 0.9
+	turret3:
+		Filename: bits/emport2.shp
+		Facings: 32
+		Scale: 1.1
+	turret4:
+		Filename: bits/ifvtur.shp
+		Start: 128
+		Facings: 32
+		Scale: 1
+	spinner:
+		Filename: bits/msarspinner.shp
+		Start: 0
+		Length: 32
+		ZOffset: 512
+	muzzle:
+		Filename: bits/smokeygun.shp
+		Length: 12
+		Tick: 30
+		Offset: 0,0
+	muzzle2:
+		Filename: gunfire2.shp
+		Length: 2
+	icon:
+		Filename: bits/overlordicon.shp
+
+empor.destroyed:
+	idle:
+		Filename: bits/empor.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret:
+		Filename: bits/emport.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+isu:
+	idle:
+		Filename: bits/isu.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle:
+		Filename: bits/smokeygun.shp
+		Length: 12
+		Tick: 30
+	icon:
+		Filename: bits/isuicon.shp
+
+isu.destroyed:
+	idle:
+		Filename: bits/isu.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+		ZOffset: -512
+
+msam:
+	idle:
+		Filename: 2tnk.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret:
+		Filename: bits/emport2.shp
+		Facings: 32
+		Scale: 1.2
+		UseClassicFacingFudge: True
+	icon:
+		Filename: bits/msamicon.shp
+
+msam.destroyed:
+	idle:
+		Filename: 2tnk.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret:
+		Filename: bits/emport2.shp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+txtrk:
+	idle:
+		Filename: bits/txtrk.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	icon:
+		Filename: bits/txtrkicon.shp
+
+titn:
+	stand: 
+		Filename: bits/titanlegs.shp
+		Facings: 16
+	run: 
+		Filename: bits/titanlegs.shp
+		Start: 16
+		Facings: 16
+		Length: 14
+		Tick: 90
+	turret: 
+		Filename: bits/titanturr.shp
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: 
+		Filename: bits/smokeygun.shp
+		Length: 12
+		Tick: 30
+	icon: 
+		Filename: bits/titanicon.shp
+
+titn.destroyed:
+	idle: 
+		Filename: bits/titanlegs.shp
+		Facings: 16
+		ZOffset: -512
+	turret: 
+		Filename: bits/titanturr.shp
+		Facings: 32
+		UseClassicFacings: True
+
+b2b:
+	idle:
+		Filename: bits/b2b.shp
+		Facings: 32
+	icon:
+		Filename: bits/b2bicon.shp
+
+douglas:
+	idle:
+		Filename: bits/douglas.shp
+		Facings: 16
+
+apache:
+	idle:
+		Filename: bits/apache.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	rotor:
+		Filename: lrotor.shp
+		Length: 4
+	slow-rotor:
+		Filename: lrotor.shp
+		Start: 4
+		Length: 8
+	muzzle:
+		Filename: minigun.shp
+		Length: 6
+		Facings: 8
+	icon:
+		Filename: bits/apacheicon.shp
+
+mi26:
+	idle:
+		Filename: bits/mi26.shp
+		Start: 0
+		Facings: 32
+		UseClassicFacings: True
+	idle-grounded:
+		Filename: bits/mi26.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	rotor:
+		Filename: bits/yrotorhg.shp
+		Length: 4
+	slow-rotor:
+		Filename: bits/yrotorhg.shp
+		Start: 4
+		Length: 8
+		Tick: 140
+	slow-rotor-shadow:
+		Filename: bits/yrotorhg.shp
+		Start: 12
+		Length: 8
+		Tick: 140
+	rotor2:
+		Filename: bits/yrotorhg.shp
+		Length: 4
+		Frames: 2, 3, 0, 1
+	slow-rotor2:
+		Filename: bits/yrotorhg.shp
+		Length: 8
+		Frames: 8, 9, 10, 11, 4, 5, 6, 7
+		Tick: 140
+	slow-rotor-shadow2:
+		Filename: bits/yrotorhg.shp
+		Length: 8
+		Frames: 16, 17, 18, 19, 12, 13, 14, 15
+		Tick: 140
+	open:
+		Filename: tran2.shp
+		Start: 32
+		Length: 4
+	unload:
+		Filename: tran2.shp
+		Start: 35
+	icon:
+		Filename: bits/mi26icon.shp
+
+harr:
+	idle:
+		Filename: bits/harr.shp
+		Facings: 32
+		UseClassicFacings: True
+	icon:
+		Filename: bits/harricon.shp
+
+uav:
+	idle:
+		Filename: bits/uav.shp
+		Facings: 32
+	icon:
+		Filename: bits/uavicon.shp
+
+uav.husk:
+	idle:
+		Filename: bits/f22.shp
+		Facings: 32
+
+a10:
+	idle:
+		Filename: bits/a10.shp
+		Facings: 32
+	icon:
+		Filename: bits/a10icon.shp
+
+a10.husk:
+	idle:
+		Filename: bits/a10.shp
+		Facings: 32
+
+f22:
+	idle:
+		Filename: bits/f22.shp
+		Facings: 32
+	icon:
+		Filename: bits/f22icon.shp
+
+f22.husk:
+	idle:
+		Filename: bits/f22.shp
+		Facings: 32
+
+rah:
+	idle:
+		Filename: bits/rah.shp
+		Facings: 32
+		UseClassicFacings: True
+	rotor:
+		Filename: bits/lbrotor.shp
+		Length: 4
+	slow-rotor:
+		Filename: bits/lbrotor.shp
+		Start: 4
+		Length: 8
+	icon:
+		Filename: bits/rahicon.shp
+
+nhaw:
+	idle: 
+		Filename: bits/nhaw.shp
+		Facings: 32
+		UseClassicFacings: True
+	rotor: 
+		Filename: lrotor.shp
+		Length: 4
+	rotor2: 
+		Filename: rrotor.shp
+		Length: 4
+	slow-rotor: 
+		Filename: lrotor.shp
+		Start: 4
+		Length: 8
+	slow-rotor2: 
+		Filename: rrotor.shp
+		Start: 4
+		Length: 8
+	muzzle: 
+		Filename: minigun.shp
+	icon: 
+		Filename: bits/nhawicon.shp
+
+badr:
+	icon:
+		Filename: badricon.shp
+
+suk:
+	idle:
+		Filename: bits/suk.shp
+		Facings: 32
+	icon:
+		Filename: bits/sukicon.shp
+
+suk.husk:
+	idle:
+		Filename: bits/suk.shp
+		Facings: 32
+
+kirov:
+	idle:
+		Filename: bits/kirov.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	rotor:
+		Filename: bits/krotor.shp
+		Length: 4
+	slow-rotor:
+		Filename: bits/krotor.shp
+		Start: 4
+		Length: 8
+	icon:
+		Filename: bits/kirovicon.shp
+
+kirov.husk:
+	idle:
+		Filename: bits/kirov.shp
+		Facings: 32
+		UseClassicFacingFudge: True
+	rotor:
+		Filename: bits/krotor.shp
+		Length: 4
+	slow-rotor:
+		Filename: bits/krotor.shp
+		Start: 4
+		Length: 8
+
+ant40:
+	idle:
+		Filename: bits/ant40.shp
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: bits/ant40icon.shp
+
+smnly:
+	idle:
+		Filename: bits/smnly.shp
+		Facings: 16
+	icon:
+		Filename: bits/smnlyicon.shp
+
+mins:
+	idle:
+		Filename: bits/seamine.shp
+		Facings: 32
+		ZOffset: -512
+	float:
+		Filename: bits/seamine.shp
+		Start: 32
+		Length: 8
+		Facings: 32
+		Tick: 100
+		ZOffset: -512
+
+ngg:
+	idle:
+		Filename: pt.shp
+		Facings: 16
+	spinner:
+		Filename: mgg.shp
+		Start: 32
+		Length: 8
+	spinner-idle:
+		Filename: mgg.shp
+		Start: 32
+		Length: 1
+	icon:
+		Filename: bits/nggicon.shp
+
+dd2:
+	idle:
+		Filename: bits/dd2.shp
+		Facings: 16
+	turret:
+		Filename: bits/ifvtur.shp
+		Start: 256
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret2:
+		Filename: ftrk.shp
+		Start: 32
+		Facings: 32
+	muzzle:
+		Filename: bits/smokeygun.shp
+		Length: 12
+		Tick: 45
+	spinner:
+		Filename: mrj.shp
+		Start: 32
+		Length: 32
+	icon:
+		Filename: bits/dd2icnh.shp
+
+ca.prism:
+	idle:
+		Filename: ca.shp
+		Facings: 16
+	turret: 
+		Filename: bits/pcan.shp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: 
+		Filename: bits/prismmuzzle.shp
+		Length: 4
+	icon:
+		Filename: bits/capicon.shp
+
+icbmsub:
+	idle:
+		Filename: bits/icbmsub.shp
+		Facings: 16
+	icon:
+		Filename: bits/icbmsubicon.shp
+
+seam:
+	idle:
+		Filename: bits/seam.shp
+		Facings: -32
+		UseClassicFacingFudge: True
+	icon:
+		Filename: bits/seamicon.shp
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 2
+	submerge:
+		Filename: bits/seam.shp
+		Facings: -32
+		Tick: 3000
+		UseClassicFacingFudge: True
+

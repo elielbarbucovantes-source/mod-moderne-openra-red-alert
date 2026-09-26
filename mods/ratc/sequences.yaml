@@ -1,0 +1,442 @@
+howi:
+	Defaults:
+		Filename: ratc|bits/howi.shp
+		Scale: 1.1
+	idle:
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret:
+		Start: 32
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle:
+		Filename: ratc|bits/smokeygun.shp
+		Length: 12
+		Tick: 30
+	icon:
+		Filename: ratc|bits/howiticon.shp
+
+katy:
+	idle:
+		Filename: ratc|bits/katy.shp
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: ratc|bits/smokeygun.shp
+		Length: 12
+		Tick: 30
+	move:
+		Filename: ratc|bits/katy.shp
+		Facings: 32
+		Length: 1
+		UseClassicFacings: True
+	icon:
+		Filename: ratc|bits/katyicnh.shp
+
+ravit:
+	idle:
+		Filename: ratc|bits/ravit.shp
+		Facings: 32
+		UseClassicFacings: True
+	icon:
+		Filename: ratc|bits/ravitic.shp
+
+snle:
+	idle:
+		Filename: ratc|bits/snle.shp
+		Facings: 32
+	icon:
+		Filename: ratc|bits/snleicon.shp
+
+pan:
+	idle:
+		Filename: ratc|bits/pan.shp
+		Facings: 32
+	icon:
+		Filename: ratc|bits/panicon.shp
+
+# ======================================================================
+# Véhicules modernes : sprites générés par tools/sprites/build.py
+# (32 orientations de caisse + 32 de tourelle, palette RA, couleur joueur).
+# ======================================================================
+leopard:
+	Defaults:
+		Filename: ratc|bits/leopard.png
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/leopardicon.png
+
+leopard.destroyed:
+	Defaults:
+		Filename: ratc|bits/leopard.png
+		ZOffset: -512
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+
+challenger:
+	Defaults:
+		Filename: ratc|bits/challenger.png
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/challengericon.png
+
+challenger.destroyed:
+	Defaults:
+		Filename: ratc|bits/challenger.png
+		ZOffset: -512
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+
+t90m:
+	Defaults:
+		Filename: ratc|bits/t90m.png
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/t90micon.png
+
+t90m.destroyed:
+	Defaults:
+		Filename: ratc|bits/t90m.png
+		ZOffset: -512
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+
+bmpt:
+	Defaults:
+		Filename: ratc|bits/bmpt.png
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/bmpticon.png
+
+bmpt.destroyed:
+	Defaults:
+		Filename: ratc|bits/bmpt.png
+		ZOffset: -512
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+
+jaguar:
+	idle:
+		Filename: ratc|bits/jaguar.png
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/jaguaricon.png
+
+pauk:
+	idle:
+		Filename: ratc|bits/pauk.shp
+		Facings: 32
+	icon:
+		Filename: ratc|bits/paukicon.shp
+
+paru:
+	idle:
+		Filename: ratc|bits/paru.shp
+		Facings: 32
+	icon:
+		Filename: ratc|bits/paruicon.shp
+
+phua:
+	idle:
+		Filename: ratc|bits/phua.shp
+		Facings: 32
+	icon:
+		Filename: ratc|bits/phuaicon.shp
+
+rafale:
+	idle:
+		Filename: ratc|bits/rafale.shp
+		Facings: 32
+	icon:
+		Filename: ratc|bits/rafaleicon.shp
+
+harrier:
+	idle:
+		Filename: ratc|bits/harrier.shp
+		Facings: 32
+	icon:
+		Filename: ratc|bits/harriericon.shp
+
+pzh:
+	idle:
+		Filename: ratc|bits/pzh.png
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/pzhicon.png
+
+as90:
+	idle:
+		Filename: ratc|bits/as90.png
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/as90icon.png
+
+m777:
+	idle:
+		Filename: ratc|bits/m777.png
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/m777icon.png
+
+cesar:
+	Defaults:
+		Filename: ratc|bits/cesarv2.shp
+	idle:
+		Facings: 32
+	empty-idle:
+		Start: 32
+		Facings: 32
+	icon:
+		Filename: ratc|bits/cesarv2icon.shp
+
+leleka:
+	idle:
+		Filename: ratc|bits/leleka.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/lelekaicon.png
+
+# ======================================================================
+# Infanterie : animations RA d'origine, équipement retouché
+# par tools/sprites/infantry.py (béret, casque, lunettes, brassard).
+# ======================================================================
+gcp:
+	Inherits: e1
+	Defaults:
+		Filename: ratc|bits/gcp.png
+	icon:
+		Filename: ratc|bits/gcpicon.png
+
+nlaw:
+	Inherits: e3
+	Defaults:
+		Filename: ratc|bits/nlaw.png
+	icon:
+		Filename: ratc|bits/nlawicon.png
+
+fpvop:
+	Inherits: e2
+	Defaults:
+		Filename: ratc|bits/fpvop.png
+	icon:
+		Filename: ratc|bits/fpvopicon.png
+
+trench:
+	Inherits: e1
+	Defaults:
+		Filename: ratc|bits/trench.png
+	icon:
+		Filename: ratc|bits/trenchicon.png
+
+# Icône de l'ingénieur militaire français (le corps reste celui de l'ingénieur RA).
+e6:
+	genie-icon:
+		Filename: ratc|bits/genieicon.shp
+
+tranchee:
+	Defaults:
+		Filename: ratc|bits/tranchee.shp
+	idle:
+	damaged-idle:
+		Start: 1
+	make:
+		Start: 2
+		Length: 4
+		Tick: 200
+	icon:
+		Filename: ratc|bits/trancheeicon.shp
+
+# ======================================================================
+# Drones français (tools/sprites/aircraft.py)
+# ======================================================================
+reaper:
+	idle:
+		Filename: ratc|bits/reaper.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/reapericon.png
+
+patroller:
+	idle:
+		Filename: ratc|bits/patroller.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/patrollericon.png
+
+colibri:
+	Defaults:
+		Filename: ratc|bits/colibri.png
+	idle:
+		Facings: 32
+	dive:
+		Start: 32
+	icon:
+		Filename: ratc|bits/colibriicon.png
+
+trancheev:
+	Defaults:
+		Filename: ratc|bits/trancheev.shp
+	idle:
+	damaged-idle:
+		Start: 1
+	make:
+		Start: 2
+		Length: 4
+		Tick: 200
+	icon:
+		Filename: ratc|bits/trancheevicon.shp
+
+# ======================================================================
+# Pouvoirs de soutien (tools/sprites/powers.py)
+# ======================================================================
+tacbridge:
+	Defaults:
+		Filename: ratc|bits/tacbridge.png
+		ZOffset: -1024
+	ns:
+		Start: 0
+	ew:
+		Start: 1
+	c:
+		Start: 2
+	icon:
+		Filename: ratc|bits/tacbridgeicon.png
+		ZOffset: 0
+
+awacsmark:
+	idle:
+		Filename: ratc|bits/awacsmark.png
+
+# ======================================================================
+# Drones des nations (tools/sprites/aircraft.py)
+# ======================================================================
+kzo:
+	idle:
+		Filename: ratc|bits/kzo.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/kzoicon.png
+
+luna:
+	idle:
+		Filename: ratc|bits/luna.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/lunaicon.png
+
+aladin:
+	idle:
+		Filename: ratc|bits/aladin.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/aladinicon.png
+
+watchkeeper:
+	idle:
+		Filename: ratc|bits/watchkeeper.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/watchkeepericon.png
+
+protector:
+	idle:
+		Filename: ratc|bits/protector.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/protectoricon.png
+
+blackhornet:
+	idle:
+		Filename: ratc|bits/blackhornet.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/blackhorneticon.png
+
+shark:
+	idle:
+		Filename: ratc|bits/shark.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/sharkicon.png
+
+orlan10:
+	idle:
+		Filename: ratc|bits/orlan10.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/orlan10icon.png
+
+lancet:
+	idle:
+		Filename: ratc|bits/lancet.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/lanceticon.png
+
+orion:
+	idle:
+		Filename: ratc|bits/orion.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/orionicon.png
+
+fpvquad:
+	idle:
+		Filename: ratc|bits/fpvquad.png
+		Facings: 32
+
+lasermark:
+	idle:
+		Filename: ratc|bits/lasermark.png

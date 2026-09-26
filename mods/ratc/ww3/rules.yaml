@@ -1,0 +1,7057 @@
+# Généré à partir de la carte « Europe: WW3 Final Edition [BI-4.8] »
+# (auteurs : Trump, H, Therapist et autres). Contenu ajouté uniquement :
+# les unités Red Alert / ratc existantes ne sont pas modifiées.
+
+^BaseWorld:
+	Locomotor@AMPHIBIOUS:
+		Name: amphibious
+		Crushes: infantry, mine, crate
+		TerrainSpeeds:
+			Clear: 90
+			Rough: 60
+			Road: 120
+			Bridge: 120
+			Ore: 70
+			Gems: 70
+			Beach: 70
+			Water: 50
+			River: 30
+	Locomotor@SHEAVYTRACKED:
+		Name: sheavytracked
+		Crushes: wall, infantry, tank, mine, crate, heavywall
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 88
+			Road: 125
+			Bridge: 125
+			Ford: 88
+			Ore: 88
+			Gems: 88
+			Beach: 88
+	Locomotor@HOVER:
+		Name: hover
+		Crushes: infantry, crate
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 98
+			Road: 125
+			Bridge: 125
+			Ford: 98
+			Ore: 98
+			Gems: 98
+			Beach: 98
+			Water: 100
+
+^Palettes:
+	PaletteFromPaletteWithAlpha@cloak:
+		Name: cloak
+		BasePalette: player
+		Alpha: 0.45
+	PaletteFromFile@cnc:
+		Name: cnc
+		Filename: bits/temperatcnc.pal
+		ShadowIndex: 4
+	PlayerColorPalette@cnc:
+		BaseName: cncplayer
+		BasePalette: cnc
+		RemapIndex: 176, 178, 180, 182, 184, 186, 189, 191, 177, 179, 181, 183, 185, 187, 188, 190
+	PaletteFromFile@temptd:
+		Name: temptd
+		Filename: bits/temperattd.pal
+		ShadowIndex: 4
+	PlayerColorPalette@TD:
+		BasePalette: temptd
+		BaseName: playertd
+		RemapIndex: 176, 178, 180, 182, 184, 186, 189, 191, 177, 179, 181, 183, 185, 187, 188, 190
+	PaletteFromFile@chromeTD:
+		Name: chrometd
+		Filename: bits/temperattd.pal
+		ShadowIndex: 3
+		AllowModifiers: false
+	PaletteFromRGBA@invred:
+		Name: invred
+		R: 128
+		G: 0
+		B: 0
+		A: 128
+	PaletteFromRGBA@invblue:
+		Name: invblue
+		R: 0
+		G: 0
+		B: 128
+		A: 128
+	PaletteFromFile@playercloak:
+		Name: playercloak
+		Filename: bits/playercloak.pal
+		ShadowIndex: 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 144, 146, 148, 150, 152, 154, 156, 158, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 2, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 144, 146, 148, 150, 152, 154, 156, 158, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178
+	PlayerColorPalette@CLOAK:
+		BaseName: player-cloak
+		BasePalette: playercloak
+		RemapIndex: 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95
+	RotationPaletteEffect@CLOAKROTATEPLAYER:
+		Palettes: newcloak
+		RotationBase: 80
+		RotationRange: 15
+	RotationPaletteEffect@CLOAKROTATE1:
+		Palettes: newcloak
+		RotationBase: 1
+		RotationRange: 79
+	RotationPaletteEffect@CLOAKROTATE2:
+		Palettes: newcloak
+		RotationBase: 96
+		RotationRange: 158
+	PaletteFromPlayerPaletteWithAlpha@newcloak:
+		BaseName: newcloak
+		BasePalette: player-cloak
+		Alpha: 0.55
+	PaletteFromFile@cc2unittem:
+		Name: cc2unittem
+		Filename: cc2unittem.pal
+		ShadowIndex: 1
+	PlayerColorPalette@cc2unittem:
+		BasePalette: cc2unittem
+		BaseName: player-cc2
+		RemapIndex: 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
+
+Player:
+	ProvidesPrerequisite@WW3NAVY:
+		Prerequisite: techlevel.naval
+
+# ---- Copies privées des modèles modifiés par WW3 (utilisées seulement par les unités WW3)
+
+^WW3Base_MIG:
+	Inherits: MIG
+	Buildable:
+		Prerequisites: ~afld, techcenter, ~techlevel.high
+	WithAmmoPipsDecoration:
+		PipCount: 4
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 16
+		Speed: 253
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+	Rearmable:
+		RearmActors: afld, afld.ukraine, abase
+
+^WW3Base_YAK:
+	Inherits: YAK
+	Rearmable:
+		RearmActors: afld, afld.ukraine, abase
+
+^WW3Base_Defense:
+	Inherits: ^Defense
+	Inherits@WW3I1: ^Stealthable
+	Capturable@2:
+		RequiresCondition: !build-incomplete
+		Types: building-external
+	RequiresBuildableArea:
+		AreaTypes: building
+		Adjacent: 4
+
+^WW3Base_ATEK:
+	Inherits: ATEK
+	Inherits@WW3I1: ^Stealthable
+	Capturable@2:
+		RequiresCondition: !build-incomplete
+		Types: building-external
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 140
+		Prerequisites: ~disabled
+	GrantConditionOnPrerequisite@gpstemp:
+		Prerequisites: gps.temp
+		Condition: gpstemp
+	GpsPower@fulltime:
+		PauseOnCondition: disabled || gpstemp
+		RequiresCondition: !gpstemp
+		Icon: gps
+		OneShot: True
+		ChargeInterval: 12000
+		Name: GPS Satellite
+		Description: Reveals map terrain and provides tactical\ninformation. Requires power and active radar.
+		RevealDelay: 375
+		LaunchSpeechNotification: SatelliteLaunched
+		LaunchTextNotification: Satellite launched.
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		SupportPowerPaletteOrder: 90
+	GpsPower: #Pinkthoth to the rescue again, BI style temporary GPs system
+		PauseOnCondition: disabled || !gpsactivated
+		Name: Temporary GPS Satellite
+		OrderName: TempGpsPowerInfoOrder
+		RequiresCondition: gpstemp && gpsactivated
+		ChargeInterval: 1
+		RevealDelay: 30
+		DisplayTimerRelationships: None
+		StartFullyCharged: True
+		RequiresActiveRadar: True
+	ProduceActorPower@powergps:
+		Name: GPS Satellite
+		Description: Reveals map terrain and provides tactical\ninformation.
+		Icon: gps
+		PauseOnCondition: disabled
+		Actors: gpsactivenoise
+		Type: GPSPower
+		ChargeInterval: 4500
+		OrderName: GPSSpawner
+		SupportPowerPaletteOrder: 20
+		LaunchSpeechNotification:
+		IncomingSpeechNotification:
+		DisplayTimerRelationships: None
+		EndChargeSpeechNotification: SatelliteReady
+		RequiresCondition: !gpsactivated && gpstemp
+	ProduceActorPower@gpsactivesign:
+		Name: GPS Active Timer
+		Description: Displays the amount of time the satellite is still active.
+		Icon: gpsactive
+		Actors: e1
+		Type: Infantry
+		ChargeInterval: 1501
+		SupportPowerPaletteOrder: 20
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		RequiresCondition: gpsactivated && gpstemp
+	GrantConditionOnPrerequisite@gpsactivation:
+		Prerequisites: gpsactiveprereq
+		Condition: gpsactivated
+	WithTextDecoration:
+		Text: Active
+		RequiresCondition: gpsactivated
+	ProvidesPrerequisite@uplink:
+		Prerequisite: uplink
+	Exit@1:
+		SpawnOffset: -704,768,0
+		ExitCell: -1,2
+	Production@GPSPower:
+		Produces: GPSPower
+
+^WW3Base_Building:
+	Inherits: ^Building
+	Inherits@WW3I1: ^Stealthable
+	Capturable@2:
+		RequiresCondition: !build-incomplete
+		Types: building-external
+
+^WW3Base_STEK:
+	Inherits: STEK
+	Inherits@WW3I1: ^Stealthable
+	Capturable@2:
+		RequiresCondition: !build-incomplete
+		Types: building-external
+	Buildable:
+		Prerequisites: ~disabled, ~techlevel.high
+
+^WW3Base_E1:
+	Inherits: E1
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Inherits@WW3I4: ^VoicesSelector
+	Buildable:
+		Prerequisites: ~barracks, ~infantry.vanilla, ~!infantry.greece, ~techlevel.infonly
+	TooltipDescription:
+		Description: Elite Rank Bonus: Grenades.
+	Armament@RankUpSECONDARY:
+		Name: secondary
+		Weapon: BuildingGrenade
+		LocalOffset: 0,0,555
+		FireDelay: 15
+		RequiresCondition: rank-veteran == 3 || rank-elite
+	Voiced:
+		VoiceSet: GenericVoice
+		RequiresCondition: Vanilla
+	Voiced@China:
+		VoiceSet: ChinaVoice
+		RequiresCondition: IAMCHINESE
+	Voiced@USA:
+		VoiceSet: USAVoice
+		RequiresCondition: IAMAMERICAN
+	Voiced@Turkey:
+		VoiceSet: TurkVoice
+		RequiresCondition: IAMTURK
+
+^WW3Base_E3:
+	Inherits: E3
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Inherits@WW3I4: ^VoicesSelector
+	Buildable:
+		Prerequisites: ~barracks, ~!infantry.greece, ~techlevel.infonly
+	TooltipDescription:
+		Description: Elite Rank Bonus: x2 Missiles.
+	Armament@RankUp:
+		Name: tertiary
+		Weapon: RedEye
+		LocalOffset: 0,0,555
+		FireDelay: 15
+		RequiresCondition: rank-elite
+	Voiced:
+		VoiceSet: GenericVoice
+		RequiresCondition: Vanilla
+	Voiced@China:
+		VoiceSet: ChinaVoice
+		RequiresCondition: IAMCHINESE
+	Voiced@USA:
+		VoiceSet: USAVoice
+		RequiresCondition: IAMAMERICAN
+	Voiced@Turkey:
+		VoiceSet: TurkVoice
+		RequiresCondition: IAMTURK
+
+^WW3Base_E4:
+	Inherits: E4
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Buildable:
+		Prerequisites: ~barr, ftur, ~!infantry.greece, ~techlevel.low
+
+^WW3Base_Infantry:
+	Inherits: ^Infantry
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+
+^WW3Base_Vehicle:
+	Inherits: ^Vehicle
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+
+^WW3Base_Ship:
+	Inherits: ^Ship
+	Inherits@WW3I1: ^Stealthable
+
+^WW3Base_CA:
+	Inherits: CA
+	Inherits@WW3I1: ^Stealthable
+	TooltipDescription:
+		Description: Elite Rank bonus: Improved Accuracy
+	Buildable:
+		Prerequisites: ~syrd, techcenter, ~techlevel.naval, ~techlevel.high
+	ProducibleWithLevel:
+		Prerequisites: ships.england
+		InitialLevels: 1
+	InaccuracyMultiplier@sarg:
+		Modifier: -10
+		RequiresCondition: rank-veteran == 3
+	InaccuracyMultiplier@general:
+		Modifier: -20
+		RequiresCondition: rank-elite
+
+^WW3Base_SS:
+	Inherits: SS
+	Inherits@WW3I1: ^Stealthable
+	Buildable:
+		Prerequisites: ~spen, ~techlevel.naval, ~techlevel.low
+
+^WW3Base_HARV:
+	Inherits: HARV
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Carryable:
+		LocalOffset: 0,0,200
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Prerequisites: ~!vehicles.spain
+	ProximityExternalCondition@cloak:
+		ValidRelationships: enemy
+
+^WW3Base_2TNK:
+	Inherits: 2TNK
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Prerequisites: fix, ~!vehicles.germany, ~!vehicles.usa, ~vehicles.allies, ~techlevel.medium
+	Valued:
+		Cost: 800
+	TooltipDescription:
+		Description: Elite Rank bonus: Heat shells & Secondary AA Turret
+	Armament:
+		Turret: primary
+		Weapon: 90mm
+		Recoil: 128
+		RecoilRecovery: 38
+		LocalOffset: 720,0,80
+		MuzzleSequence: muzzle
+		RequiresCondition: !rank-elite
+	Turreted:
+		Turret: primary
+		TurnSpeed: 20
+	Armament@EliteMain:
+		Turret: primary
+		Weapon: 90mmHEAT
+		Recoil: 128
+		RecoilRecovery: 28
+		LocalOffset: 624,0,208
+		MuzzleSequence: muzzle
+		RequiresCondition: rank-elite
+	Armament@EliteAA:
+		Turret: secondary
+		Weapon: StingerAA
+		LocalOffset: 420,10,190
+		RequiresCondition: rank-elite
+	WithSpriteTurret@Elite:
+		Turret: secondary
+		RequiresCondition: rank-elite
+		Sequence: turret2
+	Turreted@Secondary:
+		Turret: secondary
+		Offset: 420,0,140
+		TurnSpeed: 30
+
+^WW3Base_ARTY:
+	Inherits: ARTY
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^VoicesSelector
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 230
+		Prerequisites: dome, ~vehicles.allies, ~!vehicles.usa, ~!vehicles.spain, ~techlevel.medium
+	TooltipDescription:
+		Description: Elite Rank bonus: Cluster Shells & Increased Range
+	Armament:
+		Weapon: 155mm
+		LocalOffset: 624,0,208
+		MuzzleSequence: muzzle
+		RequiresCondition: !rank-elite
+	Armament@RANKup:
+		Weapon: 155mmElite
+		LocalOffset: 624,0,208
+		MuzzleSequence: muzzle
+		RequiresCondition: rank-elite
+	RangeMultiplier@RANKup:
+		RequiresCondition: rank-elite
+		Modifier: 130
+	Voiced:
+		VoiceSet: GenericVoice
+		RequiresCondition: Vanilla
+	Voiced@USA:
+		VoiceSet: USAVoice
+		RequiresCondition: IAMAMERICAN
+	Voiced@China:
+		VoiceSet: ChinaVoice
+		RequiresCondition: IAMCHINESE
+	Voiced@Turkey:
+		VoiceSet: TurkVoice
+		RequiresCondition: IAMTURK
+
+^WW3Base_Husk:
+	Inherits: ^Husk
+	Targetable:
+		TargetTypes: GroundActor, Husk, NoAutoTarget
+		RequiresForceFire: false
+
+^WW3Base_3TNK:
+	Inherits: 3TNK
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Prerequisites: fix, ~!vehicles.china, ~!vehicles.turkey, ~vehicles.soviet, ~techlevel.medium
+		Description: Soviet Main Battle Tank, with dual cannons\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Heavy Tank
+		GenericName: Tank
+	TooltipDescription:
+		Description: Elite Rank bonus: Mammoth Tusk
+	Armament@standard:
+		Turret: primary
+		Weapon: 105mm
+		Recoil: 128
+		RecoilRecovery: 38
+		LocalOffset: 768,85,90, 768,-85,90
+		MuzzleSequence: muzzle
+		RequiresCondition: !rank-elite
+	Turreted@Primary:
+		Turret: primary
+		TurnSpeed: 20
+	Armament@EliteMain:
+		Turret: primary
+		Weapon: 120mm
+		Recoil: 128
+		RecoilRecovery: 28
+		LocalOffset: 768,85,90, 768,-85,90
+		MuzzleSequence: muzzle
+		RequiresCondition: rank-elite
+	Armament@EliteAP:
+		Turret: secondary
+		Weapon: MammothTusk
+		LocalOffset: 420,0,190
+		RequiresCondition: rank-elite
+	WithSpriteTurret@Elite:
+		Turret: secondary
+		RequiresCondition: rank-elite
+		Sequence: turret2
+	Turreted@Secondary:
+		Turret: secondary
+		Offset: 100,0,120
+		TurnSpeed: 30
+	Health:
+		HP: 60000
+	Mobile:
+		Speed: 71
+
+^WW3Base_4TNK:
+	Inherits: 4TNK
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Prerequisites: fix, techcenter, ~!vehicles.ukraine, ~!vehicles.china, ~!vehicles.greece, ~vehicles.soviet, ~techlevel.high
+
+# ---- Nouvelles unités, bâtiments et modèles WW3
+
+^Stealthable:
+	Cloak@STEALTHABLE:
+		InitialDelay: 0
+		CloakDelay: 30
+		IsPlayerPalette: true
+		RequiresCondition: stealth
+	TimedConditionBar@STEALTH:
+		Condition: stealth
+		Color: FF54D1
+	ExternalCondition@STEALTH:
+		Condition: stealth
+
+^AffectsPROC: #ercc
+	ProximityExternalCondition@cloak:
+		Condition: cloak
+		ValidRelationships: enemy, neutral, ally
+		Range: 1c512
+		RequiresCondition: !moving
+	GrantConditionOnMovement@proc:
+		Condition: moving
+
+^CommandoSkull:
+	WithDecoration@COMMANDOSKULL:
+		Image: pips
+		Sequence: pip-skull
+		Palette: effect
+		Position: TopLeft
+		ValidRelationships: Ally, Enemy, Neutral
+
+^IsHoverTank:
+	Hovers:
+		BobDistance: -35
+	WithShadow:
+		Offset: 43, 128, 0
+		ZOffset: -129
+		RequiresCondition: !stealth
+	GrantConditionOnTerrain@ONWATER:
+		TerrainTypes: Water
+		Condition: onwater
+	Targetable@ONWATER:
+		TargetTypes: Water, Ship
+		RequiresCondition: onwater
+	LeavesTrails:
+		Image: twake
+		Palette: effect
+		TerrainTypes: Water
+		TrailWhileStationary: true
+		StationaryInterval: 18
+		MovingInterval: 6
+
+^LightPowerArmour:
+	SpeedMultiplier@LPA:
+		Modifier: 110
+	DamageMultiplier@LPA:
+		Modifier: 90
+
+^HeavyPowerArmour:
+	InaccuracyMultiplier@HPA:
+		Modifier: 90
+	SpeedMultiplier@HPA:
+		Modifier: 90
+	DamageMultiplier@HPA:
+		Modifier: 80
+	GivesExperienceMultiplier@HPA:
+		Modifier: 120
+
+^ToxInf:
+	ExternalCondition@TOXIN:
+		Condition: poisoned
+	WithDecoration@TOXIN:
+		Image: pips
+		Sequence: pip-toxin
+		Palette: effect
+		Position: TopRight
+		Margin: -1, -1
+		ValidRelationships: Enemy, Neutral, Ally
+		RequiresCondition: poisoned
+	ChangesHealth@TOXIN:
+		RequiresCondition: poisoned
+		Step: -350
+		Delay: 15
+		StartIfBelow: 100
+	SpawnActorOnDeath:
+		Actor: Zombie
+		Probability: 50
+		OwnerType: InternalName
+		InternalOwner: Creeps
+		RequiresCondition: poisoned
+
+^Propaganda:
+	ExternalCondition@PROPAGANDA:
+		Condition: prop
+	RangeMultiplier@PROP:
+		RequiresCondition: prop
+		Modifier: 110
+	FirepowerMultiplier@PROP:
+		RequiresCondition: prop
+		Modifier: 130
+	DamageMultiplier@PROP:
+		RequiresCondition: prop
+		Modifier: 75
+
+^PropagandaVeh:
+	Inherits: ^Propaganda
+	WithDecoration@PROP:
+		Image: pips
+		Sequence: pip-prop
+		Palette: effect
+		Position: TopRight
+		Margin: -1, -1
+		ValidRelationships: Ally
+		RequiresCondition: prop
+		BlinkInterval: 30
+		BlinkPattern: Off, On
+	ChangesHealth@PROP:
+		RequiresCondition: prop && damaged
+		Step: 250
+		Delay: 50
+		StartIfBelow: 90
+	WithDecoration@PROPHEAL:
+		Image: pips
+		Sequence: fix
+		Position: BottomRight
+		Margin: 17, 4
+		RequiresCondition: prop && damaged
+		BlinkInterval: 32
+		BlinkPattern: Off, On
+
+^PropagandaInf:
+	Inherits: ^Propaganda
+	WithDecoration@PROP:
+		Image: pips
+		Sequence: pip-prop-inf
+		Palette: effect
+		Position: TopRight
+		Margin: -1, -1
+		ValidRelationships: Ally
+		RequiresCondition: prop
+		BlinkInterval: 30
+		BlinkPattern: Off, On
+	ChangesHealth@PROP:
+		RequiresCondition: prop && damaged && !hospitalheal
+		Step: 200
+		Delay: 50
+		StartIfBelow: 90
+	WithDecoration@PROPHEAL:
+		Image: pips
+		Sequence: medic
+		Position: BottomRight
+		Margin: 17, 4
+		RequiresCondition: prop && damaged && !hospitalheal
+		BlinkInterval: 32
+		BlinkPattern: Off, On
+
+^VoicesSelector:
+	GrantConditionOnFaction@Vanilla:
+		Condition: Vanilla
+		Factions: england, france, germany, ukraine, russia, spain, greece
+		ResetOnOwnerChange: True
+	GrantConditionOnFaction@China:
+		Condition: IAMCHINESE
+		Factions: soviet
+		ResetOnOwnerChange: True
+	GrantConditionOnFaction@usa:
+		Condition: IAMAMERICAN
+		Factions: allies
+		ResetOnOwnerChange: True
+	GrantConditionOnFaction@turk:
+		Condition: IAMTURK
+		Factions: turkey
+		ResetOnOwnerChange: True
+
+B2B:
+	Inherits: BADR
+	Health:
+		HP: 150000
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 20
+		Speed: 200
+		Repulsable: False
+		MaximumPitch: 56
+	Tooltip:
+		Name: Stealth Bomber
+	-ParaDrop:
+	-Cargo:
+	-MapEditorData:
+	RenderSprites:
+		Image: b2b
+	AttackBomber:
+		FacingTolerance: 8
+	AmmoPool:
+		Ammo: 8
+	Armament:
+		Weapon: ASFireBombs
+	Contrail@1:
+		Offset: -432,560,0
+	Contrail@2:
+		Offset: -432,-560,0
+	LeavesTrails@0:
+		Offsets: -432,560,0
+		MovingInterval: 2
+		Image: smokey
+		StationaryInterval: 2
+		SpawnAtLastPosition: False
+		TrailWhileStationary: True
+		Type: CenterPosition
+		RequiresCondition: enable-smoke
+	LeavesTrails@1:
+		Offsets: -432,-560,0
+		MovingInterval: 2
+		Image: smokey
+		StationaryInterval: 2
+		SpawnAtLastPosition: False
+		TrailWhileStationary: True
+		Type: CenterPosition
+		RequiresCondition: enable-smoke
+	GrantConditionOnDamageState@SmokeTrail:
+		Condition: enable-smoke
+
+DOUGLAS:
+	Inherits: BADR
+	RenderSprites:
+		Image: douglas
+	SpawnActorOnDeath:
+		Actor: DOUGLAS.Husk
+	Tooltip:
+		Name: Douglas
+	Contrail@1:
+		Offset: -152,560,0
+	Contrail@2:
+		Offset: -152,-560,0
+
+DOUGLAS.Husk:
+	Inherits: BADR.Husk
+	RenderSprites:
+		Image: douglas
+	Tooltip:
+		Name: Douglas
+	LeavesTrails@0:
+		Offsets: -152,560,0
+		MovingInterval: 2
+		Image: smokey
+		SpawnAtLastPosition: False
+		Type: CenterPosition
+	LeavesTrails@1:
+		Offsets: -152,-560,0
+		MovingInterval: 2
+		Image: smokey
+		SpawnAtLastPosition: False
+		Type: CenterPosition
+
+RMTRAN:
+	Inherits: TRAN
+	-Buildable:
+	Health:
+		HP: 50000
+	Aircraft:
+		Repulsable: False
+		Speed: 158
+	Carryall:
+		LocalOffset: 0,0,-10
+	ParaDrop:
+		DropRange: 5c0
+		ChuteSound: chute1.aud
+	-RevealsShroud:
+	SelectionDecorations:
+	-Voiced:
+	Tooltip:
+		Name: Royal Marine Drop
+	-EjectOnDeath:
+	RejectsOrders:
+	GivesExperience:
+		Experience: 1000
+	RenderSprites:
+		Image: tran
+
+UAV:
+	Inherits: ^Helicopter
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Helicopter
+		BuildPaletteOrder: 100
+		BuildLimit: 1
+		Prerequisites: ~hpad, ~ftek, ~techlevel.medium
+		Description: Unmanned Ariel Vehicle/n an eye in the sky.
+	Health:
+		HP: 40000
+	Tooltip:
+		Name: Recon Drone
+	TooltipDescription:
+		Description: Can be detected by Listening Posts.
+		ValidRelationships: Ally
+	Valued:
+		Cost: 1100
+	Armor:
+		Type: Light
+	Aircraft:
+		CruiseAltitude: 2560
+		VTOL: True
+		TurnSpeed: 16
+		Speed: 190
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		CanHover: False
+		Voice: Move
+		CanSlide: False
+		AltitudeVelocity: 0c200
+	GpsDot:
+		String: Plane
+	Cloak:
+		InitialDelay: 125
+		CloakDelay: 175
+		CloakSound: appear1.aud
+		UncloakSound: appear1.aud
+		IsPlayerPalette: true
+		UncloakOn: Attack, Load, Unload, Heal, Dock
+	LeavesTrails:
+		Offsets: -1c43,0,0
+		MovingInterval: 2
+		Image: smokey
+		StationaryInterval: 2
+		SpawnAtLastPosition: False
+		TrailWhileStationary: True
+		Type: CenterPosition
+		RequiresCondition: enable-smoke
+	DetectCloaked:
+		DetectionTypes: Cloak, Thief
+	RevealsShroud:
+		Range: 12c0
+		MinRange: 10c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 10c0
+		Type: GroundPosition
+	GivesExperience:
+		Experience: 1000
+	-SpawnActorOnDeath:
+	Voiced:
+		VoiceSet: RobotTankVoice
+	GrantConditionOnDamageState@SmokeTrail:
+		Condition: enable-smoke
+
+MI26:
+	Inherits: ^Helicopter
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Helicopter
+		BuildPaletteOrder: 10
+		Prerequisites: fix, hpad, ~aircraft.usa, ~techlevel.medium
+		Description: USAF Tank Transport Helicopter.\n	Unarmed
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: Halo
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 14000
+	RevealsShroud:
+		MinRange: 6c0
+		Range: 8c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 6c0
+		Type: GroundPosition
+	Aircraft:
+		TurnSpeed: 20
+		Speed: 108
+		AltitudeVelocity: 0c58
+	Voiced:
+		VoiceSet: USAVoice
+	Carryall:
+		LocalOffset: 0,0,-10
+		DropOffCursor: deploy
+		CarryableConditions:
+			stnk: stnk.carry
+	Cloak:
+		InitialDelay: 125
+		CloakDelay: 175
+		CloakSound: appear1.aud
+		UncloakSound: appear1.aud
+		IsPlayerPalette: true
+		RequiresCondition: stnk.carry
+		UncloakOn: Attack, Load, Unload, Heal, Dock
+	-WithFacingSpriteBody:
+	WithShadow:
+		RequiresCondition: airborne
+	WithFacingSpriteBody@INTHEAIR:
+		Sequence: idle
+		Name: airmi26
+		RequiresCondition: airborne
+	WithFacingSpriteBody@INTHEGROUND:
+		Sequence: idle-grounded
+		Name: groundmi26
+		RequiresCondition: !airborne
+	WithIdleOverlay@ROTOR1AIR:
+		Offset: 0,0,430
+		Sequence: rotor
+		RequiresCondition: airborne
+	WithIdleOverlay@ROTOR1GROUND:
+		Offset: 0,0,430
+		Sequence: slow-rotor
+		RequiresCondition: !airborne
+	WithIdleOverlay@ROTOR1GROUNDSHADOW:
+		Offset: 0,0,-100
+		Sequence: slow-rotor-shadow
+		RequiresCondition: !airborne
+	WithIdleOverlay@ROTOR1AIR2:
+		Offset: 0,0,430
+		Sequence: rotor2
+		RequiresCondition: airborne
+	WithIdleOverlay@ROTOR1GROUND2:
+		Offset: 0,0,430
+		Sequence: slow-rotor2
+		RequiresCondition: !airborne
+	WithIdleOverlay@ROTOR1GROUNDSHADOW2:
+		Offset: 0,0,-100
+		Sequence: slow-rotor-shadow2
+		RequiresCondition: !airborne
+	SpawnActorOnDeath:
+		Actor: MI26.Husk
+		RequiresCondition: !airborne
+	Selectable:
+		DecorationBounds: 1706, 1536
+
+MI26.Husk:
+	Inherits: ^HelicopterHusk
+	Tooltip:
+		Name: Halo
+	Aircraft:
+		TurnSpeed: 16
+		Speed: 149
+	RevealsShroud:
+		MinRange: 6c0
+		Range: 8c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 6c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: mi26
+
+apache:
+	Inherits: ^Helicopter
+	Inherits@WW3I1: ^GainsExperience
+	Inherits@WW3I2: ^AutoTargetGroundAssaultMove
+	Inherits@WW3I3: ^AutoTargetAir
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Helicopter
+		Prerequisites: ~hpad, ustek, ~aircraft.usa, ~techlevel.high
+		Description: USAF Helicopter gunship.\n  Strong vs Everything.\n  Weak vs Nothing
+		IconPalette: cnc
+	Valued:
+		Cost: 2100
+	Tooltip:
+		Name: Apache
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 16500
+	RevealsShroud:
+		MinRange: 8c0
+		Range: 10c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 8c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Weapon: ApacheHellfire
+		LocalOffset: 85,-213,-85, 85,-113,-85, 85,113,-85, 85,213,-85
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Weapon: ApacheChainGun
+		LocalOffset: 40,0,-85
+		MuzzleSequence: muzzle
+	Armament@TERTIARY:
+		Weapon: SidewinderAA
+		LocalOffset: 85,-213,-85, 85,213,-85
+		MuzzleSequence: muzzle
+	AttackAircraft:
+		FacingTolerance: 20
+		PersistentTargeting: True
+		AttackType: Hover
+		OpportunityFire: True
+	Aircraft:
+		TurnSpeed: 5
+		Speed: 145
+	AutoTarget:
+		InitialStance: Defend
+	WithIdleOverlay@ROTORAIR:
+		Sequence: rotor
+		RequiresCondition: airborne
+	WithIdleOverlay@ROTORGROUND:
+		Sequence: slow-rotor
+		RequiresCondition: !airborne
+	AmmoPool:
+		Ammo: 12
+		ReloadDelay: 18
+		AmmoCondition: ammo
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
+		PipCount: 6
+	Voiced:
+		VoiceSet: USAVoice
+	SelectionDecorations:
+	WithMuzzleOverlay:
+	SpawnActorOnDeath:
+		Actor: HELI.Husk
+	LeavesTrails:
+		Offsets: -427,0,0
+		Image: smokey
+		MovingInterval: 3
+		StationaryInterval: 3
+		SpawnAtLastPosition: False
+		TrailWhileStationary: True
+		Type: CenterPosition
+		RequiresCondition: enable-smoke
+	ProducibleWithLevel:
+		Prerequisites: aircraft.upgraded
+	Selectable:
+		DecorationBounds: 1621, 1365
+	Rearmable:
+		RearmActors: hpad
+	RenderSprites:
+		PlayerPalette: cncplayer
+		Image: apache
+	GrantConditionOnDamageState@SmokeTrail:
+		Condition: enable-smoke
+
+RAH:
+	Inherits: ^Helicopter
+	Inherits@WW3I1: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Helicopter
+		BuildPaletteOrder: 60
+		Prerequisites: ~ftek, ~techlevel.high
+		Description: Stealth attack helicopter with powerful\n  rockets.
+	Valued:
+		Cost: 1800
+	Tooltip:
+		Name: Comanche
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 18000
+	RevealsShroud:
+		Range: 10c0
+		MinRange: 8c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 10c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Weapon: APTusk
+		LocalOffset: 0,-213,-85, 0,213,-85
+		PauseOnCondition: !ammo
+	AttackAircraft:
+		FacingTolerance: 80
+		AttackType: Hover
+		Voice: Attack
+		PersistentTargeting: false
+		OpportunityFire: false
+	Aircraft:
+		AltitudeVelocity: 0c100
+		TurnSpeed: 18
+		Speed: 157
+	Cloak:
+		InitialDelay: 100
+		CloakDelay: 200
+		CloakSound: appear1.aud
+		UncloakSound: appear1.aud
+		IsPlayerPalette: true
+		UncloakOn: Attack, Dock, Damage, Heal
+		RequiresCondition: !cloak-force-disabled && airborne
+	GrantConditionOnDamageState@UNCLOAK:
+		Condition: cloak-force-disabled
+		ValidDamageStates: Critical
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: AttackAnything
+	WithIdleOverlay@ROTORAIR:
+		Offset: 10,0,80
+		Sequence: rotor
+		RequiresCondition: airborne
+		Palette: player
+	WithIdleOverlay@ROTORGROUND:
+		Offset: 10,0,80
+		Sequence: slow-rotor
+		RequiresCondition: !airborne
+		Palette: player
+	AmmoPool:
+		Ammo: 8
+		AmmoCondition: ammo
+		ReloadCount: 2
+		ReloadDelay: 40
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
+		PipCount: 4
+	LeavesTrails:
+		Offsets: -427,0,0
+		Image: smokey
+		MovingInterval: 3
+		StationaryInterval: 3
+		SpawnAtLastPosition: False
+		TrailWhileStationary: True
+		Type: CenterPosition
+		RequiresCondition: enable-smoke
+	Selectable:
+		DecorationBounds: 1536, 1194
+	Rearmable:
+		RearmActors: hpad
+	Voiced:
+		VoiceSet: MirageVoice
+	SpawnActorOnDeath:
+		Actor: HELI.Husk
+	ProducibleWithLevel:
+		Prerequisites: aircraft.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: aircraft.upgraded
+	GrantConditionOnDamageState@SmokeTrail:
+		Condition: enable-smoke
+
+A10:
+	Inherits: ^Plane
+	Inherits@WW3I1: ^AutoTargetGround
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Plane
+		BuildPaletteOrder: 100
+		BuildDurationModifier: 75
+		BuildLimit: 5
+		Prerequisites: abase, ~ustek, ~techlevel.high
+		Description: Tank hunter aircraft with powerful\n 30mm cannon and missiles.
+	Valued:
+		Cost: 2500
+	Tooltip:
+		Name: A10 Warthog
+	TooltipDescription:
+		Description: Green Ammo pips = Missiles, Grey Ammo pips = 30mm Anti-Tank Cannon
+		ValidRelationships: Ally
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 35000
+	RevealsShroud:
+		Range: 11c0
+		MinRange: 9c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 9c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Name: primary
+		Weapon: 30mm
+		LocalOffset: 100,0,-85
+		PauseOnCondition: !ammo
+	AmmoPool@PRIMARY:
+		Name: air2ground
+		Ammo: 12
+		ReloadDelay: 20
+		AmmoCondition: ammo
+	WithAmmoPipsDecoration@PRIMARY:
+		AmmoPools: air2ground
+		PipCount: 4
+		Position: BottomLeft
+		FullSequence: pip-gray
+		Margin: 4, 3
+		RequiresSelection: true
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: HellfireA10
+		LocalOffset: 0,-640,0, 0,640,0
+		PauseOnCondition: !aammo
+	AmmoPool@SECONDARY:
+		Name: air2air
+		Ammo: 4
+		Armaments: secondary
+		ReloadDelay: 30
+		AmmoCondition: aammo
+	WithAmmoPipsDecoration@SECONDARY:
+		AmmoPools: air2air
+		PipCount: 4
+		Position: BottomRight
+		Margin: 4, 3
+		RequiresSelection: true
+	AttackAircraft:
+		FacingTolerance: 80
+		PersistentTargeting: false
+		OpportunityFire: true
+	Aircraft:
+		CruiseAltitude: 2560
+		InitialFacing: 192
+		TurnSpeed: 16
+		Speed: 180
+		RepulsionSpeed: 40
+		TakeoffSounds: audio/a10toff1.aud
+		LandingSounds: audio/a10land1.aud
+	AutoTarget:
+		InitialStance: Defend
+	Selectable:
+		Bounds: 1536, 1194, 0, 85
+		DecorationBounds: 1706, 1237, 0, 42
+	Contrail@1:
+		Offset: -258,-823,0
+	Contrail@2:
+		Offset: -258,823,0
+	SpawnActorOnDeath:
+		Actor: A10.Husk
+	LeavesTrails:
+		Offsets: -853,0,171
+		MovingInterval: 2
+		Image: smokey
+		StationaryInterval: 2
+		SpawnAtLastPosition: False
+		Type: CenterPosition
+		RequiresCondition: enable-smoke
+	Voiced:
+		VoiceSet: USAVoice
+	ProducibleWithLevel:
+		Prerequisites: aircraft.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: aircraft.upgraded
+	Rearmable:
+		RearmActors: abase, afld, afld.ukraine
+		AmmoPools: air2ground, air2air
+	GrantConditionOnDamageState@SmokeTrail:
+		Condition: enable-smoke
+
+A10.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: A10 Warthog
+	Contrail@1:
+		Offset: -258,-823,0
+	Contrail@2:
+		Offset: -258,823,0
+	Aircraft:
+		TurnSpeed: 5
+		Speed: 180
+	LeavesTrails:
+		Offsets: -853,0,0
+		MovingInterval: 2
+		Image: smokey
+		StationaryInterval: 2
+		SpawnAtLastPosition: False
+		TrailWhileStationary: True
+		Type: CenterPosition
+	RevealsShroud:
+		Range: 12c0
+		MinRange: 10c0
+		Type: GroundPosition
+		RevealGeneratedShroud: false
+	RevealsShroud@GAPGEN:
+		Range: 10c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: a10
+
+F22:
+	Inherits: ^WW3Base_MIG
+	Inherits@WW3I1: ^AutoTargetAllAssaultMove
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Plane
+		BuildPaletteOrder: 80
+		Prerequisites: ~abase, ~techlevel.high
+		Description: Fast multi-role attack aircraft\n armed with AA and AG missiles.
+	Tooltip:
+		Name: F22 Raptor
+	TooltipDescription:
+		Description: Green Ammo pips = AG Missiles, Red Ammo pips = AA Missiles
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: HellfireAA
+		LocalOffset: 0,-640,0, 0,640,0
+		PauseOnCondition: !aammo
+	AmmoPool@SECONDARY:
+		Name: air2air
+		Ammo: 4
+		Armaments: secondary
+		ReloadDelay: 30
+		AmmoCondition: aammo
+	WithAmmoPipsDecoration@SECONDARY:
+		AmmoPools: air2air
+		PipCount: 4
+		FullSequence: pip-red
+		Position: BottomRight
+		Margin: 4, 3
+		RequiresSelection: true
+	Voiced:
+		VoiceSet: HarrierVoice
+	SpawnActorOnDeath:
+		Actor: F22.Husk
+	RenderSprites:
+		Image: f22
+
+F22.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: F22 Raptor
+	Contrail@1:
+		Offset: -598,-683,-40
+	Contrail@2:
+		Offset: -598,683,-40
+	Aircraft:
+		TurnSpeed: 5
+		Speed: 225
+	LeavesTrails:
+		Offsets: -853,0,0
+		MovingInterval: 2
+		Image: smokey
+		StationaryInterval: 2
+		SpawnAtLastPosition: False
+		TrailWhileStationary: True
+		Type: CenterPosition
+	RevealsShroud:
+		Range: 12c0
+		MinRange: 10c0
+		Type: GroundPosition
+		RevealGeneratedShroud: false
+	RevealsShroud@GAPGEN:
+		Range: 10c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: f22
+
+NHAW:
+	Inherits: ^Helicopter
+	Inherits@WW3I1: ^GainsExperience
+	Inherits@WW3I2: ^AutoTargetGroundAssaultMove
+	Inherits@WW3I3: ^CargoPips
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Helicopter
+		BuildPaletteOrder: 60
+		Prerequisites: ~gtek, ~techlevel.medium
+		Description: Chrono-equipped infantry transport helicopter armed with\n  chronogun.\n Hold ALT to jump.
+	Valued:
+		Cost: 1150
+	Tooltip:
+		Name: Chrono Nighthawk
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 24000
+	RevealsShroud:
+		Range: 8c0
+		MinRange: 6c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 6c0
+		Type: GroundPosition
+	Aircraft:
+		TurnSpeed: 20
+		Speed: 155
+		AltitudeVelocity: 0c58
+		TakeoffSounds: audio/htoff1.aud
+		LandingSounds: audio/hland1.aud
+		Voice: Move
+	WithIdleOverlay@ROTOR1AIR:
+		Offset: 237,0,263
+		Sequence: rotor
+		RequiresCondition: airborne
+	WithIdleOverlay@ROTOR1GROUND:
+		Offset: 237,0,263
+		Sequence: slow-rotor
+		RequiresCondition: !airborne
+	WithIdleOverlay@ROTOR2AIR:
+		Offset: -997,0,341
+		Sequence: rotor2
+		RequiresCondition: airborne
+	WithIdleOverlay@ROTOR2GROUND:
+		Offset: -997,0,341
+		Sequence: slow-rotor2
+		RequiresCondition: !airborne
+	Cargo:
+		Types: Infantry
+		MaxWeight: 8
+	SpawnActorOnDeath:
+		Actor: Tran.Husk
+	Selectable:
+		DecorationBounds: 1706, 1536
+	Voiced:
+		VoiceSet: ChronoVoice
+	WithFacingSpriteBody:
+	Armament@PRIMARY:
+		Weapon: ChronoHandGun
+		LocalOffset: 1000,0,-100
+		MuzzleSequence: muzzle
+	AutoTarget:
+		InitialStance: ReturnFire
+		InitialStanceAI: AttackAnything
+	AttackAircraft:
+		Armaments: primary
+		FacingTolerance: 20
+		AttackType: Hover
+		PersistentTargeting: false
+		OpportunityFire: false
+		ForceFireIgnoresActors: True
+	WithMuzzleOverlay:
+	PortableChrono:
+		ChargeDelay: 250
+		MaxDistance: 24
+		KillCargo: False
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
+SUK:
+	Inherits: ^WW3Base_MIG
+	Inherits@WW3I1: ^AutoTargetAir
+	Buildable:
+		BuildPaletteOrder: 70
+		Prerequisites: afld, ~rtek, ~techlevel.high
+		Description: Fast air to air missile armed\n Russian Helicopter Hunter.\n Cannot attack ground units.
+	Tooltip:
+		Name: Sukhoi SU-29 Attack Plane
+	Health:
+		HP: 10000
+	-Armament:
+	-AmmoPool:
+	-WithAmmoPipsDecoration:
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: HellfireAA
+		LocalOffset: 0,-640,0, 0,640,0
+		PauseOnCondition: !aammo
+	AmmoPool@SECONDARY:
+		Name: air2air
+		Ammo: 8
+		Armaments: secondary
+		ReloadDelay: 30
+		AmmoCondition: aammo
+	WithAmmoPipsDecoration@SECONDARY:
+		AmmoPools: air2air
+		PipCount: 4
+		FullSequence: pip-red
+		Position: BottomRight
+		Margin: 4, 3
+		RequiresSelection: true
+	AttackAircraft:
+		OpportunityFire: true
+	Aircraft:
+		TurnSpeed: 18
+		Speed: 225
+		TakeoffSounds: audio/migtoff1.aud
+	SpawnActorOnDeath:
+		Actor: SUK.Husk
+	ProducibleWithLevel:
+		Prerequisites: aircraft.upgraded
+	RenderSprites:
+		Image: suk
+
+SUK.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: Sukhoi Attack Plane
+	Contrail@1:
+		Offset: -598,-683,-40
+	Contrail@2:
+		Offset: -598,683,-40
+	Aircraft:
+		TurnSpeed: 5
+		Speed: 225
+	LeavesTrails:
+		Offsets: -853,0,0
+		MovingInterval: 2
+		Image: smokey
+		StationaryInterval: 2
+		SpawnAtLastPosition: False
+		TrailWhileStationary: True
+		Type: CenterPosition
+	RevealsShroud:
+		Range: 12c0
+		MinRange: 10c0
+		Type: GroundPosition
+		RevealGeneratedShroud: false
+	RevealsShroud@GAPGEN:
+		Range: 10c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: suk
+
+KIROV:
+	Inherits: ^Helicopter
+	Inherits@WW3I1: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 55
+		BuildLimit: 5
+		BuildDurationModifier: 75
+		Prerequisites: shpad, ~ttek, ~techlevel.high
+		Description: Heavily armoured airship equipped with massive bombs.\n Strong vs Buildings, Infantry\n  Weak vs Aircraft, Vehicles
+	Valued:
+		Cost: 2500
+	Tooltip:
+		Name: Kirov Airship
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 130000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 10c0
+		MinRange: 8c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 8c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Weapon: KirovBomb
+		LocalOffset: -20,0,0
+		PauseOnCondition: !ammo
+	AmmoPool:
+		Ammo: 8
+		AmmoCondition: ammo
+	ReloadAmmoPool:
+		Delay: 60
+	AttackAircraft:
+		FacingTolerance: 128
+		AttackType: Default
+		Voice: Attack
+	Aircraft:
+		CruiseAltitude: 2c0
+		Repulsable: False
+		InitialFacing: 192
+		TurnSpeed: 3
+		Speed: 50
+		Voice: Move
+		AltitudeVelocity: 0c50
+		CanForceLand: False
+	AutoTarget:
+		InitialStanceAI: AttackAnything
+		ScanRadius: 10
+	SpawnActorOnDeath:
+		Actor: KIROV.Husk
+	WithIdleOverlay@ROTOR1AIR:
+		Offset: -180,597,250
+		Sequence: rotor
+		RequiresCondition: airborne
+	WithIdleOverlay@ROTOR1GROUND:
+		Offset: -180,597,250
+		Sequence: slow-rotor
+		RequiresCondition: !airborne
+	WithIdleOverlay@ROTOR2AIR:
+		Offset: -180,-597,250
+		Sequence: rotor
+		RequiresCondition: airborne
+	WithIdleOverlay@ROTOR2GROUND:
+		Offset: -180,-597,250
+		Sequence: slow-rotor
+		RequiresCondition: !airborne
+	LeavesTrails@1:
+		Offsets: -100,500,100
+		Image: smokey
+		MovingInterval: 3
+		StationaryInterval: 3
+		SpawnAtLastPosition: False
+		TrailWhileStationary: True
+		Type: CenterPosition
+		RequiresCondition: enable-smoke
+	LeavesTrails@2:
+		Offsets: -100,-500,100
+		Image: smokey
+		MovingInterval: 3
+		StationaryInterval: 3
+		SpawnAtLastPosition: False
+		TrailWhileStationary: True
+		Type: CenterPosition
+		RequiresCondition: enable-smoke
+	Rearmable:
+		RearmActors: shpad, hpad
+	Selectable:
+		Bounds: 1536, 1194, 0, 85
+		DecorationBounds: 1706, 1706, 0, 42
+	Voiced:
+		VoiceSet: KirovVoice
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
+	GrantConditionOnDamageState@SmokeTrail:
+		Condition: enable-smoke
+
+KIROV.Husk:
+	Inherits: ^HelicopterHusk
+	Tooltip:
+		Name: Husk (Kirov)
+	Aircraft:
+		TurnSpeed: 2
+		Speed: 30
+	FallsToEarth:
+		MaximumSpinSpeed: 0
+		Explosion: KirovExplode
+	LeavesTrails@0:
+		Offsets: -432,560,0
+		MovingInterval: 2
+		Image: smokey
+		StationaryInterval: 2
+		SpawnAtLastPosition: False
+		TrailWhileStationary: True
+		Type: CenterPosition
+	LeavesTrails@1:
+		Offsets: -432,-560,0
+		MovingInterval: 2
+		Image: smokey
+		StationaryInterval: 2
+		SpawnAtLastPosition: False
+		TrailWhileStationary: True
+		Type: CenterPosition
+	RevealsShroud:
+		Range: 10c0
+		Type: CenterPosition
+
+ANT40:
+	Inherits: ^WW3Base_YAK
+	Buildable:
+		BuildPaletteOrder: 500
+		Prerequisites: afld, ~utek, ~techlevel.high
+		Description: Drops incendiary bombs.\n  Strong vs Infantry, Light armor\n  Weak vs Aircraft
+	Valued:
+		Cost: 2500
+	Tooltip:
+		Name: Tactical Bomber
+	Health:
+		HP: 17500
+	SpawnActorOnDeath:
+		Actor: ANT40.Husk
+	Armament@PRIMARY:
+		Weapon: FireBombs
+		LocalOffset: 350,-213,-100
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: FireBombs
+		LocalOffset: 350,213,-100
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	AttackAircraft:
+		Armaments: primary, secondary
+	AmmoPool:
+		Ammo: 16
+		ReloadDelay: 11
+		AmmoCondition: ammo
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
+		PipCount: 8
+	Aircraft:
+		CruiseAltitude: 4c0
+		Speed: 130
+	-WithMuzzleOverlay:
+	Contrail:
+		Offset: 0,-553,0
+	Contrail@2:
+		Offset: 0,553,0
+	Selectable:
+		DecorationBounds: 2133, 2133, 0, 0
+
+ANT40.Husk:
+	Inherits: YAK.Husk
+	Tooltip:
+		Name: Tactical Bomber
+	RenderSprites:
+		Image: ant40
+
+STHGEN:
+	Inherits: ^ScienceBuilding
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^DisableOnLowPowerOrPowerDown
+	Inherits@WW3I3: ^2x2Shape
+	Capturable@2:
+		RequiresCondition: !build-incomplete
+		Types: building-external
+	Selectable:
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 120
+		Prerequisites: ~ftek, ~structures.france, ~techlevel.unrestricted
+		BuildLimit: 1
+		Description: Makes vehicles invisible for a short time.\nRequires power to operate.\nMaximum 1 can be built.\n  Special Ability: Stealth Shield
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Phase Generator
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 100000
+	Armor:
+		Type: Wood
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 6c0
+		RequiresCondition: !disabled
+		RevealGeneratedShroud: False
+	RevealsShroud@Offline:
+		Range: 5c0
+		RequiresCondition: disabled
+	RevealsShroud@GAPGEN:
+		Range: 5c0
+		RequiresCondition: !disabled
+	WithBuildingBib:
+		HasMinibib: true
+	GrantExternalConditionPower@STEALTH:
+		OrderName: GrantExternalConditionPowerStealth
+		PauseOnCondition: disabled
+		Icon: cloakicon
+		ChargeInterval: 3000
+		Name: Stealth Shield
+		Description: Makes a group of units invisible\nfor 30 seconds.
+		Duration: 750
+		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
+		BeginChargeSpeechNotification: Charging
+		EndChargeSpeechNotification: Ready
+		DisplayRadarPing: True
+		Condition: stealth
+		OnFireSound: appear1.aud
+		SupportPowerPaletteOrder: 10
+		Dimensions: 5, 5
+		Footprint: __x__ _xxx_ xxxxx _xxx_ __x__
+	SupportPowerChargeBar:
+	InfiltrateForSupportPowerReset:
+		Types: SpyInfiltrate
+	Targetable:
+		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
+	Power:
+		Amount: -200
+	MustBeDestroyed:
+		RequiredForShortGame: false
+	ProvidesPrerequisite@buildingname:
+
+HTUR:
+	Inherits: ^WW3Base_Defense
+	Inherits@WW3I1: ^AutoTargetGround
+	Inherits@WW3I2: ^2x2Shape
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 60
+		BuildDuration: 1450
+		Prerequisites: ~ftek, ~structures.france, ~techlevel.high
+		Description: Anti-Armor artillary of epic proportions.\n  Strong vs Vehicles, Infantry\n  Weak vs Aircraft
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Grand Cannon
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 60000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		MinRange: 6c0
+		Range: 8c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 6c0
+	Turreted:
+		TurnSpeed: 3
+		InitialFacing: 0
+		RealignDelay: -1
+	-WithSpriteBody:
+	WithEmbeddedTurretSpriteBody:
+	AttackTurreted:
+	Armament:
+		Weapon: 203mm
+		MuzzleSequence: muzzle
+		LocalOffset: 1000,200,60, 1000,0,60, 1000,-200,60
+	WithMuzzleOverlay:
+	Power:
+		Amount: -100
+	BodyOrientation:
+	WithBuildingBib:
+		HasMinibib: true
+	Selectable:
+		Bounds: 2048, 2048
+
+RAILTURR:
+	Inherits: ^WW3Base_Defense
+	Inherits@WW3I1: ^AutoTargetGround
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 70
+		Prerequisites: gtek, ~structures.germany, ~techlevel.medium
+		Description: Anti-Armor base defense.\nCan fire over walls.\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Railgun Turret
+	Selectable:
+		DecorationBounds: 1024, 1562, 0, -426
+	Building:
+	Health:
+		HP: 40000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 6c512
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 5c0
+	WithBuildingBib:
+		HasMinibib: true
+	Turreted:
+		TurnSpeed: 48
+		InitialFacing: 192
+		RealignDelay: -1
+		Offset: 0,0,400
+		RequiresCondition: !build-incomplete
+	WithSpriteTurret:
+		RequiresCondition: !build-incomplete
+		Recoils: false
+	Armament:
+		Weapon: TitanRailgun
+		LocalOffset: 512,0,350
+		MuzzleSequence: muzzle
+	AttackTurreted:
+		PauseOnCondition: build-incomplete
+	WithMuzzleOverlay:
+	Power:
+		Amount: -50
+	DetectCloaked:
+		Range: 4c0
+	-BodyOrientation:
+	ClassicFacingBodyOrientation:
+
+PATRIOT:
+	Inherits: ^WW3Base_Defense
+	Inherits@WW3I1: ^AutoTargetGround
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 70
+		Prerequisites: ustek, ~structures.usa, ~techlevel.medium
+		Description: Anti-Armor base defense.\nCan fire over walls.\n  Strong vs Infantry, Vehicles\n  Weak vs Aircraft
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Patriot Missiles
+	Selectable:
+		DecorationBounds: 1024, 1562, 0, -426
+	Building:
+	Health:
+		HP: 40000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 6c512
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 5c0
+	WithBuildingBib:
+		HasMinibib: true
+	Turreted:
+		TurnSpeed: 48
+		InitialFacing: 192
+		RealignDelay: -1
+		Offset: 0,0,400
+		RequiresCondition: !build-incomplete
+	WithSpriteTurret:
+		RequiresCondition: ammo > 1
+		Recoils: false
+	WithSpriteTurret@OneMissile:
+		RequiresCondition: ammo == 1
+		Recoils: false
+		Sequence: turret1
+	WithSpriteTurret@NoMissiles:
+		RequiresCondition: !ammo
+		Recoils: false
+		Sequence: turret0
+	Armament:
+		Weapon: Patriot
+		LocalOffset: 0,171,0, 0,-171,0
+		PauseOnCondition: build-incomplete
+	AmmoPool:
+		Ammo: 2
+		AmmoCondition: ammo
+	ReloadAmmoPool:
+		Delay: 150
+		Count: 2
+	AttackTurreted:
+		PauseOnCondition: build-incomplete
+	WithMuzzleOverlay:
+	Power:
+		Amount: -50
+	DetectCloaked:
+		Range: 4c0
+	-BodyOrientation:
+	ClassicFacingBodyOrientation:
+
+PRIS:
+	Inherits: ^WW3Base_Defense
+	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Inherits@WW3I2: ^AutoTargetGround
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 90
+		Prerequisites: weap, ~structures.spain, ~techlevel.high
+		Description: Advanced prism base defense.
+	Valued:
+		Cost: 1300
+	Tooltip:
+		Name: Prism Tower
+	Building:
+	Selectable:
+		DecorationBounds: 1024, 1962, 0, -426
+	Health:
+		HP: 45000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		MinRange: 6c0
+		Range: 8c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 6c0
+	WithBuildingBib:
+		HasMinibib: true
+	WithSpriteBody:
+		PauseOnCondition: disabled
+	Armament:
+		Weapon: PrisLaser
+		LocalOffset: 0,-85,956
+	AttackTesla:
+		RequiresCondition: !build-incomplete
+		PauseOnCondition: disabled
+		ChargeAudio: audio/bpripow.aud
+		MaxCharges: 1
+		ReloadDelay: 40
+	Power:
+		Amount: -75
+	ProvidesPrerequisite@buildingname:
+
+SYRDCHARGER:
+	Interactable:
+	EditorOnlyTooltip:
+		Name: (DummyCharger)
+	AlwaysVisible:
+	Building:
+		Footprint: _
+		Dimensions: 1,1
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+	MapEditorData:
+		Categories: System
+	Exit@1:
+		SpawnOffset: 0,0,0
+		ExitCell: 0,0
+		Facing: 896
+	ExternalCondition:
+		Condition: keepchargeralive
+	KillsSelf:
+		RequiresCondition: !keepchargeralive
+		Delay: 1
+
+gpsactivenoise:
+	Interactable:
+	EditorOnlyTooltip:
+		Name: (GPS Active Noise Dummy)
+	AlwaysVisible:
+	Aircraft:
+		Repulsable: False
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+	MapEditorData:
+		Categories: System
+	ProvidesPrerequisite@gap:
+		Prerequisite: gpsactiveprereq
+	ActorLostNotification:
+		Notification: SatelliteInitialized
+		NotifyAll: True
+	Health:
+		HP: 1
+	HitShape:
+	ChangesHealth:
+		Step: -1
+		StartIfBelow: 101
+		Delay: 1
+	SpawnActorOnDeath:
+		Actor: powergps
+		SpawnAfterDefeat: False
+	KillsSelf:
+
+powergps:
+	Selectable:
+	SelectionDecorations:
+	EditorOnlyTooltip:
+		Name: (GPS Power Dummy)
+	AlwaysVisible:
+	Aircraft:
+		Repulsable: False
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSprites:
+		Image: camera
+	MapEditorData:
+		Categories: System
+	ProvidesPrerequisite@gap:
+		Prerequisite: gpsactiveprereq
+	ActorLostNotification:
+		Notification: SatelliteTerminated
+		NotifyAll: True
+	Health:
+		HP: 1499
+	HitShape:
+	ChangesHealth:
+		Step: -1
+		StartIfBelow: 101
+		Delay: 1
+	GrantConditionOnPrerequisite@satelliteexists:
+		Prerequisites: uplink
+		Condition: uplinkexists
+	KillsSelf:
+		RequiresCondition: !uplinkexists
+
+USTEK:
+	Inherits: ^WW3Base_ATEK
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 140
+		Prerequisites: weap, dome, ~structures.usa, ~techlevel.high
+		Description: Provides USA advanced technologies.\n  Special Ability: GPS Satellite, Ion Cannon
+	Tooltip:
+		Name: USA Tech Center
+	ProvidesPrerequisite@buildingname:
+	IonCannonPower:
+		PauseOnCondition: disabled
+		Prerequisites: ~techlevel.high
+		Icon: ioncannon
+		Cursor: ability
+		IconPalette: cnc
+		EffectPalette: cnc
+		ChargeInterval: 6750
+		Name: Ion Cannon
+		Description: Initiate an Ion Cannon strike.\nApplies instant damage to a small area.
+		BeginChargeSpeechNotification: IonCannonCharging
+		EndChargeSpeechNotification: IonCannonReady
+		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		OnFireSound: ion1.aud
+		DisplayRadarPing: True
+		CameraActor: camera
+		SupportPowerPaletteOrder: 20        
+	RenderSprites:
+		Image: ustek
+
+GTEK:
+	Inherits: ^WW3Base_ATEK
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 140
+		Prerequisites: weap, dome, ~structures.germany, ~techlevel.high
+		Description: Provides German advanced technologies.\n  Special Ability: GPS Satellite, ChronoPower
+	Tooltip:
+		Name: German Tech Center
+	ChronoshiftPower@advancedchronoshift:
+		OrderName: AdvancedChronoshift
+		PauseOnCondition: disabled
+		Icon: chrono
+		ChargeInterval: 3000
+		Name: Advanced Chronoshift
+		Description: Teleports a large group of units across\nthe map for 20 seconds.
+		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
+		BeginChargeSpeechNotification: ChronosphereCharging
+		EndChargeSpeechNotification: ChronosphereReady
+		SelectTargetTextNotification: Select target.
+		InsufficientPowerTextNotification: Insufficient power.
+		BeginChargeTextNotification: Chronosphere charging.
+		EndChargeTextNotification: Chronosphere ready.
+		Duration: 400
+		KillCargo: true
+		DisplayRadarPing: True
+		SupportPowerPaletteOrder: 30
+		Dimensions: 5, 5
+		Footprint: __x__ _xxx_ xxxxx _xxx_ __x__
+	ProvidesPrerequisite@buildingname:
+	RenderSprites:
+		Image: gtek
+
+ETEK:
+	Inherits: ^WW3Base_ATEK
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 140
+		Prerequisites: weap, dome, ~structures.england, ~techlevel.high
+		Description: Provides England advanced technologies.\n  Special Ability: GPS Satellite, Sonar Pulse
+	Building:
+		Footprint: XXX xxX xx= ==_
+		Dimensions: 3,4
+		LocalCenterOffset: 0,-512,0
+	Tooltip:
+		Name: England Tech Center
+	SpawnActorPower@sonar:
+		Icon: sonar
+		Name: Sonar Pulse
+		Prerequisites: ~syrd, ~techlevel.naval
+		Description: Reveals all submarines in the\n vicinity for a short time.
+		ChargeInterval: 3000
+		EndChargeSpeechNotification: SonarPulseReady
+		SelectTargetSpeechNotification: SelectTarget
+		Actor: sonar
+		Terrain: Water
+		LifeTime: 500
+		DeploySound: sonpulse.aud
+		EffectImage: moveflsh
+		EffectPalette: moveflash
+	ProvidesPrerequisite@buildingname:
+	RenderSprites:
+		Image: etek
+
+FTEK:
+	Inherits: ^WW3Base_ATEK
+	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 140
+		Prerequisites: weap, dome, ~structures.france, ~techlevel.high
+		Description: Provides France advanced technologies.\n  Special Ability: GPS Satellite, Cloaked
+	Tooltip:
+		Name: France Tech Center
+	Cloak:
+		InitialDelay: 125
+		CloakDelay: 60
+		IsPlayerPalette: true
+		PauseOnCondition: lowpower
+	ProvidesPrerequisite@buildingname:   
+	RenderSprites:
+		Image: ftek
+
+SPTEK:
+	Inherits: ^WW3Base_ATEK
+	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Targetable:
+		TargetTypes: AirborneActor
+	Building:
+		Footprint: == =X
+		Dimensions: 2,2
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 7c0
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 140
+		Prerequisites: weap, dome, ~structures.spain, ~techlevel.high
+		Description: Provides Spain advanced technologies.\n  Special Ability: GPS Satellite, Hostile Takeover
+	Tooltip:
+		Name: Spain Tech Center
+	-WithBuildingBib:
+	WithShadow:
+		Offset: 300,400,0
+		ZOffset: -512
+	ProvidesPrerequisite@buildingname:
+	ParatroopersPower@HT:
+		OrderName: HostileTakeover
+		Prerequisites: structures.spain
+		Icon: cqdrop
+		UnitType: DOUGLAS
+		ChargeInterval: 8500
+		Name: Hostile Takeover
+		Description: A plane drops a squad of Conquistadors and Engineers\nanywhere on the map.
+		DropItems: CQ,CQ,E6,E6,CQ
+		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
+		SelectTargetSpeechNotification: SelectTarget
+		AllowImpassableCells: false
+		QuantizedFacings: 8
+		CameraActor: camera.paradrop
+		DisplayBeacon: true
+		BeaconPoster: pinficon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 50
+	RenderSprites:
+		Image: sptek
+
+ABASE:
+	Inherits: ^WW3Base_Building
+	Inherits@WW3I1: ^3x2Shape
+	Inherits@WW3I2: ^PrimaryBuilding
+	HitShape:
+		UseTargetableCellsOffsets: false
+		TargetableOffsets: 0,0,0, 420,0,0, 420,-1024,0, 420,1024,0, -777,0,0, -777,-1024,0, -777,1024,0
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 130
+		Prerequisites: dome, ~structures.usa, ~techlevel.medium
+		Description: Produces and reloads aircraft.\n  Special Ability: Sniper Drop
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Airbase
+	Selectable:
+		Class: afld
+		Bounds: 3072, 3172
+	Building:
+		Footprint: =xX xxx xxx
+		Dimensions: 3,3
+	Health:
+		HP: 100000
+	Armor:
+		Type: Wood
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Exit@1:
+		RequiresCondition: !being-captured
+		SpawnOffset: 0,1100,0
+		ExitCell: 1,1
+		Facing: 768
+	RallyPoint:
+		ForceSetType: Plane
+	CommandBarBlacklist:
+		DisableStop: false
+	Production:
+		Produces: Aircraft, Plane
+	Reservable:
+	ProvidesPrerequisite@usa:
+		Factions: allies
+		Prerequisite: aircraft.usa
+	ProductionBar:
+		ProductionType: Aircraft
+	Power:
+		Amount: -30
+	ProvidesPrerequisite@buildingname:
+	Targetable:
+		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
+	InfiltrateForSupportPower:
+		Proxy: aircraft.upgraded
+		Types: SpyInfiltrate
+		PlayerExperience: 10
+	WithResupplyAnimation:
+		RequiresCondition: !build-incomplete
+	ParatroopersPower@usaparatroopers:
+		OrderName: USAParatroopers
+		Prerequisites: structures.usa
+		Icon: sniperdrop
+		UnitType: DOUGLAS
+		ChargeInterval: 7500
+		Name: Sniper Drop
+		Description: A plane drops a squad of snipers\nanywhere on the map.
+		DropItems: SNIPER,SNIPER,SNIPER
+		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
+		SelectTargetSpeechNotification: SelectTarget
+		AllowImpassableCells: false
+		QuantizedFacings: 8
+		CameraActor: camera.paradrop
+		DisplayBeacon: true
+		BeaconPoster: pinficon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 50
+	AirstrikePower@airstrike:
+		OrderName: USAirstrike
+		Prerequisites: structures.usa
+		Icon: airstrike
+		ChargeInterval: 7500
+		Name: Airstrike
+		Description: A squad of B-2 Spirit drop\n incendiary bombs on your target.
+		SelectTargetSpeechNotification: SelectTarget
+		CameraActor: camera
+		CameraRemoveDelay: 150
+		UnitType: b2b
+		QuantizedFacings: 8
+		DisplayBeacon: true
+		SquadSize: 3
+		SquadOffset: 1792,1792,0
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 40
+
+CRAM:
+	Inherits: ^WW3Base_Defense
+	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Inherits@WW3I2: ^AutoTargetAir
+	Buildable:
+		IconPalette: chrometd
+		Queue: Defense
+		BuildPaletteOrder: 60
+		BuildDuration: 1450
+		Prerequisites: dome, ~structures.china, ~techlevel.high
+		Description: Anti-Air Gatling cannon.\n  Strong vs Aircraft
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Gatling Gun
+	Health:
+		HP: 40000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		MinRange: 6c0
+		Range: 8c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 6c0
+	Turreted:
+		TurnSpeed: 60
+		InitialFacing: 832
+		RealignDelay: -1
+		RequiresCondition: !build-incomplete
+	-WithSpriteBody:
+	WithEmbeddedTurretSpriteBody:
+	AttackTurreted:
+		PauseOnCondition: disabled || build-incomplete
+	Armament@GAT:
+		Weapon: VulcanAA
+		LocalOffset: 520,0,450
+		MuzzleSequence: muzzle
+	Armament@GAT2:
+		Weapon: VulcanAA
+		FireDelay: 50
+		LocalOffset: 520,0,450
+		MuzzleSequence: muzzle
+	WithMuzzleOverlay:
+	Power:
+		Amount: -50
+	BodyOrientation:
+	WithBuildingBib:
+		HasMinibib: true
+	Selectable:
+		Bounds: 1024, 1024
+		DecorationBounds: 1024, 1365, 0, -170		
+
+MTSLA:
+	Inherits: ^WW3Base_Defense
+	Inherits@WW3I1: ^2x2Shape
+	Inherits@WW3I2: ^DisableOnLowPowerOrPowerDown
+	Inherits@WW3I3: ^AutoTargetGround
+	Selectable:
+		Bounds: 2048, 2048
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 120
+		Prerequisites: ~structures.russia, ~rtek, ~techlevel.high
+		Description: Advanced Tesla.
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+		LocalCenterOffset: 0,-512,0
+	Health:
+		HP: 60000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	-Capturable:
+	Valued:
+		Cost: 1800
+	Tooltip:
+		Name: Advanced Tesla
+	Power:
+		Amount: -300
+	WithBuildingBib:
+		HasMinibib: true
+	Armament:
+		Weapon: TeslaZap
+		LocalOffset: 0,0,896
+	WithTeslaChargeAnimation:
+	AttackTesla:
+		RequiresCondition: !build-incomplete
+		PauseOnCondition: disabled
+		ChargeAudio: tslachg2.aud
+		MaxCharges: 9
+		ReloadDelay: 100
+	DetectCloaked:
+		Range: 6c0
+		RequiresCondition: !disabled
+
+PROP:
+	Inherits: ^WW3Base_Defense
+	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Propaganda Tower
+	TooltipDescription:
+		Description: Provides buff to units.
+		ValidRelationships: Ally
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 115
+		Prerequisites: ctek, ~structures.china, ~techlevel.high
+		Description: Boosts your troops abilities within range.\nRequires power to operate.
+	Selectable:
+		Bounds: 1024, 1024
+		DecorationBounds: 1024, 1706, 0, -341
+	Health:
+		HP: 40000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	WithBuildingBib:
+		HasMinibib: true
+	ProximityExternalCondition:
+		RequiresCondition: !disabled
+		Condition: prop
+		Range: 6c0
+		ValidRelationships: Ally
+	-RenderRangeCircle:
+	WithRangeCircle@prop:
+		RequiresCondition: !disabled
+		Range: 6c0
+		UsePlayerColor: True
+	Power:
+		Amount: -60
+	MustBeDestroyed:
+		RequiredForShortGame: false
+	HitShape:
+		Type: Rectangle
+			TopLeft: -512, -512
+			BottomRight: 512, 512
+
+CTEK:
+	Inherits: ^WW3Base_STEK
+	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 151
+		Prerequisites: weap, dome, ~structures.china, ~techlevel.high
+		Description: Provides China advanced technologies.\n  Special Ability: Propaganda Tower
+	Tooltip:
+		Name: China Tech Center
+	Building:
+		Footprint: =__ XxX XxX ===
+		Dimensions: 3,4
+		LocalCenterOffset: 0,-512,0
+	ProximityExternalCondition@Propaganda:
+		RequiresCondition: !disabled
+		Condition: prop
+		Range: 6c0
+		ValidRelationships: Ally
+	WithRangeCircle@prop:
+		RequiresCondition: !disabled
+		Range: 6c0
+		UsePlayerColor: True
+	ParatroopersPower@tankdrop:
+		OrderName: ChinaTankDrop
+		Prerequisites: ~afld
+		Icon: tankdrop
+		SquadSize: 3
+		ChargeInterval: 7500
+		Name: TankDrop
+		Description: A squad of Badgers drops 3\n tanks at the selected location.
+		DropItems: 3TNK.china, 3TNK.china, 3TNK.china
+		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
+		SelectTargetSpeechNotification: SelectTarget
+		ReinforcementsArrivedTextNotification: Reinforcements have arrived.
+		SelectTargetTextNotification: Select target.
+		AllowImpassableCells: false
+		QuantizedFacings: 8
+		CameraActor: camera.paradrop
+		DisplayBeacon: true
+		BeaconPoster: pinficon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 52
+	ProvidesPrerequisite@buildingname:
+	ProvidesPrerequisite@sov:
+		Prerequisite: sov.tech
+	ProvidesPrerequisite:
+		Prerequisite: techcenter      
+	Power:
+		Amount: -150        
+	RenderSprites:
+		Image: ctek
+
+RTEK:
+	Inherits: ^WW3Base_STEK
+	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 151
+		Prerequisites: weap, dome, ~structures.russia, ~techlevel.high
+		Description: Provides Russia advanced technologies.\n  Special Ability: Provides power
+	Tooltip:
+		Name: Russia Tech Center
+	Building:
+		Footprint: _=_ XxX XxX ===
+		Dimensions: 3,4
+		LocalCenterOffset: 0,-512,0
+	ProvidesPrerequisite@buildingname:
+	ProvidesPrerequisite@sov:
+		Prerequisite: sov.tech
+	ProvidesPrerequisite:
+		Prerequisite: techcenter  
+	Power:
+		Amount: 250        
+	RenderSprites:
+		Image: rtek
+
+UTEK:
+	Inherits: ^WW3Base_STEK
+	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 151
+		Prerequisites: weap, dome, ~structures.ukraine, ~techlevel.high
+		Description: Provides Ukraine advanced technologies.\n  Special Ability: Advanced Iron Curtain
+	Tooltip:
+		Name: Ukraine Tech Center
+	Building:
+		Footprint: XxX XxX ===
+		Dimensions: 3,3
+		LocalCenterOffset: 0,-512,0
+	ProvidesPrerequisite@buildingname:
+	ProvidesPrerequisite@sov:
+		Prerequisite: sov.tech
+	ProvidesPrerequisite:
+		Prerequisite: techcenter
+	GrantExternalConditionPower@ADVIRONCURTAIN:
+		PauseOnCondition: disabled
+		Icon: invuln
+		ChargeInterval: 4000
+		Sequence: idle
+		Name: Invulnerability
+		Description: Makes a group of units invulnerable\nfor 20 seconds.
+		Duration: 400
+		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
+		BeginChargeSpeechNotification: IronCurtainCharging
+		EndChargeSpeechNotification: IronCurtainReady
+		SelectTargetTextNotification: Select target.
+		InsufficientPowerTextNotification: Insufficient power.
+		BeginChargeTextNotification: Iron curtain charging.
+		EndChargeTextNotification: Iron curtain ready.
+		DisplayRadarPing: True
+		Condition: invulnerability
+		OnFireSound: ironcur9.aud
+		SupportPowerPaletteOrder: 12
+		Dimensions: 5, 5
+		Footprint: __x__ _xxx_ xxxxx _xxx_ __x__      
+	Power:
+		Amount: -250        
+	RenderSprites:
+		Image: utek
+
+TTEK:
+	Inherits: ^WW3Base_STEK
+	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 151
+		Prerequisites: weap, dome, ~structures.turkey, ~techlevel.high
+		Description: Provides Turkey advanced technologies.\n  Special Ability: Insurgents
+	Tooltip:
+		Name: Turkey Tech Center
+	Building:
+		Footprint: XxX XxX ===
+		Dimensions: 3,3
+		LocalCenterOffset: 0,-512,0
+	SpawnActorPower@insurgants:
+		Actor: ins1
+		OrderName: InsurgantsPower
+		LifeTime: -1
+		Icon: insurgant
+		Name: Insurgants
+		Prerequisites: ~techlevel.high
+		Description: Spawns a mob of units\n in the area.
+		ChargeInterval: 5000
+		EndChargeSpeechNotification: Ready
+		SelectTargetSpeechNotification: SelectTarget
+		EffectImage: cloud
+		EffectSequence: idle
+		EffectPalette: effect
+		DeploySound: audio/insurg1.aud
+	ProvidesPrerequisite@buildingname:
+	ProvidesPrerequisite@sov:
+		Prerequisite: sov.tech
+	ProvidesPrerequisite:
+		Prerequisite: techcenter  
+	Power:
+		Amount: -50        
+	RenderSprites:
+		Image: ttek
+
+GRTEK:
+	Inherits: ^WW3Base_STEK
+	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 151
+		Prerequisites: weap, dome, ~structures.greece, ~techlevel.high
+		Description: Provides Greece advanced technologies.\n  Special Ability: Sparten Drop
+	Tooltip:
+		Name: Greek Tech Center
+	Building:
+		Footprint: XxX XxX ===
+		Dimensions: 3,3
+		LocalCenterOffset: 0,-512,0
+	ProvidesPrerequisite@buildingname:
+	ProvidesPrerequisite@sov:
+		Prerequisite: sov.tech
+	ProvidesPrerequisite:
+		Prerequisite: techcenter
+	ParatroopersPower@SPARTAN:
+		OrderName: SpartanDrop
+		Prerequisites: structures.greece
+		Icon: spartdrop
+		UnitType: DOUGLAS
+		ChargeInterval: 7500
+		Name: Spartan Drop
+		Description: A plane drops Spartan powersuits\nanywhere on the map.
+		DropItems: SPART,SPART,SPART
+		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
+		SelectTargetSpeechNotification: SelectTarget
+		AllowImpassableCells: false
+		QuantizedFacings: 8
+		CameraActor: camera.paradrop
+		DisplayBeacon: true
+		BeaconPoster: pinficon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 51
+	Power:
+		Amount: -100        
+	RenderSprites:
+		Image: grtek
+
+SHPAD:
+	Inherits: ^WW3Base_Building
+	Inherits@WW3I1: ^2x2Shape
+	Inherits@WW3I2: ^PrimaryBuilding
+	Selectable:
+		Bounds: 2048, 2048
+	HitShape:
+		UseTargetableCellsOffsets: false
+		TargetableOffsets: 0,0,0, 768,-512,0, 768,512,0, -281,-512,0, -630,512,0
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 120
+		Prerequisites: dome, ~structures.turkey, ~techlevel.medium
+		Description: Produces and reloads\n helicopters & Kirov.
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Soviet Helipad
+	Building:
+		Footprint: xx xx ==
+		Dimensions: 2,3
+		LocalCenterOffset: 0,0,300
+	Health:
+		HP: 80000
+	Armor:
+		Type: Wood
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	WithBuildingBib:
+	WithResupplyAnimation:
+		RequiresCondition: !build-incomplete
+	Exit@1:
+		RequiresCondition: !being-captured
+		SpawnOffset: 0,-300,300
+		ExitCell: 1,1
+		Facing: 896
+	RallyPoint:
+		ForceSetType: Helicopter
+	CommandBarBlacklist:
+		DisableStop: false
+	Production:
+		Produces: Aircraft, Helicopter
+	Reservable:
+	ProductionBar:
+		ProductionType: Aircraft
+	Power:
+		Amount: -10
+	ProvidesPrerequisite@buildingname:
+	Targetable:
+		TargetTypes: GroundActor, C4, DetonateAttack, Structure, SpyInfiltrate
+	InfiltrateForSupportPower:
+		Proxy: aircraft.upgraded
+		Types: SpyInfiltrate
+		PlayerExperience: 10
+
+SOVPWR:
+	Inherits: ^WW3Base_Building
+	Inherits@WW3I1: ^DisabledByPowerOutage
+	HitShape:
+		UseTargetableCellsOffsets: true
+		Type: Rectangle
+			TopLeft: -1536, -1524
+			BottomRight: 1536, 1524
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 152
+		Prerequisites: dome, ~sov.tech, ~techlevel.medium
+		Description: Provides quadruple the power of\nan advanced Power Plant.\nHowever explodes violently.
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Nuclear Power Plant
+	ProvidesPrerequisite:
+		Prerequisite: anypower
+	Building:
+		Footprint: _x_ xxx xxx
+		Dimensions: 3,3
+	Selectable:
+		Bounds: 3372, 2548, 0, -400
+		DecorationBounds: 3372, 2901
+	Health:
+		HP: 90000
+	Armor:
+		Type: Wood
+	RevealsShroud:
+		Range: 5c0
+	Power:
+		Amount: 800
+	Targetable:
+		TargetTypes: GroundActor, Structure, C4, DetonateAttack, SpyInfiltrate
+	ScalePowerWithHealth:
+	WithDeathAnimation:
+		DeathSequence: dead
+		UseDeathTypeSuffix: false
+	RenderSprites:
+		PlayerPalette: player-cc2
+
+INTERNET:
+	Inherits: ^ScienceBuilding
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^CargoPips
+	Inherits@WW3I3: ^3x2Shape
+	Inherits@WW3I4: ^DisableOnLowPowerOrPowerDown
+	Capturable@2:
+		RequiresCondition: !build-incomplete
+		Types: building-external
+	HitShape:
+		TargetableOffsets: 0,0,0, 0,512,0, 420,-598,256
+		Type: Rectangle
+			TopLeft: -1024, -384
+			BottomRight: 1024, 1024
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Internet Centre
+	TooltipDescription:
+		Description: Garrison Hackers to boost cash generation.
+		ValidRelationships: Ally
+	Buildable:
+		BuildPaletteOrder: 160
+		Prerequisites: ~ctek, ~structures.china, ~techlevel.medium
+		Queue: Building
+		BuildLimit: 1
+		Description: Chinese hackers steal money.\nIncreases Hacker output.\nRequires power to operate.
+		IconPalette: cnc
+	Power:
+		Amount: -100
+	Building:
+		Footprint: X_ xx ==
+		Dimensions: 2,3
+		LocalCenterOffset: 0,-512,0
+	Selectable:
+		Bounds: 2048, 1706, 0, 384
+		DecorationBounds: 2048, 2261, 0, -170
+	SelectionDecorations:
+	WithSpriteBody:
+		PauseOnCondition: lowpower
+	Health:
+		HP: 80000
+	RevealsShroud:
+		Range: 10c0
+	WithBuildingBib:
+	GpsDot:
+		String: Communications
+	CashTrickler:
+		Amount: 50
+		PauseOnCondition: disabled
+	Cargo:
+		Types: Infantry
+		MaxWeight: 8
+	InfiltrateForCash:
+		Percentage: 25
+		Types: SpyInfiltrate, ThiefInfiltrate
+		InfiltratedNotification: CreditsStolen
+	StoresResources:
+		Capacity: 3000
+	WithDeathAnimation:
+		DeathSequence: dead
+		UseDeathTypeSuffix: false
+	ProvidesPrerequisite@buildingname:
+	RenderSprites:
+		PlayerPalette: cncplayer
+
+INDP:
+	Inherits: ^WW3Base_Building
+	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Inherits@WW3I2: ^3x2Shape
+	Selectable:
+		Bounds: 3072, 2816, 0, -256
+	HitShape:
+		Type: Rectangle
+			TopLeft: -1536, -1024
+			BottomRight: 1536, 1280
+	WithSpriteBody:
+		PauseOnCondition: disabled
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 200
+		Prerequisites: ~structures.soviet, ~ctek, ~techlevel.high
+		Description: Vehicles are produced 15% faster and cost 10% less.
+		BuildLimit: 1
+	TooltipDescription:
+		Description: • Maximum 1 can be built • Cannot be captured or hacked
+		ValidRelationships: Ally
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Industrial Plant
+	Building:
+		Footprint: xxx xxx ===
+		Dimensions: 3,3
+		LocalCenterOffset: 0,-512,0
+	Health:
+		HP: 120000
+	Armor:
+		Type: Wood
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	WithBuildingBib:
+	Power:
+		Amount: -150
+	WithDeathAnimation:
+		DeathSequence: dead
+		UseDeathTypeSuffix: false
+	ProvidesPrerequisite@buildingname:
+	ProduceActorPower:
+		Actors: 3tnk.china
+		Type: Vehicle
+		Prerequisites: structures.china
+		ReadyAudio: ChinaPower
+		ChargeInterval: 3000
+		Icon: industry
+		Name: Industrialisation
+		Description: Advanced Chinese industry\n produces a stream\n of heavy tanks.
+		ClockSequence: clock
+		CircleSequence: circles
+		InsufficientPowerSpeechNotification: InsufficientPower
+		SupportPowerPaletteOrder: 80
+		PauseOnCondition: lowpower
+
+^Gate:
+	Inherits: ^WW3Base_Building
+	-WithSpriteBody:
+	-InstantlyRepairable:
+	-Capturable:
+	-Capturable@2:
+	-SpawnActorsOnSell:
+	-CaptureManager:
+	-CapturableProgressBar:
+	-CapturableProgressBlink:
+	-WithMakeAnimation:
+	-GivesBuildableArea:
+	-GivesExperience:
+	-MustBeDestroyed:
+	Health:
+		HP: 35000
+	Armor:
+		Type: Heavy
+	LineBuildNode:
+		Types: concrete, gate
+	WithGateSpriteBody:
+	Tooltip:
+		Name: Gate
+	Building:
+		BuildSounds: bits/place2.aud
+		TerrainTypes: Clear, Road
+	RequiresBuildableArea:
+		AreaTypes: building
+		Adjacent: 6
+	MapEditorData:
+		Categories: Wall
+	Gate:
+		OpeningSound: audio/hydrod1.aud
+		ClosingSound: audio/hvydoor1.aud
+		BlocksProjectilesHeight: 0
+
+HGATE:
+	Inherits: ^Gate
+	HitShape:
+		UseTargetableCellsOffsets: true
+		Type: Rectangle
+			TopLeft: -1536, -512
+			BottomRight: 1536, 512
+	Building:
+		Footprint: xxx
+		Dimensions: 3,1
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 30
+		Prerequisites: ~anypower, ~techlevel.medium
+		Description: Places an horizontal gate.\nThe gate automatically opens for friendly units.\nBlocks enemy access into your base.
+	Valued:
+		Cost: 500
+	Demolishable:
+		Condition: being-demolished
+	Sellable:
+		RequiresCondition: !being-demolished
+	CustomSellValue:
+		Value: 50
+	WithGateSpriteBody:
+		WallConnections: -1,0, 3,0
+	LineBuildNode:
+		Connections: -1,0, 1,0
+	Tooltip:
+		Name: Gate - (horizontal)
+	RevealsShroud:
+		Range: 1c0
+	RenderSprites:
+		Image: hgate
+
+VGATE:
+	Inherits: ^Gate
+	HitShape:
+		UseTargetableCellsOffsets: true
+		Type: Rectangle
+			TopLeft: -512, -1536
+			BottomRight: 512, 1536
+	Building:
+		Footprint: x x x
+		Dimensions: 1,3
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 31
+		Prerequisites: ~anypower, ~techlevel.medium
+		Description: Places an vertical gate.\nThe gate automatically opens for friendly units.\nBlocks enemy access into your base.
+	Valued:
+		Cost: 500
+	Demolishable:
+		Condition: being-demolished
+	Sellable:
+		RequiresCondition: !being-demolished
+	CustomSellValue:
+		Value: 50
+	WithGateSpriteBody:
+		WallConnections: 0,-1, 0,3
+	LineBuildNode:
+		Connections: 0,-1, 0,1
+	Tooltip:
+		Name: Gate I (vertical)
+	RevealsShroud:
+		Range: 1c0
+
+GENMEDI:
+	Inherits: MEDI
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Buildable:
+		Prerequisites: ~hosp, ~infantry.soviet
+	RenderSprites:
+		Image: MEDI
+
+E1.Greece:
+	Inherits: ^WW3Base_E1
+	Buildable:
+		Prerequisites: ~!grtek, ~infantry.greece
+	RenderSprites:
+		Image: E1
+
+E3.Greece:
+	Inherits: ^WW3Base_E3
+	Buildable:
+		Prerequisites: ~!grtek, ~infantry.greece
+	RenderSprites:
+		Image: E3
+
+E4.Greece:
+	Inherits: ^WW3Base_E4
+	Buildable:
+		Prerequisites: ~!grtek, ftur, ~infantry.greece
+	RenderSprites:
+		Image: E4
+
+E1GI:
+	Inherits: ^WW3Base_E1
+	Buildable:
+		Icon: e1gi
+		Prerequisites: ~infantry.usa, ~techlevel.infonly
+		Description: US basic infantry.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+	Tooltip:
+		Name: GI
+	TooltipDescription:
+		Description: Elite Rank Bonus: Grenades.
+		ValidRelationships: Ally
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	Valued:
+		Cost: 110
+	Voiced:
+		VoiceSet: USAVoice
+	Armament@RankUpSECONDARY:
+		Name: secondary
+		Weapon: BuildingGrenade
+		LocalOffset: 0,0,555
+		FireDelay: 15
+		RequiresCondition: rank-veteran == 3 || rank-elite
+	RenderSprites:
+		Image: E1
+
+SNIPER:
+	Inherits: ^Soldier
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Inherits@WW3I4: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: sniper
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 110
+		Prerequisites: ~tent, dome, ~infantry.france
+		Description: Elite marksman infantry armed with\n  a powerful sniper rifle.
+	Tooltip:
+		Name: Sniper
+	TooltipDescription:
+		Description: Elite Rank Bonus: Sight & Range Increase.
+	Valued:
+		Cost: 600
+	Health:
+		HP: 9500
+	IgnoresDisguise:
+	RangeMultiplier@ELITE:
+		Modifier: 120
+		RequiresCondition: rank-elite
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	RevealsShroud:
+		Range: 7c0
+		MinRange: 6c0
+		RevealGeneratedShroud: false
+	RevealsShroud@ELITE:
+		Range: 10c0
+		MinRange: 6c0
+		RevealGeneratedShroud: false
+		RequiresCondition: rank-elite
+	RevealsShroud@GAPGEN:
+		Range: 6c0
+	Armament@PRIMARY:
+		Weapon: sniper
+	Mobile:
+		Speed: 46
+	Cloak@NORMAL:
+		InitialDelay: 200
+		CloakDelay: 200
+		IsPlayerPalette: true
+		DetectionTypes: Cloak
+		UncloakOn: Move, Unload, Infiltrate, Demolish, Dock, Attack
+	WithInfantryBody:
+		AttackSequences:
+			primary: shoot
+			secondary: shoot
+		StandSequences: stand, stand2
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		StandSequences: parachute
+		RequiresCondition: parachute
+	AttackFrontal:
+		Voice: Attack
+	Voiced:
+		VoiceSet: SniperVoice
+	Passenger:
+		CustomPipType: red
+	Guard:
+	ProducibleWithLevel:
+		InitialLevels: 1
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: barracks.upgraded
+
+E13:
+	Inherits: ^Soldier
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Inherits@WW3I4: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 120
+		Prerequisites: ~tent, ~gtek, ~techlevel.high
+		Description: Elite Infantry with portable Chrono cannons.\n Strong vs Infantry, Vehicles\n Weak vs Aircraft
+	Valued:
+		Cost: 450
+	Tooltip:
+		Name: Chrono Soldier
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 5000
+	Mobile:
+		Voice: Move
+	RevealsShroud:
+		Range: 5c0
+	Armament@PRIMARY:
+		Weapon: ChronoHandGun
+		LocalOffset: 427, 0, 341
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: ChronoHandGun
+	PortableChrono:
+		ChargeDelay: 500
+		MaxDistance: 24
+	TakeCover:
+		ProneOffset: 227,0,-245
+	AttackFrontal:
+		Voice: Attack
+		FacingTolerance: 0
+	AttackMove:
+		Voice: Move
+	Passenger:
+		Voice: Move
+	Guard:
+		Voice: Move
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		StandSequences: parachute
+		RequiresCondition: parachute
+	Voiced:
+		VoiceSet: ChronoVoice
+	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+
+RMBO:
+	Inherits: ^Soldier
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Inherits@WW3I4: ^GainsExperience
+	Inherits@WW3I5: ^AutoTargetGroundAssaultMove
+	Valued:
+		Cost: 400
+	Tooltip:
+		Name: Commando
+	TooltipDescription:
+		Description: Deploys into a mini-fortification.
+		ValidRelationships: Ally
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 120
+		Prerequisites: ~tent, ustek, ~infantry.usa, ~techlevel.high
+		BuildAtProductionType: Infantry
+		Queue: Infantry
+		Description: Elite commando infantry. Armed with\nHeavy Machine Gun.\n Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft\n  Special Ability: Deploy
+		IconPalette: cnc
+	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+		InitialLevels: 2
+	Mobile:
+		Speed: 71
+		Voice: Move
+		PauseOnCondition: !undeployed
+		RequireForceMoveCondition: !undeployed
+	Guard:
+		Voice: Move
+	Health:
+		HP: 8000
+	Armor@deployed:
+		Type: Heavy
+		RequiresCondition: deployed
+	Passenger:
+		CustomPipType: red
+		Voice: Move
+	RevealsShroud:
+		Range: 6c0
+	AutoTarget:
+		ScanRadius: 8
+	Armament@PRIMARY:
+		Weapon: C60mg
+		RequiresCondition: !deployed
+	Armament@SECONDARY:
+		Weapon: BuildingGrenade
+		RequiresCondition: !deployed
+	AttackMove:
+		Voice: Attack
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+		IdleSequences: idle1,idle2,idle3
+		RequiresCondition: undeployed && !parachute
+	Targetable:
+		TargetTypes: GroundActor, Infantry
+	AnnounceOnKill:
+	Voiced:
+		VoiceSet: GGIVoice
+	Armament@PRIMARYDEP:
+		Weapon: RedEye
+		Name: deployed
+		Turret: deploy
+		LocalOffset: 0,0,400
+		PauseOnCondition: !ammo
+		RequiresCondition: deployed
+	Armament@SECONDARYDEP:
+		Name: deployed
+		Weapon: Dragon
+		Turret: deploy
+		LocalOffset: 0,0,400
+		PauseOnCondition: !ammo
+		RequiresCondition: deployed
+	Armament@GarrisonAA:
+		Name: mountedaa
+		Weapon: RedEye
+		PauseOnCondition: !ammo
+	Armament@Garrison:
+		Name: mounted
+		Weapon: Dragon
+		PauseOnCondition: !ammo
+	AmmoPool:
+		Ammo: 1
+		AmmoCondition: ammo
+	ReloadAmmoPool:
+		Delay: 25
+		Count: 1
+	TakeCover:
+		ProneOffset: 384,0,-395
+		RequiresCondition: !deployed
+	DamageMultiplier:
+		Modifier: 50
+		RequiresCondition: deployed
+	GrantConditionOnDeploy:
+		DeployedCondition: deployed
+		UndeployedCondition: undeployed
+		UndeployOnMove: True
+		Voice: Action
+		DeploySounds: audio/iggidea.aud, audio/iggideb.aud
+		UndeploySounds: audio/iggidea.aud, audio/iggideb.aud
+		RequiresCondition: !parachute
+		Facing: 332
+	WithMakeAnimation:
+		Sequence: deploy
+		BodyNames: dot
+	Turreted:
+		Turret: deploy
+		RealignDelay: -1
+		TurnSpeed: 1023
+		InitialFacing: 332
+	WithSpriteTurret@idle:
+		Turret: deploy
+		Sequence: deployed
+		RequiresCondition: deployed && !animate-turret && !parachute
+	WithSpriteTurret@animated:
+		Turret: deploy
+		Sequence: deploy-shoot
+		RequiresCondition: deployed && animate-turret && !parachute
+	WithSpriteBody:
+		Sequence: empty
+		Name: dot
+		RequiresCondition: !undeployed
+	AttackFrontal:
+		RequiresCondition: undeployed
+		Voice: Attack
+		FacingTolerance: 0
+	AttackTurreted@deployed:
+		Armaments: deployed
+		Turrets: deploy
+		Voice: Attack
+		RequiresCondition: deployed
+		OutsideRangeRequiresForceFire: True
+		RangeMargin: 0
+	GrantConditionOnAttack:
+		Condition: animate-turret
+		RevokeDelay: 5
+		ArmamentNames: deployed
+	Crushable:
+		RequiresCondition: undeployed
+	RenderSprites:
+		PlayerPalette: cncplayer
+		Image: rmbo
+
+SPECOP:
+	Inherits: ^Soldier
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Inherits@WW3I4: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 80
+		Prerequisites: ~techlevel.medium, ~etek, ~infantry.england, dome
+		Description: Elite rifleman armed with grenades.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft
+	Valued:
+		Cost: 250
+	Tooltip:
+		Name: Royal Marine
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 6000
+	Mobile:
+	ProducibleWithLevel:
+		Prerequisites: techlevel.medium
+		InitialLevels: 1
+	RevealsShroud:
+		Range: 6c0
+	Armament@PRIMARY:
+		Name: primary
+		Weapon: M1Carbine2
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: BuildingGrenade
+		LocalOffset: 0,0,555
+		FireDelay: 15
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: Vulcan
+		MuzzleSequence: garrison-muzzle
+	WithInfantryBody:
+		AttackSequences:
+			primary: shoot
+			secondary: throw
+		RequiresCondition: !parachute
+		IdleSequences: idle1,idle2,idle3
+	WithInfantryBody@PARACHUTE:
+		StandSequences: parachute
+		RequiresCondition: parachute
+	RenderSprites:
+
+JJET:
+	Inherits: ^ExistsInWorld
+	Inherits@WW3I1: ^SpriteActor
+	Inherits@WW3I2: ^GlobalBounty
+	Inherits@WW3I3: ^SelectableCombatUnit
+	Inherits@WW3I4: ^PlayerHandicaps
+	Inherits@WW3I5: ^AutoTargetAllAssaultMove
+	Inherits@WW3I6: ^GainsExperience
+	Huntable:
+	RenderSprites:
+		Image: jjet
+		PlayerPalette: playertd
+	OwnerLostAction:
+		Action: Kill
+	AppearsOnRadar:
+		UseLocation: true
+	HiddenUnderFog:
+		Type: GroundPosition
+	RevealsShroud:
+		Range: 7c0
+		MinRange: 6c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 6c0
+		Type: GroundPosition
+	Voiced:
+		VoiceSet: GenericVoice
+	AttackMove:
+		Voice: Action
+	Guard:
+		Voice: Action
+	Guardable:
+	ActorLostNotification:
+		Notification: AirUnitLost
+	MustBeDestroyed:
+	HitShape:
+		Type: Circle
+			Radius: 128
+	MapEditorData:
+		Categories: Aircraft
+	RevealOnDeath:
+		Duration: 100
+		Radius: 2c512
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 150
+		Prerequisites: ustek, ~infantry.usa, ~techlevel.medium
+		IconPalette: chrometd
+		Description: Jet pack equipped infantry armed\n with a machine gun and grenades.
+	Valued:
+		Cost: 450
+	Tooltip:
+		Name: Jump-Jet Trooper
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 8000
+	Targetable:
+		RequiresCondition: !airborne
+		TargetTypes: Ground, Infantry
+	Targetable@HEAL:
+		RequiresCondition: !airborne && damaged
+		TargetTypes: Heal
+	Targetable@AIRBORNE:
+		RequiresCondition: airborne
+		TargetTypes: AirborneActor
+	DeathSounds@NORMAL:
+		Voice: Die
+		DeathTypes: DefaultDeath, BulletDeath, SmallExplosionDeath, ExplosionDeath
+	DeathSounds@BURNED:
+		Voice: Burned
+		DeathTypes: FireDeath
+	DeathSounds@ZAPPED:
+		Voice: Zapped
+		DeathTypes: ElectricityDeath
+	Armor:
+		Type: Light
+	Aircraft:
+		CruiseAltitude: 1c0
+		IdealSeparation: 0c384
+		InitialFacing: 92
+		Speed: 99
+		LandableTerrainTypes: Clear, Rough, Road, Ore, Beach, Gems
+		AirborneCondition: airborne
+		CruisingCondition: cruising
+		CanHover: True
+		CanSlide: True
+		VTOL: True
+	AttackAircraft:
+		AttackType: Hover
+		FacingTolerance: 0
+		Voice: Action
+	Armament@AIRBORNE:
+		Weapon: M60mgJJ
+		RequiresCondition: airborne
+	Armament@SECONDARY:
+		Weapon: BuildingGrenade
+	Armament@GROUND:
+		Weapon: M60mgJJ.Ground
+		RequiresCondition: !airborne
+	Armament@AA:
+		Weapon: M60mgJJAA
+		RequiresCondition: airborne
+	AttackFrontal:
+		Voice: Action
+		FacingTolerance: 0
+	WithInfantryBody:
+		IdleSequences: idle1,idle2
+		DefaultAttackSequence: attack
+		RequiresCondition: !airborne
+	WithInfantryBody@AIRBORNE:
+		DefaultAttackSequence: flying-attack
+		IdleSequences: idle
+		StandSequences: hover
+		MinIdleDelay: 0
+		MaxIdleDelay: 1
+		MoveSequence: flying
+		RequiresCondition: airborne
+	DeathSounds@airborne:
+		RequiresCondition: airborne
+	WithDeathAnimation:
+		DeathSequencePalette: playertd
+		DeathTypes:
+			DefaultDeath: 1
+			BulletDeath: 2
+			SmallExplosionDeath: 3
+			ExplosionDeath: 4
+			FireDeath: 5
+			ElectricityDeath: 6
+		CrushedSequence: die-crushed
+		RequiresCondition: !airborne
+	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: barracks.upgraded
+	WithShadow:
+		Offset: 43, 128, 0
+		ZOffset: 512
+		RequiresCondition: airborne
+	Hovers@CRUISING:
+		RequiresCondition: cruising
+	DetectCloaked:
+		DetectionTypes: Cloak, Thief
+		Range: 3c0
+	GpsDot:
+		String: Infantry
+	Selectable:
+		Bounds: 768, 768, 0, -256
+		DecorationBounds: 512, 725, 0, -256
+	AutoTargetPriority@DEFAULT:
+		RequiresCondition: !stance-attackanything && !assault-move && !airborne
+	AutoTargetPriority@ATTACKANYTHING:
+		RequiresCondition: (stance-attackanything || assault-move) && !airborne
+	AutoTargetPriority@DEFAULT_AIR:
+		RequiresCondition: !stance-attackanything && !assault-move && airborne
+		ValidTargets: Vehicle, Water, Underwater, Defense
+		InvalidTargets: NoAutoTarget, WaterStructure
+		Priority: 1
+	AutoTargetPriority@DEFAULT_AIR_ATTACK_INFANTRY:
+		RequiresCondition: !stance-attackanything && !assault-move && airborne
+		ValidTargets: AirborneActor, Infantry
+		InvalidTargets: NoAutoTarget, WaterStructure
+		Priority: 10
+	AutoTargetPriority@ATTACKANYTHING_AIR:
+		RequiresCondition: (stance-attackanything || assault-move) && airborne
+		ValidTargets: Vehicle, Water, Underwater, Structure, Defense
+		InvalidTargets: NoAutoTarget
+		Priority: 1
+	AutoTargetPriority@ATTACKANYTHING_AIR_ATTACK_INFANTRY:
+		RequiresCondition: (stance-attackanything || assault-move) && airborne
+		ValidTargets: AirborneActor, Infantry
+		InvalidTargets: NoAutoTarget
+		Priority: 10
+	GrantConditionOnDamageState@DAMAGED:
+		Condition: damaged
+		ValidDamageStates: Light, Medium, Heavy, Critical
+
+CQ:
+	Inherits: ^Soldier
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Inherits@WW3I4: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 150
+		Prerequisites: ~sptek, ~infantry.spain, ~techlevel.medium
+		Description: Elite Spanish Unit with \n handheld prism weapon.\n Can capture buildings.
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Conquistador
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 6000
+	Mobile:
+		Speed: 66
+		Voice: Move
+	RevealsShroud:
+		Range: 5c0
+	Armament:
+		Weapon: PrisHH
+		LocalOffset: 300,0,140
+	TakeCover:
+		ProneOffset: 160,0,-256
+	WithMuzzleOverlay:
+	CaptureManager:
+	Captures@CQ:
+		CaptureTypes: building
+		PlayerExperience: 10
+		CaptureDelay: 475
+		ConsumedByCapture: False
+		EnterCursor: ability
+		EnterBlockedCursor: move-blocked
+	Passenger:
+		CustomPipType: red
+	AttackFrontal:
+		Voice: Attack
+		FacingTolerance: 0
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		StandSequences: parachute
+		RequiresCondition: parachute
+	ProducibleWithLevel:
+		Prerequisites: techlevel.medium
+		InitialLevels: 1
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: barracks.upgraded
+	RenderSprites:
+		PlayerPalette: cncplayer
+	Voiced:
+		VoiceSet: WW3GenericVoice
+
+INS1:
+	Inherits: ^WW3Base_Infantry
+	Inherits@WW3I1: ^ArmedCivilian
+	Inherits@WW3I2: ^AutoTargetAllAssaultMove
+	Tooltip:
+		Name: Insurgants
+	Health:
+		HP: 8000
+	Armament@PRIMARY:
+		Weapon: sniper
+	FreeActor@INSURG1:
+		Actor: INS2
+		SpawnOffset: 0,1
+	FreeActor@INSURG2:
+		Actor: INS2
+		SpawnOffset: 1,1
+	FreeActor@INSURG3:
+		Actor: INS3
+		SpawnOffset: 1,0
+	FreeActor@INSURG4:
+		Actor: INS2
+		SpawnOffset: 2,1
+	FreeActor@INSURG5:
+		Actor: INS4
+		SpawnOffset: 1,2
+	FreeActor@INSURG6:
+		Actor: IVAN
+		SpawnOffset: 2,2
+	FreeActor@INSURG7:
+		Actor: DOG
+		SpawnOffset: 1,3
+	FreeActor@INSURG8:
+		Actor: DOG
+		SpawnOffset: 3,1
+	RenderSprites:
+		Image: C1
+
+INS2:
+	Inherits: ^WW3Base_Infantry
+	Inherits@WW3I1: ^ArmedCivilian
+	Inherits@WW3I2: ^AutoTargetAllAssaultMove
+	Health:
+		HP: 4000
+	Tooltip:
+		Name: Insurgant
+	Armament@PRIMARY:
+		Weapon: Flamer
+		LocalOffset: 700,0,500
+		FireDelay: 8
+	RenderSprites:
+		Image: C2
+
+INS3:
+	Inherits: ^WW3Base_Infantry
+	Inherits@WW3I1: ^ArmedCivilian
+	Inherits@WW3I2: ^AutoTargetAllAssaultMove
+	Health:
+		HP: 4000
+	Tooltip:
+		Name: Insurgant
+	Armament@PRIMARY:
+		Weapon: M1Carbine
+	WithInfantryBody:
+		Palette: civilian5
+	RenderSprites:
+		Image: C1
+
+INS4:
+	Inherits: ^WW3Base_Infantry
+	Inherits@WW3I1: ^ArmedCivilian
+	Inherits@WW3I2: ^AutoTargetAllAssaultMove
+	Health:
+		HP: 4000
+	Tooltip:
+		Name: Insurgant
+	Armament@PRIMARY:
+		Weapon: BuildingGrenade
+	WithInfantryBody:
+		Palette: civilian4
+	RenderSprites:
+		Image: C1
+
+E1CH:
+	Inherits: ^WW3Base_E1
+	Buildable:
+		Icon: e1ch
+		Prerequisites: ~infantry.china, ~techlevel.infonly
+		Description: Conscripted Infantry.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+	Tooltip:
+		Name: Chinese Conscript
+	Valued:
+		Cost: 90
+	Voiced:
+		VoiceSet: ChinaVoice
+	Health:
+		HP: 4000
+	RenderSprites:
+		Image: e1
+
+HACKER:
+	Inherits: ^Soldier
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 90
+		Prerequisites: ~barr, dome, ~ctek, ~techlevel.high
+		Description: Recovers resources from the internet.\nCan hack enemy buildings.\n	Unarmed
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Hacker
+	TooltipDescription:
+		Description: Garrison in Internet Centre to increase cash output, can shut down enemy power.
+		ValidRelationships: Ally
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 8000
+	Mobile:
+		Voice: Move
+	RevealsShroud:
+		Range: 3c0
+	Passenger:
+		CustomPipType: blue
+		Voice: Move
+		CargoConditions:
+			internet: inside
+	CashTrickler:
+		Interval: 150
+		InitialDelay: 0
+		Amount: 5
+	CashTricklerMultiplier:
+		Modifier: 300
+		RequiresCondition: inside
+	Infiltrates:
+		Types: SpyInfiltrate
+		Notification: BuildingInfiltrated
+		TextNotification: Building infiltrated.
+	WithInfantryBody:
+		IdleSequences: idle
+		DefaultAttackSequence: repair
+		StandSequences: stand
+	Voiced:
+		VoiceSet: ThiefVoice
+	Selectable:
+		Priority: 6
+		PriorityModifiers: Ctrl, Alt
+
+IVAN:
+	Inherits: ^Soldier
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Inherits@WW3I4: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 32
+		Prerequisites: barr, ~ttek, ~techlevel.high
+		Description: Specialist demolition infantry armed with explosives.\n• Strong vs Buildings, Defenses, Light Armor\n• Cannot attack Aircraft\n• Has difficulty hitting moving targets
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: Crazy Ivan
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 7000
+	Mobile:
+		Speed: 66
+		Voice: Move
+	AttackMove:
+		Voice: Move
+	Passenger:
+		Voice: Move
+	Guard:
+		Voice: Move
+	RevealsShroud:
+		Range: 5c0
+	Armament@PRIMARY:
+		Weapon: TNT
+		LocalOffset: 0,0,555
+		FireDelay: 15
+	Armament@Garrison:
+		Name: mounted
+		Weapon: TNT
+		FireDelay: 15
+	TakeCover:
+		ProneOffset: 256,64,-331
+	AttackFrontal:
+		Voice: Attack
+		FacingTolerance: 0
+	WithInfantryBody:
+		DefaultAttackSequence: throw
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		StandSequences: parachute
+		RequiresCondition: parachute
+	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	Voiced:
+		VoiceSet: CrazyIvanVoice
+	RenderSprites:
+		PlayerPalette: cncplayer
+
+MORT:
+	Inherits: ^Soldier
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Inherits@WW3I4: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 50
+		Prerequisites: dome, ~infantry.ukraine, ~techlevel.medium
+		Description: Infantry armed with a Mortar.\n Strong vs Infantry, Buildings,\nWeak Vs Tanks, Aircraft.
+	Valued:
+		Cost: 250
+	Tooltip:
+		Name: Mortar
+	TooltipDescription:
+		Description: Long range Infantry. Elite Bonus: ScatterShot
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 5200
+	Armament@PRIMARY:
+		Weapon: Mortar
+		LocalOffset: 0,0,155
+		FireDelay: 15
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: Mortar
+		FireDelay: 15
+	AttackFrontal:
+		FacingTolerance: 0
+	WithInfantryBody:
+		DefaultAttackSequence: throw
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		StandSequences: parachute
+		RequiresCondition: parachute
+	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: barracks.upgraded
+
+SAB:
+	Inherits: ^Soldier
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Inherits@WW3I4: ^SelectableSupportUnit
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildLimit: 1
+		BuildPaletteOrder: 120
+		Prerequisites: ~barr, ~ttek, ~techlevel.medium
+		Description: Sneak attack unit that carries/n a miniature nuke.\n  Can Disguise.
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Sabotuer
+	TooltipDescription:
+		Description: Can disguise himself, explodes enemy buildings.
+		ValidRelationships: Ally
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 5000
+	RevealsShroud:
+		Range: 5c0
+	Passenger:
+		CustomPipType: blue
+	-TakeCover:
+	WithInfantryBody@PARACHUTE:
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
+	Crushable:
+		WarnProbability: 95
+	Disguise:
+		DisguisedCondition: disguise
+	AutoTarget:
+		InitialStance: HoldFire
+		ScanRadius: 5
+	-WithInfantryBody:
+	WithDisguisingInfantryBody:
+		DefaultAttackSequence: shoot
+		IdleSequences: idle
+		StandSequences: stand
+		RequiresCondition: !parachute
+	WithDisguisingInfantryBody@PARACHUTE:
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
+	WithDecoration@disguise:
+		Position: Top
+		Margin: 0, -6
+		Image: pips
+		Sequence: tag-sab
+		Palette: effect
+		RequiresCondition: disguise
+	IgnoresDisguise:
+	Armament:
+		Weapon: DemoTruckTargeting
+	GrantConditionOnAttack:
+		Condition: triggered
+	KillsSelf:
+		RequiresCondition: triggered
+	AttackFrontal:
+	Mobile:
+		Speed: 68
+	RenderSprites:
+		Image: sab
+
+HOP:
+	Inherits: ^Soldier
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Inherits@WW3I4: ^LightPowerArmour
+	Inherits@WW3I5: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 11
+		Prerequisites: ~grtek, ~infantry.greece, ~techlevel.medium
+		Description: Greek Infantry with light power armour.
+	Valued:
+		Cost: 250
+	Tooltip:
+		Name: Hoplite
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 10000
+	Mobile:
+		Speed: 54
+		Voice: Move
+	RevealsShroud:
+		Range: 5c0
+	Armament@PRIMARY:
+		Weapon: C60mg
+		LocalOffset: 427,0,341
+	Armament@GARRISONED:
+		Name: Garr
+		Weapon: Vulcan
+	-TakeCover:
+	-Crushable:
+	AttackFrontal:
+		Voice: Attack
+		FacingTolerance: 0
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+		IdleSequences: idle, idle2
+		StandSequences: stand, stand2
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		StandSequences: parachute
+		RequiresCondition: parachute
+	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: barracks.upgraded
+	RenderSprites:
+		PlayerPalette: cncplayer
+	Voiced:
+		VoiceSet: WW3GenericVoice
+
+HIP:
+	Inherits: ^WW3Base_Vehicle
+	Inherits@WW3I1: ^GainsExperience
+	Inherits@WW3I2: ^AutoTargetAllAssaultMove
+	RenderSprites:
+		PlayerPalette: cncplayer
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Hippeis
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 31
+		BuildAtProductionType: Soldier
+		Prerequisites: ~grtek, ~infantry.greece
+		Queue: Infantry
+		Description: Greek Modern Cavalry unit\n armed with rockets.
+	Mobile:
+		TurnSpeed: 40
+		Speed: 170
+	Health:
+		HP: 11000
+	Armor:
+		Type: Light
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Armament@PRIMARY:
+		Weapon: APTusk
+		LocalOffset: -128, -170, 170, -128, 170, 170
+		LocalYaw: 100, -100
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: SidewinderAA
+		LocalOffset: -128, -170, 170, -128, 170, 170
+		LocalYaw: 100, -100
+	AttackFrontal:
+		FacingTolerance: 0
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
+HOPF:
+	Inherits: ^Soldier
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Inherits@WW3I4: ^HeavyPowerArmour
+	Inherits@WW3I5: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 71
+		Prerequisites: ~grtek, ftur, ~infantry.greece, ~techlevel.high
+		Description: Medium power armour infantry unit armed \n  with heavy flamer.
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: Hoplite Flamer
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 20000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Speed: 54
+		Voice: Move
+	RevealsShroud:
+		Range: 6c0
+	Armament@PRIMARY:
+		Weapon: HeavyFlamer.Hop
+		LocalOffset: 300,0,300
+	-TakeCover:
+	-Crushable:
+	Targetable:
+		TargetTypes: GroundActor, Vehicle
+	-Targetable@HEAL:
+	Targetable@REPAIR:
+		TargetTypes: Repair
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+		StandSequences: stand
+		IdleSequences: idle, idle2
+		MinIdleDelay: 75
+		MaxIdleDelay: 375
+	RenderSprites:
+		PlayerPalette: cncplayer
+	Voiced:
+		VoiceSet: WW3GenericVoice
+
+SPART:
+	Inherits: ^WW3Base_Vehicle
+	Inherits@WW3I1: ^HeavyPowerArmour
+	Inherits@WW3I2: ^AutoTargetGroundAssaultMove
+	Inherits@WW3I3: ^GainsExperience
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 180
+		Prerequisites: grtek, ~infantry.greece, ~techlevel.high
+		Description: Heavy PowerArmour with an arm cannon\n  and a machine gun.
+	Valued:
+		Cost: 1000
+	Selectable:
+		Bounds: 1024, 1024
+		DecorationBounds: 1024, 1024, 0, -100
+	Tooltip:
+		Name: Spartan Powersuit
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 32000
+	Armor:
+		Type: Light
+	Voiced:
+		VoiceSet: GenericVoice
+	Mobile:
+		TurnSpeed: 40
+		Speed: 54
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	WithMoveAnimation:
+	WithAttackAnimation:
+		Sequence: shoot
+	Armament@PRIMARY:
+		Weapon: M60mg
+		LocalOffset: 400,-220,180
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: mGrenade
+		LocalOffset: 400,220,180
+	AttackFrontal:
+		FacingTolerance: 0
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	WithMuzzleOverlay:
+	Parachutable:
+		FallRate: 130
+	WithIdleAnimation@DESCENDING:
+		RequiresCondition: parachute
+		Interval: 3
+		Sequences: descend
+	-WithParachute:
+	GpsDot:
+		String: Infantry
+	RenderSprites:
+		PlayerPalette: cncplayer
+
+SMNLY:
+	Inherits: ^SelectableSupportUnit
+	Inherits@WW3I1: ^WW3Base_Ship
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 20
+		Prerequisites: ~dome, ~techlevel.naval
+		IconPalette: cnc
+		Description: Minelaying support ship.\nCan detect submarines, mines.\n  Strong vs Naval units\n  Lays seamines \n Mines reload over time.
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: Naval Minelayer
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 20000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 8
+		Speed: 128
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 7c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 5c0
+	Minelayer:
+		Mine: MINS
+		TileUnknownName: build-valid
+		TerrainTypes: Water
+	MineImmune:
+	AmmoPool:
+		Ammo: 5
+	Rearmable:
+		RearmActors: syrdcharger
+	DetectCloaked:
+		DetectionTypes: Underwater, Mine
+		Range: 4c0
+	RenderDetectionCircle:
+	Selectable:
+		DecorationBounds: 1536, 1536
+	Targetable:
+		TargetTypes: WaterActor, Ship, Mine
+	WithAmmoPipsDecoration:
+		Position: TopLeft
+		Margin: 4, 3
+		RequiresSelection: true
+
+NGG:
+	Inherits: ^WW3Base_Ship
+	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Boat
+		BuildPaletteOrder: 20
+		IconPalette: cnc
+		Prerequisites: ~syrd, ~ships.england, ~techlevel.naval, ~techlevel.low
+		Description: Naval Gap Generator.\nGenerates shroud cover at sea.
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Gap Ship
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 20000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 28
+		Speed: 82
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 7c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 5c0
+	WithIdleOverlay@SPINNER:
+		Offset: 512,0,0
+		Sequence: spinner
+	CreatesShroud:
+		Range: 7c0
+	RenderShroudCircle:
+	Selectable:
+		DecorationBounds: 1536, 1536
+
+CA.Prism:
+	Inherits: ^WW3Base_CA
+	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Boat
+		BuildPaletteOrder: 51
+		Prerequisites: ~syrd, ~sptek, ~techlevel.high
+		Description: Very slow long-range ship.\n  Strong vs Buildings, Ground units\n  Weak vs Naval units, Aircraft
+	Tooltip:
+		Name: Prism Cruiser
+	Armament@PRIMARY:
+		Turret: primary
+		Weapon: PrisCLaser
+		LocalOffset: 480,0,40
+		Recoil: 1
+		RecoilRecovery: 1
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Turret: secondary
+		Weapon: PrisCLaser
+		LocalOffset: 480,0,40
+		Recoil: 1
+		RecoilRecovery: 1
+		MuzzleSequence: muzzle	
+
+DD2:
+	Inherits: ^WW3Base_Ship
+	Inherits@WW3I1: ^AutoTargetAllAssaultMove
+	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Boat
+		BuildPaletteOrder: 40
+		Prerequisites: ~syrd, ~etek, ~techlevel.naval
+		IconPalette: chrometd
+		Description: Advanced warship\n armed with an array\n of weaponry.\n  Strong vs Naval, Ground, Aircraft
+	Valued:
+		Cost: 1900
+	Tooltip:
+		Name: Frigate
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 60000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 20
+		Speed: 70
+	RevealsShroud:
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 5c0
+	WithIdleOverlay@SPINNER:
+		Sequence: spinner
+		Offset: -90,0,406
+	Turreted@PRIMARY:
+		Turret: primary
+		TurnSpeed: 6
+		Offset: 700,0,58
+	Turreted@AA:
+		Turret: secondary
+		InitialFacing: 512
+		TurnSpeed: 40
+		Offset: -700,0,158
+	Armament@AA:
+		Turret: secondary
+		Weapon: FLAK-23-AA
+		Recoil: 85
+		LocalOffset: -758,0,158
+		MuzzleSequence: muzzle
+	Armament@PRIMARY:
+		Turret: primary
+		Weapon: 130mm
+		LocalOffset: 800,20,30, 800,-20,30
+		Recoil: 40
+		RecoilRecovery: 0
+		MuzzleSequence: muzzle
+	Armament@SUB:
+		Weapon: DepthCharge
+		LocalOffset: 500,250,60, -500,-250,60
+		LocalYaw: 80, -80
+	AttackTurreted:
+		Turrets: primary, secondary
+	SelectionDecorations:
+	AutoTarget:
+	WithSpriteTurret@PRIMARY:
+		Turret: primary
+	WithSpriteTurret@AA:
+		Turret: secondary
+		Sequence: turret2
+	WithMuzzleOverlay:
+	DetectCloaked:
+		DetectionTypes: Cloak, Underwater
+		Range: 5c0
+	RenderDetectionCircle:
+	Selectable:
+		DecorationBounds: 1621, 1621
+
+SEAM:
+	Inherits: ^WW3Base_SS
+	Inherits@WW3I1: ^AutoTargetGround
+	Inherits@WW3I2: ^AutoTargetAllAssaultMove
+	Tooltip:
+		Name: Sea Mammoth
+	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Submarine
+		BuildPaletteOrder: 62
+		Prerequisites: ~spen, ~rtek, ~techlevel.naval
+		Description: Larger Slower Submarine/n with double torpedoes and /n mammoth tusk missiles.
+	Health:
+		HP: 95000
+	Valued:
+		Cost: 2200
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 10
+		Speed: 40
+	Cloak:
+		CloakDelay: 80
+	ChangesHealth:
+		Step: 100
+		Delay: 3
+		StartIfBelow: 50
+		DamageCooldown: 150
+	Armament@PRIMARY:
+		Weapon: TorpTube
+		LocalOffset: 200,300,60
+		FireDelay: 2
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: TorpTube
+		LocalOffset: 200,-300,60
+		FireDelay: 10
+	Armament@TERTIARY:
+		Weapon: MammothTusk
+		LocalOffset: 85,284,340, 85,-284,340
+		LocalYaw: -100,100
+		MuzzleSequence: muzzle
+	RenderSprites:
+		Image: seam
+
+HOVHARV:
+	Inherits: ^WW3Base_HARV
+	Inherits@WW3I1: ^IsHoverTank
+	Tooltip:
+		Name: Hover Ore Truck
+		GenericName: Harvester
+	Buildable:
+		BuildPaletteOrder: 102
+		Prerequisites: ~vehicles.spain, ~techlevel.high
+		Description: Ore Truck with anti-grav drivetrain.
+	Mobile:
+		Speed: 77
+		Locomotor: hover
+	WithHarvesterSpriteBody:
+		ImageByFullness: hovharv, hovharv, hovharv
+	RenderSprites:
+		Image: hovharv
+	SpawnActorOnDeath:
+		RequiresCondition: !onwater
+
+2TNK.HOV:
+	Inherits: ^WW3Base_2TNK
+	Inherits@WW3I1: ^IsHoverTank
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 225
+		Prerequisites: ~sptek, ~techlevel.medium
+		Description: Spanish Hover Tank.\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
+	Valued:
+		Cost: 950
+	Tooltip:
+		Name: Hover Tank
+		GenericName: Tank
+	Mobile:
+		Locomotor: hover
+		TurnsWhileMoving: True
+		Speed: 76
+	MineImmune:
+	TooltipDescription:
+		Description: Hover tech equipped Medium Tank. Cannot crush walls.
+
+HOWI:
+	Inherits: ^WW3Base_ARTY
+	RenderSprites:
+		Image: ww3howi
+		PlayerPalette: cncplayer
+	Tooltip:
+		Name: Howitzer
+	Buildable:
+		BuildPaletteOrder: 231
+		Prerequisites: dome, ~vehicles.usa, ~techlevel.medium
+	-AttackFrontal:
+	AttackTurreted:
+	Turreted:
+		TurnSpeed: 18
+	Armament:
+		Weapon: 155mm
+	Mobile:
+		Speed: 64
+		TurnSpeed: 18
+	WithSpriteTurret:
+
+HUMM:
+	Inherits: ^WW3Base_Vehicle
+	Inherits@WW3I1: ^GainsExperience
+	Inherits@WW3I2: ^AutoTargetGroundAssaultMove
+	Inherits@WW3I3: ^CargoPips
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 130
+		Prerequisites: ~vehicles.usa, ~techlevel.low
+		Description: Fast scout & anti-infantry vehicle.\nCan carry 4 infantry.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Humvee
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 15000
+	Armor:
+		Type: Light
+	Mobile:
+		TurnSpeed: 40
+		Speed: 170
+		PauseOnCondition: notmobile || being-captured
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 8c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 40
+		Offset: 0,0,128
+	Armament:
+		Weapon: M60mg
+		MuzzleSequence: muzzle
+		LocalOffset: 128,0,43
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	Cargo:
+		Types: Infantry
+		MaxWeight: 4
+		LoadingCondition: notmobile
+	DetectCloaked:
+		Range: 3c0
+		DetectionTypes: Mine
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Voiced:
+		VoiceSet: USAVoice
+	RenderSprites:
+		PlayerPalette: cncplayer
+
+RTNK:
+	Inherits: ^TrackedVehicle
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^GainsExperience
+	Inherits@WW3I5: ^AutoTargetGroundAssaultMove
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 240
+		Prerequisites: fix, ~ftek, ~techlevel.medium
+		Description: French Stealth Tank.\n Cloaks.\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
+	Valued:
+		Cost: 1100
+	Tooltip:
+		Name: Mirage Tank
+		GenericName: Tank
+	TooltipDescription:
+		Description: Elite Rank bonus: Fire while cloaked
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 47000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Speed: 75
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 15
+	Armament:
+		Weapon: 90mmHEAT
+		Recoil: 128
+		RecoilRecovery: 38
+		LocalOffset: 720,0,80
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: RTNK.Husk
+	Cloak@Standard:
+		InitialDelay: 105
+		CloakDelay: 175
+		CloakSound: appear1.aud
+		IsPlayerPalette: true
+		UncloakSound: appear1.aud
+		RequiresCondition: !rank-elite
+		PauseOnCondition: cloak-force-disabled
+	Cloak@Elite:
+		UncloakOn: Dock
+		CloakDelay: 105
+		CloakSound: appear1.aud
+		IsPlayerPalette: true
+		UncloakSound: appear1.aud
+		RequiresCondition: rank-elite
+		PauseOnCondition: cloak-force-disabled
+	GrantConditionOnDamageState@UNCLOAK:
+		Condition: cloak-force-disabled
+		ValidDamageStates: Critical
+	SelectionDecorations:
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+	Voiced:
+		VoiceSet: MirageVoice
+
+RTNK.Husk:
+	Inherits: ^WW3Base_Husk
+	Tooltip:
+		Name: Husk (Mirage Tank)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: rtnk
+	InfiltrateForTransform:
+		IntoActor: rtnk
+	RenderSprites:
+		Image: rtnk.destroyed
+
+PANZER:
+	Inherits: ^TrackedVehicle
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^GainsExperience
+	Inherits@WW3I5: ^AutoTargetGroundAssaultMove
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		IconPalette: cnc
+		BuildPaletteOrder: 222
+		Prerequisites: fix, ~vehicles.germany, ~techlevel.medium
+		Description: German Main Battle Tank.\n  Strong vs Vehicles, Infantry\n  Weak vs Aircraft
+	Valued:
+		Cost: 850
+	Tooltip:
+		Name: Panzer Tank
+		GenericName: Tank
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 45000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Speed: 85
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 5
+	Armament@PRIMARY:
+		Weapon: P90mm
+		Recoil: 128
+		RecoilRecovery: 38
+		LocalOffset: 720,0,80
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Weapon: P60mg
+		LocalOffset: 720,0,80
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	Voiced:
+		VoiceSet: PanzerVoice
+	SpawnActorOnDeath:
+		Actor: PANZER.Husk
+	SelectionDecorations:
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+	RenderSprites:
+		Image: panzer
+
+PANZER.Husk:
+	Inherits: ^WW3Base_Husk
+	Tooltip:
+		Name: Husk (Panzer Tank)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: panzer
+	InfiltrateForTransform:
+		IntoActor: panzer
+	RenderSprites:
+		Image: panzer.destroyed
+
+GRIZZ:
+	Inherits: ^TrackedVehicle
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^GainsExperience
+	Inherits@WW3I5: ^AutoTargetAllAssaultMove
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 221
+		Prerequisites: fix, ~vehicles.usa, ~techlevel.medium
+		Description: USA Main Battle Tank.\n  Strong vs Vehicles\n  Weak vs Infantry
+	Valued:
+		Cost: 850
+	Mobile:
+		Speed: 82
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 45000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Tooltip:
+		Name: Grizzly Tank
+		GenericName: Tank
+	Armament:
+		Weapon: 90mm
+		Recoil: 100
+		RecoilRecovery: 30
+		LocalOffset: 720,0,80
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Weapon: RedEye
+		LocalOffset: 420,10,90
+	Turreted:
+		TurnSpeed: 22
+		Offset: 10,0,0
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	Voiced:
+		VoiceSet: USAVoice
+	SpawnActorOnDeath:
+		Actor: Grizz.Husk
+	SelectionDecorations:
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
+Grizz.Husk:
+	Inherits: ^WW3Base_Husk
+	Tooltip:
+		Name: Husk (Grizzly Tank)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: grizz
+	InfiltrateForTransform:
+		IntoActor: grizz
+	RenderSprites:
+		Image: grizz.destroyed
+
+PTNK:
+	Inherits: ^TrackedVehicle
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^GainsExperience
+	Inherits@WW3I5: ^AutoTargetGroundAssaultMove
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 231
+		BuildDuration: 1450
+		Prerequisites: dome, pris, ~vehicles.spain, ~techlevel.high
+		Description: Medium-range artillery with Prism weapon.\n  Strong vs Buildings, Defenses, Infantry, Light Armor\n  Weak vs Tanks, Aircraft
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Prism Tank
+		GenericName: Tank
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 12000
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 82
+		Voice: Move
+	Passenger:
+		Voice: Move
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 5
+		Offset: 100,0,0
+	Armament:
+		Weapon: PrisTLaser
+		LocalOffset: 100,0,180
+	AttackTurreted:
+		TargetFrozenActors: True
+		OpportunityFire: False
+		Voice: Attack
+	WithSpriteTurret:
+	WithMuzzleOverlay:
+	SpawnActorOnDeath:
+		Actor: PTNK.Husk
+	Voiced:
+		VoiceSet: PrismVoice
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+
+PTNK.Husk:
+	Inherits: ^WW3Base_Husk
+	Tooltip:
+		Name: Husk (Prism Tank)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: ptnk
+	InfiltrateForTransform:
+		IntoActor: ptnk
+	RenderSprites:
+		Image: ptnk.destroyed
+
+PCAN:
+	Inherits: PTNK
+	Buildable:
+		BuildPaletteOrder: 231
+		Prerequisites: pris, sptek, ~vehicles.spain, ~techlevel.high
+		Description: A prototype long-range artillery that\n fires highly focused beams of light.\n Strong Vs Buildings.
+	Tooltip:
+		Name: Prism Cannon
+	Mobile:
+		Speed: 60
+		TurnSpeed: 12
+		Locomotor: hover
+	Armament:
+		Weapon: PrisCLaser
+		LocalOffset: 450,0,180
+	SpawnActorOnDeath:
+		Actor: PCAN.Husk
+	Turreted:
+		TurnSpeed: 12
+		Offset: 0,0,100
+
+PCAN.Husk:
+	Inherits: ^WW3Base_Husk
+	Tooltip:
+		Name: Husk (Prism Cannon)
+	TransformOnCapture:
+		IntoActor: pcan
+	InfiltrateForTransform:
+		IntoActor: pcan
+	RenderSprites:
+		Image: pcan.destroyed
+
+IFV:
+	Inherits: ^TrackedVehicle
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^AutoTargetAllAssaultMove
+	Inherits@WW3I5: ^CargoPips
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 120
+		BuildDuration: 670
+		Prerequisites: dome, ~vehicles.allies, ~techlevel.medium
+		Description: Adaptable infantry transport.\n• Weapon and ability changes dependant on Occupant\n  Special Ability: Transform
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Empty IFV
+		RequiresCondition: !ifv-rifle && !ifv-grenadier && !ifv-rocket && !ifv-flame && !ifv-spy && !ifv-sniper && !ifv-medic && !ifv-mechanic && !ifv-chrono && !ifv-tesla
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Mobile:
+		Speed: 158
+		PauseOnCondition: being-captured
+	Turreted:
+		TurnSpeed: 40
+		Offset: 20,0,0
+	AttackTurreted:
+	WithMuzzleOverlay:
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 8c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Armor:
+		Type: Light
+	Health:
+		HP: 26000
+	Cargo:
+		Types: Infantry
+		MaxWeight: 1
+		InitialUnits: e1
+		PassengerConditions:
+			e1: ifv-rifle
+			e1gi: ifv-rifle
+			e1ch: ifv-rifle
+			e1r1: ifv-rifle
+			e2: ifv-grenadier
+			ivan: ifv-grenadier
+			mort: ifv-grenadier
+			e3: ifv-rocket
+			e3r1: ifv-rocket
+			e4: ifv-flame
+			spy: ifv-spy
+			spy.england: ifv-spy
+			sniper: ifv-sniper
+			e7: ifv-sniper
+			rmbo: ifv-sniper
+			medi: ifv-medic
+			genmedi: ifv-medic
+			mech: ifv-mechanic
+			thf: ifv-spy
+			shok: ifv-tesla
+			e13: ifv-chrono
+	Armament@rifle:
+		Weapon: m60mg
+		LocalOffset: 128,0,43
+		RequiresCondition: ifv-rifle
+	Tooltip@rifleman:
+		Name: Assault IFV
+		RequiresCondition: ifv-rifle
+	WithSpriteTurret@gun:
+		RequiresCondition: ifv-rifle
+		Sequence: turret3
+	Armament@chrono:
+		Weapon: ChronoHandGun
+		LocalOffset: 128,0,43
+		RequiresCondition: ifv-chrono
+	WithSpriteTurret@chrono:
+		RequiresCondition: ifv-chrono
+		Sequence: turret9
+	PortableChrono:
+		ChargeDelay: 250
+		KillCargo: False
+		RequiresCondition: ifv-chrono
+	Tooltip@chrono:
+		Name: Chrono IFV
+		RequiresCondition: ifv-chrono
+	Armament@rocketAA:
+		Weapon: SidewinderAA
+		LocalOffset: 128,0,43
+		RequiresCondition: ifv-rocket
+	Armament@rocketAG:
+		Weapon: APTusk
+		LocalOffset: 128,0,43
+		RequiresCondition: ifv-rocket
+	Tooltip@rocket:
+		Name: Rocket IFV
+		RequiresCondition: ifv-rocket
+	WithSpriteTurret@samturr2:
+		RequiresCondition: ifv-rocket
+		Sequence: turret2
+	Armament@medic:
+		Weapon: mHeal
+		Cursor: heal
+		OutsideRangeCursor: heal
+		TargetRelationships: Ally
+		RequiresCondition: ifv-medic
+	Tooltip@medic:
+		Name: Ambulance IFV
+		RequiresCondition: ifv-medic
+	WithDecoration@REDCROSS:
+		Image: pips
+		Sequence: medic
+		Position: BottomRight
+		RequiresCondition: ifv-medic
+	Armament@mechanic:
+		Weapon: mRepair
+		Cursor: repair
+		OutsideRangeCursor: repair
+		TargetRelationships: Ally
+		RequiresCondition: ifv-mechanic
+	WithSpriteTurret@mech:
+		RequiresCondition: ifv-mechanic
+		Sequence: turret6
+	ChangesHealth@mechanic:
+		Step: 10
+		Delay: 50
+		StartIfBelow: 100
+		DamageCooldown: 150
+		RequiresCondition: ifv-mechanic
+	Tooltip@mechanic:
+		Name: Repair IFV
+		RequiresCondition: ifv-mechanic
+	DetectCloaked@spy:
+		DetectionTypes: Cloak
+		RequiresCondition: ifv-spy
+	Tooltip@spy:
+		Name: Stealth IFV
+		RequiresCondition: ifv-spy
+	Cloak:
+		InitialDelay: 25
+		CloakDelay: 175
+		CloakSound: appear1.aud
+		UncloakSound: appear1.aud
+		IsPlayerPalette: true
+		PauseOnCondition: cloak-force-disabled
+		RequiresCondition: ifv-spy
+	GrantConditionOnDamageState@UNCLOAK:
+		Condition: cloak-force-disabled
+		ValidDamageStates: Critical
+	WithIdleOverlay@SPINNER:
+		Sequence: spinner
+		PauseOnCondition: cloak-force-disabled
+		RequiresCondition: ifv-spy
+		Offset: 0,0,200
+	Armament@sniper:
+		Weapon: mSniper
+		LocalOffset: 128,0,43
+		RequiresCondition: ifv-sniper
+	Tooltip@sniper:
+		Name: Sniper IFV
+		RequiresCondition: ifv-sniper
+	WithSpriteTurret@snip:
+		Sequence: turret11
+		RequiresCondition: ifv-sniper
+	Armament@grenadier:
+		Weapon: mGrenade
+		LocalOffset: 128,0,43
+		RequiresCondition: ifv-grenadier
+	WithSpriteTurret@gren:
+		Sequence: turret8
+		RequiresCondition: ifv-grenadier
+	Tooltip@grenadier:
+		Name: Grenade IFV
+		RequiresCondition: ifv-grenadier
+	Armament@flamer:
+		Weapon: Flamer
+		LocalOffset: 128,0,43
+		RequiresCondition: ifv-flame
+	Tooltip@flamer:
+		Name: Flame IFV
+		RequiresCondition: ifv-flame
+	WithSpriteTurret@flamer:
+		Sequence: turret5
+		RequiresCondition: ifv-flame
+	Armament@shock:
+		Weapon: WW3TTankZap
+		LocalOffset: 128,0,43
+		RequiresCondition: ifv-tesla
+	Tooltip@shock:
+		Name: Tesla IFV
+		RequiresCondition: ifv-tesla
+	WithIdleOverlay@TESLA:
+		Sequence: tesla
+		RequiresCondition: ifv-tesla
+	GrantCondition@customautotarget:
+		RequiresCondition: ifv-medic || ifv-mechanic || ifv-sniper
+		Condition: customautotarget
+	AutoTargetPriority@ATTACKANYTHING:
+		RequiresCondition: stance-attackanything || assault-move && !customautotarget
+	AutoTargetPriority@INCLUDEAIR:
+		ValidTargets: AirborneActor
+		InvalidTargets: NoAutoTarget
+		RequiresCondition: ifv-rocket
+	AutoTargetPriority@MEDICORSNIPERORTANYA:
+		ValidTargets: Infantry
+		InvalidTargets: NoAutoTarget
+		RequiresCondition: ifv-medic || ifv-sniper
+	AutoTargetPriority@MECHANIC:
+		ValidTargets: Vehicle, Tank
+		InvalidTargets: NoAutoTarget
+		RequiresCondition: ifv-mechanic
+
+TNKD:
+	Inherits: ^TrackedVehicle
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^GainsExperience
+	Inherits@WW3I5: ^AutoTargetGroundAssaultMove
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 240
+		Prerequisites: fix, ~gtek, ~techlevel.high
+		Description: Mobile anti-armor platform, sporting a big gun\n Strong vs Tanks, Vehicles\n Weak vs Infantry, Aircraft
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: Tank Destroyer
+		GenericName: Tank
+	TooltipDescription:
+		Description: Weapon Upgrades with each rank.
+		ValidRelationships: Ally
+	Health:
+		HP: 67000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 12
+		Speed: 74
+	RevealsShroud:
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Armament:
+		Weapon: 130mm
+		LocalOffset: 720,0,90
+		MuzzleSequence: muzzle
+		RequiresCondition: !rank-veteran == 1 || !rank-veteran == 2 || !rank-veteran == 3 || !rank-elite
+	Armament@rank1:
+		Weapon: Railgun
+		LocalOffset: 720,0,90
+		MuzzleSequence: muzzle2
+		RequiresCondition: rank-veteran == 1 || rank-veteran == 2
+	Armament@rank2:
+		Weapon: TitanRailgun
+		LocalOffset: 720,0,90
+		MuzzleSequence: muzzle2
+		RequiresCondition: rank-veteran == 3 || rank-elite
+	AttackFrontal:
+		FacingTolerance: 0
+	WithMuzzleOverlay:
+	Voiced:
+		VoiceSet: TnkdVoice
+	SpawnActorOnDeath:
+		Actor: TNKD.Husk
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+
+TNKD.Husk:
+	Inherits: ^WW3Base_Husk
+	Tooltip:
+		Name: Tank Destroyer (Destroyed)
+	TransformOnCapture:
+		IntoActor: tnkd
+	InfiltrateForTransform:
+		IntoActor: tnkd
+	RenderSprites:
+		Image: tnkd.destroyed
+
+BATF:
+	Inherits: ^TrackedVehicle
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^CargoPips
+	Inherits@WW3I5: ^GainsExperience
+	Inherits@WW3I6: ^AutoTargetAllAssaultMove
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 321
+		Prerequisites: fix, ~etek, ~techlevel.high
+		Description: Heavily-armored fortress on wheels, armed with multiple turrets.\nMust be manned to fire.\nCan crush concrete walls \n Strong vs Everything\n Weak vs Nothing
+	Valued:
+		Cost: 2100
+	Tooltip:
+		Name: Battle Fortress
+	TooltipDescription:
+		Description: Must be manned to fire. Carries 8 Passengers.
+		ValidRelationships: Ally
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 100000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Locomotor: sheavytracked
+		Speed: 50
+		Voice: Move
+	Cargo:
+		Types: Infantry
+		MaxWeight: 8
+		InitialUnits: e1, e1, e3, mech
+		LoadedCondition: loaded
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	AttackTurreted:
+		Turrets: primary, secondary, tertiary
+		Armaments: primary, secondary, tertiary
+		Voice: Attack
+	Armament@PRIMARY:
+		Name: primary
+		Turret: primary
+		Weapon: 130mm
+		LocalOffset: 200,0,300
+		RequiresCondition: loaded
+	Armament@SECONDARY:
+		Name: secondary
+		Turret: secondary
+		Weapon: 130mm
+		FireDelay: 8
+		LocalOffset: 200,0,300
+		RequiresCondition: loaded
+	Armament@TERTIARY:
+		Name: tertiary
+		Turret: tertiary
+		Weapon: ApocalypseTusk
+		LocalOffset: -200,0,300
+		MuzzleSequence: muzzle
+		RequiresCondition: loaded
+	Turreted@PRIMARY:
+		Turret: primary
+		Offset: 200,-300,0
+		TurnSpeed: 3
+	Turreted@SECONDARY:
+		Turret: secondary
+		Offset: 200,300,0
+		TurnSpeed: 3
+	Turreted@TERTIARY:
+		Turret: tertiary
+		Offset: -300,0,358
+		TurnSpeed: 4
+	WithMuzzleOverlay:
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1877, 1621, 0, -170
+	Voiced:
+		VoiceSet: BattleFortressVoice
+	ChangesHealth:
+		Step: 100
+		Delay: 3
+		StartIfBelow: 50
+		DamageCooldown: 150
+	WithSpriteTurret@PRIMARY:
+		Turret: primary
+	WithSpriteTurret@SECONDARY:
+		Turret: secondary
+	WithSpriteTurret@TERTIARY:
+		Turret: tertiary
+		Sequence: turret2
+	SpawnActorOnDeath:
+		Actor: BATF.Husk
+	Capturable:
+
+BATF.Husk:
+	Inherits: ^WW3Base_Husk
+	Tooltip:
+		Name: Husk (Battle Fortress)
+	TransformOnCapture:
+		IntoActor: batf
+	InfiltrateForTransform:
+		IntoActor: batf
+	RenderSprites:
+		Image: batf.destroyed
+
+3TNK.china:
+	Inherits: ^WW3Base_3TNK
+	Buildable:
+		Prerequisites: fix, ~vehicles.china, ~techlevel.medium
+		Description: China Main Battle Tank, with dual cannons\n made cheaper at the cost of quality.\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
+	Valued:
+		Cost: 950
+	Tooltip:
+		Name: China Heavy Tank
+		GenericName: Tank
+	TooltipDescription:
+		Description: Elite Rank bonus: Flamer
+	Health:
+		HP: 47000
+	Mobile:
+		Speed: 65
+	Armament@standard:
+		Turret: primary
+		Weapon: 105mm
+		Recoil: 128
+		RecoilRecovery: 38
+		LocalOffset: 968,85,90, 968,-85,90
+		MuzzleSequence: muzzle
+		RequiresCondition: !rank-elite
+	Turreted@Primary:
+		Turret: primary
+		TurnSpeed: 20
+		Offset: 200,0,5
+	Armament@EliteMain:
+		Turret: primary
+		Weapon: 120mm
+		Recoil: 128
+		RecoilRecovery: 28
+		LocalOffset: 968,85,90, 968,-85,90
+		MuzzleSequence: muzzle
+		RequiresCondition: rank-elite
+	Armament@EliteAP:
+		Turret: secondary
+		Weapon: Flamer.Tank
+		LocalOffset: 420,0,190
+		RequiresCondition: rank-elite
+	WithSpriteTurret@Elite:
+		Turret: secondary
+		RequiresCondition: rank-elite
+		Sequence: turret2
+	Turreted@Secondary:
+		Turret: secondary
+		Offset: 100,0,120
+		TurnSpeed: 30
+	Voiced:
+		VoiceSet: ChinaVoice
+	RenderSprites:
+		Image: 3tnkc
+
+LASHER:
+	Inherits: ^TrackedVehicle
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^GainsExperience
+	Inherits@WW3I5: ^AutoTargetGroundAssaultMove
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 220
+		Prerequisites: fix, ~vehicles.turkey, ~techlevel.medium
+		Description: Turkey Main Battle Tank\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
+	Valued:
+		Cost: 950
+	Tooltip:
+		Name: Lasher Tank
+		GenericName: Tank
+	TooltipDescription:
+		Description: Elite Rank bonus: Twin Cannon
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 50000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Speed: 70
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 20
+	Armament:
+		Weapon: 90mm
+		Recoil: 128
+		RecoilRecovery: 38
+		LocalOffset: 768,0,90
+		MuzzleSequence: muzzle
+		RequiresCondition: !rank-elite
+	Turreted@Primary:
+		Turret: primary
+		TurnSpeed: 20
+	Armament@EliteMain:
+		Turret: secondary
+		Weapon: 105mm
+		Recoil: 128
+		RecoilRecovery: 28
+		LocalOffset: 768,85,90, 768,-85,90
+		MuzzleSequence: muzzle
+		RequiresCondition: rank-elite
+	WithSpriteTurret@Elite:
+		Turret: secondary
+		RequiresCondition: rank-elite
+		Sequence: turret2
+	Turreted@Secondary:
+		Turret: secondary
+		TurnSpeed: 30
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	Voiced:
+		VoiceSet: TurkVoice
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
+SCUDL:
+	Inherits: ^WW3Base_Vehicle
+	Inherits@WW3I1: ^GainsExperience
+	Inherits@WW3I2: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 230
+		Prerequisites: dome, ~vehicles.turkey, ~techlevel.medium
+		Description: Long-range rocket artillery.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: Scud Launcher
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 20000
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 70
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Armament:
+		Weapon: SCUDMISS
+		ReloadingCondition: reloading
+	AutoTarget:
+		ScanRadius: 11
+	AttackFrontal:
+		TargetFrozenActors: True
+		ForceFireIgnoresActors: True
+		FacingTolerance: 0
+	WithFacingSpriteBody:
+		RequiresCondition: !reloading
+		Name: loaded
+	WithFacingSpriteBody@EMPTY:
+		RequiresCondition: reloading
+		Sequence: empty-idle
+		Name: reloading
+	Voiced:
+		VoiceSet: SCUDLauncherVoice
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
+MSAR:
+	Inherits: ^WW3Base_Vehicle
+	Inherits@WW3I1: ^SelectableSupportUnit
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 239
+		IconPalette: chrometd
+		Prerequisites: weap, ~vehicles.soviet, ~techlevel.medium
+		BuildDurationModifier: 50
+		Description: Listening Post.\n When deployed, provides radar and increases nearby vehicle view range.\n Detects cloaked units.\n Unarmed
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Mobile Sensor Array
+		RequiresCondition: !deployed
+	TooltipDescription:
+		Description: Deploy to become Listening post. Can detect cloaked units.
+		ValidRelationships: Ally
+	Tooltip@DEPLOYED:
+		Name: Listening Post
+		RequiresCondition: deployed
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 22000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Speed: 82
+		RequireForceMoveCondition: !undeployed
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+		RequiresCondition: undeployed
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+		RequiresCondition: undeployed
+	RevealsShroud@DEPLOYED:
+		RequiresCondition: !undeployed
+		Range: 20c0
+	Repairable:
+		RequireForceMoveCondition: !undeployed
+	Passenger:
+		RequireForceMoveCondition: !undeployed
+	GrantCondition@PREVIEWWORKAROUND:
+		Condition: real-actor
+	WithMakeAnimation:
+		BodyNames: deployedbody
+	WithSpriteBody@deployed:
+		Sequence: idle-static
+		RequiresCondition: !undeployed && real-actor
+		Name: deployedbody
+	WithFacingSpriteBody:
+		RequiresCondition: !deployed
+	GrantConditionOnDeploy:
+		PauseOnCondition: being-captured
+		DeployedCondition: deployed
+		UndeployedCondition: undeployed
+		Facing: 165
+		AllowedTerrainTypes: Clear, Road, Rough, Ore, Gems
+		DeploySounds: placbldg.aud
+		UndeploySounds: audio/clicky1.aud
+		UndeployOnMove: true
+		UndeployOnPickup: true
+	DetectCloaked@Deployed:
+		Range: 10c0
+		DetectionTypes: Cloak, Underwater, Mine
+		RequiresCondition: deployed
+	IgnoresDisguise:
+	RenderDetectionCircle:
+		TrailCount: 3
+	GpsDot:
+		String: Communications
+	Selectable:
+		DecorationBounds: 1280, 1280
+	Voiced:
+		VoiceSet: ListeningOutpostVoice
+	ProximityExternalCondition@Bino:
+		Condition: bino
+		Range: 15c0
+		EnableSound: bits/dsaping1.aud
+		AffectsParent: False
+		RequiresCondition: deployed
+	Targetable:
+		TargetTypes: GroundActor, Vehicle, C4
+	RenderSprites:
+		PlayerPalette: playertd
+	WithDamageOverlay:
+		Image: smoke_mtd
+
+KATY:
+	Inherits: ^WW3Base_Vehicle
+	Inherits@WW3I1: ^GainsExperience
+	Inherits@WW3I2: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 171
+		IconPalette: chrometd
+		Prerequisites: ~vehicles.turkey, ~techlevel.medium
+		Description: Long-range rocket artillery.\n• Strong vs Buildings, Defenses, Infantry, Light Armor\n• Cannot attack Aircraft\n• Has difficulty hitting moving targets
+	Valued:
+		Cost: 700
+	Tooltip:
+		Name: Katyusha
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 15000
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 49
+		TurnSpeed: 14
+	RevealsShroud:
+		Range: 5c0
+	Armament@PRIMARY:
+		Weapon: KatyushaRockets
+		LocalOffset: 268,-100,440
+	Armament@SECONDARY:
+		Weapon: KatyushaRocketsWide
+		LocalOffset: 268,100,440
+		FireDelay: 6
+	AttackFrontal:
+		TargetFrozenActors: True
+		ForceFireIgnoresActors: True
+		FacingTolerance: 0
+	Voiced:
+		VoiceSet: TurkVoice
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+
+GTNK:
+	Inherits: ^VoicesSelector
+	Inherits@WW3I1: ^TrackedVehicle
+	Inherits@WW3I2: ^Stealthable
+	Inherits@WW3I3: ^AffectsPROC
+	Inherits@WW3I4: ^PropagandaVeh
+	Inherits@WW3I5: ^GainsExperience
+	Inherits@WW3I6: ^AutoTargetAllAssaultMove
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 210
+		Prerequisites: dome, ~vehicles.china, ~techlevel.low
+		Description: Gattling Tank armed with heavy machine gun\n  Strong vs Aircraft,Infantry\n  Weak vs Tanks
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: GatlingTank
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 20000
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 110
+		Locomotor: wheeled
+		PauseOnCondition: being-captured
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Armament@AA:
+		Name: primary
+		Weapon: VulcanAA
+		Recoil: 85
+		RecoilRecovery: 25
+		LocalOffset: 508,0,90
+		MuzzleSequence: muzzle
+	GrantConditionOnAttack@AA:
+		ArmamentNames: primary
+		Condition: attacking-air
+		RequiredShotsPerInstance: 1,2,4
+		MaximumInstances: 3
+		RevokeDelay: 40
+		RevokeOnNewTarget: False
+		RevokeAll: True
+		RequiresCondition: !attacking-ground
+	Armament@inf:
+		Name: secondary
+		Weapon: Vulcan
+		Recoil: 85
+		RecoilRecovery: 25
+		LocalOffset: 508,0,90
+		MuzzleSequence: muzzle
+	GrantConditionOnAttack@GROUND:
+		ArmamentNames: secondary
+		Condition: attacking-ground
+		RequiredShotsPerInstance: 1,4
+		MaximumInstances: 2
+		RevokeDelay: 40
+		RevokeOnNewTarget: False
+		RevokeAll: True
+		RequiresCondition: !attacking-air
+	Turreted:
+		Offset: 10,0,20
+		TurnSpeed: 38
+	AttackTurreted:
+	WithSpriteTurret@AA:
+		RequiresCondition: !attacking-ground
+	WithSpriteTurret@GROUND:
+		Sequence: turret2
+		RequiresCondition: attacking-ground
+	WithMuzzleOverlay:
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Voiced:
+		VoiceSet: GenericVoice
+		RequiresCondition: Vanilla
+	Voiced@China:
+		VoiceSet: ChinaVoice
+		RequiresCondition: IAMCHINESE
+	Voiced@USA:
+		VoiceSet: USAVoice
+		RequiresCondition: IAMAMERICAN
+	Voiced@Turkey:
+		VoiceSet: TurkVoice
+		RequiresCondition: IAMTURK
+	SpawnActorOnDeath:
+		Actor: GTNK.Husk
+
+GTNK.Husk:
+	Inherits: ^WW3Base_Husk
+	Tooltip:
+		Name: Husk (Gatling Tank)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: gtnk
+	InfiltrateForTransform:
+		IntoActor: gtnk
+	RenderSprites:
+		Image: gtnk.destroyed
+		PlayerPalette: cncplayer
+
+MSAM:
+	Inherits: ^TrackedVehicle
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^GainsExperience
+	Inherits@WW3I5: ^AutoTargetAllAssaultMove
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 131
+		Prerequisites: ~dome, ~vehicles.russia, ~techlevel.high
+		Description: Mobile Anti Air Rocket Launcher.\n  Strong vs Aircraft\n  Weak vs Infantry, Tanks
+		IconPalette: cnc
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: Mobile SAM
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Health:
+		HP: 35000
+	Armor:
+		Type: Light
+	Armament:
+		Weapon: MobileNike
+		LocalOffset: 213,128,0, 213,-128,0
+		RequiresCondition: !rank-elite
+	Armament@RANKUP:
+		Weapon: Nike
+		LocalOffset: 213,128,0, 213,-128,0
+		RequiresCondition: rank-elite
+	Mobile:
+		Speed: 95
+		TurnSpeed: 8
+	AttackTurreted:
+	Turreted:
+		TurnSpeed: 20
+	WithSpriteTurret:
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+	SpawnActorOnDeath:
+		Actor: MSAM.Husk
+
+MSAM.Husk:
+	Inherits: ^WW3Base_Husk
+	Tooltip:
+		Name: Husk (Mobile SAM)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: msam
+	InfiltrateForTransform:
+		IntoActor: msam
+	RenderSprites:
+		PlayerPalette: cncplayer
+		Image: msam.destroyed
+
+BTR:
+	Inherits: ^TrackedVehicle
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^GainsExperience
+	Inherits@WW3I5: ^AutoTargetGroundAssaultMove
+	Inherits@WW3I6: ^CargoPips
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 120
+		Prerequisites: ~vehicles.russia, ~techlevel.low
+		Description: Amphibious infantry transport.\n  Strong vs Light armor\n  Weak vs Infantry, Tanks, Aircraft
+	Valued:
+		Cost: 850
+	Tooltip:
+		Name: Bronetransporter
+	TooltipDescription:
+		Description: Can carry 8 Infantry, can cross water
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 35000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Speed: 110
+		PauseOnCondition: notmobile || being-captured
+		Locomotor: amphibious
+	GrantConditionOnTerrain@SEA:
+		TerrainTypes: Water, River
+		Condition: floating
+	Targetable:
+		RequiresCondition: !floating
+	Targetable@SEA:
+		TargetTypes: GroundActor, WaterActor, Ship, Tank
+		RequiresCondition: floating
+	WithFacingSpriteBody:
+		Sequence: idle
+		RequiresCondition: !floating
+	WithFacingSpriteBody@SEA:
+		Name: floating
+		Sequence: float
+		RequiresCondition: floating
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Armament:
+		Weapon: 25mm
+		Recoil: 85
+		RecoilRecovery: 25
+		LocalOffset: 508,0,90
+		MuzzleSequence: muzzle
+	Turreted:
+		Offset: 120,0,250
+		TurnSpeed: 28
+	AttackTurreted:
+	WithSpriteTurret:
+	WithMuzzleOverlay:
+	Cargo:
+		Types: Infantry
+		MaxWeight: 8
+		LoadingCondition: notmobile
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	SpawnActorOnDeath:
+		Actor: BTR.Husk
+
+BTR.Husk:
+	Inherits: ^WW3Base_Husk
+	Tooltip:
+		Name: Husk (Bronetransporter)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: btr
+	InfiltrateForTransform:
+		IntoActor: btr
+	RenderSprites:
+		Image: btr.destroyed
+
+ftnk:
+	Inherits: ^VoicesSelector
+	Inherits@WW3I1: ^TrackedVehicle
+	Inherits@WW3I2: ^Stealthable
+	Inherits@WW3I3: ^AffectsPROC
+	Inherits@WW3I4: ^PropagandaVeh
+	Inherits@WW3I5: ^GainsExperience
+	Inherits@WW3I6: ^AutoTargetAllAssaultMove
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		Prerequisites: ~ftur, ~techlevel.low
+		BuildPaletteOrder: 125
+		Description: Flame tank.\n  Strong vs Infantry\n  Weak vs Tanks, Aircraft
+		IconPalette: cnc
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Flame Tank
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Health:
+		HP: 18000
+	Mobile:
+		Locomotor: lighttracked
+		Speed: 90
+	Turreted:
+		TurnSpeed: 28
+	Armament:
+		Weapon: Flamer.Tank
+		Recoil: 0
+		RecoilRecovery: 0
+		LocalOffset: 568,0,190
+		MuzzleSequence:
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	Voiced:
+		VoiceSet: GenericVoice
+		RequiresCondition: Vanilla
+	Voiced@China:
+		VoiceSet: ChinaVoice
+		RequiresCondition: IAMCHINESE
+	Voiced@USA:
+		VoiceSet: USAVoice
+		RequiresCondition: IAMAMERICAN
+	Voiced@Turkey:
+		VoiceSet: TurkVoice
+		RequiresCondition: IAMTURK
+	RenderSprites:
+		Image: ftnk
+
+HFTK:
+	Inherits: ^TrackedVehicle
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^GainsExperience
+	Inherits@WW3I5: ^AutoTargetGroundAssaultMove
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 321
+		IconPalette: chrometd
+		Prerequisites: ftur, ~ctek, ~techlevel.medium
+		Description: Heavy tank armed with dual short-range flamethrowers.
+	Valued:
+		Cost: 1100
+	Tooltip:
+		Name: Dragon Tank
+		GenericName: Tank
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 46000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Locomotor: heavytracked
+		Speed: 56
+		Voice: Move
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 20
+	Armament@PRIMARY:
+		Weapon: HeavyFlamer
+		MuzzleSequence: muzzle
+		MuzzlePalette: chrometd
+		LocalOffset: 750,200,150, 750,-200,150
+	AttackTurreted:
+		Voice: Attack
+		RangeMargin: 0
+	WithSpriteTurret:
+	WithMuzzleOverlay:
+	Voiced:
+		VoiceSet: FlameTankVoice
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	RenderSprites:
+		PlayerPalette: cncplayer
+
+V3RL:
+	Inherits: ^WW3Base_Vehicle
+	Inherits@WW3I1: ^GainsExperience
+	Inherits@WW3I2: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 230
+		BuildDuration: 1450
+		Prerequisites: dome, ~vehicles.russia, ~techlevel.high
+		Description: Extreme long-range rocket artillery.\n  Strong vs Buildings, Defenses, Infantry\n  Weak vs Tanks, Aircraft
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: V3 Launcher
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 20000
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 85
+		Voice: Move
+	Passenger:
+		Voice: Move
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Armament:
+		Weapon: V3Launcher
+		ReloadingCondition: reloading
+	AttackFrontal:
+		TargetFrozenActors: True
+		ForceFireIgnoresActors: True
+		Voice: Attack
+		FacingTolerance: 0
+	WithFacingSpriteBody:
+		RequiresCondition: !reloading
+		Name: loaded
+	WithFacingSpriteBody@EMPTY:
+		RequiresCondition: reloading
+		Sequence: empty-idle
+		Name: reloading
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+	Voiced:
+		VoiceSet: V3Voice
+	Exit:
+		SpawnOffset: 0,-128,0
+	AutoTarget:
+		ScanRadius: 16
+
+6TNK:
+	Inherits: ^VoicesSelector
+	Inherits@WW3I1: ^WW3Base_Vehicle
+	Inherits@WW3I2: ^GainsExperience
+	Inherits@WW3I3: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 231
+		Prerequisites: dome, ~vehicles.china, ~techlevel.high
+		Description: Long-range artillery./n Strong Vs Buildings, Infantry
+	Valued:
+		Cost: 1350
+	Tooltip:
+		Name: Inferno Cannon
+	TooltipDescription:
+		Description: Aritllery platform with napalm cluster shells.
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 11000
+	Armor:
+		Type: Light
+	Mobile:
+		TurnSpeed: 20
+		Speed: 92
+		Locomotor: lighttracked
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Armament:
+		Weapon: 155mm.CIC
+		LocalOffset: 624,0,408
+	AttackFrontal:
+		TargetFrozenActors: True
+		ForceFireIgnoresActors: True
+		FacingTolerance: 32
+	WithMuzzleOverlay:
+	Voiced:
+		VoiceSet: GenericVoice
+		RequiresCondition: Vanilla
+	Voiced@China:
+		VoiceSet: ChinaVoice
+		RequiresCondition: IAMCHINESE
+	Voiced@USA:
+		VoiceSet: USAVoice
+		RequiresCondition: IAMAMERICAN
+	Voiced@Turkey:
+		VoiceSet: TurkVoice
+		RequiresCondition: IAMTURK
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+	RenderSprites:
+		PlayerPalette: cncplayer
+
+4TNK.Hov:
+	Inherits: ^WW3Base_4TNK
+	Inherits@WW3I1: ^IsHoverTank
+	Buildable:
+		Description: Mammoth outfitted with spainish hover tech.\n  Strong vs Vehicles, Infantry, Aircraft\n  Weak vs Nothing
+		Prerequisites: ~sptek, ~sov.tech, ~techlevel.high
+	Tooltip:
+		Name: Hover Mammoth Tank
+	Mobile:
+		Speed: 53
+		Locomotor: hover
+	SpawnActorOnDeath:
+		Actor: 4TNK.Hov.Husk
+
+4TNK.Hov.Husk:
+	Inherits: ^WW3Base_Husk
+	Tooltip:
+		Name: Husk (Hover Mammoth Tank)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: 4tnk.hov
+	InfiltrateForTransform:
+		IntoActor: 4tnk.hov
+	RenderSprites:
+		Image: 4TNK.Hov.destroyed
+
+TTNK2:
+	Inherits: ^WW3Base_4TNK
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 323
+		Prerequisites: tsla, ~rtek, ~techlevel.high
+		Description: Adapted Mammoth Tank with twin mounted Tesla Coils.\n• Strong vs Infantry, Heavy Armor, Light Armor\n• Cannot attack Aircraft
+	Valued:
+		Cost: 2250
+	Tooltip:
+		Name: Tesla Mammoth Tank
+		GenericName: Tank
+	Health:
+		HP: 80000
+	Armament@PRIMARY:
+		Weapon: WW3TTankZap
+		LocalOffset: 511,200,113
+		-MuzzleSequence:
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: WW3TTankZap
+		LocalOffset: 511,-200,113
+		FireDelay: 5
+		-MuzzleSequence:
+	AttackTurreted:
+	-WithMuzzleOverlay:
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: TTNK2.Husk
+
+TTNK2.Husk:
+	Inherits: ^WW3Base_Husk
+	Tooltip:
+		Name: Husk (Mammoth Tesla)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: ttnk2
+	InfiltrateForTransform:
+		IntoActor: ttnk2
+	RenderSprites:
+		Image: ttnk2.destroyed
+
+APOC:
+	Inherits: ^TrackedVehicle
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^GainsExperience
+	Inherits@WW3I5: ^AutoTargetAllAssaultMove
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 320
+		BuildDuration: 2000
+		Prerequisites: fix, ~utek, ~techlevel.high
+		Description: Enormous slow tank with uranium shells and anti-air capability.
+	Valued:
+		Cost: 2600
+	Tooltip:
+		Name: Apocalypse Tank
+		GenericName: Tank
+	TooltipDescription:
+		Description: Can crush smaller tanks.
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 110000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Speed: 40
+		TurnSpeed: 8
+		Locomotor: sheavytracked
+		Voice: Move
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 8
+	Armament@PRIMARY:
+		Weapon: 120mm.Apoc
+		LocalOffset: 1400,100,340, 1400,-100,340
+		Recoil: 171
+		RecoilRecovery: 30
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: ApocalypseTusk
+		LocalOffset: -85,384,340, -85,-384,340
+		LocalYaw: -100,100
+		Recoil: 43
+		MuzzleSequence: muzzle
+	AttackTurreted:
+		Voice: Attack
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: APOC.Husk
+	ChangesHealth:
+		PercentageStep: 10
+		Delay: 5
+		StartIfBelow: 50
+		DamageCooldown: 150
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1877, 1621, 0, -170
+	Voiced:
+		VoiceSet: ApocalypseVoice
+	AttackMove:
+		Voice: Attack
+	RenderSprites:
+
+APOC.Husk:
+	Inherits: ^WW3Base_Husk
+	Tooltip:
+		Name: Husk (Apocalypse)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: apoc
+	InfiltrateForTransform:
+		IntoActor: apoc
+	RenderSprites:
+		Image: apoc.destroyed
+
+EMPOR:
+	Inherits: ^TrackedVehicle
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^GainsExperience
+	Inherits@WW3I5: ^AutoTargetAllAssaultMove
+	Inherits@WW3I6: ^CargoPips
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 320
+		BuildDuration: 2000
+		Prerequisites: fix, ~ctek, ~techlevel.high
+		Description: Enormous slow tank with artillery shells and garrison ability\n Conscript - Gatling\nRocket Soldier - Mammoth tusk\nFlamethrower - Flame Turret\nHacker - Propaganda
+	Valued:
+		Cost: 3000
+	Tooltip:
+		Name: Overlord Tank
+		GenericName: Tank
+	TooltipDescription:
+		Description: Garrison a troop to add a second turret, can crush other tanks.
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 110000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Speed: 40
+		TurnSpeed: 8
+		Locomotor: sheavytracked
+		Voice: Move
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Passenger:
+		Weight: 2
+	Cargo:
+		Types: Infantry
+		MaxWeight: 1
+		PassengerConditions:
+			e1: gatling
+			e1ch: gatling
+			e3: missile
+			e3r1: missile
+			e4: flamer
+			hacker: proptwr
+	Turreted@PRIMARY:
+		Turret: primary
+		TurnSpeed: 10
+		Offset: -400,0,-20
+	WithSpriteTurret@PRIMARY:
+		Turret: primary
+	Armament@PRIMARY:
+		Weapon: 380mm
+		LocalOffset: 1100,100,140, 1100,-100,140
+		Recoil: 131
+		RecoilRecovery: 30
+		MuzzleSequence: muzzle
+	Turreted@gatling:
+		Turret: secondary
+		TurnSpeed: 40
+		Offset: -400,0,150
+	WithSpriteTurret@gatling:
+		Turret: secondary
+		RequiresCondition: gatling
+		Sequence: turret2
+	Armament@gatling:
+		Weapon: Vulcan
+		Recoil: 5
+		RecoilRecovery: 25
+		LocalOffset: 800,0,190
+		MuzzleSequence: muzzle2
+		RequiresCondition: gatling
+	Turreted@missile:
+		Turret: secondary
+		TurnSpeed: 40
+		Offset: 620,0,100
+	WithSpriteTurret@missile:
+		Turret: secondary
+		RequiresCondition: missile
+		Sequence: turret3
+	Armament@missile:
+		Weapon: MammothTusk
+		Recoil: 5
+		RecoilRecovery: 25
+		LocalOffset: 800,0,190
+		MuzzleSequence: muzzle2
+		RequiresCondition: missile
+	Turreted@flamer:
+		Turret: secondary
+		TurnSpeed: 40
+		Offset: 620,0,0
+	WithSpriteTurret@flamer:
+		Turret: secondary
+		RequiresCondition: flamer
+		Sequence: turret4
+	Armament@flamer:
+		Weapon: Flamer.Tank.Rank
+		Recoil: 5
+		RecoilRecovery: 25
+		LocalOffset: 900,0,200
+		MuzzleSequence:
+		RequiresCondition: flamer
+	WithIdleOverlay@SPINNER:
+		Sequence: spinner
+		RequiresCondition: proptwr
+		Offset: -400,0,300
+	ProximityExternalCondition:
+		RequiresCondition: proptwr
+		Condition: prop
+		Range: 4c0
+		ValidRelationships: Ally
+	WithRangeCircle@hacker:
+		RequiresCondition: proptwr
+		Range: 4c0
+		Color: FFFF6680
+	AttackTurreted:
+		Turrets: primary, secondary
+	WithMuzzleOverlay:
+	SpawnActorOnDeath:
+		Actor: EMPOR.Husk
+	ChangesHealth:
+		PercentageStep: 10
+		Delay: 5
+		StartIfBelow: 50
+		DamageCooldown: 150
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1877, 1621, 0, -170
+	Voiced:
+		VoiceSet: OverlordVoice
+	AttackMove:
+		Voice: Attack
+
+EMPOR.Husk:
+	Inherits: ^WW3Base_Husk
+	Tooltip:
+		Name: Husk (Overlord)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: empor
+	InfiltrateForTransform:
+		IntoActor: empor
+	RenderSprites:
+		Image: empor.destroyed
+
+ISU:
+	Inherits: ^TrackedVehicle
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^GainsExperience
+	Inherits@WW3I5: ^AutoTargetGroundAssaultMove
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 260
+		BuildDuration: 2000
+		Prerequisites: fix, ~utek, ~techlevel.high
+		Description: Medium-range artillery\nwith powerful cluster shells.\n Strong vs Buildings, Infantry\n Weak vs Aircraft
+	Valued:
+		Cost: 1800
+	Tooltip:
+		Name: Siege Tank
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 65000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 5
+		Speed: 66
+		Locomotor: heavytracked
+		Voice: Move
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Armament:
+		Weapon: 360mm
+		LocalOffset: 824,0,208
+		MuzzleSequence: muzzle
+	AttackFrontal:
+		TargetFrozenActors: True
+		ForceFireIgnoresActors: True
+		Voice: Attack
+		FacingTolerance: 0
+	WithMuzzleOverlay:
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Passenger:
+		Voice: Move
+	Voiced:
+		VoiceSet: SiegeTankVoice
+	SpawnActorOnDeath:
+		Actor: ISU.Husk
+
+ISU.Husk:
+	Inherits: ^WW3Base_Husk
+	Tooltip:
+		Name: Husk (Siege Tank)
+	TransformOnCapture:
+		IntoActor: isu
+	InfiltrateForTransform:
+		IntoActor: isu
+	RenderSprites:
+		Image: isu.destroyed
+
+LATNK:
+	Inherits: ^TrackedVehicle
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^SelectableSupportUnit
+	Inherits@WW3I5: ^GainsExperience
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildDuration: 1450
+		BuildLimit: 1
+		Prerequisites: ~utek
+		Description: Portable Iron Curtain
+	Valued:
+		Cost: 3000
+	Tooltip:
+		Name: Portable Iron Curtain
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 30000
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 90
+		TurnSpeed: 5
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Armament:
+		Weapon: IronCannon
+		TargetRelationships: Ally
+	AttackTurreted:
+	Turreted:
+	WithIdleOverlay@SPINNER:
+		Sequence: spinner
+		Offset: 0, 0, 10
+		Palette:
+		IsPlayerPalette: false
+	Selectable:
+		DecorationBounds: 1280, 1280
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	SpawnActorOnDeath:
+		Actor: LATNK.Husk
+
+LATNK.Husk:
+	Inherits: ^WW3Base_Husk
+	Tooltip:
+		Name: Husk (PIC)
+	TransformOnCapture:
+		IntoActor: latnk
+	InfiltrateForTransform:
+		IntoActor: latnk
+	RenderSprites:
+
+TXTRK:
+	Inherits: ^WW3Base_Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 330
+		Prerequisites: ~ttek, ~vehicles.turkey, ~techlevel.high
+		Description: Truck with deadly chemical\nweapons. Has very weak armor.
+	Valued:
+		Cost: 2500
+	Tooltip:
+		Name: Toxin Truck
+	TooltipDescription:
+		Description: Poisons all infantry.
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 3800
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 67
+	RevealsShroud:
+		Range: 4c0
+	AttackFrontal:
+		FacingTolerance: 512
+	Armament@PRIMARY:
+		Weapon: TxTruckTargeting
+	GrantConditionOnAttack:
+		Condition: triggered
+	GrantConditionOnDeploy:
+		DeployedCondition: triggered
+	-DamageMultiplier@IRONCURTAIN:
+	KillsSelf:
+		RequiresCondition: invulnerability || triggered
+	Chronoshiftable:
+		ExplodeInstead: true
+
+TITN:
+	Inherits: ^WW3Base_Vehicle
+	Inherits@WW3I1: ^GainsExperience
+	Inherits@WW3I2: ^AutoTargetAllAssaultMove
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 303
+		Prerequisites: grtek, ~vehicles.greece, ~techlevel.high
+		Description: Tough, slow, combat battle-mech.
+	Valued:
+		Cost: 2000
+	Selectable:
+		Bounds: 1280, 1706
+		DecorationBounds: 1280, 1706, 0, -100
+	Tooltip:
+		Name: Titan
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 98000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Locomotor: heavytracked
+		Speed: 43
+	Passenger:
+		CustomPipType: red
+		Weight: 3
+	QuantizeFacingsFromSequence:
+		Sequence: stand
+	WithFacingSpriteBody:
+		Sequence: stand
+	WithMoveAnimation:
+		MoveSequence: run
+	WithSpriteTurret:
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Armament@PRIMARY:
+		Weapon: 130mm
+		LocalOffset: 830,290,170
+		Recoil: 171
+		RecoilRecovery: 30
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: MammothTusk
+		LocalOffset: -85,-384,340
+		LocalYaw: -100,100
+		Recoil: 43
+		MuzzleSequence: muzzle
+	Turreted:
+		TurnSpeed: 10
+		Offset: 0,0,0
+	AttackTurreted:
+		Armaments: primary, secondary
+	WithMuzzleOverlay:
+	ChangesHealth@DEFAULT:
+		PercentageStep: 1
+		Delay: 25
+		StartIfBelow: 50
+		DamageCooldown: 150
+	Carryable:
+		LocalOffset: 0,0,700
+	-Crushable:
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+	SpawnActorOnDeath:
+		Actor: TITN.Husk
+	RenderSprites:
+		PlayerPalette: cncplayer
+
+TITN.Husk:
+	Inherits: ^WW3Base_Husk
+	Tooltip:
+		Name: Husk (Titan)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: titn
+	InfiltrateForTransform:
+		IntoActor: titn
+	RenderSprites:
+		Image: titn.destroyed
+
+MINS: #seamines
+	Inherits: ^Mine
+	RenderSprites:
+		Image: mins
+

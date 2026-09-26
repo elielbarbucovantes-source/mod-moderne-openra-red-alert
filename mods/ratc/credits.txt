@@ -1,0 +1,8 @@
+Mod moderne pour OpenRA Red Alert — Leile
+
+Contenu « WW3 » (dossier ww3/) repris de la carte « Europe: WW3 »
+par Trump, H, Therapist, Leile, Ruben (et d'autres).
+Merci pour les graphismes, le code et l'aide à Frenzy, Widow, Pinkthoth,
+SirCake, MedalMonkey, Inq8, Zypres et bien d'autres.
+
+Moteur : OpenRA (https://www.openra.net), sous licence GPLv3.

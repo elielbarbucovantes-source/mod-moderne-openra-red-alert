@@ -1,0 +1,245 @@
+WW3GenericVoice:
+	Inherits: GenericVoice
+	Variants:
+		allies: .v01,.v03
+		england: .v01,.v03
+		france: .v01,.v03
+		germany: .v01,.v03
+		spain: .v01, .v03
+		soviet: .r01,.r03
+		russia: .r01,.r03
+		ukraine: .r01,.r03
+		turkey: .r01,.r03
+		greece: .r01,.r03
+	Voices:
+		Select: await1,ready,report1,yessir1
+		Action: ackno,affirm1,noprob,overout,ritaway,roger,ugotit
+		Move: yessir1,affirm1,ritaway
+		Attack: noprob,ugotit,yessir1
+		Die: dedman1,dedman2,dedman3,dedman4,dedman5,dedman7,dedman8
+		Burned: dedman10
+		Zapped: dedman6
+	DisableVariants: Die, Burned, Zapped
+
+USAVoice:
+	Voices:
+		Select: audio/yeah1td, audio/yes1td, audio/yo1td
+		Move: audio/cmon1td, audio/onit1td, audio/gotit1td
+		Action: audio/onit1td, audio/gotit1td, audio/noprblm1td
+		Attack: audio/onit1td, audio/gotit1td, audio/noprblm1td
+		Die: audio/ramyell1td
+		Demolish: audio/bombit1td
+		Burned: audio/ramyell1td
+		Zapped: audio/ramyell1td
+		Build: audio/rokroll1td
+		Kill: audio/keepem1td, audio/laugh1td, audio/lefty1td, audio/tuffguy1td
+
+ChinaVoice:
+	Voices:
+		Attack: audio/iredata, audio/iredatd, audio/iredatg
+		Select: audio/iredsea, audio/iredsec, audio/iredsef
+		Move: audio/iredmoa, audio/iredmob, audio/iredmoc, audio/iredmod, audio/iredmoe
+		Action: audio/iredmoa, audio/iredmob, audio/iredmoc, audio/iredmod, audio/iredmoe
+		Die: audio/ireddia, audio/ireddic, audio/ireddif
+		Burned: audio/ireddii, audio/iredfea
+		Zapped: audio/ireddii, audio/iredfea
+
+TurkVoice:
+	Voices:
+		Attack: audio/irebata, audio/irebatc, audio/irebate, audio/irebatf
+		Select: audio/irebsea, audio/irebseb, audio/irebseh, audio/irebseg
+		Move: audio/irebmoa, audio/irebmob, audio/irebmod, audio/irebmof
+		Action: audio/irebmoa, audio/irebmob, audio/irebmod, audio/irebmof
+		Die: audio/irebdia, audio/irebdib, audio/irebdic
+		Burned: audio/irebdid
+		Zapped: audio/irebdii	
+
+GGIVoice:
+	Voices:
+		Select: audio/iggisea, audio/iggiseb, audio/iggisec, audio/iggised, audio/iggisee, audio/iggisef
+		Move: audio/iggimoa, audio/iggimob, audio/iggimoc, audio/iggimod, audio/iggimoe
+		Attack: audio/iggiata, audio/iggiatb, audio/iggiatc, audio/iggiatd, audio/iggiate
+		Deploy: audio/iggidea, audio/iggideb, audio/iggidec
+		Action: audio/iggidea, audio/iggideb, audio/iggidec
+		Die: audio/iggidia, audio/iggidib, audio/iggidic, audio/iggidid, audio/iggidie
+		Zapped: audio/iggidie
+		Burned: audio/iggidic
+		Kill: audio/laugh1td
+
+SniperVoice:
+	Voices:
+		Attack: audio/ipatata, audio/ipatatc
+		Select: audio/ipatsea
+		Move: audio/ipatmob, audio/ipatmoe, audio/ipatmod
+		Action: audio/ipatmob, audio/ipatmoe, audio/ipatmod
+		Die: audio/ipatdib
+		Burned: audio/ipatdia
+		Zapped: audio/ipatdia
+
+V3Voice:
+	Voices:
+		Select: audio/vv3lsea, audio/vv3lseb, audio/vv3lsec, audio/vv3lsed, audio/vv3lsee
+		Move: audio/vv3lmob, audio/vv3lmoc, audio/vv3lmod, audio/vv3lmoe
+		Attack: audio/vv3lata, audio/vv3latb, audio/vv3latc, audio/vv3latd, audio/vv3late
+		Action: audio/vv3lmob, audio/vv3lmoc, audio/vv3lmod, audio/vv3lmoe
+
+PanzerVoice: 
+	Voices:
+		Select: audio/vtansee
+		Move: audio/vtanmoa, audio/vtanmob, audio/vtanmoc, audio/vtanmod
+		Attack: audio/vtanseb, audio/vtanatb, audio/vtanatc, audio/vtanatd, audio/vtanate
+		Action: audio/vtanmoa, audio/vtanmob, audio/vtanmoc, audio/vtanmod
+		Build: audio/vtansea  
+
+TnkdVoice: 
+	Voices:
+		Select: audio/vtansea
+		Move: audio/vtanmoa,audio/vtanmob,audio/vtanmoc,audio/vtanmod
+		Attack: audio/vtanseb,audio/vtanatb,audio/vtanatc,audio/vtanatd,audio/vtanate
+		Action: audio/vtanmoa,audio/vtanmob,audio/vtanmoc,audio/vtanmod
+		Build: audio/vtansea  
+
+PrismVoice:
+	Voices:
+		Select: audio/vprisea, audio/vpriseb, audio/vprisec, audio/vprised, audio/vprisee
+		Move: audio/vprimoa, audio/vprimob, audio/vprimoc, audio/vprimod, audio/vprimoe
+		Attack: audio/vpriata, audio/vpriatb, audio/vpriatc, audio/vpriatd, audio/vpriate
+		Action: audio/vprimoa, audio/vprimob, audio/vprimoc, audio/vprimod, audio/vprimoe
+
+KirovVoice:
+	Voices:
+		Select: audio/kirsea, audio/kirseb, audio/kirsec, audio/kirsed
+		Move: audio/kirmoa, audio/kirmob, audio/kirmoc
+		Attack: audio/kirata, audio/kiratb, audio/kiratc, audio/kiratd
+		Action: audio/kirmoa, audio/kirmob, audio/kirmoc
+		Build: audio/kirsea
+		Die: audio/kirdia, audio/kirdib, audio/kirdic, audio/kirdid
+
+BattleFortressVoice:
+	Voices:
+		Build: audio/vbatseb
+		Select: audio/vbatsea, audio/vbatseb, audio/vbatsec, audio/vbatsed, audio/vbatsee, audio/vbatsef
+		Move: audio/vbatmoa, audio/vbatmob, audio/vbatmoc, audio/vbatmod, audio/vbatmoe
+		Attack: audio/vbatatb, audio/vbatatc, audio/vbatatd, audio/vbatate
+		Action: audio/vbatmoa, audio/vbatmob, audio/vbatmoc, audio/vbatmod, audio/vbatmoe
+
+HarrierVoice:
+	Voices:
+		Select: audio/vintsea, audio/vintseb, audio/vintsec, audio/vintsed
+		Move: audio/vintmoa, audio/vintmob, audio/vintmoc, audio/vintmod
+		Attack: audio/vintata, audio/vintatb, audio/vintatc, audio/vintatd
+		Action:  audio/vintmoa, audio/vintmob, audio/vintmoc, audio/vintmod
+		Build: audio/vintsea
+
+ChronoVoice:
+	Voices:
+		Select: audio/ichrsea, audio/ichrseb, audio/ichrsec, audio/ichrsed, audio/ichrsee
+		Move: audio/ichrsea, audio/ichrseb, audio/ichrsec, audio/ichrsed, audio/ichrsee
+		Attack: audio/ichrata, audio/ichratb, audio/ichratc, audio/ichratd
+		Action: audio/ichrseb, audio/ichrsec, audio/ichrsed, audio/ichrsee
+		Build: audio/ichrseb
+		Die: dedman1,dedman2,dedman3,dedman4,dedman5,dedman7,dedman8
+		Burned: dedman10
+		Zapped: dedman6
+
+SiegeTankVoice:
+	Voices:
+		Select: audio/vgrssea, audio/vgrsseb, audio/vgrssec
+		Move: audio/vgrsmoa, audio/vgrsmob, audio/vgrsmoc
+		Attack: audio/vgrsata, audio/vgrsatb, audio/vgrsatc, audio/vgrsatd
+		Action: audio/vgrsmoa, audio/vgrsmob, audio/vgrsmoc
+
+MirageVoice:
+	Voices:
+		Select: audio/vmirmod, audio/vmiratb
+		Move: audio/vmirmoa, audio/vmirmob, audio/vmirmoc, audio/vmirmog
+		Attack: audio/vmirata, audio/vmiratc, audio/vmiratd, audio/vmirate
+		Action:  audio/vmirmoa, audio/vmirmob, audio/vmirmoc, audio/vmirmod, audio/vmirmof, audio/vmirmog
+
+FlameTankVoice:
+	Voices:
+		Select: audio/hftk-select3
+		Move: audio/hftk-move1, audio/hftk-move2, audio/hftk-move3, audio/hftk-move4
+		Action: audio/hftk-attack1, audio/hftk-attack2, audio/hftk-attack3
+		Attack: audio/hftk-attack1, audio/hftk-attack2, audio/hftk-attack3
+
+ApocalypseVoice:
+	Voices:
+		Build: audio/vaposeb, audio/vaposec, audio/vaposed
+		Select: audio/vaposea, audio/vaposeb, audio/vaposec, audio/vaposed, audio/vaposee
+		Move: audio/vapomoa, audio/vapomob, audio/vapomoc, audio/vapomod, audio/vapomoe
+		Action: audio/vapomoa, audio/vapomob, audio/vapomoc, audio/vapomod, audio/vapomoe
+		Attack: audio/vapoata, audio/vapoatb, audio/vapoatc, audio/vapoatd, audio/vapoate, audio/vapoatf
+
+OverlordVoice:
+	Voices:
+		Attack: audio/voveata, audio/voveatb, audio/voveatc, audio/voveate, audio/voveatf, audio/voveatg, audio/vovecrb, audio/voveatd
+		Select: audio/vovesea, audio/voveseb, audio/vovesec, audio/vovesee, audio/vovesef, audio/voveseg, audio/vovecra
+		Move: audio/vovemoa, audio/vovemob, audio/vovemoc, audio/vovemod, audio/vovemoe, audio/vovemof, audio/vovemog
+		Action: audio/vovemoa, audio/vovemob, audio/vovemoc, audio/vovemod, audio/vovemoe, audio/vovemof, audio/vovemog, audio/voveatd
+
+CrazyIvanVoice:
+	Voices:
+		Select: audio/icrasea, audio/icraseb, audio/icrasec, audio/icrased, audio/icrasee, audio/icrasef, audio/icraseg
+		Move: audio/icramoa, audio/icramob,audio/icramoc, audio/icramod, audio/icramoe, audio/icramof
+		Attack: audio/icraata, audio/icraatb, audio/icraatc, audio/icraatd, audio/icraate
+		Action: audio/icramoa, audio/icramob, audio/icramoc, audio/icramod, audio/icramoe, audio/icramof
+		Die: audio/icradia, audio/icradib
+		Burned: dedman10
+		Zapped: dedman6
+
+SCUDLauncherVoice:
+	Voices:
+		Attack: audio/vscuata, audio/vscuatb, audio/vscuatd, audio/vscuatf, audio/vscuath
+		Select: audio/vscusea, audio/vscuseb, audio/vscusec, audio/vscuseg, audio/vscusef
+		Move: audio/vscumoa, audio/vscumob, audio/vscumoc, audio/vscumod, audio/vscumoe
+		Action: audio/vscumoa, audio/vscumob, audio/vscumoc, audio/vscumod, audio/vscumoe
+
+ListeningOutpostVoice:
+	Voices:
+		Attack: audio/vlismoa, audio/vlismob, audio/vlismoc, audio/vlismod, audio/vlismoe
+		Select: audio/vlissea, audio/vlisseb, audio/vlissec, audio/vlissed
+		Move: audio/vlismoa, audio/vlismob, audio/vlismoc, audio/vlismod, audio/vlismoe
+		Action: audio/vlismoa, audio/vlismob, audio/vlismoc, audio/vlismod, audio/vlismoe
+		Build: audio/vlissee
+
+RobotTankVoice:
+	Voices:
+		Select: audio/vrobsela, audio/vrobselb
+		Move: audio/vrobmova, audio/vrobmovb, audio/vrobmovc
+		Action: audio/vrobsela
+
+TripodVoice:
+	Voices:
+		Select: audio/tripod-select
+		Move: audio/tripod-action1, audio/tripod-action2, audio/tripod-action3
+		Attack: audio/tripod-action1, audio/tripod-action2, audio/tripod-action3
+		Action: audio/tripod-action1, audio/tripod-action2, audio/tripod-action3
+		Die: audio/tripod-die1, audio/tripod-die2
+
+CNVoice:
+	Voices:
+		Select: audio/CN_Enjoying, audio/CN_oohyeah
+		Move: audio/CN_ok, audio/CN_thisway
+		Attack: audio/CN_murder_him
+		Action: audio/CN_oh_man, audio/CN_murder_him
+		Die: audio/CN_thathurt
+		Burned: audio/CN_oof
+		Zapped: audio/CN_oof
+
+GenericVoice:
+	Variants:
+		usa: .v01,.v03
+		spain: .v01,.v03
+		china: .r01,.r03
+		turkey: .r01,.r03
+		greece: .r01,.r03
+
+VehicleVoice:
+	Variants:
+		usa: .v00,.v02
+		spain: .v00,.v02
+		china: .r00,.r02
+		turkey: .r00,.r02
+		greece: .r00,.r02
+

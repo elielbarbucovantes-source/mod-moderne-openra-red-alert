@@ -45,3 +45,10 @@ _ReSharper.*/
 
 # IntelliJ files
 .idea
+
+# Python
+__pycache__/
+
+# Sauvegardes locales
+*.bak
+*.save

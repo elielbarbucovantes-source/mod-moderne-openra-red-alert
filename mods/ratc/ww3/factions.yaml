@@ -1,0 +1,156 @@
+# Nouvelles factions issues de la carte WW3 (USA, Espagne, Chine, Turquie, Grèce).
+
+^BaseWorld:
+	Faction@usa:
+		Name: USA
+		InternalName: usa
+		Side: Allies
+		Description: USA : puissance aérienne\nUnités spéciales : A-10, F-22, Apache, Humvee
+	Faction@spain:
+		Name: Espagne
+		InternalName: spain
+		Side: Allies
+		Description: Espagne : prismes et antigravité\nUnités spéciales : char prisme, canon à prisme
+	Faction@china:
+		Name: Chine
+		InternalName: china
+		Side: Soviet
+		Description: Chine : maîtres des blindés\nUnités spéciales : chars lourds, tour de propagande
+	Faction@turkey:
+		Name: Turquie
+		InternalName: turkey
+		Side: Soviet
+		Description: Turquie : subversion et armes chimiques\nUnités spéciales : lance-Scud, Katioucha
+	Faction@greece:
+		Name: Grèce
+		InternalName: greece
+		Side: Soviet
+		Description: Grèce : infanterie en armure avancée\nUnités spéciales : hoplites, Titan
+	Faction@randomallies:
+		RandomFactionMembers: england, france, germany, usa, spain
+	Faction@randomsoviet:
+		RandomFactionMembers: russia, ukraine, china, turkey, greece
+
+World:
+	StartingUnits@mcvonly:
+		Factions: allies, england, france, germany, soviet, russia, ukraine, usa, spain, china, turkey, greece
+	StartingUnits@lightallies:
+		Factions: allies, england, france, germany, usa, spain
+	StartingUnits@lightsoviet:
+		Factions: soviet, russia, ukraine, china, turkey, greece
+	StartingUnits@heavyallies:
+		Factions: allies, england, france, germany, usa, spain
+	StartingUnits@heavysoviet:
+		Factions: soviet, russia, ukraine, china, turkey, greece
+
+SPEN:
+	ProvidesPrerequisite@soviet:
+		Factions: soviet, russia, ukraine, china, turkey, greece
+	ProvidesPrerequisite@china:
+		Factions: china
+		Prerequisite: ships.china
+	ProvidesPrerequisite@turkey:
+		Factions: turkey
+		Prerequisite: ships.turkey
+	ProvidesPrerequisite@greece:
+		Factions: greece
+		Prerequisite: ships.greece
+
+SYRD:
+	ProvidesPrerequisite@allies:
+		Factions: allies, england, france, germany, usa, spain
+	ProvidesPrerequisite@usa:
+		Factions: usa
+		Prerequisite: ships.usa
+	ProvidesPrerequisite@spain:
+		Factions: spain
+		Prerequisite: ships.spain
+
+WEAP:
+	ProvidesPrerequisite@allies:
+		Factions: allies, england, france, germany, usa, spain
+	ProvidesPrerequisite@usa:
+		Factions: usa
+		Prerequisite: vehicles.usa
+	ProvidesPrerequisite@spain:
+		Factions: spain
+		Prerequisite: vehicles.spain
+	ProvidesPrerequisite@soviet:
+		Factions: soviet, russia, ukraine, china, turkey, greece
+	ProvidesPrerequisite@china:
+		Factions: china
+		Prerequisite: vehicles.china
+	ProvidesPrerequisite@turkey:
+		Factions: turkey
+		Prerequisite: vehicles.turkey
+	ProvidesPrerequisite@greece:
+		Factions: greece
+		Prerequisite: vehicles.greece
+
+FACT:
+	ProvidesPrerequisite@allies:
+		Factions: allies, england, france, germany, usa, spain
+	ProvidesPrerequisite@usa:
+		Factions: usa
+		Prerequisite: structures.usa
+	ProvidesPrerequisite@spain:
+		Factions: spain
+		Prerequisite: structures.spain
+	ProvidesPrerequisite@soviet:
+		Factions: soviet, russia, ukraine, china, turkey, greece
+	ProvidesPrerequisite@china:
+		Factions: china
+		Prerequisite: structures.china
+	ProvidesPrerequisite@turkey:
+		Factions: turkey
+		Prerequisite: structures.turkey
+	ProvidesPrerequisite@greece:
+		Factions: greece
+		Prerequisite: structures.greece
+
+HPAD:
+	ProvidesPrerequisite@allies:
+		Factions: allies, england, france, germany, usa, spain
+	ProvidesPrerequisite@usa:
+		Factions: usa
+		Prerequisite: aircraft.usa
+	ProvidesPrerequisite@spain:
+		Factions: spain
+		Prerequisite: aircraft.spain
+
+AFLD:
+	ProvidesPrerequisite@soviet:
+		Factions: soviet, russia, ukraine, china, turkey, greece
+	ProvidesPrerequisite@china:
+		Factions: china
+		Prerequisite: aircraft.china
+	ProvidesPrerequisite@turkey:
+		Factions: turkey
+		Prerequisite: aircraft.turkey
+	ProvidesPrerequisite@greece:
+		Factions: greece
+		Prerequisite: aircraft.greece
+
+BARR:
+	ProvidesPrerequisite@soviet:
+		Factions: soviet, russia, ukraine, china, turkey, greece
+	ProvidesPrerequisite@china:
+		Factions: china
+		Prerequisite: infantry.china
+	ProvidesPrerequisite@turkey:
+		Factions: turkey
+		Prerequisite: infantry.turkey
+	ProvidesPrerequisite@greece:
+		Factions: greece
+		Prerequisite: infantry.greece
+
+TENT:
+	ProvidesPrerequisite@allies:
+		Factions: allies, england, france, germany, usa, spain
+	ProvidesPrerequisite@usa:
+		Factions: usa
+		Prerequisite: infantry.usa
+	ProvidesPrerequisite@spain:
+		Factions: spain
+		Prerequisite: infantry.spain
+

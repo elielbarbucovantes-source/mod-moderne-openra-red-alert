@@ -1,0 +1,2316 @@
+TSLA:
+	Armament:
+		Weapon: TeslaLaser
+
+CSAR:
+	Inherits: V2RL
+	RenderSprites:
+		Image: cesar
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 235
+		Prerequisites: dome, ~vehicles.france, ~techlevel.medium
+		Description: French self-propelled rocket artillery.\nFires 3 rounds in rapid succession before reloading.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Canon César
+	Mobile:
+		Speed: 164
+	Armament:
+		Weapon: CesarObus
+
+JAGUAR:
+	Inherits: ARTY
+	RenderSprites:
+		Image: jaguar
+	Tooltip:
+		Name: EBRC Jaguar
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 238
+		Prerequisites: dome, ~vehicles.france, ~techlevel.high
+		Description: French reconnaissance vehicle.\\nFast anti-tank hunter with fire-and-forget missiles.
+	Valued:
+		Cost: 1100
+	Health:
+		HP: 12000
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 130
+	RevealsShroud:
+		Range: 8c0
+	Armament:
+		Weapon: JaguarMissile
+		LocalOffset: 20,188,190
+LEOPARD:
+	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: leopard
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 231
+		Prerequisites: dome, ~vehicles.germany, ~techlevel.high
+		Description: German main battle tank.\nAdvanced armor and high firepower.
+	Valued:
+		Cost: 1800
+	Tooltip:
+		Name: Leopard 2A7+
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 75000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 8
+		Speed: 70
+		Locomotor: heavytracked
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 20
+		Offset: -64,0,0
+	Armament:
+		Weapon: LeopardGun
+		Recoil: 128
+		RecoilRecovery: 38
+		LocalOffset: 920,0,160
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: LEOPARD.Husk
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+	# Moral renforcé : insensible à la démoralisation tant que le châssis
+	# n'est pas gravement endommagé (au-dessus de 50 % de PV).
+	GrantConditionOnDamageState@STEADY:
+		Condition: steady
+		ValidDamageStates: Undamaged, Light, Medium
+	SpeedMultiplier@DEMORALIZED:
+		RequiresCondition: demoralized && !steady
+	ReloadDelayMultiplier@DEMORALIZED:
+		RequiresCondition: demoralized && !steady
+PZH:
+	Inherits: ARTY
+	RenderSprites:
+		Image: pzh
+	Tooltip:
+		Name: Panzerhaubitze 2000
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 232
+		Prerequisites: dome, ~vehicles.germany, ~techlevel.medium
+		Description: German heavy self-propelled howitzer.\nHeavily armored, high single-shot damage.\n  Strong vs Infantry, Buildings, Vehicles\n  Weak vs Aircraft
+	Valued:
+		Cost: 1400
+	Health:
+		HP: 24000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Speed: 60
+	Armament:
+		Weapon: PZHShell
+		LocalOffset: 800,0,180
+
+AS90:
+	Inherits: ARTY
+	RenderSprites:
+		Image: as90
+	Tooltip:
+		Name: AS-90
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 234
+		Prerequisites: dome, ~vehicles.england, ~techlevel.medium
+		Description: British self-propelled howitzer.\\nBalanced range, damage and mobility.\\n  Strong vs Infantry, Buildings\\n  Weak vs Aircraft
+	Valued:
+		Cost: 1200
+	Health:
+		HP: 19000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Speed: 68
+	Armament:
+		Weapon: AS90Shell
+		LocalOffset: 670,0,180
+
+GRAD:
+	Inherits: ^Vehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: katy
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 236
+		Prerequisites: dome, ~vehicles.russia, ~techlevel.medium
+		Description: Soviet multiple rocket launcher.\nSaturates an area with inaccurate rockets.\n  Strong vs Infantry, Light Armor\n  Cannot attack Aircraft\n  Weak vs single hardened targets
+	Valued:
+		Cost: 700
+	Tooltip:
+		Name: BM-21 Grad
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 15000
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 90
+	Armament@PRIMARY:
+		Weapon: GradRocketsA
+		LocalOffset: 268,-100,440
+	Armament@SECONDARY:
+		Weapon: GradRocketsB
+		LocalOffset: 268,100,440
+		FireDelay: 6
+	AttackFrontal:
+		TargetFrozenActors: True
+		ForceFireIgnoresActors: True
+		FacingTolerance: 0
+
+UDRN:
+	Inherits: ^RatcDrone
+	RenderSprites:
+		Image: leleka
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 60
+		Prerequisites: ~aircraft.ukraine, ~techlevel.low
+		Description: Drone de reconnaissance ukrainien bon marché.\nNon armé. Excellente vision, guide l'artillerie.\n  Faible contre : aviation, défense antiaérienne
+	Valued:
+		Cost: 300
+	Tooltip:
+		Name: Leleka-100
+	Health:
+		HP: 4000
+	RevealsShroud:
+		Range: 12c0
+	Aircraft:
+		CruiseAltitude: 2048
+		TurnSpeed: 16
+		Speed: 220
+
+UARTY:
+	Inherits: ARTY
+	RenderSprites:
+		Image: m777
+	Tooltip:
+		Name: M777 (Excalibur)
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 237
+		Prerequisites: dome, ~vehicles.ukraine, ~techlevel.high
+		Description: Ukrainian precision howitzer.\nExtreme range and damage, but requires direct line of sight — pair with a scout drone.\n  Strong vs everything\n  Cannot fire on unseen positions
+	Valued:
+		Cost: 1600
+	Health:
+		HP: 13000
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 55
+	Armament:
+		Weapon: ExcaliburShell
+		LocalOffset: 760,0,150
+
+# --- Camion de ravitaillement : transport de troupes non armé, toutes factions ---
+# Capacité 15 : infanterie = 1, véhicule = 5 (voir ^Vehicle ci-dessous)
+# => 15 fantassins, OU 3 véhicules, OU un mélange (ex. 1 véhicule + 10 fantassins).
+RAVIT:
+	Inherits: ^Vehicle
+	Inherits@selection: ^SelectableSupportUnit
+	Inherits@CARGOPIPS: ^CargoPips
+	RenderSprites:
+		Image: ravit
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 415
+		Prerequisites: ~techlevel.low
+		Description: Camion de transport non armé.\nTransporte 15 fantassins ou 3 véhicules.\n  Non armé\n  Vulnérable sans escorte
+	Valued:
+		Cost: 100
+	Tooltip:
+		Name: Camion de ravitaillement
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 15000
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 113
+		PauseOnCondition: notmobile || being-captured
+	RevealsShroud:
+		Range: 5c0
+	Cargo:
+		Types: Infantry, Vehicle
+		MaxWeight: 15
+		LoadingCondition: notmobile
+		EjectOnDeath: true
+	WithCargoPipsDecoration:
+		PipCount: 15
+	# Pas de camion dans un camion (sinon 3 camions pleins = 45 fantassins dans un seul).
+	# Il reste transportable par le navire de débarquement (LST).
+	Passenger:
+		CargoType: SupplyTruck
+		Weight: 5
+
+# Un véhicule occupe 5 places (un fantassin en occupe 1).
+^Vehicle:
+	Passenger:
+		Weight: 5
+	# Moral : un équipage démoralisé (TOS-1A) roule et tire deux fois moins vite.
+	ExternalCondition@DEMORALIZED:
+		Condition: demoralized
+	SpeedMultiplier@DEMORALIZED:
+		RequiresCondition: demoralized
+		Modifier: 50
+	ReloadDelayMultiplier@DEMORALIZED:
+		RequiresCondition: demoralized
+		Modifier: 200
+	# Brouillage SAS : vision réduite de moitié.
+	ExternalCondition@JAMMED:
+		Condition: jammed
+	RevealsShroudMultiplier@JAMMED:
+		RequiresCondition: jammed
+		Modifier: 50
+	# Désignation laser (drone Luna) : +25 % de dégâts reçus, losange vert visible par l'ennemi.
+	ExternalCondition@DESIGNATED:
+		Condition: laser-designated
+	DamageMultiplier@DESIGNATED:
+		RequiresCondition: laser-designated
+		Modifier: 125
+	WithDecoration@DESIGNATED:
+		Image: lasermark
+		Sequence: idle
+		Palette: chrome
+		Position: Top
+		ValidRelationships: Enemy
+		RequiresCondition: laser-designated
+	# Brouillage ECM (drone Aladin) : tirs moins précis, verrouillage plus long, vision réduite.
+	ExternalCondition@ECM:
+		Condition: ecm
+	InaccuracyMultiplier@ECM:
+		RequiresCondition: ecm
+		Modifier: 150
+	ReloadDelayMultiplier@ECM:
+		RequiresCondition: ecm
+		Modifier: 115
+	RevealsShroudMultiplier@ECM:
+		RequiresCondition: ecm
+		Modifier: 75
+	# Appui du drone Patroller : repérage des cibles, +15 % de portée.
+	ExternalCondition@DRONESUPPORT:
+		Condition: drone-support
+	RangeMultiplier@DRONESUPPORT:
+		RequiresCondition: drone-support
+		Modifier: 115
+
+# Le LST gardait 5 véhicules de poids 1 : on conserve ses 5 véhicules avec le nouveau poids.
+LST:
+	Cargo:
+		Types: Infantry, Vehicle, SupplyTruck
+		MaxWeight: 25
+
+# ======================================================================
+# Sous-marin nucléaire lanceur d'engins (SNLE) : toutes factions
+# Porte une frappe nucléaire (pouvoir de soutien, recharge plus longue que le silo)
+# et des torpilles pour se défendre. Mobile et furtif, mais cher et sans antiaérien.
+# ======================================================================
+SNLE:
+	Inherits: ^Submarine
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: snle
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 70
+		Prerequisites: techcenter, ~techlevel.high
+		Description: Sous-marin nucléaire lanceur d'engins.\nDonne accès à une frappe nucléaire tirée depuis sa position.\nTorpilles lourdes pour se défendre.\n  Fort contre : navires, sous-marins\n  Faible contre : aviation\n  Capacité : plongée, frappe nucléaire
+	Valued:
+		Cost: 3000
+	Tooltip:
+		Name: Sous-marin nucléaire lanceur d'engins
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 50000
+	Armor:
+		Type: Light
+	Mobile:
+		TurnSpeed: 12
+		Speed: 80
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 8c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 5c0
+	Cloak:
+		CloakDelay: 40
+	Armament:
+		Weapon: SNATorpedo
+		LocalOffset: 400,-171,0, 400,171,0
+		FireDelay: 2
+	AttackFrontal:
+		FacingTolerance: 0
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: WaterActor, Underwater
+		InvalidTargets: NoAutoTarget, Structure
+	AutoTargetPriority@ATTACKANYTHING:
+		ValidTargets: WaterActor, Underwater
+	DetectCloaked:
+		DetectionTypes: Underwater
+		Range: 6c0
+	RenderDetectionCircle:
+	NukePower@SNLE:
+		OrderName: SNLENuke
+		Cursor: nuke
+		Icon: abomb
+		ChargeInterval: 16875
+		Name: Frappe nucléaire (SNLE)
+		Description: Tire un missile balistique nucléaire\ndepuis la position du SNLE.
+		BeginChargeSpeechNotification: AbombPrepping
+		EndChargeSpeechNotification: AbombReady
+		SelectTargetSpeechNotification: SelectTarget
+		IncomingSpeechNotification: AbombLaunchDetected
+		SelectTargetTextNotification: Choisissez une cible.
+		BeginChargeTextNotification: Missile nucléaire du SNLE en préparation.
+		EndChargeTextNotification: Missile nucléaire du SNLE prêt.
+		IncomingTextNotification: Tir de missile nucléaire détecté.
+		MissileWeapon: snleatomic
+		MissileImage: atomic
+		MissileDelay: 5
+		SpawnOffset: 0,0,0
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		DisplayBeacon: True
+		DisplayRadarPing: True
+		BeaconPoster: atomicon
+		CameraRange: 10c0
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		SupportPowerPaletteOrder: 71
+	SupportPowerChargeBar:
+	Explodes:
+		Weapon: UnitExplodeSubmarine
+		EmptyWeapon: UnitExplodeSubmarine
+	Selectable:
+		DecorationBounds: 2048, 2048
+
+# ======================================================================
+# PORTE-AVIONS
+# Les avions sont embarqués : 3 à la sortie du chantier naval, capacité 5 (8 pour le français).
+# Touche de déploiement (F) : les avions prêts décollent.
+# Clic droit d'un avion sur son porte-avions : il appontera ; à court de munitions il revient seul.
+# À bord, un avion est réarmé et réparé (pastille jaune -> verte).
+# Aucune arme ni sonar contre les sous-marins : à escorter.
+# ======================================================================
+^RatcCarrier:
+	Inherits: ^Ship
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 8
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 9c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 5c0
+	Reservable:
+	AircraftCarrier:
+		RearmDelay: 250
+	WithCarrierPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
+	Armament:
+		Weapon: PANAA
+		LocalOffset: 0,-300,200, 0,300,200
+	AttackFrontal:
+		FacingTolerance: 512
+	Selectable:
+		Bounds: 2560, 2560
+		DecorationBounds: 3072, 3072
+
+# France : porte-avions à propulsion nucléaire, Rafale, 8 avions, 10 % plus rapide.
+PAN:
+	Inherits: ^RatcCarrier
+	RenderSprites:
+		Image: pan
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 80
+		BuildDuration: 5000
+		Prerequisites: ~ships.france, techcenter, ~techlevel.high
+		Description: Porte-avions à propulsion nucléaire.\nLivré avec 3 Rafale, capacité 8 avions.\nDéfense antiaérienne rapprochée.\n  Déploiement : faire décoller les avions\n  Faible contre : sous-marins (à escorter)
+	Valued:
+		Cost: 3200
+	Tooltip:
+		Name: Porte-avions nucléaire
+	Health:
+		HP: 110000
+	Mobile:
+		Speed: 62
+	AircraftCarrier:
+		Types: rafale
+		MaxAircraft: 8
+		InitialAircraft: rafale, rafale, rafale
+	Explodes:
+		Weapon: PANReactorExplode
+		EmptyWeapon: PANReactorExplode
+
+# Royaume-Uni : porte-avions classe Queen Elizabeth, Harrier.
+PAUK:
+	Inherits: ^RatcCarrier
+	RenderSprites:
+		Image: pauk
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 80
+		BuildDuration: 4200
+		Prerequisites: ~ships.england, techcenter, ~techlevel.high
+		Description: Porte-avions britannique.\nLivré avec 3 Harrier, capacité 5 avions.\nDéfense antiaérienne rapprochée.\n  Déploiement : faire décoller les avions\n  Faible contre : sous-marins (à escorter)
+	Valued:
+		Cost: 2600
+	Tooltip:
+		Name: Porte-avions (classe Queen Elizabeth)
+	Health:
+		HP: 100000
+	Mobile:
+		Speed: 56
+	AircraftCarrier:
+		Types: harrier
+		MaxAircraft: 5
+		InitialAircraft: harrier, harrier, harrier
+
+# Russie : porte-avions Amiral Kouznetsov, MiG.
+PARU:
+	Inherits: ^RatcCarrier
+	RenderSprites:
+		Image: paru
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 80
+		BuildDuration: 4200
+		Prerequisites: ~ships.russia, techcenter, ~techlevel.high
+		Description: Porte-avions russe.\nLivré avec 3 MiG, capacité 5 avions.\nDéfense antiaérienne rapprochée.\n  Déploiement : faire décoller les avions\n  Faible contre : sous-marins (à escorter)
+	Valued:
+		Cost: 2600
+	Tooltip:
+		Name: Porte-avions Amiral Kouznetsov
+	Health:
+		HP: 100000
+	Mobile:
+		Speed: 56
+	AircraftCarrier:
+		Types: mig
+		MaxAircraft: 5
+		InitialAircraft: mig, mig, mig
+
+# Ukraine : porte-hélicoptères, moins cher et moins résistant, Mi-24.
+PHUA:
+	Inherits: ^RatcCarrier
+	RenderSprites:
+		Image: phua
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 75
+		BuildDuration: 2800
+		Prerequisites: ~ships.ukraine, dome, ~techlevel.medium
+		Description: Porte-hélicoptères ukrainien.\nLivré avec 2 Mi-24, capacité 4 hélicoptères.\nDéfense antiaérienne légère.\n  Déploiement : faire décoller les hélicoptères\n  Faible contre : sous-marins, navires de combat
+	Valued:
+		Cost: 1800
+	Tooltip:
+		Name: Porte-hélicoptères
+	Health:
+		HP: 70000
+	Mobile:
+		Speed: 52
+	RevealsShroud:
+		Range: 8c0
+	AircraftCarrier:
+		Types: mi24
+		MaxAircraft: 4
+		InitialAircraft: mi24, mi24
+	Armament:
+		Weapon: PHUAAA
+	Selectable:
+		Bounds: 2048, 2048
+		DecorationBounds: 2560, 2560
+
+# ======================================================================
+# AVIATION EMBARQUÉE
+# ======================================================================
+# Rafale (France) : multirôle — air-air, air-sol, air-mer (torpilles capables de
+# toucher un sous-marin en plongée une fois détecté ; petit sonar embarqué).
+RAFALE:
+	Inherits: ^Plane
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	RenderSprites:
+		Image: rafale
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 55
+		Prerequisites: ~aircraft.france, techcenter, ~techlevel.high
+		Description: Avion de combat multirôle.\nMissiles air-air, missiles air-sol et torpilles.\nPeut apponter sur le porte-avions nucléaire.\n  Fort contre : véhicules, navires, sous-marins, aviation\n  Faible contre : infanterie
+	Valued:
+		Cost: 2200
+	Tooltip:
+		Name: Rafale
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 9000
+	RevealsShroud:
+		MinRange: 11c0
+		Range: 13c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 11c0
+		Type: GroundPosition
+	Armament@AG:
+		Name: primary
+		Weapon: RafaleAG
+		LocalOffset: 0,-640,0, 0,640,0
+		PauseOnCondition: !ammo-ag
+	Armament@AA:
+		Name: aa
+		Weapon: RafaleAA
+		LocalOffset: 0,-640,0, 0,640,0
+		PauseOnCondition: !ammo-aa
+	Armament@TORP:
+		Name: torp
+		Weapon: RafaleTorpedo
+		LocalOffset: 0,0,-100
+		PauseOnCondition: !ammo-torp
+	AttackAircraft:
+		Armaments: primary, aa, torp
+		FacingTolerance: 80
+		PersistentTargeting: false
+		OpportunityFire: False
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 16
+		Speed: 240
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: ReturnFire
+	AmmoPool@AG:
+		Name: ag
+		Armaments: primary
+		Ammo: 6
+		AmmoCondition: ammo-ag
+	AmmoPool@AA:
+		Name: aa
+		Armaments: aa
+		Ammo: 4
+		AmmoCondition: ammo-aa
+	AmmoPool@TORP:
+		Name: torp
+		Armaments: torp
+		Ammo: 2
+		AmmoCondition: ammo-torp
+	Rearmable:
+		RearmActors: hpad, pan
+		AmmoPools: ag, aa, torp
+	CarrierAircraft:
+	DetectCloaked:
+		DetectionTypes: Underwater
+		Range: 3c0
+	WithAmmoPipsDecoration:
+		AmmoPools: ag, aa, torp
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
+	Selectable:
+		Bounds: 1536, 1194, 0, 85
+		DecorationBounds: 1706, 1237, 0, 42
+	Contrail@1:
+		Offset: -598,-683,0
+		StartColorAlpha: 128
+	Contrail@2:
+		Offset: -598,683,0
+		StartColorAlpha: 128
+	SpawnActorOnDeath:
+		Actor: MIG.Husk
+	LeavesTrails:
+		Offsets: -853,0,171
+		MovingInterval: 2
+		Image: smokey
+		SpawnAtLastPosition: False
+		Type: CenterPosition
+		RequiresCondition: enable-smoke
+	GrantConditionOnDamageState@SmokeTrail:
+		Condition: enable-smoke
+	ProducibleWithLevel:
+		Prerequisites: aircraft.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: aircraft.upgraded
+
+# Harrier (Royaume-Uni) : même avion que le Rafale sans l'air-air, mais à décollage
+# et atterrissage verticaux (se pose n'importe où, fait du vol stationnaire).
+HARRIER:
+	Inherits: RAFALE
+	RenderSprites:
+		Image: harrier
+	Buildable:
+		Prerequisites: ~aircraft.england, techcenter, ~techlevel.high
+		Description: Avion d'attaque à décollage vertical.\nMissiles air-sol et torpilles, vol stationnaire.\nPeut apponter sur le porte-avions britannique.\n  Fort contre : véhicules, navires, sous-marins\n  Faible contre : aviation, infanterie
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Harrier
+	-Armament@AA:
+	-AmmoPool@AA:
+	AttackAircraft:
+		Armaments: primary, torp
+	Rearmable:
+		RearmActors: hpad, pauk
+		AmmoPools: ag, torp
+	WithAmmoPipsDecoration:
+		AmmoPools: ag, torp
+	Aircraft:
+		CanHover: True
+		VTOL: true
+		TakeOffOnResupply: true
+		WaitDistanceFromResupplyBase: 4c0
+		LandableTerrainTypes: Clear, Rough, Road, Ore, Beach, Gems
+
+# MiG russe : peut apponter sur l'Amiral Kouznetsov.
+MIG:
+	Rearmable:
+		RearmActors: afld, afld.ukraine, paru
+	CarrierAircraft:
+
+# Mi-24 ukrainien (le Hind de Red Alert, désactivé à l'origine) : produit à l'aérodrome
+# ukrainien, apponte sur le porte-hélicoptères.
+MI24:
+	Inherits: HIND
+	Buildable:
+		BuildAtProductionType: Plane
+		BuildPaletteOrder: 25
+		Prerequisites: ~aircraft.ukraine, ~techlevel.medium
+		Description: Hélicoptère d'attaque à deux mitrailleuses.\nPeut apponter sur le porte-hélicoptères.\n  Fort contre : infanterie, blindés légers\n  Faible contre : chars, aviation
+	Tooltip:
+		Name: Mi-24
+	RenderSprites:
+		Image: hind
+	Rearmable:
+		RearmActors: afld.ukraine, phua
+	CarrierAircraft:
+	Aircraft:
+		CanSlide: false
+
+# ======================================================================
+# IA : les bots construisent et utilisent ces unités (en nombre limité).
+# Leurs porte-avions font décoller les avions automatiquement.
+# ======================================================================
+Player:
+	SquadManagerBotModule@rush:
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, snle, pan, pauk, paru, phua
+		AirUnitsTypes: mig, yak, heli, hind, mh60, rafale, harrier, mi24
+	SquadManagerBotModule@normal:
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, snle, pan, pauk, paru, phua
+		AirUnitsTypes: mig, yak, heli, hind, mh60, rafale, harrier, mi24
+	SquadManagerBotModule@turtle:
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, snle, pan, pauk, paru, phua
+		AirUnitsTypes: mig, yak, heli, hind, mh60, rafale, harrier, mi24
+	SquadManagerBotModule@naval:
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, snle, pan, pauk, paru, phua
+		AirUnitsTypes: mig, yak, heli, hind, mh60, rafale, harrier, mi24
+	UnitBuilderBotModule@normal:
+		UnitsToBuild:
+			snle: 3
+			pan: 5
+			pauk: 5
+			paru: 5
+			phua: 5
+			rafale: 5
+			harrier: 5
+			mi24: 5
+		UnitLimits:
+			snle: 1
+			pan: 1
+			pauk: 1
+			paru: 1
+			phua: 1
+	UnitBuilderBotModule@turtle:
+		UnitsToBuild:
+			snle: 3
+			pan: 5
+			pauk: 5
+			paru: 5
+			phua: 5
+			rafale: 5
+			harrier: 5
+			mi24: 5
+		UnitLimits:
+			snle: 1
+			pan: 1
+			pauk: 1
+			paru: 1
+			phua: 1
+	UnitBuilderBotModule@naval:
+		UnitsToBuild:
+			snle: 10
+			pan: 10
+			pauk: 10
+			paru: 10
+			phua: 10
+		UnitLimits:
+			snle: 2
+			pan: 2
+			pauk: 2
+			paru: 2
+			phua: 2
+	SupportPowerBotModule:
+		Decisions:
+			snlenuke:
+				OrderName: SNLENuke
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Ally
+					Types: Air, Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 7c0
+
+# =====================================================================
+# MORAL : suppression (BMPT, Challenger 3) et démoralisation (TOS-1A)
+# =====================================================================
+^Infantry:
+	# Brouillage SAS : vision réduite de moitié.
+	ExternalCondition@JAMMED:
+		Condition: jammed
+	RevealsShroudMultiplier@JAMMED:
+		RequiresCondition: jammed
+		Modifier: 50
+	# Désignation laser (drone Luna) : +25 % de dégâts reçus, losange vert visible par l'ennemi.
+	ExternalCondition@DESIGNATED:
+		Condition: laser-designated
+	DamageMultiplier@DESIGNATED:
+		RequiresCondition: laser-designated
+		Modifier: 125
+	WithDecoration@DESIGNATED:
+		Image: lasermark
+		Sequence: idle
+		Palette: chrome
+		Position: Top
+		ValidRelationships: Enemy
+		RequiresCondition: laser-designated
+	# Brouillage ECM (drone Aladin) : tirs moins précis, verrouillage plus long, vision réduite.
+	ExternalCondition@ECM:
+		Condition: ecm
+	InaccuracyMultiplier@ECM:
+		RequiresCondition: ecm
+		Modifier: 150
+	ReloadDelayMultiplier@ECM:
+		RequiresCondition: ecm
+		Modifier: 115
+	RevealsShroudMultiplier@ECM:
+		RequiresCondition: ecm
+		Modifier: 75
+	ExternalCondition@SUPPRESSED:
+		Condition: suppressed
+	ExternalCondition@DEMORALIZED:
+		Condition: demoralized
+	SpeedMultiplier@SUPPRESSED:
+		RequiresCondition: suppressed
+		Modifier: 50
+	ReloadDelayMultiplier@SUPPRESSED:
+		RequiresCondition: suppressed
+		Modifier: 150
+	SpeedMultiplier@DEMORALIZED:
+		RequiresCondition: demoralized
+		Modifier: 30
+	FirepowerMultiplier@DEMORALIZED:
+		RequiresCondition: demoralized
+		Modifier: 50
+
+# Blindés lourds : peuvent être marqués par l'AWACS ukrainien (surbrillance orange).
+^TrackedVehicle:
+	ExternalCondition@SPOTTED:
+		Condition: awacs-spotted
+	WithColoredOverlay@SPOTTED:
+		RequiresCondition: awacs-spotted
+		Color: FF800070
+	# Réticule clignotant, visible seulement par le joueur qui a lancé l'AWACS.
+	WithDecoration@AWACS:
+		Image: awacsmark
+		Sequence: idle
+		Palette: chrome
+		Position: Top
+		ValidRelationships: Enemy
+		RequiresCondition: awacs-spotted
+		BlinkInterval: 8
+		BlinkPattern: On, Off
+
+# =====================================================================
+# POUVOIRS DE SOUTIEN NATIONAUX (portés par le Radar Dome)
+# =====================================================================
+DOME:
+	SupportPowerChargeBar:
+	# France : autorise les GCP de la zone à désigner une cible pour un SCALP (30 s).
+	GrantExternalConditionPower@SCALP:
+		OrderName: FranceScalp
+		Prerequisites: structures.france
+		PauseOnCondition: disabled || jammed
+		Icon: abomb
+		ChargeInterval: 6000
+		Name: Frappe de croisière SCALP
+		Description: Sélectionnez vos commandos GCP : pendant 30 secondes,\nils peuvent illuminer une cible visible au laser.\nUn missile de croisière tiré hors-carte la frappe alors.\nSans GCP ni cible visible : pas de frappe.
+		Condition: scalp-authorized
+		Duration: 750
+		Dimensions: 3, 3
+		Footprint: xxx xxx xxx
+		Sequence: idle
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: Sélectionnez vos commandos GCP.
+		EndChargeTextNotification: Frappe SCALP prête.
+		SupportPowerPaletteOrder: 70
+	# Royaume-Uni : brouille radar et pouvoirs de soutien ennemis (30 s).
+	GrantExternalConditionPower@SASEW:
+		OrderName: EnglandJamming
+		Prerequisites: structures.england
+		PauseOnCondition: disabled || jammed
+		Icon: sonar
+		ChargeInterval: 5250
+		Name: Brouillage électronique SAS
+		Description: Brouille une grande zone pendant 30 secondes :\nradar ennemi coupé, pouvoirs de soutien ennemis suspendus,\nunités ennemies réduites à la moitié de leur vision.\nAucun dégât.
+		Condition: jammed
+		Duration: 750
+		ValidRelationships: Enemy
+		Dimensions: 9, 9
+		Footprint: ___xxx___ _xxxxxxx_ _xxxxxxx_ xxxxxxxxx xxxxxxxxx xxxxxxxxx _xxxxxxx_ _xxxxxxx_ ___xxx___
+		Sequence: idle
+		DisplayRadarPing: true
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: Sélectionnez la zone à brouiller.
+		EndChargeTextNotification: Brouillage SAS prêt.
+		SupportPowerPaletteOrder: 71
+	# Ukraine : révèle une grande zone et marque les blindés lourds (15 s).
+	SpawnActorPower@AWACS:
+		OrderName: UkraineAwacs
+		Prerequisites: structures.ukraine
+		PauseOnCondition: disabled || jammed
+		Icon: spyplane
+		ChargeInterval: 3750
+		Name: Renseignement OTAN (AWACS)
+		Description: Révèle une très grande zone (20 cases) pendant 15 secondes,\ndétecte les unités furtives et marque d'un réticule\nchaque blindé chenillé ennemi. Aucun dégât.
+		Actor: camera.awacs
+		EffectImage: explosion
+		LifeTime: 375
+		DisplayRadarPing: true
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: Sélectionnez la zone à surveiller.
+		EndChargeTextNotification: AWACS disponible.
+		SupportPowerPaletteOrder: 72
+	# Russie : salve thermobarique. Touche aussi les unités amies !
+	SpawnActorPower@TOS1:
+		OrderName: RussiaTOS1
+		Prerequisites: structures.russia
+		PauseOnCondition: disabled || jammed
+		Icon: parabombs
+		ChargeInterval: 6750
+		Name: Frappe thermobarique TOS-1A
+		Description: Salve thermobarique sur une zone explorée.\nDévaste l'infanterie, démoralise toutes les unités\nprésentes, amies comme ennemies.
+		Actor: tos1.strike
+		EffectImage: explosion
+		LifeTime: -1
+		AllowUnderShroud: false
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: Sélectionnez la cible.
+		EndChargeTextNotification: TOS-1A prêt.
+		SupportPowerPaletteOrder: 73
+
+camera.awacs:
+	Inherits: CAMERA
+	EditorOnlyTooltip:
+		Name: (AWACS proxy camera)
+	RevealsShroud:
+		Range: 20c0
+	DetectCloaked:
+		Range: 20c0
+	ProximityExternalCondition@SPOTTED:
+		Condition: awacs-spotted
+		Range: 20c0
+		ValidRelationships: Enemy
+
+tos1.strike:
+	Inherits: CAMERA
+	EditorOnlyTooltip:
+		Name: (TOS-1A strike proxy)
+	RevealsShroud:
+		Range: 4c0
+	Health:
+		HP: 100
+	HitShape:
+	KillsSelf:
+		Delay: 50
+	Explodes:
+		Weapon: TOS1Thermobaric
+		EmptyWeapon: TOS1Thermobaric
+
+# Le brouillage SAS suspend aussi les pouvoirs des autres bâtiments.
+MSLO:
+	ExternalCondition@JAMMED:
+		Condition: jammed
+	NukePower:
+		PauseOnCondition: disabled || jammed
+IRON:
+	ExternalCondition@JAMMED:
+		Condition: jammed
+	GrantExternalConditionPower@IRONCURTAIN:
+		PauseOnCondition: disabled || jammed
+PDOX:
+	ExternalCondition@JAMMED:
+		Condition: jammed
+	ChronoshiftPower@chronoshift:
+		PauseOnCondition: disabled || jammed
+	ChronoshiftPower@advancedchronoshift:
+		PauseOnCondition: disabled || jammed
+ATEK:
+	ExternalCondition@JAMMED:
+		Condition: jammed
+	GpsPower:
+		PauseOnCondition: disabled || jammed
+AFLD:
+	ExternalCondition@JAMMED:
+		Condition: jammed
+	AirstrikePower@spyplane:
+		PauseOnCondition: jammed
+	ParatroopersPower@paratroopers:
+		PauseOnCondition: jammed
+	AirstrikePower@parabombs:
+		PauseOnCondition: jammed
+
+# =====================================================================
+# FRANCE — Commandos parachutistes (GCP)
+# Furtifs, grande vision. Pendant une frappe SCALP, leur fusil est
+# remplacé par le désignateur laser.
+# =====================================================================
+GCP:
+	Inherits: ^Soldier
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: gcp
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 150
+		Prerequisites: dome, ~infantry.france, ~techlevel.medium
+		Description: Commandos parachutistes français.\nFurtifs à l'arrêt comme en mouvement, grande vision.\nDésignent les cibles des frappes SCALP.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: Commando parachutiste (GCP)
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 6500
+	Mobile:
+		Speed: 68
+	RevealsShroud:
+		Range: 8c0
+	Cloak:
+		InitialDelay: 0
+		CloakDelay: 100
+		UncloakOn: Attack, Unload, Infiltrate, Demolish
+		IsPlayerPalette: true
+	Armament@PRIMARY:
+		Weapon: GCPRifle
+		RequiresCondition: !scalp-authorized
+	Armament@DESIGNATOR:
+		Name: secondary
+		Weapon: ScalpDesignator
+		RequiresCondition: scalp-authorized
+	Armament@SCALP:
+		Name: secondary
+		Weapon: ScalpMissile
+		LocalOffset: -28672,0,8192
+		RequiresCondition: scalp-authorized
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: GCPRifle
+		MuzzleSequence: garrison-muzzle
+	ExternalCondition@SCALP:
+		Condition: scalp-authorized
+	TimedConditionBar@SCALP:
+		Condition: scalp-authorized
+		Color: FF3030
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		StandSequences: parachute
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
+	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: barracks.upgraded
+
+# =====================================================================
+# ROYAUME-UNI — Équipe NLAW et Challenger 3
+# =====================================================================
+NLAW:
+	Inherits: ^Soldier
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: nlaw
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 151
+		Prerequisites: ~infantry.england, ~techlevel.medium
+		Description: Équipe antichar d'élite britannique.\nMissiles à attaque par le toit (ignorent le blindage réactif).\nEn garnison dans un pillbox : tir d'embuscade dévastateur.\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
+	Valued:
+		Cost: 450
+	Tooltip:
+		Name: Équipe NLAW
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 5000
+	Armament@PRIMARY:
+		Weapon: NLAW
+		LocalOffset: 0,0,555
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: NLAWAmbush
+	TakeCover:
+		ProneOffset: 384,0,-395
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		StandSequences: parachute
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
+	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: barracks.upgraded
+
+CHALLENGER:
+	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: challenger
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 241
+		Prerequisites: dome, ~vehicles.england, ~techlevel.high
+		Description: Char de combat britannique, spécialiste du combat urbain.\nObus à effet de souffle : cloue l'infanterie au sol\nsans raser les bâtiments. Se répare seul sous 50 %.\n  Strong vs Infantry, Vehicles\n  Weak vs Buildings, Aircraft
+	Valued:
+		Cost: 1700
+	Tooltip:
+		Name: Challenger 3
+		GenericName: Tank
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 70000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Speed: 58
+		TurnSpeed: 12
+		Locomotor: heavytracked
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 16
+		Offset: -107,0,0
+	Armament:
+		Weapon: ChallengerGun
+		LocalOffset: 900,0,160
+		Recoil: 171
+		RecoilRecovery: 30
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: CHALLENGER.Husk
+	ChangesHealth:
+		Step: 250
+		Delay: 25
+		StartIfBelow: 50
+		DamageCooldown: 125
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1877, 1621, 0, -170
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
+# =====================================================================
+# UKRAINE — Opérateur FPV et infanterie de tranchée
+# Les deux se déploient (touche de déploiement) : ils se couchent et
+# ne peuvent plus bouger ; un ordre de mouvement les relève.
+# =====================================================================
+FPVOP:
+	Inherits: ^Soldier
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: fpvop
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 152
+		Prerequisites: ~infantry.ukraine, ~techlevel.low
+		Description: Opérateur de drone FPV, très bon marché.\nDéployé : se couche, verrouille la cible (2,4 s) puis lance\nun drone kamikaze à 9 cases. Le drone est perdu à l'impact,\nle suivant est prêt en 10 secondes.\n  Fort contre : infanterie, véhicules légers\n  Faible contre : aviation (seul, ne tue pas un char lourd)
+	Valued:
+		Cost: 250
+	Tooltip:
+		Name: Opérateur de drone FPV
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 3500
+	Mobile:
+		ImmovableCondition: !undeployed
+	GrantConditionOnDeploy:
+		DeployedCondition: deployed
+		UndeployedCondition: undeployed
+		UndeployOnMove: true
+		SkipMakeAnimation: true
+	RevealsShroud@DRONE:
+		Range: 7c0
+		RequiresCondition: deployed
+	Armament@PRIMARY:
+		Weapon: FPVDrone
+		LocalOffset: 0,0,555
+		FireDelay: 60
+		RequiresCondition: deployed
+	# Un seul drone en l'air à la fois : il est perdu à l'impact, le suivant est prêt en 10 s.
+	AmmoPool@DRONE:
+		Armaments: primary
+		Ammo: 1
+	ReloadAmmoPool@DRONE:
+		Delay: 250
+		Count: 1
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		RequiresSelection: true
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: Pistol
+		RequiresCondition: !deployed
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: Pistol
+	TakeCover:
+		ProneOffset: 256,64,-331
+		RequiresCondition: !deployed
+	WithInfantryBody:
+		DefaultAttackSequence: throw
+		RequiresCondition: !parachute && !deployed
+	WithInfantryBody@DEPLOYED:
+		StandSequences: prone-stand
+		MoveSequence: prone-run
+		DefaultAttackSequence: prone-throw
+		RequiresCondition: deployed
+	WithInfantryBody@PARACHUTE:
+		StandSequences: parachute
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
+	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: barracks.upgraded
+
+TRENCH:
+	Inherits: ^Soldier
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: trench
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 153
+		Prerequisites: ~infantry.ukraine, ~techlevel.infonly
+		Description: Fantassin ukrainien.\nDéployé : creuse une tranchée instantanément.\nEn tranchée : dégâts reçus -50 %, portée +15 %,\nimmunisé à la suppression et à l'écrasement.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+	Valued:
+		Cost: 150
+	Tooltip:
+		Name: Fantassin de tranchée
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 5500
+	Mobile:
+		ImmovableCondition: !undeployed
+	GrantConditionOnDeploy:
+		DeployedCondition: entrenched
+		UndeployedCondition: undeployed
+		UndeployOnMove: true
+		SkipMakeAnimation: true
+	DamageMultiplier@ENTRENCHED:
+		RequiresCondition: entrenched
+		Modifier: 50
+	RangeMultiplier@ENTRENCHED:
+		RequiresCondition: entrenched
+		Modifier: 115
+	SpeedMultiplier@SUPPRESSED:
+		RequiresCondition: suppressed && !entrenched
+	ReloadDelayMultiplier@SUPPRESSED:
+		RequiresCondition: suppressed && !entrenched
+	Crushable:
+		RequiresCondition: !entrenched
+	Armament@PRIMARY:
+		Weapon: M1Carbine
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: Vulcan
+		MuzzleSequence: garrison-muzzle
+	TakeCover:
+		RequiresCondition: !entrenched
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+		RequiresCondition: !parachute && !entrenched
+	WithInfantryBody@ENTRENCHED:
+		StandSequences: prone-stand
+		MoveSequence: prone-run
+		DefaultAttackSequence: prone-shoot
+		RequiresCondition: entrenched
+	WithInfantryBody@PARACHUTE:
+		StandSequences: parachute
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
+	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: barracks.upgraded
+
+# =====================================================================
+# RUSSIE — T-90M (blindage réactif) et BMPT Terminator
+# L'ERA est actif tant que le véhicule n'a subi aucun dégât : le premier
+# missile antichar est presque annulé. Une réparation le recharge.
+# =====================================================================
+T90M:
+	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: t90m
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 239
+		Prerequisites: dome, ~vehicles.russia, ~techlevel.medium
+		Description: Char de combat russe.\nBlindage réactif : le premier missile antichar\nne fait que 10 % de dégâts (rechargé à la réparation).\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: T-90M Proryv
+		GenericName: Tank
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 65000
+	Armor:
+		Type: Heavy
+	Armor@ERA:
+		Type: ERA
+		RequiresCondition: !damaged
+	Mobile:
+		Speed: 66
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 20
+		Offset: -21,0,0
+	Armament:
+		Weapon: T90Gun
+		Recoil: 128
+		RecoilRecovery: 38
+		LocalOffset: 840,0,140
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: T90M.Husk
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
+BMPT:
+	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: bmpt
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 240
+		Prerequisites: dome, ~vehicles.russia, ~techlevel.medium
+		Description: Véhicule d'appui aux chars russe.\nDouble canon de 30 mm à feu continu : cloue l'infanterie\nau sol (lente, cadence réduite). Missiles Ataka antichar.\nBlindage réactif comme le T-90M.\n  Strong vs Infantry, Light armor\n  Weak vs Aircraft
+	Valued:
+		Cost: 1300
+	Tooltip:
+		Name: BMPT Terminator
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 50000
+	Armor:
+		Type: Heavy
+	Armor@ERA:
+		Type: ERA
+		RequiresCondition: !damaged
+	Mobile:
+		Speed: 64
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 40
+		Offset: -43,0,0
+	Armament@PRIMARY:
+		Weapon: BMPT30mm
+		Recoil: 43
+		LocalOffset: 620,43,175, 620,-43,175
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: BMPTAtaka
+		LocalOffset: 280,230,170, 280,-230,170
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: BMPT.Husk
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
+# Carcasses : mêmes sprites que le véhicule, assombris par la palette des épaves.
+LEOPARD.Husk:
+	Inherits: 2TNK.Husk
+	Tooltip:
+		Name: Épave (Leopard 2A7+)
+	TransformOnCapture:
+		IntoActor: leopard
+	InfiltrateForTransform:
+		IntoActor: leopard
+	RenderSprites:
+		Image: leopard.destroyed
+
+CHALLENGER.Husk:
+	Inherits: 2TNK.Husk
+	Tooltip:
+		Name: Épave (Challenger 3)
+	TransformOnCapture:
+		IntoActor: challenger
+	InfiltrateForTransform:
+		IntoActor: challenger
+	RenderSprites:
+		Image: challenger.destroyed
+
+T90M.Husk:
+	Inherits: 2TNK.Husk
+	Tooltip:
+		Name: Épave (T-90M)
+	TransformOnCapture:
+		IntoActor: t90m
+	InfiltrateForTransform:
+		IntoActor: t90m
+	RenderSprites:
+		Image: t90m.destroyed
+
+BMPT.Husk:
+	Inherits: 2TNK.Husk
+	Tooltip:
+		Name: Épave (BMPT Terminator)
+	TransformOnCapture:
+		IntoActor: bmpt
+	InfiltrateForTransform:
+		IntoActor: bmpt
+	RenderSprites:
+		Image: bmpt.destroyed
+
+# =====================================================================
+# FRANCE — Ingénieur militaire (génie) et tranchées
+# Déployé (touche F), l'ingénieur ouvre une petite zone de construction
+# autour de lui, valable UNIQUEMENT pour les défenses et les tranchées,
+# même loin de la base. Il redevient mobile dès qu'on le déplace.
+# =====================================================================
+GENIE:
+	Inherits: ^Soldier
+	Inherits@selection: ^SelectableSupportUnit
+	RenderSprites:
+		Image: e6
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 61
+		Icon: genie-icon
+		Prerequisites: ~infantry.france, ~techlevel.low
+		Description: Ingénieur militaire français.\nDéployé : permet de construire des défenses\net de creuser des tranchées autour de lui.\n  Non armé
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Ingénieur militaire
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 4000
+	-AttackFrontal:
+	Voiced:
+		VoiceSet: EngineerVoice
+	Passenger:
+		CustomPipType: yellow
+	Mobile:
+		ImmovableCondition: !undeployed
+	GrantConditionOnDeploy:
+		DeployedCondition: genie-deployed
+		UndeployedCondition: undeployed
+		UndeployOnMove: true
+		SkipMakeAnimation: true
+	# Zone de construction réservée aux défenses (voir ^Defense et TRANCHEE plus bas).
+	BaseProvider@GENIE:
+		RequiresCondition: genie-deployed
+		Range: 3c0
+	GivesBuildableArea@GENIE:
+		RequiresCondition: genie-deployed
+		AreaTypes: genie
+	ProvidesPrerequisite@GENIE:
+		RequiresCondition: genie-deployed
+		Prerequisite: genie-deploye
+	DamageMultiplier@DEPLOYED:
+		RequiresCondition: genie-deployed
+		Modifier: 75
+	WithInfantryBody:
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		StandSequences: parachute
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
+
+# Toutes les défenses peuvent aussi être posées dans la zone d'un ingénieur déployé.
+^Defense:
+	RequiresBuildableArea:
+		AreaTypes: building, genie
+
+# Tranchée : se construit (file Défenses) uniquement près d'un ingénieur déployé,
+# n'importe où sur la carte. Abrite 4 fantassins qui tirent depuis l'intérieur
+# et sont protégés tant que la tranchée tient.
+TRANCHEE:
+	Inherits: ^Defense
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Inherits@CARGOPIPS: ^CargoPips
+	RenderSprites:
+		Image: tranchee
+	Tooltip:
+		Name: Tranchée (est-ouest)
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 35
+		Prerequisites: genie-deploye, ~structures.france, ~techlevel.low
+		Description: Tranchée creusée par le génie.\nNe se construit qu'à côté d'un ingénieur militaire déployé.\nAbrite 4 fantassins qui tirent à couvert.\n  Pas besoin d'électricité
+	Valued:
+		Cost: 150
+	CustomSellValue:
+		Value: 50
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+		RequiresBaseProvider: false
+	RequiresBuildableArea:
+		AreaTypes: genie
+		Adjacent: 3
+	Health:
+		HP: 25000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 5c0
+	Selectable:
+		Bounds: 2048, 1024
+	Turreted:
+		TurnSpeed: 512
+	-QuantizeFacingsFromSequence:
+	BodyOrientation:
+		QuantizedFacings: 8
+	Cargo:
+		Types: Infantry
+		MaxWeight: 4
+	AttackGarrisoned:
+		PauseOnCondition: build-incomplete
+		Armaments: garrisoned
+		PortOffsets: 0,-512,64, 0,-171,64, 0,171,64, 0,512,64
+		PortYaws: 0, 256, 512, 768
+		PortCones: 512, 512, 512, 512
+	RenderRangeCircle:
+		FallbackRange: 5c0
+	Explodes:
+		Weapon: SmallBuildingExplode
+		EmptyWeapon: SmallBuildingExplode
+
+# Même tranchée, orientée nord-sud (1 case de large, 2 de haut).
+TRANCHEEV:
+	Inherits: TRANCHEE
+	RenderSprites:
+		Image: trancheev
+	Tooltip:
+		Name: Tranchée (nord-sud)
+	Buildable:
+		BuildPaletteOrder: 36
+	Building:
+		Footprint: x x
+		Dimensions: 1,2
+	Selectable:
+		Bounds: 1024, 2048
+	AttackGarrisoned:
+		PortOffsets: -512,0,64, -171,0,64, 171,0,64, 512,0,64
+
+# =====================================================================
+# FRANCE — DRONES (doctrine : 3 systèmes maximum)
+# =====================================================================
+# MQ-9 Reaper (MALE) : frappe de précision dans la profondeur. Vole haut et
+# lentement, voit très loin, repère les unités furtives à la caméra thermique.
+# Drone sans pilote : pas d'éjection. 2 exemplaires maximum.
+REAPER:
+	Inherits: ^Plane
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: reaper
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 56
+		BuildLimit: 2
+		Prerequisites: ~aircraft.france, dome, ~techlevel.high
+		Description: Drone MALE armé.\nTrès grande vision, caméra thermique (détecte les unités furtives).\n2 bombes guidées laser GBU-12 et 4 missiles antichar.\nLimité à 2 exemplaires.\n  Fort contre : véhicules, bâtiments\n  Faible contre : aviation, défense antiaérienne
+	Valued:
+		Cost: 1800
+	Tooltip:
+		Name: MQ-9 Reaper
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 6000
+	RevealsShroud:
+		MinRange: 12c0
+		Range: 16c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 12c0
+		Type: GroundPosition
+	DetectCloaked:
+		Range: 8c0
+	Armament@GBU:
+		Name: primary
+		Weapon: ReaperGBU
+		LocalOffset: 0,-213,-85, 0,213,-85
+		PauseOnCondition: !ammo-gbu
+	Armament@HELLFIRE:
+		Name: secondary
+		Weapon: ReaperHellfire
+		LocalOffset: 0,-384,-43, 0,384,-43
+		PauseOnCondition: !ammo-hellfire
+	AttackAircraft:
+		Armaments: primary, secondary
+		FacingTolerance: 80
+		PersistentTargeting: false
+		OpportunityFire: False
+	Aircraft:
+		CruiseAltitude: 3072
+		TurnSpeed: 8
+		Speed: 150
+		RepulsionSpeed: 40
+		MaximumPitch: 40
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: ReturnFire
+	AmmoPool@GBU:
+		Name: gbu
+		Armaments: primary
+		Ammo: 2
+		AmmoCondition: ammo-gbu
+	AmmoPool@HELLFIRE:
+		Name: hellfire
+		Armaments: secondary
+		Ammo: 4
+		AmmoCondition: ammo-hellfire
+	Rearmable:
+		RearmActors: hpad
+		AmmoPools: gbu, hellfire
+	WithAmmoPipsDecoration:
+		AmmoPools: gbu, hellfire
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
+	Selectable:
+		Bounds: 2048, 1280
+		DecorationBounds: 2048, 1280
+	-EjectOnDeath:
+	-SpawnActorOnDeath:
+	Explodes:
+		Weapon: UnitExplodePlane
+		EmptyWeapon: UnitExplodePlane
+	LeavesTrails:
+		Offsets: -384,0,0
+		MovingInterval: 2
+		Image: smokey
+		SpawnAtLastPosition: False
+		Type: CenterPosition
+		RequiresCondition: enable-smoke
+	GrantConditionOnDamageState@SmokeTrail:
+		Condition: enable-smoke
+	ProducibleWithLevel:
+		Prerequisites: aircraft.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: aircraft.upgraded
+
+# Patroller (tactique) : appui-feu rapproché des blindés. Les véhicules alliés
+# à moins de 5 cases profitent de son repérage : +15 % de portée
+# (sections mixtes chars + drones du 501e RCC).
+PATROLLER:
+	Inherits: ^Plane
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: patroller
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 57
+		Prerequisites: ~aircraft.france, ~techlevel.medium
+		Description: Drone tactique d'appui des blindés.\nRoquettes guidées laser par paires.\nVéhicules alliés proches (5 cases) : portée +15 %.\n  Fort contre : véhicules légers, infanterie\n  Faible contre : chars, aviation
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Patroller
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 4500
+	RevealsShroud:
+		MinRange: 9c0
+		Range: 11c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 9c0
+		Type: GroundPosition
+	Armament:
+		Weapon: PatrollerRocket
+		LocalOffset: 0,-170,-40, 0,170,-40, 0,-300,-40, 0,300,-40
+	AttackAircraft:
+		FacingTolerance: 80
+		PersistentTargeting: false
+		OpportunityFire: False
+	Aircraft:
+		CruiseAltitude: 2048
+		TurnSpeed: 12
+		Speed: 170
+		RepulsionSpeed: 40
+		MaximumPitch: 48
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: ReturnFire
+	AmmoPool:
+		Ammo: 12
+	Rearmable:
+		RearmActors: hpad
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
+	ProximityExternalCondition@DRONESUPPORT:
+		Condition: drone-support
+		Range: 5c0
+		ValidRelationships: Ally
+	Selectable:
+		Bounds: 1792, 1280
+		DecorationBounds: 1792, 1280
+	-EjectOnDeath:
+	-SpawnActorOnDeath:
+	Explodes:
+		Weapon: UnitExplodePlane
+		EmptyWeapon: UnitExplodePlane
+	LeavesTrails:
+		Offsets: -384,0,0
+		MovingInterval: 2
+		Image: smokey
+		SpawnAtLastPosition: False
+		Type: CenterPosition
+		RequiresCondition: enable-smoke
+	GrantConditionOnDamageState@SmokeTrail:
+		Condition: enable-smoke
+	ProducibleWithLevel:
+		Prerequisites: aircraft.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: aircraft.upgraded
+
+# Munition rôdeuse Colibri / Larinae : produite à l'héliport, peu chère.
+# Tourne en l'air au-dessus de la zone ; sur ordre d'attaque, fonce sur la cible
+# (le drone devient le projectile) et explose. Autonomie : 2 minutes.
+COLIBRI:
+	Inherits: ^Plane
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: colibri
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 58
+		Prerequisites: ~aircraft.france, ~techlevel.medium
+		Description: Munition rôdeuse (drone kamikaze).\nTourne au-dessus de la zone, puis fonce sur la cible\ndésignée et explose. Usage unique, autonomie 2 minutes.\nFrappe par le dessus : ignore le blindage réactif.\n  Fort contre : blindés légers, artillerie, bâtiments\n  Faible contre : chars lourds, défense antiaérienne
+	Valued:
+		Cost: 250
+	Tooltip:
+		Name: Munition rôdeuse Colibri
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 800
+	RevealsShroud:
+		Range: 5c0
+		Type: GroundPosition
+	Armament:
+		Weapon: ColibriDive
+	AttackAircraft:
+		FacingTolerance: 128
+		PersistentTargeting: false
+		OpportunityFire: False
+	Aircraft:
+		CruiseAltitude: 1536
+		TurnSpeed: 24
+		Speed: 230
+		RepulsionSpeed: 40
+		MaximumPitch: 90
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: ReturnFire
+	Selectable:
+		Bounds: 1024, 1024
+		DecorationBounds: 1024, 1024
+	-EjectOnDeath:
+	-SpawnActorOnDeath:
+	# Au tir, le drone disparaît : c'est lui qui part vers la cible.
+	GrantConditionOnAttack@DIVE:
+		Condition: dived
+		RevokeDelay: 1000
+	KillsSelf@DIVE:
+		RequiresCondition: dived
+		RemoveInstead: true
+	# Batterie épuisée au bout de 2 minutes : il s'écrase.
+	KillsSelf@ENDURANCE:
+		Delay: 3000
+	Explodes:
+		Weapon: UnitExplodeHeli
+		EmptyWeapon: UnitExplodeHeli
+
+# =====================================================================
+# ALLEMAGNE — Pontage tactique rapide (pouvoir du Service Depot)
+# Pont flottant en croix de 5 travées dans chaque direction, posé uniquement
+# sur une rivière ou un plan d'eau. Chaque travée transforme sa case en
+# terrain « Bridge » : blindés et véhicules passent. Dure 90 s ou jusqu'à
+# sa destruction (chaque travée peut être détruite séparément).
+# =====================================================================
+^TacBridgeSegment:
+	Interactable:
+	HiddenUnderFog:
+		Type: CenterPosition
+	Tooltip:
+		Name: Pont tactique
+	Immobile:
+		OccupiesSpace: false
+	ChangesTerrain:
+		TerrainType: Bridge
+	BodyOrientation:
+		QuantizedFacings: 1
+	RenderSprites:
+		Image: tacbridge
+	Health:
+		HP: 20000
+	Armor:
+		Type: Concrete
+	HitShape:
+	Targetable:
+		TargetTypes: GroundActor, Structure
+	KillsSelf:
+		Delay: 2250
+		RemoveInstead: true
+	Explodes:
+		Weapon: SmallBuildingExplode
+		EmptyWeapon: SmallBuildingExplode
+
+tacbridge.ns:
+	Inherits: ^TacBridgeSegment
+	WithSpriteBody:
+		Sequence: ns
+
+tacbridge.ew:
+	Inherits: ^TacBridgeSegment
+	WithSpriteBody:
+		Sequence: ew
+
+tacbridge.center:
+	Inherits: ^TacBridgeSegment
+	WithSpriteBody:
+		Sequence: c
+	FreeActor@1:
+		Actor: tacbridge.ns
+		SpawnOffset: 0,-1
+	FreeActor@2:
+		Actor: tacbridge.ns
+		SpawnOffset: 0,1
+	FreeActor@3:
+		Actor: tacbridge.ew
+		SpawnOffset: -1,0
+	FreeActor@4:
+		Actor: tacbridge.ew
+		SpawnOffset: 1,0
+	FreeActor@5:
+		Actor: tacbridge.ns
+		SpawnOffset: 0,-2
+	FreeActor@6:
+		Actor: tacbridge.ns
+		SpawnOffset: 0,2
+	FreeActor@7:
+		Actor: tacbridge.ew
+		SpawnOffset: -2,0
+	FreeActor@8:
+		Actor: tacbridge.ew
+		SpawnOffset: 2,0
+
+FIX:
+	ExternalCondition@JAMMED:
+		Condition: jammed
+	SupportPowerChargeBar:
+	SpawnActorPower@TACBRIDGE:
+		OrderName: GermanyBridge
+		Prerequisites: structures.germany
+		PauseOnCondition: jammed
+		IconImage: tacbridge
+		Icon: icon
+		ChargeInterval: 4500
+		Name: Pontage tactique rapide
+		Description: Pose un pont flottant en croix (5 travées dans chaque sens)\nsur une rivière ou un plan d'eau.\nLes chars et véhicules peuvent l'emprunter pendant 90 secondes\nou jusqu'à sa destruction.
+		Actor: tacbridge.center
+		LifeTime: -1
+		Terrain: River, Water
+		AllowUnderShroud: false
+		EffectImage: explosion
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: Sélectionnez une rivière.
+		EndChargeTextNotification: Pontage tactique prêt.
+		SupportPowerPaletteOrder: 75
+
+# =====================================================================
+# DRONES DES NATIONS — modèle commun : pas de pilote, explose en vol,
+# fume quand il est endommagé.
+# =====================================================================
+^RatcDrone:
+	Inherits: ^Plane
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	RevealsShroud:
+		Type: GroundPosition
+	Selectable:
+		Bounds: 1280, 1024
+		DecorationBounds: 1280, 1024
+	-EjectOnDeath:
+	-SpawnActorOnDeath:
+	Explodes:
+		Weapon: UnitExplodePlane
+		EmptyWeapon: UnitExplodePlane
+	LeavesTrails:
+		Offsets: -256,0,0
+		MovingInterval: 2
+		Image: smokey
+		SpawnAtLastPosition: False
+		Type: CenterPosition
+		RequiresCondition: enable-smoke
+	GrantConditionOnDamageState@SmokeTrail:
+		Condition: enable-smoke
+
+KZO:
+	Inherits: ^RatcDrone
+	RenderSprites:
+		Image: kzo
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 61
+		Prerequisites: ~aircraft.germany, ~techlevel.medium
+		Description: Drone de reconnaissance longue portée. Non armé.\nTrès rapide, peut rester stationnaire au-dessus d'une zone.\nIdéal pour guider le PzH 2000.\n  Faible contre : tout (très fragile)
+	Valued:
+		Cost: 450
+	Tooltip:
+		Name: KZO
+	Health:
+		HP: 2500
+	RevealsShroud:
+		Range: 12c0
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 20
+		Speed: 270
+		CanHover: true
+		VTOL: true
+	Armor:
+		Type: None
+
+LUNA:
+	Inherits: ^RatcDrone
+	RenderSprites:
+		Image: luna
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 62
+		Prerequisites: ~aircraft.germany, ~techlevel.medium
+		Description: Drone de désignation laser. Aucun dégât.\nTant qu'il garde une cible en vue (6 cases),\ncelle-ci subit +25 % de dégâts de toutes les armes.\n  Faible contre : aviation, défense antiaérienne
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: LUNA X-2000
+	Health:
+		HP: 3500
+	RevealsShroud:
+		Range: 9c0
+	Aircraft:
+		CruiseAltitude: 2048
+		TurnSpeed: 16
+		Speed: 170
+		CanHover: true
+		VTOL: true
+	Armament:
+		Weapon: LunaDesignator
+		LocalOffset: 170,0,-85
+	AttackAircraft:
+		AttackType: Hover
+		FacingTolerance: 512
+		PersistentTargeting: true
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	AutoTarget:
+		InitialStance: Defend
+		InitialStanceAI: Defend
+
+ALADIN:
+	Inherits: ^RatcDrone
+	RenderSprites:
+		Image: aladin
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 63
+		Prerequisites: ~aircraft.germany, ~techlevel.high
+		Description: Drone de guerre électronique. Non armé.\nEnnemis dans un rayon de 5 cases : précision -33 %,\nverrouillage +15 %, vision -25 %.\nInutile contre une armée sans armes guidées ni radar.
+	Valued:
+		Cost: 750
+	Tooltip:
+		Name: ALADIN (guerre électronique)
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 7c0
+	Aircraft:
+		CruiseAltitude: 2048
+		TurnSpeed: 16
+		Speed: 170
+		CanHover: true
+		VTOL: true
+	ProximityExternalCondition@ECM:
+		Condition: ecm
+		Range: 5c0
+		ValidRelationships: Enemy
+	WithRangeCircle@ECM:
+		Type: ecm
+		Range: 5c0
+		Color: 60A0FF60
+
+WATCHKEEPER:
+	Inherits: ^RatcDrone
+	RenderSprites:
+		Image: watchkeeper
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 61
+		Prerequisites: ~aircraft.england, ~techlevel.medium
+		Description: Drone de surveillance. Non armé.\nOrbite au-dessus d'une zone et transmet les coordonnées :\nvéhicules alliés à moins de 6 cases : portée +15 %.\n  Faible contre : défense antiaérienne
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Watchkeeper WK450
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 11c0
+	Aircraft:
+		CruiseAltitude: 2048
+		TurnSpeed: 16
+		Speed: 230
+	ProximityExternalCondition@DRONESUPPORT:
+		Condition: drone-support
+		Range: 6c0
+		ValidRelationships: Ally
+
+PROTECTOR:
+	Inherits: ^RatcDrone
+	RenderSprites:
+		Image: protector
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 62
+		Prerequisites: ~aircraft.england, ~techlevel.high
+		Description: Drone armé de harcèlement.\nSalves de 2 missiles légers guidés, recharge lente.\n  Fort contre : véhicules légers, infanterie\n  Faible contre : chars lourds, défense antiaérienne
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Protector RG Mk1
+	Health:
+		HP: 4000
+	RevealsShroud:
+		Range: 8c0
+	Aircraft:
+		CruiseAltitude: 3072
+		TurnSpeed: 10
+		Speed: 160
+	Armament:
+		Weapon: ProtectorMissile
+		LocalOffset: 0,-298,-43, 0,298,-43
+	AttackAircraft:
+		FacingTolerance: 80
+		PersistentTargeting: false
+		OpportunityFire: False
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: ReturnFire
+	AmmoPool:
+		Ammo: 6
+	Rearmable:
+		RearmActors: hpad
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
+
+BLACKHORNET:
+	Inherits: ^RatcDrone
+	RenderSprites:
+		Image: blackhornet
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 63
+		Prerequisites: ~aircraft.england, ~techlevel.low
+		Description: Nano-drone de reconnaissance. Non armé.\nMinuscule : invisible sauf à courte portée.\nExplore derrière les lignes ennemies.\n  Faible contre : tout (500 PV)
+	Valued:
+		Cost: 250
+	Tooltip:
+		Name: Black Hornet
+	Health:
+		HP: 500
+	RevealsShroud:
+		Range: 7c0
+	Aircraft:
+		CruiseAltitude: 1024
+		TurnSpeed: 28
+		Speed: 280
+		CanHover: true
+		VTOL: true
+	Armor:
+		Type: None
+	Cloak:
+		InitialDelay: 0
+		CloakDelay: 25
+		IsPlayerPalette: true
+
+SHARK:
+	Inherits: ^RatcDrone
+	RenderSprites:
+		Image: shark
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 61
+		Prerequisites: ~aircraft.ukraine, ~techlevel.medium
+		Description: Drone de reconnaissance stratégique. Non armé.\nVision énorme (15 cases). Marque les blindés chenillés\nennemis à moins de 10 cases pour toute l'armée.\n  Faible contre : tout (très fragile)
+	Valued:
+		Cost: 650
+	Tooltip:
+		Name: Shark
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 15c0
+	Aircraft:
+		CruiseAltitude: 3072
+		TurnSpeed: 16
+		Speed: 230
+	ProximityExternalCondition@SPOTTED:
+		Condition: awacs-spotted
+		Range: 10c0
+		ValidRelationships: Enemy
+
+ORLAN10:
+	Inherits: ^RatcDrone
+	RenderSprites:
+		Image: orlan10
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 61
+		Prerequisites: ~aircraft.russia, ~techlevel.low
+		Description: Drone de reconnaissance bon marché. Non armé.\nGuide l'artillerie : véhicules alliés à moins de 5 cases,\nportée +15 %.\n  Faible contre : défense antiaérienne
+	Valued:
+		Cost: 300
+	Tooltip:
+		Name: Orlan-10
+	Health:
+		HP: 3500
+	RevealsShroud:
+		Range: 10c0
+	Aircraft:
+		CruiseAltitude: 2048
+		TurnSpeed: 16
+		Speed: 220
+	ProximityExternalCondition@DRONESUPPORT:
+		Condition: drone-support
+		Range: 5c0
+		ValidRelationships: Ally
+
+LANCET:
+	Inherits: ^RatcDrone
+	RenderSprites:
+		Image: lancet
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 62
+		Prerequisites: ~aircraft.russia, ~techlevel.medium
+		Description: Munition rôdeuse (drone kamikaze).\nFonce sur la cible et explose. Usage unique, autonomie 2 min.\n  Fort contre : artillerie, véhicules légers et de soutien\n  Faible contre : chars lourds (blessés, pas détruits)
+	Valued:
+		Cost: 350
+	Tooltip:
+		Name: ZALA Lancet
+	Health:
+		HP: 700
+	RevealsShroud:
+		Range: 5c0
+	Aircraft:
+		CruiseAltitude: 1536
+		TurnSpeed: 24
+		Speed: 280
+	Armament:
+		Weapon: LancetDive
+	AttackAircraft:
+		FacingTolerance: 128
+		PersistentTargeting: false
+		OpportunityFire: False
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: ReturnFire
+	GrantConditionOnAttack@DIVE:
+		Condition: dived
+		RevokeDelay: 1000
+	KillsSelf@DIVE:
+		RequiresCondition: dived
+		RemoveInstead: true
+	KillsSelf@ENDURANCE:
+		Delay: 3000
+
+ORION:
+	Inherits: ^RatcDrone
+	RenderSprites:
+		Image: orion
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 63
+		Prerequisites: ~aircraft.russia, ~techlevel.high
+		Description: Drone lourd armé. 2 missiles air-sol, recharge lente.\nIl faut plusieurs passages pour détruire un char lourd.\n  Fort contre : véhicules, artillerie, bâtiments légers\n  Faible contre : défense antiaérienne (lent et cher)
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: Orion
+	Health:
+		HP: 6000
+	RevealsShroud:
+		Range: 9c0
+	Aircraft:
+		CruiseAltitude: 3072
+		TurnSpeed: 8
+		Speed: 150
+	Armament:
+		Weapon: OrionMissile
+		LocalOffset: 0,-235,-43, 0,235,-43
+	AttackAircraft:
+		FacingTolerance: 80
+		PersistentTargeting: false
+		OpportunityFire: False
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: ReturnFire
+	AmmoPool:
+		Ammo: 2
+	Rearmable:
+		RearmActors: afld, afld.ukraine
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
