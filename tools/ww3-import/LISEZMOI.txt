@@ -1,0 +1,12 @@
+Import de la carte « Europe: WW3 Final Edition [BI-4.8] » dans le mod ratc.
+
+1. Décompresser la carte :  unzip Europe_WW3_FE_A_BI-4.8.oramap -d /tmp/ww3
+2. Convertir :  python3 tools/ww3-import/ww3convert.py /tmp/ww3 .
+                python3 tools/ww3-import/ww3factions.py .
+3. Copier les fichiers : cp -r /tmp/ww3/bits /tmp/ww3/audio /tmp/ww3/cc2unittem.pal /tmp/ww3/red.pal mods/ratc/ww3/
+   (NE PAS copier temperat.pal ni plains.pal : ils remplaceraient les palettes de Red Alert)
+4. Vérifier :  ./utility.sh --check-yaml   et   ./utility.sh --check-missing-sprites
+
+Seuls les AJOUTS sont importés : les unités, images, armes et voix existantes de Red Alert
+et du mod ratc ne sont jamais modifiées. Les unités WW3 qui héritent d'un modèle modifié par
+la carte reçoivent une copie privée (^WW3Base_<nom>).

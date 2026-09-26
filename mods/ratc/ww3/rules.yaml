@@ -119,29 +119,6 @@ Player:
 
 # ---- Copies privées des modèles modifiés par WW3 (utilisées seulement par les unités WW3)
 
-^WW3Base_MIG:
-	Inherits: MIG
-	Buildable:
-		Prerequisites: ~afld, techcenter, ~techlevel.high
-	WithAmmoPipsDecoration:
-		PipCount: 4
-		Position: BottomLeft
-		Margin: 4, 3
-		RequiresSelection: true
-	Aircraft:
-		CruiseAltitude: 2560
-		TurnSpeed: 16
-		Speed: 253
-		RepulsionSpeed: 40
-		MaximumPitch: 56
-	Rearmable:
-		RearmActors: afld, afld.ukraine, abase
-
-^WW3Base_YAK:
-	Inherits: YAK
-	Rearmable:
-		RearmActors: afld, afld.ukraine, abase
-
 ^WW3Base_Defense:
 	Inherits: ^Defense
 	Inherits@WW3I1: ^Stealthable
@@ -152,162 +129,12 @@ Player:
 		AreaTypes: building
 		Adjacent: 4
 
-^WW3Base_ATEK:
-	Inherits: ATEK
-	Inherits@WW3I1: ^Stealthable
-	Capturable@2:
-		RequiresCondition: !build-incomplete
-		Types: building-external
-	Buildable:
-		Queue: Building
-		BuildPaletteOrder: 140
-		Prerequisites: ~disabled
-	GrantConditionOnPrerequisite@gpstemp:
-		Prerequisites: gps.temp
-		Condition: gpstemp
-	GpsPower@fulltime:
-		PauseOnCondition: disabled || gpstemp
-		RequiresCondition: !gpstemp
-		Icon: gps
-		OneShot: True
-		ChargeInterval: 12000
-		Name: GPS Satellite
-		Description: Reveals map terrain and provides tactical\ninformation. Requires power and active radar.
-		RevealDelay: 375
-		LaunchSpeechNotification: SatelliteLaunched
-		LaunchTextNotification: Satellite launched.
-		DisplayTimerRelationships: Ally, Neutral, Enemy
-		SupportPowerPaletteOrder: 90
-	GpsPower: #Pinkthoth to the rescue again, BI style temporary GPs system
-		PauseOnCondition: disabled || !gpsactivated
-		Name: Temporary GPS Satellite
-		OrderName: TempGpsPowerInfoOrder
-		RequiresCondition: gpstemp && gpsactivated
-		ChargeInterval: 1
-		RevealDelay: 30
-		DisplayTimerRelationships: None
-		StartFullyCharged: True
-		RequiresActiveRadar: True
-	ProduceActorPower@powergps:
-		Name: GPS Satellite
-		Description: Reveals map terrain and provides tactical\ninformation.
-		Icon: gps
-		PauseOnCondition: disabled
-		Actors: gpsactivenoise
-		Type: GPSPower
-		ChargeInterval: 4500
-		OrderName: GPSSpawner
-		SupportPowerPaletteOrder: 20
-		LaunchSpeechNotification:
-		IncomingSpeechNotification:
-		DisplayTimerRelationships: None
-		EndChargeSpeechNotification: SatelliteReady
-		RequiresCondition: !gpsactivated && gpstemp
-	ProduceActorPower@gpsactivesign:
-		Name: GPS Active Timer
-		Description: Displays the amount of time the satellite is still active.
-		Icon: gpsactive
-		Actors: e1
-		Type: Infantry
-		ChargeInterval: 1501
-		SupportPowerPaletteOrder: 20
-		DisplayTimerRelationships: Ally, Neutral, Enemy
-		RequiresCondition: gpsactivated && gpstemp
-	GrantConditionOnPrerequisite@gpsactivation:
-		Prerequisites: gpsactiveprereq
-		Condition: gpsactivated
-	WithTextDecoration:
-		Text: Active
-		RequiresCondition: gpsactivated
-	ProvidesPrerequisite@uplink:
-		Prerequisite: uplink
-	Exit@1:
-		SpawnOffset: -704,768,0
-		ExitCell: -1,2
-	Production@GPSPower:
-		Produces: GPSPower
-
 ^WW3Base_Building:
 	Inherits: ^Building
 	Inherits@WW3I1: ^Stealthable
 	Capturable@2:
 		RequiresCondition: !build-incomplete
 		Types: building-external
-
-^WW3Base_STEK:
-	Inherits: STEK
-	Inherits@WW3I1: ^Stealthable
-	Capturable@2:
-		RequiresCondition: !build-incomplete
-		Types: building-external
-	Buildable:
-		Prerequisites: ~disabled, ~techlevel.high
-
-^WW3Base_E1:
-	Inherits: E1
-	Inherits@WW3I1: ^AffectsPROC
-	Inherits@WW3I2: ^PropagandaInf
-	Inherits@WW3I3: ^ToxInf
-	Inherits@WW3I4: ^VoicesSelector
-	Buildable:
-		Prerequisites: ~barracks, ~infantry.vanilla, ~!infantry.greece, ~techlevel.infonly
-	TooltipDescription:
-		Description: Elite Rank Bonus: Grenades.
-	Armament@RankUpSECONDARY:
-		Name: secondary
-		Weapon: BuildingGrenade
-		LocalOffset: 0,0,555
-		FireDelay: 15
-		RequiresCondition: rank-veteran == 3 || rank-elite
-	Voiced:
-		VoiceSet: GenericVoice
-		RequiresCondition: Vanilla
-	Voiced@China:
-		VoiceSet: ChinaVoice
-		RequiresCondition: IAMCHINESE
-	Voiced@USA:
-		VoiceSet: USAVoice
-		RequiresCondition: IAMAMERICAN
-	Voiced@Turkey:
-		VoiceSet: TurkVoice
-		RequiresCondition: IAMTURK
-
-^WW3Base_E3:
-	Inherits: E3
-	Inherits@WW3I1: ^AffectsPROC
-	Inherits@WW3I2: ^PropagandaInf
-	Inherits@WW3I3: ^ToxInf
-	Inherits@WW3I4: ^VoicesSelector
-	Buildable:
-		Prerequisites: ~barracks, ~!infantry.greece, ~techlevel.infonly
-	TooltipDescription:
-		Description: Elite Rank Bonus: x2 Missiles.
-	Armament@RankUp:
-		Name: tertiary
-		Weapon: RedEye
-		LocalOffset: 0,0,555
-		FireDelay: 15
-		RequiresCondition: rank-elite
-	Voiced:
-		VoiceSet: GenericVoice
-		RequiresCondition: Vanilla
-	Voiced@China:
-		VoiceSet: ChinaVoice
-		RequiresCondition: IAMCHINESE
-	Voiced@USA:
-		VoiceSet: USAVoice
-		RequiresCondition: IAMAMERICAN
-	Voiced@Turkey:
-		VoiceSet: TurkVoice
-		RequiresCondition: IAMTURK
-
-^WW3Base_E4:
-	Inherits: E4
-	Inherits@WW3I1: ^AffectsPROC
-	Inherits@WW3I2: ^PropagandaInf
-	Inherits@WW3I3: ^ToxInf
-	Buildable:
-		Prerequisites: ~barr, ftur, ~!infantry.greece, ~techlevel.low
 
 ^WW3Base_Infantry:
 	Inherits: ^Infantry
@@ -345,282 +172,11 @@ Player:
 	Inherits: ^Ship
 	Inherits@WW3I1: ^Stealthable
 
-^WW3Base_CA:
-	Inherits: CA
-	Inherits@WW3I1: ^Stealthable
-	TooltipDescription:
-		Description: Elite Rank bonus: Improved Accuracy
-	Buildable:
-		Prerequisites: ~syrd, techcenter, ~techlevel.naval, ~techlevel.high
-	ProducibleWithLevel:
-		Prerequisites: ships.england
-		InitialLevels: 1
-	InaccuracyMultiplier@sarg:
-		Modifier: -10
-		RequiresCondition: rank-veteran == 3
-	InaccuracyMultiplier@general:
-		Modifier: -20
-		RequiresCondition: rank-elite
-
-^WW3Base_SS:
-	Inherits: SS
-	Inherits@WW3I1: ^Stealthable
-	Buildable:
-		Prerequisites: ~spen, ~techlevel.naval, ~techlevel.low
-
-^WW3Base_HARV:
-	Inherits: HARV
-	Inherits@WW3I1: ^Stealthable
-	Inherits@WW3I2: ^AffectsPROC
-	Inherits@WW3I3: ^PropagandaVeh
-	Carryable:
-		LocalOffset: 0,0,200
-	WithParachute:
-		Image: maxichute
-		Sequence: idle
-		OpeningSequence: open
-		Offset: 0,0,304
-		RequiresCondition: parachute
-	ProductionCostMultiplier:
-		Multiplier: 90
-		Prerequisites: indp
-		Queue: Vehicle
-	ProductionTimeMultiplier:
-		Multiplier: 85
-		Prerequisites: indp
-		Queue: Vehicle
-	Buildable:
-		Prerequisites: ~!vehicles.spain
-	ProximityExternalCondition@cloak:
-		ValidRelationships: enemy
-
-^WW3Base_2TNK:
-	Inherits: 2TNK
-	Inherits@WW3I1: ^Stealthable
-	Inherits@WW3I2: ^AffectsPROC
-	Inherits@WW3I3: ^PropagandaVeh
-	Carryable:
-		LocalOffset: 0,0,205
-	Crushable:
-		CrushClasses: tank
-		WarnProbability: 0
-		RequiresCondition: !invulnerability
-	WithParachute:
-		Image: maxichute
-		Sequence: idle
-		OpeningSequence: open
-		Offset: 0,0,304
-		RequiresCondition: parachute
-	ProductionCostMultiplier:
-		Multiplier: 90
-		Prerequisites: indp
-		Queue: Vehicle
-	ProductionTimeMultiplier:
-		Multiplier: 85
-		Prerequisites: indp
-		Queue: Vehicle
-	Buildable:
-		Prerequisites: fix, ~!vehicles.germany, ~!vehicles.usa, ~vehicles.allies, ~techlevel.medium
-	Valued:
-		Cost: 800
-	TooltipDescription:
-		Description: Elite Rank bonus: Heat shells & Secondary AA Turret
-	Armament:
-		Turret: primary
-		Weapon: 90mm
-		Recoil: 128
-		RecoilRecovery: 38
-		LocalOffset: 720,0,80
-		MuzzleSequence: muzzle
-		RequiresCondition: !rank-elite
-	Turreted:
-		Turret: primary
-		TurnSpeed: 20
-	Armament@EliteMain:
-		Turret: primary
-		Weapon: 90mmHEAT
-		Recoil: 128
-		RecoilRecovery: 28
-		LocalOffset: 624,0,208
-		MuzzleSequence: muzzle
-		RequiresCondition: rank-elite
-	Armament@EliteAA:
-		Turret: secondary
-		Weapon: StingerAA
-		LocalOffset: 420,10,190
-		RequiresCondition: rank-elite
-	WithSpriteTurret@Elite:
-		Turret: secondary
-		RequiresCondition: rank-elite
-		Sequence: turret2
-	Turreted@Secondary:
-		Turret: secondary
-		Offset: 420,0,140
-		TurnSpeed: 30
-
-^WW3Base_ARTY:
-	Inherits: ARTY
-	Inherits@WW3I1: ^Stealthable
-	Inherits@WW3I2: ^AffectsPROC
-	Inherits@WW3I3: ^PropagandaVeh
-	Inherits@WW3I4: ^VoicesSelector
-	Carryable:
-		LocalOffset: 0,0,205
-	Crushable:
-		CrushClasses: tank
-		WarnProbability: 0
-		RequiresCondition: !invulnerability
-	WithParachute:
-		Image: maxichute
-		Sequence: idle
-		OpeningSequence: open
-		Offset: 0,0,304
-		RequiresCondition: parachute
-	ProductionCostMultiplier:
-		Multiplier: 90
-		Prerequisites: indp
-		Queue: Vehicle
-	ProductionTimeMultiplier:
-		Multiplier: 85
-		Prerequisites: indp
-		Queue: Vehicle
-	Buildable:
-		Queue: Vehicle
-		BuildPaletteOrder: 230
-		Prerequisites: dome, ~vehicles.allies, ~!vehicles.usa, ~!vehicles.spain, ~techlevel.medium
-	TooltipDescription:
-		Description: Elite Rank bonus: Cluster Shells & Increased Range
-	Armament:
-		Weapon: 155mm
-		LocalOffset: 624,0,208
-		MuzzleSequence: muzzle
-		RequiresCondition: !rank-elite
-	Armament@RANKup:
-		Weapon: 155mmElite
-		LocalOffset: 624,0,208
-		MuzzleSequence: muzzle
-		RequiresCondition: rank-elite
-	RangeMultiplier@RANKup:
-		RequiresCondition: rank-elite
-		Modifier: 130
-	Voiced:
-		VoiceSet: GenericVoice
-		RequiresCondition: Vanilla
-	Voiced@USA:
-		VoiceSet: USAVoice
-		RequiresCondition: IAMAMERICAN
-	Voiced@China:
-		VoiceSet: ChinaVoice
-		RequiresCondition: IAMCHINESE
-	Voiced@Turkey:
-		VoiceSet: TurkVoice
-		RequiresCondition: IAMTURK
-
 ^WW3Base_Husk:
 	Inherits: ^Husk
 	Targetable:
 		TargetTypes: GroundActor, Husk, NoAutoTarget
 		RequiresForceFire: false
-
-^WW3Base_3TNK:
-	Inherits: 3TNK
-	Inherits@WW3I1: ^Stealthable
-	Inherits@WW3I2: ^AffectsPROC
-	Inherits@WW3I3: ^PropagandaVeh
-	Carryable:
-		LocalOffset: 0,0,205
-	Crushable:
-		CrushClasses: tank
-		WarnProbability: 0
-		RequiresCondition: !invulnerability
-	WithParachute:
-		Image: maxichute
-		Sequence: idle
-		OpeningSequence: open
-		Offset: 0,0,304
-		RequiresCondition: parachute
-	ProductionCostMultiplier:
-		Multiplier: 90
-		Prerequisites: indp
-		Queue: Vehicle
-	ProductionTimeMultiplier:
-		Multiplier: 85
-		Prerequisites: indp
-		Queue: Vehicle
-	Buildable:
-		Prerequisites: fix, ~!vehicles.china, ~!vehicles.turkey, ~vehicles.soviet, ~techlevel.medium
-		Description: Soviet Main Battle Tank, with dual cannons\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
-	Valued:
-		Cost: 1000
-	Tooltip:
-		Name: Heavy Tank
-		GenericName: Tank
-	TooltipDescription:
-		Description: Elite Rank bonus: Mammoth Tusk
-	Armament@standard:
-		Turret: primary
-		Weapon: 105mm
-		Recoil: 128
-		RecoilRecovery: 38
-		LocalOffset: 768,85,90, 768,-85,90
-		MuzzleSequence: muzzle
-		RequiresCondition: !rank-elite
-	Turreted@Primary:
-		Turret: primary
-		TurnSpeed: 20
-	Armament@EliteMain:
-		Turret: primary
-		Weapon: 120mm
-		Recoil: 128
-		RecoilRecovery: 28
-		LocalOffset: 768,85,90, 768,-85,90
-		MuzzleSequence: muzzle
-		RequiresCondition: rank-elite
-	Armament@EliteAP:
-		Turret: secondary
-		Weapon: MammothTusk
-		LocalOffset: 420,0,190
-		RequiresCondition: rank-elite
-	WithSpriteTurret@Elite:
-		Turret: secondary
-		RequiresCondition: rank-elite
-		Sequence: turret2
-	Turreted@Secondary:
-		Turret: secondary
-		Offset: 100,0,120
-		TurnSpeed: 30
-	Health:
-		HP: 60000
-	Mobile:
-		Speed: 71
-
-^WW3Base_4TNK:
-	Inherits: 4TNK
-	Inherits@WW3I1: ^Stealthable
-	Inherits@WW3I2: ^AffectsPROC
-	Inherits@WW3I3: ^PropagandaVeh
-	Carryable:
-		LocalOffset: 0,0,205
-	Crushable:
-		CrushClasses: tank
-		WarnProbability: 0
-		RequiresCondition: !invulnerability
-	WithParachute:
-		Image: maxichute
-		Sequence: idle
-		OpeningSequence: open
-		Offset: 0,0,304
-		RequiresCondition: parachute
-	ProductionCostMultiplier:
-		Multiplier: 90
-		Prerequisites: indp
-		Queue: Vehicle
-	ProductionTimeMultiplier:
-		Multiplier: 85
-		Prerequisites: indp
-		Queue: Vehicle
-	Buildable:
-		Prerequisites: fix, techcenter, ~!vehicles.ukraine, ~!vehicles.china, ~!vehicles.greece, ~vehicles.soviet, ~techlevel.high
 
 # ---- Nouvelles unités, bâtiments et modèles WW3
 
@@ -1399,14 +955,27 @@ A10.Husk:
 		Image: a10
 
 F22:
-	Inherits: ^WW3Base_MIG
+	Inherits: MIG
 	Inherits@WW3I1: ^AutoTargetAllAssaultMove
 	Buildable:
+		Prerequisites: ~abase, ~techlevel.high
 		Queue: Aircraft
 		BuildAtProductionType: Plane
 		BuildPaletteOrder: 80
-		Prerequisites: ~abase, ~techlevel.high
 		Description: Fast multi-role attack aircraft\n armed with AA and AG missiles.
+	WithAmmoPipsDecoration:
+		PipCount: 4
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 16
+		Speed: 253
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+	Rearmable:
+		RearmActors: afld, afld.ukraine, abase
 	Tooltip:
 		Name: F22 Raptor
 	TooltipDescription:
@@ -1552,19 +1121,27 @@ NHAW:
 		Prerequisites: vehicles.upgraded
 
 SUK:
-	Inherits: ^WW3Base_MIG
+	Inherits: MIG
 	Inherits@WW3I1: ^AutoTargetAir
 	Buildable:
-		BuildPaletteOrder: 70
 		Prerequisites: afld, ~rtek, ~techlevel.high
+		BuildPaletteOrder: 70
 		Description: Fast air to air missile armed\n Russian Helicopter Hunter.\n Cannot attack ground units.
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 18
+		Speed: 225
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		TakeoffSounds: audio/migtoff1.aud
+	Rearmable:
+		RearmActors: afld, afld.ukraine, abase
 	Tooltip:
 		Name: Sukhoi SU-29 Attack Plane
 	Health:
 		HP: 10000
 	-Armament:
 	-AmmoPool:
-	-WithAmmoPipsDecoration:
 	Armament@SECONDARY:
 		Name: secondary
 		Weapon: HellfireAA
@@ -1585,10 +1162,6 @@ SUK:
 		RequiresSelection: true
 	AttackAircraft:
 		OpportunityFire: true
-	Aircraft:
-		TurnSpeed: 18
-		Speed: 225
-		TakeoffSounds: audio/migtoff1.aud
 	SpawnActorOnDeath:
 		Actor: SUK.Husk
 	ProducibleWithLevel:
@@ -1760,7 +1333,9 @@ KIROV.Husk:
 		Type: CenterPosition
 
 ANT40:
-	Inherits: ^WW3Base_YAK
+	Inherits: YAK
+	Rearmable:
+		RearmActors: afld, afld.ukraine, abase
 	Buildable:
 		BuildPaletteOrder: 500
 		Prerequisites: afld, ~utek, ~techlevel.high
@@ -2175,12 +1750,80 @@ powergps:
 		RequiresCondition: !uplinkexists
 
 USTEK:
-	Inherits: ^WW3Base_ATEK
+	Inherits: ATEK
+	Inherits@WW3I1: ^Stealthable
+	Capturable@2:
+		RequiresCondition: !build-incomplete
+		Types: building-external
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 140
 		Prerequisites: weap, dome, ~structures.usa, ~techlevel.high
 		Description: Provides USA advanced technologies.\n  Special Ability: GPS Satellite, Ion Cannon
+	GrantConditionOnPrerequisite@gpstemp:
+		Prerequisites: gps.temp
+		Condition: gpstemp
+	GpsPower@fulltime:
+		PauseOnCondition: disabled || gpstemp
+		RequiresCondition: !gpstemp
+		Icon: gps
+		OneShot: True
+		ChargeInterval: 12000
+		Name: GPS Satellite
+		Description: Reveals map terrain and provides tactical\ninformation. Requires power and active radar.
+		RevealDelay: 375
+		LaunchSpeechNotification: SatelliteLaunched
+		LaunchTextNotification: Satellite launched.
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		SupportPowerPaletteOrder: 90
+	GpsPower: #Pinkthoth to the rescue again, BI style temporary GPs system
+		PauseOnCondition: disabled || !gpsactivated
+		Name: Temporary GPS Satellite
+		OrderName: TempGpsPowerInfoOrder
+		RequiresCondition: gpstemp && gpsactivated
+		ChargeInterval: 1
+		RevealDelay: 30
+		DisplayTimerRelationships: None
+		StartFullyCharged: True
+		RequiresActiveRadar: True
+	ProduceActorPower@powergps:
+		Name: GPS Satellite
+		Description: Reveals map terrain and provides tactical\ninformation.
+		Icon: gps
+		PauseOnCondition: disabled
+		Actors: gpsactivenoise
+		Type: GPSPower
+		ChargeInterval: 4500
+		OrderName: GPSSpawner
+		SupportPowerPaletteOrder: 20
+		LaunchSpeechNotification:
+		IncomingSpeechNotification:
+		DisplayTimerRelationships: None
+		EndChargeSpeechNotification: SatelliteReady
+		RequiresCondition: !gpsactivated && gpstemp
+	ProduceActorPower@gpsactivesign:
+		Name: GPS Active Timer
+		Description: Displays the amount of time the satellite is still active.
+		Icon: gpsactive
+		Actors: e1
+		Type: Infantry
+		ChargeInterval: 1501
+		SupportPowerPaletteOrder: 20
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		RequiresCondition: gpsactivated && gpstemp
+	GrantConditionOnPrerequisite@gpsactivation:
+		Prerequisites: gpsactiveprereq
+		Condition: gpsactivated
+	WithTextDecoration:
+		Text: Active
+		RequiresCondition: gpsactivated
+	ProvidesPrerequisite@uplink:
+		Prerequisite: uplink
+	Exit@1:
+		SpawnOffset: -704,768,0
+		ExitCell: -1,2
+	Production@GPSPower:
+		Produces: GPSPower
 	Tooltip:
 		Name: USA Tech Center
 	ProvidesPrerequisite@buildingname:
@@ -2207,12 +1850,80 @@ USTEK:
 		Image: ustek
 
 GTEK:
-	Inherits: ^WW3Base_ATEK
+	Inherits: ATEK
+	Inherits@WW3I1: ^Stealthable
+	Capturable@2:
+		RequiresCondition: !build-incomplete
+		Types: building-external
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 140
 		Prerequisites: weap, dome, ~structures.germany, ~techlevel.high
 		Description: Provides German advanced technologies.\n  Special Ability: GPS Satellite, ChronoPower
+	GrantConditionOnPrerequisite@gpstemp:
+		Prerequisites: gps.temp
+		Condition: gpstemp
+	GpsPower@fulltime:
+		PauseOnCondition: disabled || gpstemp
+		RequiresCondition: !gpstemp
+		Icon: gps
+		OneShot: True
+		ChargeInterval: 12000
+		Name: GPS Satellite
+		Description: Reveals map terrain and provides tactical\ninformation. Requires power and active radar.
+		RevealDelay: 375
+		LaunchSpeechNotification: SatelliteLaunched
+		LaunchTextNotification: Satellite launched.
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		SupportPowerPaletteOrder: 90
+	GpsPower: #Pinkthoth to the rescue again, BI style temporary GPs system
+		PauseOnCondition: disabled || !gpsactivated
+		Name: Temporary GPS Satellite
+		OrderName: TempGpsPowerInfoOrder
+		RequiresCondition: gpstemp && gpsactivated
+		ChargeInterval: 1
+		RevealDelay: 30
+		DisplayTimerRelationships: None
+		StartFullyCharged: True
+		RequiresActiveRadar: True
+	ProduceActorPower@powergps:
+		Name: GPS Satellite
+		Description: Reveals map terrain and provides tactical\ninformation.
+		Icon: gps
+		PauseOnCondition: disabled
+		Actors: gpsactivenoise
+		Type: GPSPower
+		ChargeInterval: 4500
+		OrderName: GPSSpawner
+		SupportPowerPaletteOrder: 20
+		LaunchSpeechNotification:
+		IncomingSpeechNotification:
+		DisplayTimerRelationships: None
+		EndChargeSpeechNotification: SatelliteReady
+		RequiresCondition: !gpsactivated && gpstemp
+	ProduceActorPower@gpsactivesign:
+		Name: GPS Active Timer
+		Description: Displays the amount of time the satellite is still active.
+		Icon: gpsactive
+		Actors: e1
+		Type: Infantry
+		ChargeInterval: 1501
+		SupportPowerPaletteOrder: 20
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		RequiresCondition: gpsactivated && gpstemp
+	GrantConditionOnPrerequisite@gpsactivation:
+		Prerequisites: gpsactiveprereq
+		Condition: gpsactivated
+	WithTextDecoration:
+		Text: Active
+		RequiresCondition: gpsactivated
+	ProvidesPrerequisite@uplink:
+		Prerequisite: uplink
+	Exit@1:
+		SpawnOffset: -704,768,0
+		ExitCell: -1,2
+	Production@GPSPower:
+		Produces: GPSPower
 	Tooltip:
 		Name: German Tech Center
 	ChronoshiftPower@advancedchronoshift:
@@ -2241,12 +1952,80 @@ GTEK:
 		Image: gtek
 
 ETEK:
-	Inherits: ^WW3Base_ATEK
+	Inherits: ATEK
+	Inherits@WW3I1: ^Stealthable
+	Capturable@2:
+		RequiresCondition: !build-incomplete
+		Types: building-external
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 140
 		Prerequisites: weap, dome, ~structures.england, ~techlevel.high
 		Description: Provides England advanced technologies.\n  Special Ability: GPS Satellite, Sonar Pulse
+	GrantConditionOnPrerequisite@gpstemp:
+		Prerequisites: gps.temp
+		Condition: gpstemp
+	GpsPower@fulltime:
+		PauseOnCondition: disabled || gpstemp
+		RequiresCondition: !gpstemp
+		Icon: gps
+		OneShot: True
+		ChargeInterval: 12000
+		Name: GPS Satellite
+		Description: Reveals map terrain and provides tactical\ninformation. Requires power and active radar.
+		RevealDelay: 375
+		LaunchSpeechNotification: SatelliteLaunched
+		LaunchTextNotification: Satellite launched.
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		SupportPowerPaletteOrder: 90
+	GpsPower: #Pinkthoth to the rescue again, BI style temporary GPs system
+		PauseOnCondition: disabled || !gpsactivated
+		Name: Temporary GPS Satellite
+		OrderName: TempGpsPowerInfoOrder
+		RequiresCondition: gpstemp && gpsactivated
+		ChargeInterval: 1
+		RevealDelay: 30
+		DisplayTimerRelationships: None
+		StartFullyCharged: True
+		RequiresActiveRadar: True
+	ProduceActorPower@powergps:
+		Name: GPS Satellite
+		Description: Reveals map terrain and provides tactical\ninformation.
+		Icon: gps
+		PauseOnCondition: disabled
+		Actors: gpsactivenoise
+		Type: GPSPower
+		ChargeInterval: 4500
+		OrderName: GPSSpawner
+		SupportPowerPaletteOrder: 20
+		LaunchSpeechNotification:
+		IncomingSpeechNotification:
+		DisplayTimerRelationships: None
+		EndChargeSpeechNotification: SatelliteReady
+		RequiresCondition: !gpsactivated && gpstemp
+	ProduceActorPower@gpsactivesign:
+		Name: GPS Active Timer
+		Description: Displays the amount of time the satellite is still active.
+		Icon: gpsactive
+		Actors: e1
+		Type: Infantry
+		ChargeInterval: 1501
+		SupportPowerPaletteOrder: 20
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		RequiresCondition: gpsactivated && gpstemp
+	GrantConditionOnPrerequisite@gpsactivation:
+		Prerequisites: gpsactiveprereq
+		Condition: gpsactivated
+	WithTextDecoration:
+		Text: Active
+		RequiresCondition: gpsactivated
+	ProvidesPrerequisite@uplink:
+		Prerequisite: uplink
+	Exit@1:
+		SpawnOffset: -704,768,0
+		ExitCell: -1,2
+	Production@GPSPower:
+		Produces: GPSPower
 	Building:
 		Footprint: XXX xxX xx= ==_
 		Dimensions: 3,4
@@ -2272,13 +2051,81 @@ ETEK:
 		Image: etek
 
 FTEK:
-	Inherits: ^WW3Base_ATEK
-	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Inherits: ATEK
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^DisableOnLowPowerOrPowerDown
+	Capturable@2:
+		RequiresCondition: !build-incomplete
+		Types: building-external
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 140
 		Prerequisites: weap, dome, ~structures.france, ~techlevel.high
 		Description: Provides France advanced technologies.\n  Special Ability: GPS Satellite, Cloaked
+	GrantConditionOnPrerequisite@gpstemp:
+		Prerequisites: gps.temp
+		Condition: gpstemp
+	GpsPower@fulltime:
+		PauseOnCondition: disabled || gpstemp
+		RequiresCondition: !gpstemp
+		Icon: gps
+		OneShot: True
+		ChargeInterval: 12000
+		Name: GPS Satellite
+		Description: Reveals map terrain and provides tactical\ninformation. Requires power and active radar.
+		RevealDelay: 375
+		LaunchSpeechNotification: SatelliteLaunched
+		LaunchTextNotification: Satellite launched.
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		SupportPowerPaletteOrder: 90
+	GpsPower: #Pinkthoth to the rescue again, BI style temporary GPs system
+		PauseOnCondition: disabled || !gpsactivated
+		Name: Temporary GPS Satellite
+		OrderName: TempGpsPowerInfoOrder
+		RequiresCondition: gpstemp && gpsactivated
+		ChargeInterval: 1
+		RevealDelay: 30
+		DisplayTimerRelationships: None
+		StartFullyCharged: True
+		RequiresActiveRadar: True
+	ProduceActorPower@powergps:
+		Name: GPS Satellite
+		Description: Reveals map terrain and provides tactical\ninformation.
+		Icon: gps
+		PauseOnCondition: disabled
+		Actors: gpsactivenoise
+		Type: GPSPower
+		ChargeInterval: 4500
+		OrderName: GPSSpawner
+		SupportPowerPaletteOrder: 20
+		LaunchSpeechNotification:
+		IncomingSpeechNotification:
+		DisplayTimerRelationships: None
+		EndChargeSpeechNotification: SatelliteReady
+		RequiresCondition: !gpsactivated && gpstemp
+	ProduceActorPower@gpsactivesign:
+		Name: GPS Active Timer
+		Description: Displays the amount of time the satellite is still active.
+		Icon: gpsactive
+		Actors: e1
+		Type: Infantry
+		ChargeInterval: 1501
+		SupportPowerPaletteOrder: 20
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		RequiresCondition: gpsactivated && gpstemp
+	GrantConditionOnPrerequisite@gpsactivation:
+		Prerequisites: gpsactiveprereq
+		Condition: gpsactivated
+	WithTextDecoration:
+		Text: Active
+		RequiresCondition: gpsactivated
+	ProvidesPrerequisite@uplink:
+		Prerequisite: uplink
+	Exit@1:
+		SpawnOffset: -704,768,0
+		ExitCell: -1,2
+	Production@GPSPower:
+		Produces: GPSPower
 	Tooltip:
 		Name: France Tech Center
 	Cloak:
@@ -2291,8 +2138,81 @@ FTEK:
 		Image: ftek
 
 SPTEK:
-	Inherits: ^WW3Base_ATEK
-	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Inherits: ATEK
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^DisableOnLowPowerOrPowerDown
+	Capturable@2:
+		RequiresCondition: !build-incomplete
+		Types: building-external
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 140
+		Prerequisites: weap, dome, ~structures.spain, ~techlevel.high
+		Description: Provides Spain advanced technologies.\n  Special Ability: GPS Satellite, Hostile Takeover
+	GrantConditionOnPrerequisite@gpstemp:
+		Prerequisites: gps.temp
+		Condition: gpstemp
+	GpsPower@fulltime:
+		PauseOnCondition: disabled || gpstemp
+		RequiresCondition: !gpstemp
+		Icon: gps
+		OneShot: True
+		ChargeInterval: 12000
+		Name: GPS Satellite
+		Description: Reveals map terrain and provides tactical\ninformation. Requires power and active radar.
+		RevealDelay: 375
+		LaunchSpeechNotification: SatelliteLaunched
+		LaunchTextNotification: Satellite launched.
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		SupportPowerPaletteOrder: 90
+	GpsPower: #Pinkthoth to the rescue again, BI style temporary GPs system
+		PauseOnCondition: disabled || !gpsactivated
+		Name: Temporary GPS Satellite
+		OrderName: TempGpsPowerInfoOrder
+		RequiresCondition: gpstemp && gpsactivated
+		ChargeInterval: 1
+		RevealDelay: 30
+		DisplayTimerRelationships: None
+		StartFullyCharged: True
+		RequiresActiveRadar: True
+	ProduceActorPower@powergps:
+		Name: GPS Satellite
+		Description: Reveals map terrain and provides tactical\ninformation.
+		Icon: gps
+		PauseOnCondition: disabled
+		Actors: gpsactivenoise
+		Type: GPSPower
+		ChargeInterval: 4500
+		OrderName: GPSSpawner
+		SupportPowerPaletteOrder: 20
+		LaunchSpeechNotification:
+		IncomingSpeechNotification:
+		DisplayTimerRelationships: None
+		EndChargeSpeechNotification: SatelliteReady
+		RequiresCondition: !gpsactivated && gpstemp
+	ProduceActorPower@gpsactivesign:
+		Name: GPS Active Timer
+		Description: Displays the amount of time the satellite is still active.
+		Icon: gpsactive
+		Actors: e1
+		Type: Infantry
+		ChargeInterval: 1501
+		SupportPowerPaletteOrder: 20
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		RequiresCondition: gpsactivated && gpstemp
+	GrantConditionOnPrerequisite@gpsactivation:
+		Prerequisites: gpsactiveprereq
+		Condition: gpsactivated
+	WithTextDecoration:
+		Text: Active
+		RequiresCondition: gpsactivated
+	ProvidesPrerequisite@uplink:
+		Prerequisite: uplink
+	Exit@1:
+		SpawnOffset: -704,768,0
+		ExitCell: -1,2
+	Production@GPSPower:
+		Produces: GPSPower
 	Targetable:
 		TargetTypes: AirborneActor
 	Building:
@@ -2301,11 +2221,6 @@ SPTEK:
 	RevealsShroud:
 		MinRange: 4c0
 		Range: 7c0
-	Buildable:
-		Queue: Building
-		BuildPaletteOrder: 140
-		Prerequisites: weap, dome, ~structures.spain, ~techlevel.high
-		Description: Provides Spain advanced technologies.\n  Special Ability: GPS Satellite, Hostile Takeover
 	Tooltip:
 		Name: Spain Tech Center
 	-WithBuildingBib:
@@ -2592,12 +2507,16 @@ PROP:
 			BottomRight: 512, 512
 
 CTEK:
-	Inherits: ^WW3Base_STEK
-	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Inherits: STEK
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^DisableOnLowPowerOrPowerDown
+	Capturable@2:
+		RequiresCondition: !build-incomplete
+		Types: building-external
 	Buildable:
+		Prerequisites: weap, dome, ~structures.china, ~techlevel.high
 		Queue: Building
 		BuildPaletteOrder: 151
-		Prerequisites: weap, dome, ~structures.china, ~techlevel.high
 		Description: Provides China advanced technologies.\n  Special Ability: Propaganda Tower
 	Tooltip:
 		Name: China Tech Center
@@ -2649,12 +2568,16 @@ CTEK:
 		Image: ctek
 
 RTEK:
-	Inherits: ^WW3Base_STEK
-	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Inherits: STEK
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^DisableOnLowPowerOrPowerDown
+	Capturable@2:
+		RequiresCondition: !build-incomplete
+		Types: building-external
 	Buildable:
+		Prerequisites: weap, dome, ~structures.russia, ~techlevel.high
 		Queue: Building
 		BuildPaletteOrder: 151
-		Prerequisites: weap, dome, ~structures.russia, ~techlevel.high
 		Description: Provides Russia advanced technologies.\n  Special Ability: Provides power
 	Tooltip:
 		Name: Russia Tech Center
@@ -2673,12 +2596,16 @@ RTEK:
 		Image: rtek
 
 UTEK:
-	Inherits: ^WW3Base_STEK
-	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Inherits: STEK
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^DisableOnLowPowerOrPowerDown
+	Capturable@2:
+		RequiresCondition: !build-incomplete
+		Types: building-external
 	Buildable:
+		Prerequisites: weap, dome, ~structures.ukraine, ~techlevel.high
 		Queue: Building
 		BuildPaletteOrder: 151
-		Prerequisites: weap, dome, ~structures.ukraine, ~techlevel.high
 		Description: Provides Ukraine advanced technologies.\n  Special Ability: Advanced Iron Curtain
 	Tooltip:
 		Name: Ukraine Tech Center
@@ -2719,12 +2646,16 @@ UTEK:
 		Image: utek
 
 TTEK:
-	Inherits: ^WW3Base_STEK
-	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Inherits: STEK
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^DisableOnLowPowerOrPowerDown
+	Capturable@2:
+		RequiresCondition: !build-incomplete
+		Types: building-external
 	Buildable:
+		Prerequisites: weap, dome, ~structures.turkey, ~techlevel.high
 		Queue: Building
 		BuildPaletteOrder: 151
-		Prerequisites: weap, dome, ~structures.turkey, ~techlevel.high
 		Description: Provides Turkey advanced technologies.\n  Special Ability: Insurgents
 	Tooltip:
 		Name: Turkey Tech Center
@@ -2758,12 +2689,16 @@ TTEK:
 		Image: ttek
 
 GRTEK:
-	Inherits: ^WW3Base_STEK
-	Inherits@WW3I1: ^DisableOnLowPowerOrPowerDown
+	Inherits: STEK
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^DisableOnLowPowerOrPowerDown
+	Capturable@2:
+		RequiresCondition: !build-incomplete
+		Types: building-external
 	Buildable:
+		Prerequisites: weap, dome, ~structures.greece, ~techlevel.high
 		Queue: Building
 		BuildPaletteOrder: 151
-		Prerequisites: weap, dome, ~structures.greece, ~techlevel.high
 		Description: Provides Greece advanced technologies.\n  Special Ability: Sparten Drop
 	Tooltip:
 		Name: Greek Tech Center
@@ -3144,50 +3079,115 @@ GENMEDI:
 		Image: MEDI
 
 E1.Greece:
-	Inherits: ^WW3Base_E1
+	Inherits: E1
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Inherits@WW3I4: ^VoicesSelector
 	Buildable:
 		Prerequisites: ~!grtek, ~infantry.greece
-	RenderSprites:
-		Image: E1
-
-E3.Greece:
-	Inherits: ^WW3Base_E3
-	Buildable:
-		Prerequisites: ~!grtek, ~infantry.greece
-	RenderSprites:
-		Image: E3
-
-E4.Greece:
-	Inherits: ^WW3Base_E4
-	Buildable:
-		Prerequisites: ~!grtek, ftur, ~infantry.greece
-	RenderSprites:
-		Image: E4
-
-E1GI:
-	Inherits: ^WW3Base_E1
-	Buildable:
-		Icon: e1gi
-		Prerequisites: ~infantry.usa, ~techlevel.infonly
-		Description: US basic infantry.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
-	Tooltip:
-		Name: GI
 	TooltipDescription:
 		Description: Elite Rank Bonus: Grenades.
-		ValidRelationships: Ally
-	ProducibleWithLevel:
-		Prerequisites: techlevel.infonly
-		InitialLevels: 1
-	Valued:
-		Cost: 110
-	Voiced:
-		VoiceSet: USAVoice
 	Armament@RankUpSECONDARY:
 		Name: secondary
 		Weapon: BuildingGrenade
 		LocalOffset: 0,0,555
 		FireDelay: 15
 		RequiresCondition: rank-veteran == 3 || rank-elite
+	Voiced:
+		VoiceSet: GenericVoice
+		RequiresCondition: Vanilla
+	Voiced@China:
+		VoiceSet: ChinaVoice
+		RequiresCondition: IAMCHINESE
+	Voiced@USA:
+		VoiceSet: USAVoice
+		RequiresCondition: IAMAMERICAN
+	Voiced@Turkey:
+		VoiceSet: TurkVoice
+		RequiresCondition: IAMTURK
+	RenderSprites:
+		Image: E1
+
+E3.Greece:
+	Inherits: E3
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Inherits@WW3I4: ^VoicesSelector
+	Buildable:
+		Prerequisites: ~!grtek, ~infantry.greece
+	TooltipDescription:
+		Description: Elite Rank Bonus: x2 Missiles.
+	Armament@RankUp:
+		Name: tertiary
+		Weapon: RedEye
+		LocalOffset: 0,0,555
+		FireDelay: 15
+		RequiresCondition: rank-elite
+	Voiced:
+		VoiceSet: GenericVoice
+		RequiresCondition: Vanilla
+	Voiced@China:
+		VoiceSet: ChinaVoice
+		RequiresCondition: IAMCHINESE
+	Voiced@USA:
+		VoiceSet: USAVoice
+		RequiresCondition: IAMAMERICAN
+	Voiced@Turkey:
+		VoiceSet: TurkVoice
+		RequiresCondition: IAMTURK
+	RenderSprites:
+		Image: E3
+
+E4.Greece:
+	Inherits: E4
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Buildable:
+		Prerequisites: ~!grtek, ftur, ~infantry.greece
+	RenderSprites:
+		Image: E4
+
+E1GI:
+	Inherits: E1
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Inherits@WW3I4: ^VoicesSelector
+	Buildable:
+		Prerequisites: ~infantry.usa, ~techlevel.infonly
+		Icon: e1gi
+		Description: US basic infantry.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+	TooltipDescription:
+		Description: Elite Rank Bonus: Grenades.
+		ValidRelationships: Ally
+	Armament@RankUpSECONDARY:
+		Name: secondary
+		Weapon: BuildingGrenade
+		LocalOffset: 0,0,555
+		FireDelay: 15
+		RequiresCondition: rank-veteran == 3 || rank-elite
+	Voiced:
+		VoiceSet: USAVoice
+		RequiresCondition: Vanilla
+	Voiced@China:
+		VoiceSet: ChinaVoice
+		RequiresCondition: IAMCHINESE
+	Voiced@USA:
+		VoiceSet: USAVoice
+		RequiresCondition: IAMAMERICAN
+	Voiced@Turkey:
+		VoiceSet: TurkVoice
+		RequiresCondition: IAMTURK
+	Tooltip:
+		Name: GI
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	Valued:
+		Cost: 110
 	RenderSprites:
 		Image: E1
 
@@ -3836,17 +3836,39 @@ INS4:
 		Image: C1
 
 E1CH:
-	Inherits: ^WW3Base_E1
+	Inherits: E1
+	Inherits@WW3I1: ^AffectsPROC
+	Inherits@WW3I2: ^PropagandaInf
+	Inherits@WW3I3: ^ToxInf
+	Inherits@WW3I4: ^VoicesSelector
 	Buildable:
-		Icon: e1ch
 		Prerequisites: ~infantry.china, ~techlevel.infonly
+		Icon: e1ch
 		Description: Conscripted Infantry.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+	TooltipDescription:
+		Description: Elite Rank Bonus: Grenades.
+	Armament@RankUpSECONDARY:
+		Name: secondary
+		Weapon: BuildingGrenade
+		LocalOffset: 0,0,555
+		FireDelay: 15
+		RequiresCondition: rank-veteran == 3 || rank-elite
+	Voiced:
+		VoiceSet: ChinaVoice
+		RequiresCondition: Vanilla
+	Voiced@China:
+		VoiceSet: ChinaVoice
+		RequiresCondition: IAMCHINESE
+	Voiced@USA:
+		VoiceSet: USAVoice
+		RequiresCondition: IAMAMERICAN
+	Voiced@Turkey:
+		VoiceSet: TurkVoice
+		RequiresCondition: IAMTURK
 	Tooltip:
 		Name: Chinese Conscript
 	Valued:
 		Cost: 90
-	Voiced:
-		VoiceSet: ChinaVoice
 	Health:
 		HP: 4000
 	RenderSprites:
@@ -4378,13 +4400,25 @@ NGG:
 		DecorationBounds: 1536, 1536
 
 CA.Prism:
-	Inherits: ^WW3Base_CA
+	Inherits: CA
+	Inherits@WW3I1: ^Stealthable
+	TooltipDescription:
+		Description: Elite Rank bonus: Improved Accuracy
 	Buildable:
+		Prerequisites: ~syrd, ~sptek, ~techlevel.high
 		Queue: Ship
 		BuildAtProductionType: Boat
 		BuildPaletteOrder: 51
-		Prerequisites: ~syrd, ~sptek, ~techlevel.high
 		Description: Very slow long-range ship.\n  Strong vs Buildings, Ground units\n  Weak vs Naval units, Aircraft
+	ProducibleWithLevel:
+		Prerequisites: ships.england
+		InitialLevels: 1
+	InaccuracyMultiplier@sarg:
+		Modifier: -10
+		RequiresCondition: rank-veteran == 3
+	InaccuracyMultiplier@general:
+		Modifier: -20
+		RequiresCondition: rank-elite
 	Tooltip:
 		Name: Prism Cruiser
 	Armament@PRIMARY:
@@ -4478,17 +4512,18 @@ DD2:
 		DecorationBounds: 1621, 1621
 
 SEAM:
-	Inherits: ^WW3Base_SS
-	Inherits@WW3I1: ^AutoTargetGround
-	Inherits@WW3I2: ^AutoTargetAllAssaultMove
-	Tooltip:
-		Name: Sea Mammoth
+	Inherits: SS
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AutoTargetGround
+	Inherits@WW3I3: ^AutoTargetAllAssaultMove
 	Buildable:
+		Prerequisites: ~spen, ~rtek, ~techlevel.naval
 		Queue: Ship
 		BuildAtProductionType: Submarine
 		BuildPaletteOrder: 62
-		Prerequisites: ~spen, ~rtek, ~techlevel.naval
 		Description: Larger Slower Submarine/n with double torpedoes and /n mammoth tusk missiles.
+	Tooltip:
+		Name: Sea Mammoth
 	Health:
 		HP: 95000
 	Valued:
@@ -4523,15 +4558,36 @@ SEAM:
 		Image: seam
 
 HOVHARV:
-	Inherits: ^WW3Base_HARV
-	Inherits@WW3I1: ^IsHoverTank
+	Inherits: HARV
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^IsHoverTank
+	Carryable:
+		LocalOffset: 0,0,200
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Prerequisites: ~vehicles.spain, ~techlevel.high
+		BuildPaletteOrder: 102
+		Description: Ore Truck with anti-grav drivetrain.
+	ProximityExternalCondition@cloak:
+		ValidRelationships: enemy
 	Tooltip:
 		Name: Hover Ore Truck
 		GenericName: Harvester
-	Buildable:
-		BuildPaletteOrder: 102
-		Prerequisites: ~vehicles.spain, ~techlevel.high
-		Description: Ore Truck with anti-grav drivetrain.
 	Mobile:
 		Speed: 77
 		Locomotor: hover
@@ -4543,15 +4599,72 @@ HOVHARV:
 		RequiresCondition: !onwater
 
 2TNK.HOV:
-	Inherits: ^WW3Base_2TNK
-	Inherits@WW3I1: ^IsHoverTank
+	Inherits: 2TNK
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^IsHoverTank
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
 	Buildable:
+		Prerequisites: ~sptek, ~techlevel.medium
 		Queue: Vehicle
 		BuildPaletteOrder: 225
-		Prerequisites: ~sptek, ~techlevel.medium
 		Description: Spanish Hover Tank.\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
 	Valued:
 		Cost: 950
+	TooltipDescription:
+		Description: Hover tech equipped Medium Tank. Cannot crush walls.
+	Armament:
+		Turret: primary
+		Weapon: 90mm
+		Recoil: 128
+		RecoilRecovery: 38
+		LocalOffset: 720,0,80
+		MuzzleSequence: muzzle
+		RequiresCondition: !rank-elite
+	Turreted:
+		Turret: primary
+		TurnSpeed: 20
+	Armament@EliteMain:
+		Turret: primary
+		Weapon: 90mmHEAT
+		Recoil: 128
+		RecoilRecovery: 28
+		LocalOffset: 624,0,208
+		MuzzleSequence: muzzle
+		RequiresCondition: rank-elite
+	Armament@EliteAA:
+		Turret: secondary
+		Weapon: StingerAA
+		LocalOffset: 420,10,190
+		RequiresCondition: rank-elite
+	WithSpriteTurret@Elite:
+		Turret: secondary
+		RequiresCondition: rank-elite
+		Sequence: turret2
+	Turreted@Secondary:
+		Turret: secondary
+		Offset: 420,0,140
+		TurnSpeed: 30
 	Tooltip:
 		Name: Hover Tank
 		GenericName: Tank
@@ -4560,25 +4673,73 @@ HOVHARV:
 		TurnsWhileMoving: True
 		Speed: 76
 	MineImmune:
-	TooltipDescription:
-		Description: Hover tech equipped Medium Tank. Cannot crush walls.
 
 HOWI:
-	Inherits: ^WW3Base_ARTY
+	Inherits: ARTY
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^VoicesSelector
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 231
+		Prerequisites: dome, ~vehicles.usa, ~techlevel.medium
+	TooltipDescription:
+		Description: Elite Rank bonus: Cluster Shells & Increased Range
+	Armament:
+		Weapon: 155mm
+		LocalOffset: 624,0,208
+		MuzzleSequence: muzzle
+		RequiresCondition: !rank-elite
+	Armament@RANKup:
+		Weapon: 155mmElite
+		LocalOffset: 624,0,208
+		MuzzleSequence: muzzle
+		RequiresCondition: rank-elite
+	RangeMultiplier@RANKup:
+		RequiresCondition: rank-elite
+		Modifier: 130
+	Voiced:
+		VoiceSet: GenericVoice
+		RequiresCondition: Vanilla
+	Voiced@USA:
+		VoiceSet: USAVoice
+		RequiresCondition: IAMAMERICAN
+	Voiced@China:
+		VoiceSet: ChinaVoice
+		RequiresCondition: IAMCHINESE
+	Voiced@Turkey:
+		VoiceSet: TurkVoice
+		RequiresCondition: IAMTURK
 	RenderSprites:
 		Image: ww3howi
 		PlayerPalette: cncplayer
 	Tooltip:
 		Name: Howitzer
-	Buildable:
-		BuildPaletteOrder: 231
-		Prerequisites: dome, ~vehicles.usa, ~techlevel.medium
 	-AttackFrontal:
 	AttackTurreted:
 	Turreted:
 		TurnSpeed: 18
-	Armament:
-		Weapon: 155mm
 	Mobile:
 		Speed: 64
 		TurnSpeed: 18
@@ -5501,7 +5662,30 @@ BATF.Husk:
 		Image: batf.destroyed
 
 3TNK.china:
-	Inherits: ^WW3Base_3TNK
+	Inherits: 3TNK
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
 	Buildable:
 		Prerequisites: fix, ~vehicles.china, ~techlevel.medium
 		Description: China Main Battle Tank, with dual cannons\n made cheaper at the cost of quality.\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
@@ -5512,10 +5696,6 @@ BATF.Husk:
 		GenericName: Tank
 	TooltipDescription:
 		Description: Elite Rank bonus: Flamer
-	Health:
-		HP: 47000
-	Mobile:
-		Speed: 65
 	Armament@standard:
 		Turret: primary
 		Weapon: 105mm
@@ -5549,6 +5729,10 @@ BATF.Husk:
 		Turret: secondary
 		Offset: 100,0,120
 		TurnSpeed: 30
+	Health:
+		HP: 47000
+	Mobile:
+		Speed: 65
 	Voiced:
 		VoiceSet: ChinaVoice
 	RenderSprites:
@@ -6416,11 +6600,34 @@ V3RL:
 		PlayerPalette: cncplayer
 
 4TNK.Hov:
-	Inherits: ^WW3Base_4TNK
-	Inherits@WW3I1: ^IsHoverTank
+	Inherits: 4TNK
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Inherits@WW3I4: ^IsHoverTank
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
 	Buildable:
-		Description: Mammoth outfitted with spainish hover tech.\n  Strong vs Vehicles, Infantry, Aircraft\n  Weak vs Nothing
 		Prerequisites: ~sptek, ~sov.tech, ~techlevel.high
+		Description: Mammoth outfitted with spainish hover tech.\n  Strong vs Vehicles, Infantry, Aircraft\n  Weak vs Nothing
 	Tooltip:
 		Name: Hover Mammoth Tank
 	Mobile:
@@ -6443,11 +6650,34 @@ V3RL:
 		Image: 4TNK.Hov.destroyed
 
 TTNK2:
-	Inherits: ^WW3Base_4TNK
+	Inherits: 4TNK
+	Inherits@WW3I1: ^Stealthable
+	Inherits@WW3I2: ^AffectsPROC
+	Inherits@WW3I3: ^PropagandaVeh
+	Carryable:
+		LocalOffset: 0,0,205
+	Crushable:
+		CrushClasses: tank
+		WarnProbability: 0
+		RequiresCondition: !invulnerability
+	WithParachute:
+		Image: maxichute
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,304
+		RequiresCondition: parachute
+	ProductionCostMultiplier:
+		Multiplier: 90
+		Prerequisites: indp
+		Queue: Vehicle
+	ProductionTimeMultiplier:
+		Multiplier: 85
+		Prerequisites: indp
+		Queue: Vehicle
 	Buildable:
+		Prerequisites: tsla, ~rtek, ~techlevel.high
 		Queue: Vehicle
 		BuildPaletteOrder: 323
-		Prerequisites: tsla, ~rtek, ~techlevel.high
 		Description: Adapted Mammoth Tank with twin mounted Tesla Coils.\n• Strong vs Infantry, Heavy Armor, Light Armor\n• Cannot attack Aircraft
 	Valued:
 		Cost: 2250

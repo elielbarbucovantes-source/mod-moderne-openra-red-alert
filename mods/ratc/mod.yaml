@@ -199,6 +199,7 @@ ServerTraits:
 ChromeMetrics:
 	common|metrics.yaml
 	ra|metrics.yaml
+	ratc|metrics.yaml
 
 Fonts:
 	Tiny:
