@@ -17,6 +17,7 @@ SIZE = (48, 48)
 # nom -> (fonction du modèle, couleur de l'icône, nom affiché sur l'icône)
 VEHICLES = {
     "leopard": (models.leopard, (84, 96, 58), "LEOPARD 2"),
+    "leclerc": (models.leclerc, (128, 136, 96), "LECLERC"),
     "challenger": (models.challenger, (150, 132, 92), "CHALL. 3"),
     "t90m": (models.t90m, (70, 88, 52), "T-90M"),
     "bmpt": (models.bmpt, (78, 90, 56), "BMPT"),
@@ -63,6 +64,8 @@ AIRCRAFT = {
     "tapas": (aircraft.tapas, (64, 64), 1.1, (140, 144, 138), "TAPAS"),
 }
 SKY = ((104, 140, 176), (176, 196, 208))
+# Échelle d'icône propre à certains véhicules (défaut : 1.25).
+ICON_SCALE = {"leclerc": 1.4}
 
 
 def build_aircraft(name, palette):
@@ -101,7 +104,7 @@ def build(name, palette):
         frames = render.render_rotations(built, SIZE)
         icon_model = built
     render.save_sheet(frames, os.path.join(OUT, f"{name}.png"), palette)
-    icon = render.label(render.render_icon(icon_model, palette, paint=icon_color), title)
+    icon = render.label(render.render_icon(icon_model, palette, scale=ICON_SCALE.get(name, 1.25), paint=icon_color), title)
     render.save_sheet([icon], os.path.join(OUT, f"{name}icon.png"), palette)
     print(f"{name}: {len(frames)} images + icône")
 

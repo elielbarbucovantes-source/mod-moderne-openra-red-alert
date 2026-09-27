@@ -41,9 +41,89 @@ JAGUAR:
 		Speed: 130
 	RevealsShroud:
 		Range: 8c0
+	# Liaison SCORPION : transmet les données de ciblage aux Leclerc proches.
+	ProximityExternalCondition@SCORPION:
+		Condition: scorpion-link
+		Range: 8c0
+		ValidRelationships: Ally
 	Armament:
 		Weapon: JaguarMissile
 		LocalOffset: 20,188,190
+# Leclerc XLR : char de mobilité, de cadence et d'information. Moins robuste
+# et moins de dégâts par obus que le Leopard, mais plus rapide et, grâce au
+# chargeur automatique, il tire plus souvent.
+# - Liaison SCORPION (hunter-killer) : près d'une unité de reconnaissance
+#   française (GCP, Reaper, Patroller, Jaguar), rechargement -20 %.
+# - GALIX / protection active : le premier missile antichar qui le touche ne fait
+#   que 25 % de ses dégâts, puis le système se recharge 30 s (voir ^AntiGroundMissile).
+LECLERC:
+	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: leclerc
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 230
+		Prerequisites: dome, ~vehicles.france, ~techlevel.high
+		Description: Char de combat français, rapide et à cadence élevée.\nChargeur automatique : tire plus souvent qu'un Leopard, obus un peu moins puissants.\nLiaison SCORPION : près d'une unité de reconnaissance française\n(GCP, Reaper, Patroller, Jaguar), rechargement -20 %.\nGALIX : le premier missile antichar ne fait que 25 % de dégâts (recharge 30 s).\n  Fort contre : véhicules\n  Faible contre : infanterie, aviation
+	Valued:
+		Cost: 1900
+	Tooltip:
+		Name: Leclerc XLR
+		GenericName: Tank
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 62000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 16
+		Speed: 78
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 7c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 28
+		Offset: -64,0,0
+	Armament:
+		Weapon: LeclercGun
+		Recoil: 128
+		RecoilRecovery: 42
+		LocalOffset: 1000,0,200
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	# Liaison SCORPION
+	ExternalCondition@SCORPION:
+		Condition: scorpion-link
+	ReloadDelayMultiplier@SCORPION:
+		RequiresCondition: scorpion-link
+		Modifier: 80
+	# GALIX : armure « APS » active tant que le système n'est pas en recharge.
+	Armor@GALIX:
+		Type: APS
+		RequiresCondition: !galix-recharge
+	ExternalCondition@GALIX:
+		Condition: galix-recharge
+	TimedConditionBar@GALIX:
+		Condition: galix-recharge
+		Color: 40A0FF
+	SpawnActorOnDeath:
+		Actor: LECLERC.Husk
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
 LEOPARD:
 	Inherits: ^TrackedVehicle
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
@@ -1375,6 +1455,11 @@ GCP:
 		Speed: 68
 	RevealsShroud:
 		Range: 8c0
+	# Liaison SCORPION : transmet les données de ciblage aux Leclerc proches.
+	ProximityExternalCondition@SCORPION:
+		Condition: scorpion-link
+		Range: 8c0
+		ValidRelationships: Ally
 	Cloak:
 		InitialDelay: 0
 		CloakDelay: 100
@@ -1779,6 +1864,17 @@ BMPT:
 		Prerequisites: vehicles.upgraded
 
 # Carcasses : mêmes sprites que le véhicule, assombris par la palette des épaves.
+LECLERC.Husk:
+	Inherits: 2TNK.Husk
+	Tooltip:
+		Name: Épave (Leclerc XLR)
+	TransformOnCapture:
+		IntoActor: leclerc
+	InfiltrateForTransform:
+		IntoActor: leclerc
+	RenderSprites:
+		Image: leclerc.destroyed
+
 LEOPARD.Husk:
 	Inherits: 2TNK.Husk
 	Tooltip:
@@ -1992,6 +2088,11 @@ REAPER:
 	RevealsShroud@GAPGEN:
 		Range: 12c0
 		Type: GroundPosition
+	# Liaison SCORPION : transmet les données de ciblage aux Leclerc proches.
+	ProximityExternalCondition@SCORPION:
+		Condition: scorpion-link
+		Range: 8c0
+		ValidRelationships: Ally
 	DetectCloaked:
 		Range: 8c0
 	Armament@GBU:
@@ -2112,6 +2213,11 @@ PATROLLER:
 		Position: BottomLeft
 		Margin: 4, 3
 		RequiresSelection: true
+	# Liaison SCORPION : transmet les données de ciblage aux Leclerc proches.
+	ProximityExternalCondition@SCORPION:
+		Condition: scorpion-link
+		Range: 8c0
+		ValidRelationships: Ally
 	ProximityExternalCondition@DRONESUPPORT:
 		Condition: drone-support
 		Range: 5c0

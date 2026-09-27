@@ -475,3 +475,147 @@ def dhanush():
     for s in (1, -1):
         m.cylinder_x(-3.0, 6.5, s * 1.0, 4.5, 0.35, "metal")                    # récupérateurs
     return m
+
+
+# ===========================================================================
+# FRANCE — Leclerc XLR
+# ===========================================================================
+def ccw(poly):
+    """Remet un polygone (x, y) dans le sens antihoraire (normales tournées vers l'extérieur)."""
+    area = sum(poly[i][0] * poly[(i + 1) % len(poly)][1] - poly[(i + 1) % len(poly)][0] * poly[i][1]
+               for i in range(len(poly)))
+    return poly if area > 0 else poly[::-1]
+
+
+def mirrored_prism(m, bottom, top, s, mat="paint", tint=0.0):
+    """Prisme défini pour le côté gauche (y > 0), reflété en y selon s, sens corrigé."""
+    b = [(x, s * y, z) for x, y, z in bottom]
+    t = [(x, s * y, z) for x, y, z in top]
+    if s < 0:
+        b, t = b[::-1], t[::-1]
+    m.prism(b, t, mat, tint)
+
+
+# ---------------------------------------------------------------------------
+# Leclerc XLR. Caisse longue et basse, glacis très incliné, pilote à gauche,
+# modules de blindage XLR sur l'avant des jupes et grilles anti-roquettes sur
+# l'arrière, grilles moteur, deux fûts de carburant transversaux à l'arrière.
+# Tourelle basse à blindage avant en V (série 2), longue nuque du chargeur
+# automatique avec cage grillagée, canon CN120-26 L52 à manchon thermique
+# segmenté et référence de bouche, viseur panoramique HL-70 du chef (gauche),
+# viseur HL-60 du tireur (droite), tourelleau téléopéré, lance-pots GALIX sur
+# les flancs, antennes SCORPION et brouilleur anti-IED sur la nuque.
+# ---------------------------------------------------------------------------
+def leclerc():
+    hull = Model()
+    # --- Train de roulement : chenilles, barbotin arrière et poulie avant visibles
+    for s in (1, -1):
+        y_in, y_out = s * 3.6, s * 5.7
+        ya, yb = sorted((y_in, y_out))
+        hull.tapered_box(-11.2, 11.2, ya, yb, 0, 2.5, inset_front=1.3, inset_back=1.1, mat="rubber")
+        hull.cylinder_y(-10.6, ya + 0.2, yb - 0.2, 1.4, 1.2, "metal", tint=0.2)    # barbotin
+        hull.cylinder_y(10.7, ya + 0.2, yb - 0.2, 1.5, 1.0, "metal", tint=0.2)     # poulie de tension
+    # --- Caisse
+    hull.box(-11.5, 7.8, -3.6, 3.6, 1.0, 3.9)
+    hull.tapered_box(7.8, 11.9, -3.6, 3.6, 1.0, 3.9, inset_front=3.0)             # glacis très incliné
+    hull.box(11.4, 12.1, -3.2, 3.2, 1.0, 1.9, "paint", 0.15)                       # plaque inférieure
+    for s in (1, -1):
+        # garde-boue avant, relevés vers le nez
+        mirrored_prism(hull, [(6.5, 3.6, 3.3), (11.8, 3.6, 2.6), (11.8, 5.9, 2.6), (6.5, 5.9, 3.3)],
+                       [(6.5, 3.6, 3.8), (11.8, 3.6, 3.1), (11.8, 5.9, 3.1), (6.5, 5.9, 3.8)], s, "paint", 0.08)
+        # modules de blindage XLR sur l'avant des jupes (épais, en 3 blocs)
+        for i, (x0, x1) in enumerate(((0.8, 4.0), (4.2, 7.4), (7.6, 10.4))):
+            y0, y1 = sorted((s * 5.8, s * 6.7))
+            hull.box(x0, x1, y0, y1, 1.2, 3.9, "paint", 0.04 + 0.1 * (i % 2))
+            hull.box(x0 + 0.3, x1 - 0.3, *sorted((s * 6.7, s * 6.8)), 3.4, 3.6, "dark")   # fixations
+        # jupes arrière plus minces
+        y0, y1 = sorted((s * 5.7, s * 6.1))
+        hull.box(-6.0, 0.6, y0, y1, 1.4, 3.7, "paint", 0.1)
+        # grilles anti-roquettes (slat armour) sur l'arrière des flancs
+        for k in range(8):
+            x = -11.2 + k * 0.72
+            hull.box(x, x + 0.25, *sorted((s * 6.1, s * 6.6)), 1.3, 3.8, "dark")
+        hull.box(-11.3, -5.9, *sorted((s * 6.1, s * 6.6)), 3.6, 3.9, "dark")
+        # coffres de rangement sur les garde-boue arrière
+        hull.box(-9.5, -5.5, *sorted((s * 3.9, s * 5.6)), 3.9, 4.8, "paint", 0.18)
+        # phares et feux de gabarit
+        hull.box(11.2, 11.7, *sorted((s * 2.5, s * 3.3)), 3.0, 3.5, "glass")
+        hull.box(11.8, 12.3, *sorted((s * 1.6, s * 2.4)), 1.3, 1.8, "dark")          # crochets de remorquage
+    # --- Plage arrière : grilles moteur (groupe 1500 ch)
+    hull.box(-11.5, -4.5, -3.6, 3.6, 3.9, 4.3, "paint", 0.1)
+    for gx in (-11.0, -9.6, -8.2):
+        hull.box(gx, gx + 1.0, -3.0, 3.0, 4.3, 4.45, "dark")
+    hull.box(-7.0, -5.2, -3.3, 3.3, 4.3, 4.5, "dark", 0.1)                         # prises d'air
+    # --- Fûts de carburant transversaux (signature du Leclerc)
+    for y0, y1 in ((0.4, 3.5), (-3.5, -0.4)):
+        hull.cylinder_y(-12.5, y0, y1, 3.8, 1.05, "paint", tint=0.22, sides=10)
+    hull.box(-12.3, -11.5, -3.6, 3.6, 2.6, 3.0, "metal", 0.1)                      # berceau des fûts
+    # --- Poste de pilotage (à gauche) : trappe et épiscopes
+    hull.box(6.2, 7.8, 1.0, 2.9, 3.9, 4.2, "paint", 0.12)
+    hull.box(7.6, 8.0, 1.1, 2.8, 4.0, 4.4, "glass")
+    hull.box(5.0, 6.0, -2.8, -1.4, 3.9, 4.15, "dark")                              # trappe de visite
+
+    # --- Tourelle (pivot en 0,0)
+    tur = Model()
+    body = [(-7.0, -4.5), (3.8, -4.7), (7.4, -2.4), (8.0, -1.3), (8.0, 1.3), (7.4, 2.4), (3.8, 4.7), (-7.0, 4.5)]
+    tur.prism([(x, y, 3.9) for x, y in body], [(x - 0.2, y * 0.96, 6.7) for x, y in body])   # caisse de tourelle basse
+    tur.box(-7.6, 3.5, -4.25, 4.25, 6.7, 6.95, "paint", 0.1)                                 # toit
+    # blindage avant en V de la série 2 (modules espacés, de part et d'autre du canon)
+    for s in (1, -1):
+        mirrored_prism(tur, [(4.2, 1.5, 4.1), (9.4, 1.5, 4.1), (6.6, 5.1, 4.1), (3.6, 5.0, 4.1)],
+                       [(4.2, 1.5, 6.7), (9.0, 1.5, 6.7), (6.4, 4.9, 6.7), (3.6, 4.8, 6.7)], s, "paint", 0.06)
+        mirrored_prism(tur, [(8.9, 1.5, 6.7), (9.4, 1.5, 4.1), (6.6, 5.1, 4.1), (6.4, 4.9, 6.7)],
+                       [(9.0, 1.7, 6.8), (9.5, 1.7, 4.2), (6.7, 5.3, 4.2), (6.5, 5.1, 6.8)], s, "paint", 0.2)  # arête
+    # nuque du chargeur automatique, longue et plate
+    tur.box(-11.4, -6.8, -4.2, 4.2, 4.2, 6.7, "paint", 0.05)
+    tur.box(-11.2, -7.0, -4.0, 4.0, 6.7, 6.9, "paint", 0.14)
+    # cage grillagée (slat) autour de la nuque
+    for k in range(7):
+        y = -4.0 + k * 1.33
+        tur.box(-12.4, -12.1, y - 0.12, y + 0.12, 4.4, 7.1, "dark")
+    tur.box(-12.4, -11.4, -4.1, 4.1, 6.9, 7.2, "dark")
+    for s in (1, -1):
+        for k in range(5):
+            x = -11.6 + k * 1.0
+            tur.box(x - 0.12, x + 0.12, *sorted((s * 4.3, s * 4.6)), 4.4, 7.0, "dark")
+    # mantelet et canon CN120-26 L52 : manchon thermique segmenté, référence de bouche
+    tur.box(7.8, 9.6, -1.25, 1.25, 4.5, 6.5, "paint", 0.12)
+    barrel(tur, 9.4, 23.6, 5.5, 0.6)
+    for x0, x1 in ((9.6, 12.6), (12.9, 15.9), (16.2, 19.2), (19.5, 22.2)):          # segments du manchon
+        tur.cylinder_x(x0, x1, 0, 5.5, 0.72, "paint", tint=0.1)
+    tur.cylinder_x(23.0, 23.6, 0, 5.5, 0.68, "metal")                              # bouche
+    tur.box(22.4, 23.0, -0.25, 0.25, 6.1, 6.5, "metal")                            # référence de bouche (MRS)
+    tur.cylinder_x(8.4, 10.2, 1.9, 5.2, 0.24, "dark")                              # coaxiale 12,7 mm (gauche)
+    # viseur panoramique HL-70 du chef (gauche) : colonne haute et tête stabilisée
+    tur.box(0.4, 2.6, 1.6, 3.6, 6.9, 8.4, "metal", 0.1)
+    tur.box(0.1, 2.9, 1.3, 3.9, 8.4, 9.9, "paint", 0.04)
+    tur.box(2.9, 3.15, 1.8, 3.4, 8.8, 9.6, "glass")
+    tur.box(0.1, 2.9, 1.3, 3.9, 9.9, 10.15, "paint", 0.18)
+    # viseur HL-60 du tireur (droite), caisson bas vitré vers l'avant
+    tur.box(3.2, 5.8, -3.8, -1.6, 6.9, 8.0, "paint", 0.1)
+    tur.box(5.8, 6.05, -3.5, -1.9, 7.1, 7.8, "glass")
+    # tourelleau du chef et trappe
+    tur.box(-2.8, 0.0, 0.9, 3.8, 6.9, 7.35, "dark", 0.1)
+    tur.box(-2.4, -0.4, 1.3, 3.4, 7.35, 7.6, "paint", 0.2)
+    # tourelleau téléopéré XLR (7,62 mm), à droite derrière le viseur tireur
+    tur.box(-4.6, -1.8, -3.5, -1.0, 6.9, 7.5, "dark")
+    tur.box(-4.2, -2.4, -3.0, -1.5, 7.5, 8.6, "paint", 0.08)
+    tur.cylinder_x(-2.4, 1.6, -2.25, 8.1, 0.18, "metal")
+    tur.box(-2.6, -2.2, -3.3, -2.7, 8.2, 8.7, "glass")
+    # lance-pots GALIX : 3 x 3 tubes sur chaque flanc, vers l'extérieur
+    for s in (1, -1):
+        tur.box(-6.6, -2.8, *sorted((s * 4.4, s * 4.9)), 4.6, 6.8, "dark", 0.1)
+        for x in (-6.0, -4.7, -3.4):
+            for z in (5.0, 5.7, 6.4):
+                tur.cylinder_y(x, *sorted((s * 4.9, s * 5.6)), z, 0.3, "metal", sides=6)
+        # détecteurs d'alerte laser aux coins avant
+        tur.box(3.4, 3.9, *sorted((s * 4.3, s * 4.7)), 6.7, 7.1, "glass")
+    # antennes SCORPION (fouets) et brouilleur anti-IED sur la nuque
+    for y in (-3.4, 3.4):
+        tur.box(-10.4, -10.1, y - 0.15, y + 0.15, 6.9, 12.5, "metal")
+        tur.box(-10.6, -9.9, y - 0.4, y + 0.4, 6.9, 7.4, "dark")
+    tur.box(-9.2, -7.4, -1.3, 1.3, 6.9, 7.8, "paint", 0.16)                        # brouilleur anti-IED
+    for y in (-0.9, 0.0, 0.9):
+        tur.box(-8.5, -8.2, y - 0.1, y + 0.1, 7.8, 9.0, "metal")
+    tur.box(-6.6, -5.4, 2.6, 3.8, 6.9, 7.5, "white", 0.1)                          # antenne GPS / liaison
+    return hull, tur, -1.5

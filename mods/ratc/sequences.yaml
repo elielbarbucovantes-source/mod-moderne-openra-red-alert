@@ -680,3 +680,27 @@ pinaka:
 		Filename: ratc|bits/pinakaicon.png
 	power-icon:
 		Filename: ratc|bits/pinakapower.png
+
+leclerc:
+	Defaults:
+		Filename: ratc|bits/leclerc.png
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/leclercicon.png
+
+leclerc.destroyed:
+	Defaults:
+		Filename: ratc|bits/leclerc.png
+		ZOffset: -512
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32

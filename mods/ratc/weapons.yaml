@@ -105,6 +105,24 @@ ExcaliburShell:
 			Light: 110
 			Heavy: 80
 
+# Leclerc : chargeur automatique, cadence élevée, obus un peu moins puissant que le Leopard.
+LeclercGun:
+	Inherits: ^Cannon
+	ReloadDelay: 65
+	Range: 6c0
+	Projectile: Bullet
+		Speed: 1000
+	Warhead@1Dam: SpreadDamage
+		Spread: 96
+		Damage: 11000
+		Versus:
+			None: 25
+			Wood: 60
+			Light: 95
+			Heavy: 115
+			Concrete: 45
+		InvalidTargets: Air
+
 LeopardGun:
 	Inherits: ^Cannon
 	ReloadDelay: 95
@@ -215,12 +233,21 @@ PANReactorExplode:
 # =====================================================================
 # Blindage réactif (ERA) : les missiles antichar classiques ne font que
 # 10 % de dégâts sur une cible dont l'ERA est encore intact (T-90M, BMPT).
+# Protection active (APS, GALIX du Leclerc) : 25 %, puis recharge de 30 s.
 # Les armes à attaque par le toit (NLAW, FPV) redéfinissent ERA: 100.
 # =====================================================================
 ^AntiGroundMissile:
 	Warhead@1Dam: SpreadDamage
 		Versus:
 			ERA: 10
+			APS: 25
+	# GALIX (Leclerc) : après avoir encaissé un missile, la protection se recharge 30 s.
+	# Appliqué après les dégâts : seul le premier missile est réduit.
+	Warhead@GALIX: GrantExternalCondition
+		Range: 0c512
+		Duration: 750
+		Condition: galix-recharge
+		ValidTargets: Vehicle
 
 # --- France : frappe SCALP guidée par le GCP ---
 # Le GCP illumine la cible au laser (faisceau maintenu pendant toute la frappe)...
