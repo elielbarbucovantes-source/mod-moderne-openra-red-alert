@@ -1,6 +1,6 @@
 TeslaLaser:
-	ReloadDelay: 40
-	Range: 7c512
+	ReloadDelay: 60
+	Range: 6c512
 	Report: tesla1.aud
 	Projectile: LaserZap
 		Width: 85
@@ -8,7 +8,7 @@ TeslaLaser:
 		ZOffset: 2047
 	Warhead@1Dam: SpreadDamage
 		Spread: 42
-		Damage: 36000
+		Damage: 12000
 		DamageTypes: Prone50Percent, TriggerProne, FireDeath
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
@@ -23,16 +23,16 @@ CesarObus:
 JaguarMissile:
 	Inherits: ^AntiGroundMissile
 	ReloadDelay: 120
-	Range: 9c0
+	Range: 6c512
 	MinRange: 2c0
 	Report: missile6.aud
 	Projectile:
 		Speed: 300
 		TrackTarget: true
-		RangeLimit: 10c768
+		RangeLimit: 8c0
 	Warhead@1Dam: SpreadDamage
 		Spread: 64
-		Damage: 18000
+		Damage: 13000
 		DamageTypes: Prone50Percent, TriggerProne, FireDeath
 		Versus:
 			Concrete: 30
@@ -107,8 +107,8 @@ ExcaliburShell:
 
 LeopardGun:
 	Inherits: ^Cannon
-	ReloadDelay: 80
-	Range: 6c0
+	ReloadDelay: 95
+	Range: 5c512
 	Projectile: Bullet
 		Speed: 900
 	Warhead@1Dam: SpreadDamage

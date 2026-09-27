@@ -12,7 +12,7 @@ CSAR:
 		Prerequisites: dome, ~vehicles.france, ~techlevel.medium
 		Description: Artillerie automotrice française.\nTire 3 obus en succession rapide avant de recharger.\n  Fort contre : infanterie, bâtiments\n  Faible contre : véhicules, aviation
 	Valued:
-		Cost: 2000
+		Cost: 1300
 	Tooltip:
 		Name: Canon César
 	Mobile:
@@ -426,7 +426,7 @@ SNLE.FRANCE:
 
 # ======================================================================
 # PORTE-AVIONS
-# Les avions sont embarqués : 3 à la sortie du chantier naval, capacité 5 (8 pour le français et l'américain).
+# Les avions sont embarqués : 1 à la sortie du chantier naval, capacité 5 (8 pour le français et l'américain).
 # 3 porte-avions maximum par joueur (4 pour la Chine, 5 pour les USA).
 # Touche de déploiement (F) : les avions prêts décollent.
 # Clic droit d'un avion sur son porte-avions : il appontera ; à court de munitions il revient seul.
@@ -476,7 +476,7 @@ PAN:
 		BuildPaletteOrder: 80
 		BuildDuration: 5000
 		Prerequisites: ~ships.france, techcenter, ~techlevel.high
-		Description: Porte-avions à propulsion nucléaire.\nLivré avec 3 Rafale, capacité 8 avions.\nDéfense antiaérienne rapprochée.\n  Déploiement : faire décoller les avions\n  Faible contre : sous-marins (à escorter)
+		Description: Porte-avions à propulsion nucléaire.\nLivré avec 1 Rafale, capacité 8 avions.\nDéfense antiaérienne rapprochée.\n  Déploiement : faire décoller les avions\n  Faible contre : sous-marins (à escorter)
 	Valued:
 		Cost: 3200
 	Tooltip:
@@ -488,7 +488,7 @@ PAN:
 	AircraftCarrier:
 		Types: rafale
 		MaxAircraft: 8
-		InitialAircraft: rafale, rafale, rafale
+		InitialAircraft: rafale
 	Explodes:
 		Weapon: PANReactorExplode
 		EmptyWeapon: PANReactorExplode
@@ -503,7 +503,7 @@ PAUK:
 		BuildPaletteOrder: 80
 		BuildDuration: 4200
 		Prerequisites: ~ships.england, techcenter, ~techlevel.high
-		Description: Porte-avions britannique.\nLivré avec 3 Harrier, capacité 5 avions.\nDéfense antiaérienne rapprochée.\n  Déploiement : faire décoller les avions\n  Faible contre : sous-marins (à escorter)
+		Description: Porte-avions britannique.\nLivré avec 1 Harrier, capacité 5 avions.\nDéfense antiaérienne rapprochée.\n  Déploiement : faire décoller les avions\n  Faible contre : sous-marins (à escorter)
 	Valued:
 		Cost: 2600
 	Tooltip:
@@ -515,7 +515,7 @@ PAUK:
 	AircraftCarrier:
 		Types: harrier
 		MaxAircraft: 5
-		InitialAircraft: harrier, harrier, harrier
+		InitialAircraft: harrier
 
 # Russie : porte-avions Amiral Kouznetsov, MiG.
 PARU:
@@ -527,7 +527,7 @@ PARU:
 		BuildPaletteOrder: 80
 		BuildDuration: 4200
 		Prerequisites: ~ships.russia, techcenter, ~techlevel.high
-		Description: Porte-avions russe.\nLivré avec 3 MiG, capacité 5 avions.\nDéfense antiaérienne rapprochée.\n  Déploiement : faire décoller les avions\n  Faible contre : sous-marins (à escorter)
+		Description: Porte-avions russe.\nLivré avec 1 MiG, capacité 5 avions.\nDéfense antiaérienne rapprochée.\n  Déploiement : faire décoller les avions\n  Faible contre : sous-marins (à escorter)
 	Valued:
 		Cost: 2600
 	Tooltip:
@@ -539,7 +539,7 @@ PARU:
 	AircraftCarrier:
 		Types: mig
 		MaxAircraft: 5
-		InitialAircraft: mig, mig, mig
+		InitialAircraft: mig
 
 # Ukraine : porte-hélicoptères, moins cher et moins résistant, Mi-24.
 PHUA:
@@ -551,7 +551,7 @@ PHUA:
 		BuildPaletteOrder: 75
 		BuildDuration: 2800
 		Prerequisites: ~ships.ukraine, dome, ~techlevel.medium
-		Description: Porte-hélicoptères ukrainien.\nLivré avec 2 Mi-24, capacité 4 hélicoptères.\nDéfense antiaérienne légère.\n  Déploiement : faire décoller les hélicoptères\n  Faible contre : sous-marins, navires de combat
+		Description: Porte-hélicoptères ukrainien.\nLivré avec 1 Mi-24, capacité 4 hélicoptères.\nDéfense antiaérienne légère.\n  Déploiement : faire décoller les hélicoptères\n  Faible contre : sous-marins, navires de combat
 	Valued:
 		Cost: 1800
 	Tooltip:
@@ -565,7 +565,7 @@ PHUA:
 	AircraftCarrier:
 		Types: mi24
 		MaxAircraft: 4
-		InitialAircraft: mi24, mi24
+		InitialAircraft: mi24
 	Armament:
 		Weapon: PHUAAA
 	Selectable:
@@ -583,7 +583,7 @@ PAUS:
 		BuildDuration: 5000
 		BuildLimit: 5
 		Prerequisites: ~ships.usa, techcenter, ~techlevel.high
-		Description: Supercarrier américain à propulsion nucléaire.\nLivré avec 3 F-22, capacité 8 avions.\nDéfense antiaérienne rapprochée.\nLimité à 5 exemplaires.\n  Déploiement : faire décoller les avions\n  Faible contre : sous-marins (à escorter)
+		Description: Supercarrier américain à propulsion nucléaire.\nLivré avec 1 F-22, capacité 8 avions.\nDéfense antiaérienne rapprochée.\nLimité à 5 exemplaires.\n  Déploiement : faire décoller les avions\n  Faible contre : sous-marins (à escorter)
 	Valued:
 		Cost: 3400
 	Tooltip:
@@ -595,7 +595,7 @@ PAUS:
 	AircraftCarrier:
 		Types: f22
 		MaxAircraft: 8
-		InitialAircraft: f22, f22, f22
+		InitialAircraft: f22
 	Explodes:
 		Weapon: PANReactorExplode
 		EmptyWeapon: PANReactorExplode
@@ -611,7 +611,7 @@ PACN:
 		BuildDuration: 4200
 		BuildLimit: 4
 		Prerequisites: ~ships.china, techcenter, ~techlevel.high
-		Description: Porte-avions chinois.\nLivré avec 3 MiG, capacité 5 avions.\nDéfense antiaérienne rapprochée.\nLimité à 4 exemplaires.\n  Déploiement : faire décoller les avions\n  Faible contre : sous-marins (à escorter)
+		Description: Porte-avions chinois.\nLivré avec 1 MiG, capacité 5 avions.\nDéfense antiaérienne rapprochée.\nLimité à 4 exemplaires.\n  Déploiement : faire décoller les avions\n  Faible contre : sous-marins (à escorter)
 	Valued:
 		Cost: 2600
 	Tooltip:
@@ -623,7 +623,7 @@ PACN:
 	AircraftCarrier:
 		Types: mig
 		MaxAircraft: 5
-		InitialAircraft: mig, mig, mig
+		InitialAircraft: mig
 
 # ======================================================================
 # AVIATION EMBARQUÉE
@@ -1535,7 +1535,7 @@ FPVOP:
 		Prerequisites: ~infantry.ukraine, ~techlevel.low
 		Description: Opérateur de drone FPV, très bon marché.\nDéployé : se couche, verrouille la cible (2,4 s) puis lance\nun drone kamikaze à 9 cases. Le drone est perdu à l'impact,\nle suivant est prêt en 10 secondes.\n  Fort contre : infanterie, véhicules légers\n  Faible contre : aviation (seul, ne tue pas un char lourd)
 	Valued:
-		Cost: 250
+		Cost: 400
 	Tooltip:
 		Name: Opérateur de drone FPV
 	UpdatesPlayerStatistics:
@@ -2153,7 +2153,7 @@ COLIBRI:
 		Prerequisites: ~aircraft.france, ~techlevel.medium
 		Description: Munition rôdeuse (drone kamikaze).\nTourne au-dessus de la zone, puis fonce sur la cible\ndésignée et explose. Usage unique, autonomie 2 minutes.\nFrappe par le dessus : ignore le blindage réactif.\n  Fort contre : blindés légers, artillerie, bâtiments\n  Faible contre : chars lourds, défense antiaérienne
 	Valued:
-		Cost: 250
+		Cost: 400
 	Tooltip:
 		Name: Munition rôdeuse Colibri
 	UpdatesPlayerStatistics:
