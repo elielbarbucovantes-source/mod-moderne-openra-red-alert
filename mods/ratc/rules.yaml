@@ -236,7 +236,7 @@ GRAD:
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	RenderSprites:
-		Image: katy
+		Image: grad
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 236

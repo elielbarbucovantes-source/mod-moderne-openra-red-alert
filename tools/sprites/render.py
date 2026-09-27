@@ -105,9 +105,35 @@ class Model:
         top = [(x + n[0] * h, y + n[1] * h, z + n[2] * h) for x, y, z in pts]
         return self.prism(bottom, top, mat, tint)
 
+    def cylinder_z(self, x, y, z0, z1, r, mat="metal", sides=8, tint=0.0):
+        """Cylindre vertical (coupole, fût, pot)."""
+        ring = [(x + r * math.cos(2 * math.pi * i / sides), y + r * math.sin(2 * math.pi * i / sides))
+                for i in range(sides)]
+        return self.extrude(ring, z0, z1, mat, tint)
+
+    def tube(self, p0, p1, r, mat="metal", sides=6, tint=0.0):
+        """Tube quelconque de p0 à p1 (antenne, câble, lance-pots incliné)."""
+        d = _sub(p1, p0)
+        ln = math.sqrt(d[0] ** 2 + d[1] ** 2 + d[2] ** 2) or 1
+        d = (d[0] / ln, d[1] / ln, d[2] / ln)
+        a = (0, 0, 1) if abs(d[2]) < 0.9 else (1, 0, 0)
+        u = _cross(d, a)
+        un = math.sqrt(sum(c * c for c in u))
+        u = (u[0] / un, u[1] / un, u[2] / un)
+        v = _cross(d, u)
+        ring = [(u[0] * math.cos(t) + v[0] * math.sin(t), u[1] * math.cos(t) + v[1] * math.sin(t),
+                 u[2] * math.cos(t) + v[2] * math.sin(t)) for t in (2 * math.pi * i / sides for i in range(sides))]
+        for i in range(sides):
+            a, b = ring[i], ring[(i + 1) % sides]
+            self.solids.append(("quad", [tuple(p0[j] + r * a[j] for j in range(3)), tuple(p1[j] + r * a[j] for j in range(3)),
+                                         tuple(p1[j] + r * b[j] for j in range(3)), tuple(p0[j] + r * b[j] for j in range(3))],
+                                mat, tint))
+        return self
+
     def transformed(self, fn):
         """Copie du modèle dont chaque sommet passe par fn (x, y, z) -> (x, y, z)."""
         m = Model()
+        m.__dict__.update({k: v for k, v in vars(self).items() if k != "solids"})
         for s in self.solids:
             if s[0] in ("quad", "poly"):
                 m.solids.append((s[0], [fn(*p) for p in s[1]], s[2], s[3]))
@@ -152,6 +178,9 @@ def _normal(pts):
 
 def render_frame(model, facing, size, scale=1.0, shadow=True, ground=0.0, remap=None):
     """Rend une orientation. facing en fractions de tour, sens antihoraire depuis le nord."""
+    if getattr(model, "hd", False):
+        import hd
+        return hd.render_frame(model, facing, size, scale, shadow, ground, remap)
     th = 2 * math.pi * facing
     fwd = (-math.sin(th), math.cos(th))
     left = (-math.cos(th), -math.sin(th))
@@ -274,6 +303,9 @@ def save_sheet(frames, path, palette):
 
 
 def render_rotations(model, size, facings=32, scale=1.0, shadow=True, remap=None):
+    if getattr(model, "hd", False):
+        import hd
+        return hd.render_rotations(model, size, facings, scale, shadow, remap)
     return [outline(render_frame(model, i / facings, size, scale, shadow, remap=remap)) for i in range(facings)]
 
 
@@ -294,7 +326,21 @@ ICON_COLORS = {
 }
 
 
+def hd_style(m, camo=None, dust=0.0, dust_height=2.4, track_period=2.0):
+    """Active le rendu détaillé (hd.py) : ombres portées, camouflage, poussière, textures, liserés.
+    camo : {"scale": taille des taches, "seed": graine, "tones": [(seuil, assombrissement), ...]}."""
+    m.hd = True
+    m.camo = camo
+    m.dust = dust
+    m.dust_height = dust_height
+    m.track_period = track_period
+    return m
+
+
 def render_icon(model, palette, scale=1.25, facing=0.84, paint=(92, 104, 60), bg=((52, 60, 44), (20, 24, 20))):
+    if getattr(model, "hd", False):
+        import hd
+        return hd.render_icon(model, palette, scale, facing, paint, bg)
     size = (64, 48)
     colors = dict(ICON_COLORS, paint=paint)
     # On réutilise le rendu indexé pour obtenir matériau + ombrage par pixel.
@@ -328,7 +374,12 @@ def render_icon(model, palette, scale=1.25, facing=0.84, paint=(92, 104, 60), bg
     polys.sort(key=lambda p: -p[0])
     for _, pts, col in polys:
         d.polygon(pts, fill=col)
-    img = img.resize(size, Image.LANCZOS)
+    return quantize_icon(img.resize(size, Image.LANCZOS), palette)
+
+
+def quantize_icon(img, palette):
+    """Image RVB -> palette RA, sans les indices spéciaux ni la couleur du joueur."""
+    size = img.size
     pal_img = Image.new("P", (1, 1))
     # On exclut les indices spéciaux (transparence, ombre) et la rampe de couleur joueur.
     usable = [i for i in range(256) if i not in (0, 3, 4) and not 80 <= i <= 95]

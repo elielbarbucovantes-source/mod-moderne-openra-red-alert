@@ -33,13 +33,20 @@ katy:
 	icon:
 		Filename: ratc|bits/katyicnh.shp
 
+# Camion de ravitaillement et BM-21 Grad : sprites générés par tools/sprites/build.py.
 ravit:
 	idle:
-		Filename: ratc|bits/ravit.shp
+		Filename: ratc|bits/ravit.png
 		Facings: 32
-		UseClassicFacings: True
 	icon:
-		Filename: ratc|bits/ravitic.shp
+		Filename: ratc|bits/raviticon.png
+
+grad:
+	idle:
+		Filename: ratc|bits/grad.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/gradicon.png
 
 snle:
 	idle:

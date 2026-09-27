@@ -26,6 +26,8 @@ VEHICLES = {
     "as90": (models.as90, (150, 132, 92), "AS-90"),
     "cesar": (models.cesar, (100, 104, 72), "CAESAR"),
     "m777": (models.m777, (90, 98, 64), "M777"),
+    "grad": (models.grad, (82, 96, 60), "BM-21 GRAD"),
+    "ravit": (models.ravit, (96, 104, 70), "RAVITAILL."),
     # Japon
     "type10": (models.type10, (96, 104, 70), "TYPE 10"),
     "type16": (models.type16, (96, 104, 70), "TYPE 16"),
@@ -83,6 +85,7 @@ def build_aircraft(name, palette):
 def combined(hull, turret, offset):
     """Caisse + tourelle en un seul modèle (pour l'icône)."""
     m = Model()
+    m.__dict__.update({k: v for k, v in vars(hull).items() if k != "solids"})
     m.solids = list(hull.solids)
     for s in turret.solids:
         if s[0] in ("quad", "poly"):
