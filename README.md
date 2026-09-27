@@ -21,6 +21,8 @@ make              # télécharge le moteur OpenRA (release-20231010) et compile 
 
 Sous Windows : `make.cmd` puis `launch-game.cmd`.
 
+Sous macOS (Intel ou Apple Silicon) : installer le [SDK .NET 6](https://dotnet.microsoft.com/download/dotnet/6.0), puis les mêmes commandes que sous Linux dans le Terminal. Si seul un .NET plus récent est installé, lancer avec `DOTNET_ROLL_FORWARD=LatestMajor ./launch-game.sh`.
+
 Au premier lancement, le jeu propose de télécharger les fichiers d'origine de Red Alert (version gratuite de 2008) : choisir « Quick Install ».
 
 ## Organisation
