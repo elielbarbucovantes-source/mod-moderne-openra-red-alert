@@ -565,7 +565,7 @@ Player:
 				MinimumAttractiveness: 2000
 				Consideration@1:
 					Against: Enemy
-					Types: Ground, Water
+					Types: GroundActor, WaterActor
 					Attractiveness: 1
 					TargetMetric: Value
 					CheckRadius: 6c0
@@ -574,13 +574,13 @@ Player:
 				MinimumAttractiveness: 1500
 				Consideration@1:
 					Against: Enemy
-					Types: Ground, Structure
+					Types: GroundActor, Structure
 					Attractiveness: 1
 					TargetMetric: Value
 					CheckRadius: 3c512
 				Consideration@2:
 					Against: Ally
-					Types: Ground
+					Types: GroundActor
 					Attractiveness: -2
 					TargetMetric: Value
 					CheckRadius: 4c512

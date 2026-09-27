@@ -1017,7 +1017,7 @@ Player:
 					CheckRadius: 5c0
 				Consideration@2:
 					Against: Ally
-					Types: Air, Ground, Water
+					Types: AirborneActor, GroundActor, WaterActor
 					Attractiveness: -10
 					TargetMetric: Value
 					CheckRadius: 7c0
@@ -1037,7 +1037,7 @@ Player:
 				MinimumAttractiveness: 2000
 				Consideration@1:
 					Against: Enemy
-					Types: Ground, Structure
+					Types: GroundActor, Structure
 					Attractiveness: 1
 					TargetMetric: Value
 					CheckRadius: 10c0
@@ -1046,13 +1046,13 @@ Player:
 				MinimumAttractiveness: 1500
 				Consideration@1:
 					Against: Enemy
-					Types: Ground
+					Types: GroundActor
 					Attractiveness: 1
 					TargetMetric: Value
 					CheckRadius: 3c0
 				Consideration@2:
 					Against: Ally
-					Types: Ground
+					Types: GroundActor
 					Attractiveness: -3
 					TargetMetric: Value
 					CheckRadius: 4c0
