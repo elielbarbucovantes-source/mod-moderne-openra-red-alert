@@ -7,6 +7,9 @@ Un mod pour [OpenRA](https://www.openra.net) (Red Alert) qui ajoute des unités 
 - **Unités modernes** : Leopard 2, Challenger 3, T-90M, BMPT, EBRC Jaguar, PzH 2000, AS-90, César, Grad, drones (FPV, Reaper, Patroller, Colibri…), NLAW, Rafale, Harrier, Mi-24, tranchées, pont tactique…
 - **Porte-avions** : les avions atterrissent dessus, se réarment et redécollent (code C# dans `OpenRA.Mods.Ratc/`).
 - **Factions WW3** : USA, Espagne, Chine, Turquie et Grèce, avec leurs unités (A-10, F-22, Apache, Kirov, chars prisme, Apocalypse, Titan, Scud…).
+- **Japon** (Allié : précision et mobilité) : Type 10, Type 16, Type 19, drone SeaGuardian, brouillage électronique.
+- **Inde** (Soviétique : polyvalence et saturation) : Arjun, NAMICA (missiles Nag), Dhanush, drone TAPAS, barrage Pinaka.
+- **Pouvoirs de soutien nationaux** : chaque nation a son bâtiment dédié (SCALP, pontage, brouillage SAS, AWACS, TOS-1A, guerre électronique, Pinaka).
 
 ## Installation
 

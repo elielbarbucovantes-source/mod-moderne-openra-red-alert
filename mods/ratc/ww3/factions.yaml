@@ -1,4 +1,5 @@
-# Nouvelles factions issues de la carte WW3 (USA, Espagne, Chine, Turquie, Grèce).
+# Nouvelles factions : USA, Espagne, Chine, Turquie, Grèce (carte WW3), Japon et Inde (ratc).
+# Généré par tools/ww3-import/ww3factions.py.
 
 ^BaseWorld:
 	Faction@usa:
@@ -26,26 +27,36 @@
 		InternalName: greece
 		Side: Soviet
 		Description: Grèce : infanterie en armure avancée\nUnités spéciales : hoplites, Titan
+	Faction@japan:
+		Name: Japon
+		InternalName: japan
+		Side: Allies
+		Description: Japon : précision, technologie et mobilité\nUnités spéciales : Type 10, Type 16, Type 19, SeaGuardian
+	Faction@india:
+		Name: Inde
+		InternalName: india
+		Side: Soviet
+		Description: Inde : polyvalence, volume et saturation\nUnités spéciales : Arjun, Nag, Dhanush, TAPAS
 	Faction@randomallies:
-		RandomFactionMembers: england, france, germany, usa, spain
+		RandomFactionMembers: england, france, germany, usa, spain, japan
 	Faction@randomsoviet:
-		RandomFactionMembers: russia, ukraine, china, turkey, greece
+		RandomFactionMembers: russia, ukraine, china, turkey, greece, india
 
 World:
 	StartingUnits@mcvonly:
-		Factions: allies, england, france, germany, soviet, russia, ukraine, usa, spain, china, turkey, greece
+		Factions: allies, england, france, germany, soviet, russia, ukraine, usa, spain, japan, china, turkey, greece, india
 	StartingUnits@lightallies:
-		Factions: allies, england, france, germany, usa, spain
+		Factions: allies, england, france, germany, usa, spain, japan
 	StartingUnits@lightsoviet:
-		Factions: soviet, russia, ukraine, china, turkey, greece
+		Factions: soviet, russia, ukraine, china, turkey, greece, india
 	StartingUnits@heavyallies:
-		Factions: allies, england, france, germany, usa, spain
+		Factions: allies, england, france, germany, usa, spain, japan
 	StartingUnits@heavysoviet:
-		Factions: soviet, russia, ukraine, china, turkey, greece
+		Factions: soviet, russia, ukraine, china, turkey, greece, india
 
 SPEN:
 	ProvidesPrerequisite@soviet:
-		Factions: soviet, russia, ukraine, china, turkey, greece
+		Factions: soviet, russia, ukraine, china, turkey, greece, india
 	ProvidesPrerequisite@china:
 		Factions: china
 		Prerequisite: ships.china
@@ -55,28 +66,37 @@ SPEN:
 	ProvidesPrerequisite@greece:
 		Factions: greece
 		Prerequisite: ships.greece
+	ProvidesPrerequisite@india:
+		Factions: india
+		Prerequisite: ships.india
 
 SYRD:
 	ProvidesPrerequisite@allies:
-		Factions: allies, england, france, germany, usa, spain
+		Factions: allies, england, france, germany, usa, spain, japan
 	ProvidesPrerequisite@usa:
 		Factions: usa
 		Prerequisite: ships.usa
 	ProvidesPrerequisite@spain:
 		Factions: spain
 		Prerequisite: ships.spain
+	ProvidesPrerequisite@japan:
+		Factions: japan
+		Prerequisite: ships.japan
 
 WEAP:
 	ProvidesPrerequisite@allies:
-		Factions: allies, england, france, germany, usa, spain
+		Factions: allies, england, france, germany, usa, spain, japan
 	ProvidesPrerequisite@usa:
 		Factions: usa
 		Prerequisite: vehicles.usa
 	ProvidesPrerequisite@spain:
 		Factions: spain
 		Prerequisite: vehicles.spain
+	ProvidesPrerequisite@japan:
+		Factions: japan
+		Prerequisite: vehicles.japan
 	ProvidesPrerequisite@soviet:
-		Factions: soviet, russia, ukraine, china, turkey, greece
+		Factions: soviet, russia, ukraine, china, turkey, greece, india
 	ProvidesPrerequisite@china:
 		Factions: china
 		Prerequisite: vehicles.china
@@ -86,18 +106,24 @@ WEAP:
 	ProvidesPrerequisite@greece:
 		Factions: greece
 		Prerequisite: vehicles.greece
+	ProvidesPrerequisite@india:
+		Factions: india
+		Prerequisite: vehicles.india
 
 FACT:
 	ProvidesPrerequisite@allies:
-		Factions: allies, england, france, germany, usa, spain
+		Factions: allies, england, france, germany, usa, spain, japan
 	ProvidesPrerequisite@usa:
 		Factions: usa
 		Prerequisite: structures.usa
 	ProvidesPrerequisite@spain:
 		Factions: spain
 		Prerequisite: structures.spain
+	ProvidesPrerequisite@japan:
+		Factions: japan
+		Prerequisite: structures.japan
 	ProvidesPrerequisite@soviet:
-		Factions: soviet, russia, ukraine, china, turkey, greece
+		Factions: soviet, russia, ukraine, china, turkey, greece, india
 	ProvidesPrerequisite@china:
 		Factions: china
 		Prerequisite: structures.china
@@ -107,20 +133,26 @@ FACT:
 	ProvidesPrerequisite@greece:
 		Factions: greece
 		Prerequisite: structures.greece
+	ProvidesPrerequisite@india:
+		Factions: india
+		Prerequisite: structures.india
 
 HPAD:
 	ProvidesPrerequisite@allies:
-		Factions: allies, england, france, germany, usa, spain
+		Factions: allies, england, france, germany, usa, spain, japan
 	ProvidesPrerequisite@usa:
 		Factions: usa
 		Prerequisite: aircraft.usa
 	ProvidesPrerequisite@spain:
 		Factions: spain
 		Prerequisite: aircraft.spain
+	ProvidesPrerequisite@japan:
+		Factions: japan
+		Prerequisite: aircraft.japan
 
 AFLD:
 	ProvidesPrerequisite@soviet:
-		Factions: soviet, russia, ukraine, china, turkey, greece
+		Factions: soviet, russia, ukraine, china, turkey, greece, india
 	ProvidesPrerequisite@china:
 		Factions: china
 		Prerequisite: aircraft.china
@@ -130,10 +162,13 @@ AFLD:
 	ProvidesPrerequisite@greece:
 		Factions: greece
 		Prerequisite: aircraft.greece
+	ProvidesPrerequisite@india:
+		Factions: india
+		Prerequisite: aircraft.india
 
 BARR:
 	ProvidesPrerequisite@soviet:
-		Factions: soviet, russia, ukraine, china, turkey, greece
+		Factions: soviet, russia, ukraine, china, turkey, greece, india
 	ProvidesPrerequisite@china:
 		Factions: china
 		Prerequisite: infantry.china
@@ -143,14 +178,20 @@ BARR:
 	ProvidesPrerequisite@greece:
 		Factions: greece
 		Prerequisite: infantry.greece
+	ProvidesPrerequisite@india:
+		Factions: india
+		Prerequisite: infantry.india
 
 TENT:
 	ProvidesPrerequisite@allies:
-		Factions: allies, england, france, germany, usa, spain
+		Factions: allies, england, france, germany, usa, spain, japan
 	ProvidesPrerequisite@usa:
 		Factions: usa
 		Prerequisite: infantry.usa
 	ProvidesPrerequisite@spain:
 		Factions: spain
 		Prerequisite: infantry.spain
+	ProvidesPrerequisite@japan:
+		Factions: japan
+		Prerequisite: infantry.japan
 

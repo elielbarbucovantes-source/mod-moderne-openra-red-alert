@@ -1,7 +1,9 @@
-# Habillage de l'interface (barre latérale, boutons) des factions WW3.
+# Habillage de l'interface (barre latérale, boutons) des factions WW3, du Japon et de l'Inde.
 Metrics:
 	FactionSuffix-usa: allies
 	FactionSuffix-spain: allies
 	FactionSuffix-china: soviet
 	FactionSuffix-turkey: soviet
 	FactionSuffix-greece: soviet
+	FactionSuffix-japan: allies
+	FactionSuffix-india: soviet

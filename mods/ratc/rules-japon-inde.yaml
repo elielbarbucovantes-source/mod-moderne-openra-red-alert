@@ -1,0 +1,586 @@
+# =====================================================================
+# JAPON ET INDE
+# Chargé après rules.yaml (qui définit ^Vehicle, ^Infantry, ^RatcDrone,
+# ^RatcPowerCenter...). Factions, drapeaux et voix : ww3/factions.yaml et
+# ww3/faction-voices.yaml, générés par tools/ww3-import/ww3factions.py.
+#
+# Japon : « je gagne grâce à l'information, la précision et la mobilité ».
+# Inde : « je gagne grâce à la polyvalence, au volume et à la saturation ».
+# Aucune des deux n'a à la fois le meilleur char, la meilleure artillerie,
+# le meilleur drone et le meilleur pouvoir de soutien.
+# =====================================================================
+
+# =====================================================================
+# JAPON — Précision, technologie et défense mobile
+# =====================================================================
+# Type 10 : char de mobilité. Plus rapide et moins résistant que le Leopard ;
+# à longue distance (au-delà de 4 cases), son conduite de tir lui donne un
+# obus plus puissant contre les blindés : tirer, se déplacer, tirer ailleurs.
+TYPE10:
+	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: type10
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 242
+		Prerequisites: dome, ~vehicles.japan, ~techlevel.high
+		Description: Char de combat japonais, rapide et très précis.\nTourelle très vive : tire en roulant.\nÀ plus de 4 cases : obus longue portée plus puissant contre les blindés.\nMoins résistant qu'un Leopard.\n  Fort contre : véhicules\n  Faible contre : infanterie, aviation
+	Valued:
+		Cost: 1700
+	Tooltip:
+		Name: Type 10
+		GenericName: Tank
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 60000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 12
+		Speed: 88
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 7c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 28
+		Offset: -43,0,0
+	# Premier armement utilisable : l'obus longue portée (entre 4 et 6,75 cases),
+	# sinon l'obus standard au contact.
+	Armament@LONG:
+		Weapon: Type10GunLong
+		Recoil: 128
+		RecoilRecovery: 38
+		LocalOffset: 860,0,150
+		MuzzleSequence: muzzle
+	Armament@CLOSE:
+		Weapon: Type10Gun
+		Recoil: 128
+		RecoilRecovery: 38
+		LocalOffset: 860,0,150
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: TYPE10.Husk
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
+# Type 16 : chasseur de chars à roues, très rapide. Canon de 105 mm puissant
+# mais lent à recharger : il gagne en flanquant, pas en combat frontal prolongé.
+TYPE16:
+	Inherits: ^Vehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: type16
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 243
+		Prerequisites: ~vehicles.japan, ~techlevel.medium
+		Description: Chasseur de chars à roues, extrêmement mobile.\nCanon de 105 mm puissant mais lent à recharger.\nÀ utiliser en flanquement, pas en combat frontal.\n  Fort contre : véhicules\n  Faible contre : infanterie, aviation, combat prolongé
+	Valued:
+		Cost: 1150
+	Tooltip:
+		Name: Type 16 (chasseur de chars)
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 12000
+	Armor:
+		Type: Light
+	Mobile:
+		TurnSpeed: 24
+		Speed: 130
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 7c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 32
+		Offset: -64,0,0
+	Armament:
+		Weapon: Type16Gun
+		Recoil: 96
+		RecoilRecovery: 30
+		LocalOffset: 740,0,190
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
+# Type 19 : obusier de 155 mm sur camion 8x8. Obus précis, cadence élevée,
+# dégâts inférieurs au PzH 2000 : Allemagne = gros obus, Japon = précision et mobilité.
+TYPE19:
+	Inherits: ARTY
+	RenderSprites:
+		Image: type19
+	Tooltip:
+		Name: Type 19 (obusier automoteur)
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 244
+		Prerequisites: dome, ~vehicles.japan, ~techlevel.medium
+		Description: Obusier de 155 mm sur camion.\nLongue portée, tir précis et rapide, très mobile.\nDégâts par obus inférieurs au PzH 2000.\n  Fort contre : infanterie, bâtiments, véhicules légers\n  Faible contre : aviation
+	Valued:
+		Cost: 1300
+	Health:
+		HP: 16000
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 85
+		Locomotor: wheeled
+	Armament:
+		Weapon: Type19Shell
+		LocalOffset: 900,0,260
+
+# MQ-9B SeaGuardian : drone de patrouille, reconnaissance et désignation.
+# Désigne une cible au laser (+25 % de dégâts reçus, comme le Luna) et
+# détecte les sous-marins en plongée grâce à son radar maritime. Non armé.
+SEAGUARDIAN:
+	Inherits: ^RatcDrone
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: seaguardian
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 61
+		Prerequisites: ~aircraft.japan, ~techlevel.medium
+		Description: Drone de patrouille maritime et terrestre. Non armé.\nTrès grande vision ; désigne une cible au laser :\nelle subit +25 % de dégâts de toutes les armes.\nRadar maritime : détecte les sous-marins en plongée.\n  Faible contre : aviation, défense antiaérienne
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: MQ-9B SeaGuardian
+	Health:
+		HP: 5000
+	RevealsShroud:
+		Range: 13c0
+	Aircraft:
+		CruiseAltitude: 3072
+		TurnSpeed: 10
+		Speed: 170
+	Armament:
+		Weapon: LunaDesignator
+		LocalOffset: 300,0,-150
+	AttackAircraft:
+		FacingTolerance: 512
+		PersistentTargeting: true
+	AutoTarget:
+		InitialStance: Defend
+		InitialStanceAI: Defend
+	DetectCloaked:
+		DetectionTypes: Underwater
+		Range: 6c0
+	RenderDetectionCircle:
+	Selectable:
+		Bounds: 2048, 1280
+		DecorationBounds: 2048, 1280
+
+TYPE10.Husk:
+	Inherits: 2TNK.Husk
+	Tooltip:
+		Name: Épave (Type 10)
+	TransformOnCapture:
+		IntoActor: type10
+	InfiltrateForTransform:
+		IntoActor: type10
+	RenderSprites:
+		Image: type10.destroyed
+
+# Pouvoir japonais : guerre électronique, porté par son propre bâtiment.
+JPEW:
+	Inherits: ^RatcPowerCenter
+	RenderSprites:
+		Image: jpew
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 142
+		BuildLimit: 1
+		Prerequisites: dome, ~structures.japan, ~techlevel.medium
+		Description: Centre de guerre électronique des forces d'autodéfense.\nNécessite de l'électricité. 1 exemplaire maximum.\n  Pouvoir : brouillage électronique japonais
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Centre de guerre électronique
+	Health:
+		HP: 110000
+	Armor:
+		Type: Wood
+	Power:
+		Amount: -120
+	SpawnActorPower@JPEW:
+		OrderName: JapanEW
+		PauseOnCondition: disabled || jammed
+		IconImage: jpew
+		Icon: power-icon
+		ChargeInterval: 5250
+		Name: Brouillage électronique japonais
+		Description: Brouille une zone de 7 cases pendant 20 secondes :\nportée des unités ennemies réduite de 40 %,\ntirs moins précis et verrouillage plus long.\nRévèle la zone et les unités furtives (drones compris).\nAucun dégât.
+		Actor: camera.jpew
+		LifeTime: 500
+		EffectImage: explosion
+		DisplayRadarPing: true
+		AllowUnderShroud: true
+		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
+		SelectTargetTextNotification: Sélectionnez la zone à brouiller.
+		InsufficientPowerTextNotification: Énergie insuffisante.
+		EndChargeTextNotification: Brouillage japonais prêt.
+		SupportPowerPaletteOrder: 76
+
+# Zone de brouillage : réduit la portée (jp-ew) et dégrade le ciblage (ecm,
+# même effet que le drone Aladin) des ennemis présents ; révèle les unités furtives.
+camera.jpew:
+	Inherits: CAMERA
+	EditorOnlyTooltip:
+		Name: (Japanese EW proxy)
+	RevealsShroud:
+		Range: 7c0
+	DetectCloaked:
+		Range: 7c0
+	ProximityExternalCondition@RANGE:
+		Condition: jp-ew
+		Range: 7c0
+		ValidRelationships: Enemy
+	ProximityExternalCondition@ECM:
+		Condition: ecm
+		Range: 7c0
+		ValidRelationships: Enemy
+	WithRangeCircle@JPEW:
+		Type: jpew
+		Range: 7c0
+		Color: 60A0FF80
+		Visible: Always
+
+# Unités sous brouillage japonais : portée réduite de 40 %.
+^Vehicle:
+	ExternalCondition@JPEW:
+		Condition: jp-ew
+	RangeMultiplier@JPEW:
+		RequiresCondition: jp-ew
+		Modifier: 60
+
+^Infantry:
+	ExternalCondition@JPEW:
+		Condition: jp-ew
+	RangeMultiplier@JPEW:
+		RequiresCondition: jp-ew
+		Modifier: 60
+
+^Ship:
+	ExternalCondition@JPEW:
+		Condition: jp-ew
+	RangeMultiplier@JPEW:
+		RequiresCondition: jp-ew
+		Modifier: 60
+
+# =====================================================================
+# INDE — Masse, polyvalence et puissance de feu
+# =====================================================================
+# Arjun Mk1A : char de ligne lourd et fiable, moins cher et moins sophistiqué
+# que le Leopard ; plus résistant mais bien plus lent que le Type 10.
+ARJUN:
+	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: arjun
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 242
+		Prerequisites: dome, ~vehicles.india, ~techlevel.medium
+		Description: Char de combat indien, lourd et fiable.\nCanon puissant, bonne résistance, peu mobile.\n  Fort contre : véhicules\n  Faible contre : infanterie, aviation
+	Valued:
+		Cost: 1600
+	Tooltip:
+		Name: Arjun Mk1A
+		GenericName: Tank
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 66000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 8
+		Speed: 65
+		Locomotor: heavytracked
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 16
+		Offset: -85,0,0
+	Armament:
+		Weapon: ArjunGun
+		Recoil: 150
+		RecoilRecovery: 34
+		LocalOffset: 900,0,170
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: ARJUN.Husk
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1280, 1280
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
+# NAMICA (missiles Nag) : empêche l'adversaire d'envoyer simplement ses chars.
+# Très gros dégâts contre les blindés, longue portée, mais recharge longue,
+# très fragile et doit être à l'arrêt pour tirer (pas de tir en mouvement).
+NAG:
+	Inherits: ^Vehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: namica
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 243
+		Prerequisites: dome, ~vehicles.india, ~techlevel.medium
+		Description: Chasseur de chars NAMICA, missiles Nag.\nTrès gros dégâts contre les blindés, longue portée.\nDoit être à l'arrêt pour tirer ; recharge longue, très fragile.\n  Fort contre : chars\n  Faible contre : infanterie, aviation, artillerie
+	Valued:
+		Cost: 950
+	Tooltip:
+		Name: NAMICA (missiles Nag)
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 9000
+	Armor:
+		Type: Light
+	Mobile:
+		TurnSpeed: 16
+		Speed: 75
+		Locomotor: lighttracked
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 7c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	GrantConditionOnMovement:
+		Condition: moving
+	Armament:
+		Weapon: NagMissile
+		LocalOffset: 180,-100,300, 180,100,300
+		PauseOnCondition: moving
+	AttackFrontal:
+		FacingTolerance: 64
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
+# Dhanush : obusier tracté économique. « Beaucoup pour son prix », moins
+# spécialisé que le PzH 2000 (puissance), l'AS-90 (équilibre) et le Type 19 (précision).
+DHANUSH:
+	Inherits: ARTY
+	RenderSprites:
+		Image: dhanush
+	Tooltip:
+		Name: Dhanush (obusier de 155 mm)
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 244
+		Prerequisites: dome, ~vehicles.india, ~techlevel.medium
+		Description: Obusier de 155 mm économique.\nPortée, dégâts et cadence moyens pour un prix réduit.\n  Fort contre : infanterie, bâtiments\n  Faible contre : véhicules, aviation
+	Valued:
+		Cost: 1050
+	Health:
+		HP: 14000
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 65
+	Armament:
+		Weapon: DhanushShell
+		LocalOffset: 760,0,160
+
+# TAPAS BH-201 : drone de reconnaissance longue endurance. Non armé ;
+# guide l'artillerie : véhicules alliés à moins de 6 cases, portée +15 %.
+# (Pas de drone suicide indien : cette niche est ukrainienne.)
+TAPAS:
+	Inherits: ^RatcDrone
+	RenderSprites:
+		Image: tapas
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 61
+		Prerequisites: ~aircraft.india, ~techlevel.medium
+		Description: Drone de reconnaissance longue endurance. Non armé.\nTrès grande vision. Guide l'artillerie : véhicules alliés\nà moins de 6 cases, portée +15 %.\n  Faible contre : tout (très vulnérable à la défense antiaérienne)
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: TAPAS BH-201
+	Health:
+		HP: 2500
+	RevealsShroud:
+		Range: 14c0
+	Aircraft:
+		CruiseAltitude: 3072
+		TurnSpeed: 12
+		Speed: 180
+	ProximityExternalCondition@DRONESUPPORT:
+		Condition: drone-support
+		Range: 6c0
+		ValidRelationships: Ally
+	Selectable:
+		Bounds: 1792, 1280
+		DecorationBounds: 1792, 1280
+
+ARJUN.Husk:
+	Inherits: 2TNK.Husk
+	Tooltip:
+		Name: Épave (Arjun Mk1A)
+	TransformOnCapture:
+		IntoActor: arjun
+	InfiltrateForTransform:
+		IntoActor: arjun
+	RenderSprites:
+		Image: arjun.destroyed
+
+# Pouvoir indien : barrage Pinaka, porté par son propre bâtiment.
+PINAKA:
+	Inherits: ^RatcPowerCenter
+	RenderSprites:
+		Image: pinaka
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 142
+		BuildLimit: 1
+		Prerequisites: dome, ~structures.india, ~techlevel.medium
+		Description: PC et parc du régiment de lance-roquettes Pinaka.\nNécessite de l'électricité. 1 exemplaire maximum.\n  Pouvoir : barrage Pinaka
+	Valued:
+		Cost: 1600
+	Tooltip:
+		Name: PC du régiment Pinaka
+	Health:
+		HP: 120000
+	Armor:
+		Type: Heavy
+	Power:
+		Amount: -100
+	SpawnActorPower@PINAKA:
+		OrderName: IndiaPinaka
+		PauseOnCondition: disabled || jammed
+		IconImage: pinaka
+		Icon: power-icon
+		ChargeInterval: 5250
+		Name: Barrage Pinaka
+		Description: Après un court délai, 10 roquettes s'abattent au hasard\nsur une large zone explorée (7 cases).\nExcellent contre l'infanterie, bon contre les bâtiments légers,\nlimité contre les blindés lourds.
+		Actor: pinaka.strike
+		EffectImage: explosion
+		LifeTime: -1
+		AllowUnderShroud: false
+		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
+		SelectTargetTextNotification: Sélectionnez la zone à saturer.
+		InsufficientPowerTextNotification: Énergie insuffisante.
+		EndChargeTextNotification: Barrage Pinaka prêt.
+		SupportPowerPaletteOrder: 77
+
+# Point d'impact du barrage : explose au bout de 2 s et disperse les roquettes.
+pinaka.strike:
+	Inherits: CAMERA
+	EditorOnlyTooltip:
+		Name: (Pinaka strike proxy)
+	RevealsShroud:
+		Range: 4c0
+	Health:
+		HP: 100
+	HitShape:
+	KillsSelf:
+		Delay: 50
+	Explodes:
+		Weapon: PinakaSalvo
+		EmptyWeapon: PinakaSalvo
+
+# =====================================================================
+# IA : construction des bâtiments nationaux et usage des pouvoirs
+# =====================================================================
+Player:
+	BaseBuilderBotModule@rush:
+		BuildingLimits:
+			jpew: 1
+			pinaka: 1
+		BuildingFractions:
+			jpew: 1
+			pinaka: 1
+	BaseBuilderBotModule@normal:
+		BuildingLimits:
+			jpew: 1
+			pinaka: 1
+		BuildingFractions:
+			jpew: 1
+			pinaka: 1
+	BaseBuilderBotModule@turtle:
+		BuildingLimits:
+			jpew: 1
+			pinaka: 1
+		BuildingFractions:
+			jpew: 1
+			pinaka: 1
+	BaseBuilderBotModule@naval:
+		BuildingLimits:
+			jpew: 1
+			pinaka: 1
+		BuildingFractions:
+			jpew: 1
+			pinaka: 1
+	SupportPowerBotModule:
+		Decisions:
+			japanew:
+				OrderName: JapanEW
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Ground, Water
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 6c0
+			indiapinaka:
+				OrderName: IndiaPinaka
+				MinimumAttractiveness: 1500
+				Consideration@1:
+					Against: Enemy
+					Types: Ground, Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 3c512
+				Consideration@2:
+					Against: Ally
+					Types: Ground
+					Attractiveness: -2
+					TargetMetric: Value
+					CheckRadius: 4c512

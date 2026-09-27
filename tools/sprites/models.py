@@ -305,3 +305,173 @@ def leleka():
         m.box(-3.0, -1.2, s * 9.0 - 0.2, s * 9.0 + 0.2, z + 0.7, z + 2.2, "paint", 0.1)
     m.cylinder_y(-4.0, -3.0, 3.0, z + 0.6, 0.2, "dark")                         # hélice
     return m
+
+
+# ===========================================================================
+# JAPON
+# ===========================================================================
+# ---------------------------------------------------------------------------
+# Type 10 : char léger et compact (44 t), caisse basse, tourelle à blindage
+# modulaire en coin aux flancs plats, nuque de rangement, canon de 120 mm
+# sans manchon épais, jupes à plaques.
+# ---------------------------------------------------------------------------
+def type10():
+    hull = Model()
+    tracked_running_gear(hull, -11, 11, 5.4, 2.1, skirt_blocks=6)
+    hull.box(-11, 8.5, -3.5, 3.5, 1.0, 3.9)
+    hull.tapered_box(8.5, 11.4, -3.5, 3.5, 1.0, 3.9, inset_front=2.2)
+    hull.box(-11, -4.5, -5.1, 5.1, 3.4, 4.2, "paint", 0.1)
+    hull.box(-10.5, -7.5, -3.2, 3.2, 4.2, 4.5, "dark")
+    hull.box(7.6, 9.0, 1.0, 2.4, 3.9, 4.4, "glass")
+
+    tur = Model()
+    wedge = [(-6.5, -4.3), (3.0, -4.5), (7.4, -1.6), (7.4, 1.6), (3.0, 4.5), (-6.5, 4.3)]
+    tur.extrude(wedge, 3.9, 6.6)                                                # flancs plats
+    tur.box(-9.5, -6.2, -3.8, 3.8, 4.2, 6.4, "paint", 0.08)                     # nuque
+    tur.box(6.6, 8.0, -1.0, 1.0, 4.5, 6.2, "paint", 0.12)                       # masque
+    barrel(tur, 7.8, 22, 5.3, 0.6)
+    tur.box(1.5, 3.2, 2.2, 3.6, 6.6, 7.9, "glass")                              # viseur chef
+    tur.box(2.4, 3.8, -3.5, -2.3, 6.6, 7.4, "glass")                            # viseur tireur
+    tur.box(-3.5, -1.5, 1.0, 2.8, 6.6, 7.4, "metal")
+    tur.cylinder_x(-2.5, 1.5, 1.9, 7.6, 0.22, "metal")                          # mitrailleuse
+    return hull, tur, -1.0
+
+
+# ---------------------------------------------------------------------------
+# Type 16 : blindé à roues 8x8, caisse haute à nez pointu, tourelle
+# anguleuse avec canon de 105 mm à frein de bouche.
+# ---------------------------------------------------------------------------
+def type16():
+    hull = Model()
+    for x in (8.0, 3.5, -3.0, -7.5):
+        for s in (1, -1):
+            y0, y1 = sorted((s * 3.4, s * 5.0))
+            hull.cylinder_y(x, y0, y1, 2.1, 2.1, "rubber")
+            hull.cylinder_y(x, (y0 + y1) / 2 - 0.1, (y0 + y1) / 2 + 0.1 + s * 0.7, 2.1, 0.8, "metal")
+    hull.tapered_box(-11, 9, -4.3, 4.3, 2.2, 5.4, inset_side=0.8, inset_back=0.3)
+    hull.prism([(9, -4.3, 2.2), (12.5, -2.6, 3.0), (12.5, 2.6, 3.0), (9, 4.3, 2.2)],
+               [(9, -3.5, 5.4), (10.5, -2.2, 4.9), (10.5, 2.2, 4.9), (9, 3.5, 5.4)])
+    for s in (1, -1):
+        y0, y1 = sorted((s * 3.3, s * 5.2))
+        hull.box(-9.5, 10, y0, y1, 4.2, 4.6, "paint", 0.12)
+    hull.box(8.0, 9.4, 1.0, 3.0, 5.2, 5.8, "glass")
+
+    tur = Model()
+    t = [(-6.0, -3.6), (2.5, -3.8), (5.5, -1.6), (5.5, 1.6), (2.5, 3.8), (-6.0, 3.6)]
+    tur.prism([(x, y, 5.4) for x, y in t], [(x - 0.3, y, 7.8) for x, y in scaled(t, 0.9, 0.85)])
+    tur.box(-8.5, -5.8, -3.0, 3.0, 5.6, 7.6, "paint", 0.1)                      # nuque
+    barrel(tur, 5.2, 19.5, 6.6, 0.5, muzzle_brake=True)
+    tur.box(0.5, 2.0, 2.0, 3.3, 7.6, 8.7, "glass")
+    tur.box(1.5, 2.8, -3.2, -2.2, 7.6, 8.3, "glass")
+    return hull, tur, -1.5
+
+
+# ---------------------------------------------------------------------------
+# Type 19 : camion 8x8 à cabine blindée, obusier de 155 mm monté à l'arrière,
+# tube pointé vers l'avant au-dessus de la cabine (comme le CAESAR, en plus long).
+# ---------------------------------------------------------------------------
+def type19():
+    m = Model()
+    for x in (9.0, 5.0, -4.0, -8.0):
+        for s in (1, -1):
+            y0, y1 = sorted((s * 2.9, s * 4.5))
+            m.cylinder_y(x, y0, y1, 1.9, 1.9, "rubber")
+    m.box(-12.5, 7.5, -3.4, 3.4, 2.4, 3.6, "dark")                              # châssis
+    m.tapered_box(6.5, 12.8, -4.1, 4.1, 2.6, 7.6, inset_front=1.2, inset_side=0.4)  # cabine
+    m.box(11.3, 12.4, -3.3, 3.3, 5.6, 7.0, "glass")
+    m.box(-12.5, 6.0, -4.3, 4.3, 3.6, 4.4, "paint", 0.1)                        # plateau
+    m.box(-10.5, -4.5, -2.6, 2.6, 4.4, 6.8, "paint", 0.04)                      # berceau
+    m.box(-8.5, -6.3, -3.0, 3.0, 6.2, 7.6, "paint", 0.14)
+    m.cylinder_x(-11.5, 18.5, 0, 8.0, 0.55, "metal")                            # tube 52 calibres
+    m.cylinder_x(16.8, 18.7, 0, 8.0, 0.85, "metal")
+    for s in (1, -1):                                                           # coffres latéraux
+        y0, y1 = sorted((s * 4.3, s * 5.0))
+        m.box(-2.0, 5.5, y0, y1, 3.0, 4.4, "paint", 0.16)
+    m.box(-14.0, -12.5, -3.2, 3.2, 1.0, 3.6, "metal")                           # bêche
+    return m
+
+
+# ===========================================================================
+# INDE
+# ===========================================================================
+# ---------------------------------------------------------------------------
+# Arjun Mk1A : char lourd massif (68 t), caisse haute et longue, tourelle
+# volumineuse à flancs verticaux et blocs de blindage réactif, canon de
+# 120 mm avec manchon thermique.
+# ---------------------------------------------------------------------------
+def arjun():
+    hull = Model()
+    tracked_running_gear(hull, -12.5, 12.5, 6.0, 2.3, skirt_blocks=0, skirt_z=3.8)
+    hull.box(-12.5, 9.5, -3.9, 3.9, 1.0, 4.5)
+    hull.tapered_box(9.5, 12.8, -3.9, 3.9, 1.0, 4.5, inset_front=2.0)
+    hull.box(-12.5, -5, -5.7, 5.7, 4.0, 4.8, "paint", 0.1)
+    hull.box(-12, -8, -3.8, 3.8, 4.8, 5.1, "dark")
+    for s in (1, -1):                                                           # blindage réactif des jupes
+        for i, bx in enumerate(range(-1, 11, 3)):
+            y0, y1 = sorted((s * 5.9, s * 6.5))
+            hull.box(bx, bx + 2.6, y0, y1, 1.4, 3.8, "paint", 0.18 if i % 2 else 0.08)
+
+    tur = Model()
+    slab_ = [(-8.0, -4.9), (4.8, -5.1), (7.6, -3.2), (7.6, 3.2), (4.8, 5.1), (-8.0, 4.9)]
+    tur.extrude(slab_, 4.5, 7.8)
+    tur.box(-11.5, -7.8, -4.2, 4.2, 4.8, 7.6, "paint", 0.08)                    # nuque
+    for s in (1, -1):                                                           # blocs ERA de tourelle
+        y0, y1 = sorted((s * 3.4, s * 5.4))
+        tur.box(3.5, 7.4, y0, y1, 5.0, 7.4, "paint", 0.2)
+    tur.box(7.0, 8.8, -1.3, 1.3, 5.2, 7.4, "paint", 0.12)
+    barrel(tur, 8.6, 23.5, 6.3, 0.66, sleeve=13, evacuator=(13, 15))
+    tur.box(-3.0, -0.5, 1.8, 4.0, 7.8, 9.3, "metal")                            # coupole du chef
+    tur.box(-3.1, -0.4, 1.7, 4.1, 9.3, 9.7, "glass")
+    tur.box(3.0, 4.8, -3.4, -2.0, 7.8, 8.8, "glass")
+    return hull, tur, -2.0
+
+
+# ---------------------------------------------------------------------------
+# NAMICA : chasseur de chars sur châssis BMP-2, lanceur de 8 missiles Nag
+# relevable monté sur le toit (pas de tourelle mobile en jeu).
+# ---------------------------------------------------------------------------
+def namica():
+    m = Model()
+    tracked_running_gear(m, -10.5, 10.5, 5.0, 1.9, skirt=False)
+    m.box(-10.5, 7.0, -3.4, 3.4, 1.0, 4.4)
+    m.prism([(7.0, -3.4, 1.0), (11.2, -3.4, 1.0), (11.2, 3.4, 1.0), (7.0, 3.4, 1.0)],
+            [(7.0, -3.4, 4.4), (8.0, -3.4, 4.4), (8.0, 3.4, 4.4), (7.0, 3.4, 4.4)])         # nez en coin
+    m.box(-10.5, -2.0, -4.6, 4.6, 3.6, 4.4, "paint", 0.12)                      # garde-boue
+    m.box(-8.0, 3.0, -3.0, 3.0, 4.4, 5.2, "paint", 0.06)                        # socle du lanceur
+    # lanceur : 2 rangées de 4 tubes, légèrement relevé vers l'avant
+    m.prism([(-7.5, -3.2, 5.2), (4.0, -3.2, 5.2), (4.0, 3.2, 5.2), (-7.5, 3.2, 5.2)],
+            [(-7.5, -3.2, 7.4), (4.0, -3.2, 8.6), (4.0, 3.2, 8.6), (-7.5, 3.2, 7.4)], "paint", 0.14)
+    for i in range(4):
+        for j in range(2):
+            y = -2.4 + i * 1.6
+            z = 6.1 + j * 1.3
+            m.box(4.0, 4.4, y - 0.55, y + 0.55, z + 0.5, z + 1.5, "dark")
+    m.box(-9.5, -8.0, -2.0, -0.5, 5.2, 6.8, "glass")                            # viseur
+    m.box(6.5, 7.6, -2.6, -1.0, 4.4, 5.0, "glass")
+    return m
+
+
+# ---------------------------------------------------------------------------
+# Dhanush : obusier tracté de 155 mm (dérivé du FH-77), flèches ouvertes,
+# grand bouclier, groupe auxiliaire de propulsion à l'avant de l'affût.
+# ---------------------------------------------------------------------------
+def dhanush():
+    m = Model()
+    for s in (1, -1):
+        for x in (1.5, -1.5):
+            y0, y1 = sorted((s * 3.6, s * 5.0))
+            m.cylinder_y(x, y0, y1, 1.9, 1.9, "rubber")
+        m.prism([(0, s * 1.3, 1.4), (0, s * 2.4, 1.4), (-12.5, s * 5.6, 0.6), (-12.5, s * 4.5, 0.6)],
+                [(0, s * 1.3, 2.8), (0, s * 2.4, 2.8), (-12.5, s * 5.6, 1.4), (-12.5, s * 4.5, 1.4)],
+                "paint", 0.08)                                                  # flèches
+        m.box(-13.5, -12, *sorted((s * 4.2, s * 6.2)), 0.2, 1.8, "metal")       # bêches
+    m.box(-3.5, 5.0, -3.2, 3.2, 1.6, 3.8, "paint")                              # affût
+    m.box(3.5, 7.0, -2.6, 2.6, 1.6, 4.6, "paint", 0.1)                          # groupe auxiliaire
+    m.box(6.8, 7.1, -1.8, 1.8, 2.4, 4.0, "dark")
+    m.box(-1.5, 3.5, -2.4, 2.4, 3.8, 6.0, "paint", 0.05)                        # berceau
+    m.box(2.5, 3.2, -4.0, 4.0, 3.8, 7.2, "paint", 0.14)                         # bouclier
+    m.cylinder_x(-6.0, 19, 0, 5.6, 0.55, "metal")                               # tube
+    m.cylinder_x(17.2, 19.2, 0, 5.6, 0.85, "metal")
+    for s in (1, -1):
+        m.cylinder_x(-3.0, 6.5, s * 1.0, 4.5, 0.35, "metal")                    # récupérateurs
+    return m

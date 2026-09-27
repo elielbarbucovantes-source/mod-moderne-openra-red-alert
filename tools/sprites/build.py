@@ -25,6 +25,14 @@ VEHICLES = {
     "as90": (models.as90, (150, 132, 92), "AS-90"),
     "cesar": (models.cesar, (100, 104, 72), "CAESAR"),
     "m777": (models.m777, (90, 98, 64), "M777"),
+    # Japon
+    "type10": (models.type10, (96, 104, 70), "TYPE 10"),
+    "type16": (models.type16, (96, 104, 70), "TYPE 16"),
+    "type19": (models.type19, (96, 104, 70), "TYPE 19"),
+    # Inde
+    "arjun": (models.arjun, (150, 128, 84), "ARJUN"),
+    "namica": (models.namica, (150, 128, 84), "NAG"),
+    "dhanush": (models.dhanush, (150, 128, 84), "DHANUSH"),
 }
 
 
@@ -49,6 +57,10 @@ AIRCRAFT = {
     "orlan10": (aircraft.orlan10, (48, 48), 2.0, (150, 150, 146), "ORLAN-10"),
     "lancet": (aircraft.lancet, (32, 32), 3.0, (120, 124, 116), "LANCET"),
     "orion": (aircraft.orion, (64, 64), 1.0, (140, 144, 146), "ORION"),
+    # Japon
+    "seaguardian": (aircraft.seaguardian, (64, 64), 0.8, (150, 154, 156), "SEAGUARD"),
+    # Inde
+    "tapas": (aircraft.tapas, (64, 64), 1.1, (140, 144, 138), "TAPAS"),
 }
 SKY = ((104, 140, 176), (176, 196, 208))
 

@@ -696,3 +696,175 @@ LancetDive:
 			Heavy: 60
 			Concrete: 60
 			ERA: 50
+
+# =====================================================================
+# JAPON
+# =====================================================================
+# Type 10 au contact : canon de 120 mm très précis.
+Type10Gun:
+	Inherits: ^Cannon
+	ReloadDelay: 75
+	Range: 4c0
+	Projectile: Bullet
+		Speed: 1000
+	Warhead@1Dam: SpreadDamage
+		Spread: 96
+		Damage: 11000
+		Versus:
+			None: 25
+			Wood: 60
+			Light: 95
+			Heavy: 115
+			Concrete: 45
+		InvalidTargets: Air
+
+# Type 10 à longue distance (4 à 6,75 cases) : conduite de tir, obus perforant plus efficace.
+Type10GunLong:
+	Inherits: Type10Gun
+	Range: 6c768
+	MinRange: 4c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 13500
+		Versus:
+			Light: 105
+			Heavy: 125
+
+# Type 16 : 105 mm puissant mais lent à recharger (mauvais en combat prolongé).
+Type16Gun:
+	Inherits: ^Cannon
+	ReloadDelay: 110
+	Range: 6c0
+	Projectile: Bullet
+		Speed: 900
+	Warhead@1Dam: SpreadDamage
+		Spread: 96
+		Damage: 11000
+		Versus:
+			None: 20
+			Wood: 40
+			Light: 100
+			Heavy: 110
+			Concrete: 30
+		InvalidTargets: Air
+
+# Type 19 : obus précis, cadence élevée, dégâts inférieurs au PzH 2000.
+Type19Shell:
+	Inherits: 155mm
+	ReloadDelay: 70
+	Range: 9c768
+	Projectile: Bullet
+		Inaccuracy: 256
+	Warhead@1Dam: SpreadDamage
+		Spread: 96
+		Damage: 16000
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+		Versus:
+			Concrete: 80
+			Light: 100
+			Heavy: 80
+
+# =====================================================================
+# INDE
+# =====================================================================
+# Arjun : canon de 120 mm puissant.
+ArjunGun:
+	Inherits: ^Cannon
+	ReloadDelay: 90
+	Range: 5c768
+	Projectile: Bullet
+		Speed: 800
+	Warhead@1Dam: SpreadDamage
+		Spread: 96
+		Damage: 14000
+		Versus:
+			None: 25
+			Wood: 60
+			Light: 90
+			Heavy: 115
+			Concrete: 50
+		InvalidTargets: Air
+
+# Nag : missile guidé antichar, très gros dégâts contre les blindés, recharge longue.
+# Charge creuse classique : le blindage réactif (ERA) la réduit comme les autres missiles.
+NagMissile:
+	Inherits: ^AntiGroundMissile
+	ReloadDelay: 200
+	Range: 8c512
+	MinRange: 1c512
+	Report: missile6.aud
+	Projectile: Missile
+		Speed: 250
+		HorizontalRateOfTurn: 40
+		RangeLimit: 10c512
+		TrailImage: smokey
+	Warhead@1Dam: SpreadDamage
+		Spread: 96
+		Damage: 16000
+		Versus:
+			None: 10
+			Wood: 40
+			Light: 80
+			Heavy: 140
+			Concrete: 30
+
+# Dhanush : obus de 155 mm, valeurs moyennes pour un prix réduit.
+DhanushShell:
+	Inherits: 155mm
+	ReloadDelay: 100
+	Range: 8c0
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 15000
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+		Versus:
+			Concrete: 90
+			Light: 100
+			Heavy: 70
+
+# Barrage Pinaka : 10 roquettes sur des cases tirées au hasard dans une zone de
+# 7 cases (une même case peut être touchée plusieurs fois, ce n'est pas garanti).
+PinakaSalvo:
+	ValidTargets: Ground, Water, GroundActor, WaterActor
+	Warhead@1Cluster: FireCluster
+		Weapon: PinakaRocket
+		RandomClusterCount: 10
+		Dimensions: 7,7
+		Footprint: __xxx__ _xxxxx_ xxxxxxx xxxxxxx xxxxxxx _xxxxx_ __xxx__
+	Warhead@2Shake: ShakeScreen
+		Duration: 12
+		Intensity: 3
+		Multiplier: 1, 1
+
+# Une roquette : trajectoire invisible et lente depuis le centre, pour que les
+# impacts s'échelonnent sur 2 à 3 secondes selon la distance.
+PinakaRocket:
+	Range: 5c0
+	ValidTargets: Ground, Water, GroundActor, WaterActor
+	Projectile: Bullet
+		Speed: 60
+		Blockable: false
+		Inaccuracy: 512
+	Warhead@1Dam: SpreadDamage
+		Spread: 1c0
+		Damage: 6000
+		Falloff: 100, 50, 20, 0
+		ValidTargets: GroundActor, WaterActor
+		Versus:
+			None: 150
+			Wood: 90
+			Light: 70
+			Heavy: 25
+			Concrete: 30
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+		ValidTargets: Ground, Infantry
+	Warhead@3Eff: CreateEffect
+		Explosions: large_explosion
+		ImpactSounds: kaboom25.aud, kaboom22.aud, kaboom12.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees
+	Warhead@4EffWater: CreateEffect
+		Explosions: large_splash
+		ImpactSounds: splash9.aud
+		ValidTargets: Water, Underwater
+		InvalidTargets: Bridge

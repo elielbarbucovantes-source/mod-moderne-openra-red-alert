@@ -534,3 +534,149 @@ pctos:
 		Length: *
 	icon:
 		Filename: ratc|bits/pctosicon.png
+
+# ======================================================================
+# Japon et Inde (tools/sprites/build.py et buildings.py)
+# ======================================================================
+type10:
+	Defaults:
+		Filename: ratc|bits/type10.png
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/type10icon.png
+
+type10.destroyed:
+	Defaults:
+		Filename: ratc|bits/type10.png
+		ZOffset: -512
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+
+arjun:
+	Defaults:
+		Filename: ratc|bits/arjun.png
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/arjunicon.png
+
+arjun.destroyed:
+	Defaults:
+		Filename: ratc|bits/arjun.png
+		ZOffset: -512
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+
+type16:
+	Defaults:
+		Filename: ratc|bits/type16.png
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/type16icon.png
+
+type19:
+	idle:
+		Filename: ratc|bits/type19.png
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/type19icon.png
+
+dhanush:
+	idle:
+		Filename: ratc|bits/dhanush.png
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/dhanushicon.png
+
+namica:
+	idle:
+		Filename: ratc|bits/namica.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/namicaicon.png
+
+seaguardian:
+	idle:
+		Filename: ratc|bits/seaguardian.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/seaguardianicon.png
+
+tapas:
+	idle:
+		Filename: ratc|bits/tapas.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/tapasicon.png
+
+jpew:
+	Defaults:
+		Filename: ratc|bits/jpew.png
+	idle:
+	damaged-idle:
+		Start: 1
+	make:
+		Start: 2
+		Length: 10
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: ratc|bits/jpewicon.png
+	power-icon:
+		Filename: ratc|bits/jpewpower.png
+
+pinaka:
+	Defaults:
+		Filename: ratc|bits/pinaka.png
+	idle:
+	damaged-idle:
+		Start: 1
+	make:
+		Start: 2
+		Length: 10
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: ratc|bits/pinakaicon.png
+	power-icon:
+		Filename: ratc|bits/pinakapower.png

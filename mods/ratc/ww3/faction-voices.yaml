@@ -1,0 +1,19 @@
+# Variantes de voix des nouvelles factions (généré par tools/ww3-import/ww3factions.py).
+
+GenericVoice:
+	Variants:
+		japan: .v01,.v03
+		india: .r01,.r03
+
+VehicleVoice:
+	Variants:
+		japan: .v00,.v02
+		india: .r00,.r02
+
+WW3GenericVoice:
+	Variants:
+		usa: .v01,.v03
+		china: .r01,.r03
+		japan: .v01,.v03
+		india: .r01,.r03
+

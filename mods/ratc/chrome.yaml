@@ -1,4 +1,4 @@
-# Drapeaux du salon : ceux de Red Alert + USA et Chine (factions WW3).
+# Drapeaux du salon : ceux de Red Alert + USA et Chine (factions WW3), Japon et Inde.
 flags:
 	Image: ratc|uibits/flags.png
 	Image2x: ratc|uibits/flags-2x.png
@@ -19,4 +19,6 @@ flags:
 		Random: 0, 192, 30, 15
 		usa: 0, 208, 30, 15
 		china: 0, 224, 30, 15
+		japan: 0, 240, 30, 15
+		india: 0, 256, 30, 15
 		spectator: 0, 192, 30, 15

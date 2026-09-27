@@ -256,6 +256,105 @@ def pctos():
 
 
 # ---------------------------------------------------------------------------
+# Japon — Centre de guerre électronique : bâtiment technique blanc et moderne,
+# grands panneaux d'antennes réseau inclinés (radar AESA), mât de brouillage
+# et shelter de brouilleur mobile.
+# ---------------------------------------------------------------------------
+def jpew():
+    m = Model()
+    slab(m)
+    m.box(-19, 4, -21, 8, 1.5, 12, "white", 0.1)                                      # bâtiment technique
+    m.box(-19.5, -19, -21, 8, 7, 8.2, "glass")                                        # bandeau vitré
+    m.box(-19.5, -19, -4, 2, 1.5, 5.5, "dark")                                        # entrée
+    m.box(-17, 2, -19, 6, 12, 13, "white", 0.2)
+    m.box(-19.4, -18.9, -20, -12, 9.5, 11, "paint")                                   # bandeau national
+    # panneaux d'antennes réseau inclinés (face avant et côté)
+    for y0 in (-16, -5):
+        m.prism([(-4, y0, 13), (2, y0, 13), (2, y0 + 9, 13), (-4, y0 + 9, 13)],
+                [(-1.5, y0, 21), (-0.5, y0, 21), (-0.5, y0 + 9, 21), (-1.5, y0 + 9, 21)], "white", 0.02)
+        m.prism([(-4.4, y0 + 0.5, 13.5), (-4.0, y0 + 0.5, 13.5), (-4.0, y0 + 8.5, 13.5), (-4.4, y0 + 8.5, 13.5)],
+                [(-1.9, y0 + 0.5, 20.5), (-1.5, y0 + 0.5, 20.5), (-1.5, y0 + 8.5, 20.5), (-1.9, y0 + 8.5, 20.5)],
+                "dark")                                                               # grille rayonnante
+    # mât de brouillage à dipôles
+    m.box(10, 12, 13, 15, 1.5, 28, "metal", 0.1)
+    for z in (14, 18, 22, 26):
+        m.box(9.6, 12.4, 10, 18, z, z + 0.6, "white", 0.1)
+    m.box(10.6, 11.4, 13.6, 14.4, 28, 29.2, "red")
+    # shelter du brouilleur mobile (camion)
+    for x in (12, 18):
+        for y in (-20, -13):
+            m.box(x - 1.2, x + 1.2, y - 0.6, y + 0.6, 1.5, 3.2, "rubber")
+    m.box(8, 21, -20, -13, 3, 4, "dark")
+    m.box(8, 16, -20.5, -12.5, 4, 9, "white", 0.14)
+    m.box(16, 21, -20, -13, 4, 8, "paint", 0.06)                                      # cabine
+    dish(m, 12, -16.5, 12, 3.2, toward=(-1, -0.3), elev=35)
+    mast(m, 20, 3, 18, base=1.0, arms=2)
+    return m
+
+
+# ---------------------------------------------------------------------------
+# Inde — PC du régiment Pinaka : hangar de maintenance au fond, lanceur Pinaka
+# garé de profil devant (camion 8x8, deux blocs de 6 tubes relevés),
+# caisses de roquettes.
+# ---------------------------------------------------------------------------
+def pinaka_launcher(m, tx, ty):
+    """Camion lanceur Pinaka orienté le long de y, cabine vers la gauche (y+)."""
+    for y in (ty - 7.5, ty - 4, ty + 1, ty + 4.5):
+        for s in (1, -1):
+            m.box(tx + s * 3.0 - 0.7, tx + s * 3.0 + 0.7, y - 1.4, y + 1.4, 1.5, 4.2, "rubber")
+    m.box(tx - 3.2, tx + 3.2, ty - 9.5, ty + 7.5, 2.6, 4.4, "dark")                   # châssis
+    m.box(tx - 3.6, tx + 3.6, ty + 3.5, ty + 9.0, 4.4, 9.5, "paint", 0.04)            # cabine blindée
+    m.box(tx - 3.1, tx + 3.1, ty + 8.9, ty + 9.3, 6.8, 9.0, "glass")
+    m.box(tx - 3.7, tx - 3.5, ty + 5.0, ty + 8.0, 6.8, 8.8, "glass")                  # vitre latérale
+    for dx in (-1.6, 1.6):                                                            # 2 blocs de 6 tubes
+        m.prism([(tx + dx - 1.5, ty - 9.5, 5.0), (tx + dx + 1.5, ty - 9.5, 5.0),
+                 (tx + dx + 1.5, ty + 2.5, 5.0), (tx + dx - 1.5, ty + 2.5, 5.0)],
+                [(tx + dx - 1.5, ty - 9.5, 12.0), (tx + dx + 1.5, ty - 9.5, 12.0),
+                 (tx + dx + 1.5, ty + 2.5, 8.0), (tx + dx - 1.5, ty + 2.5, 8.0)], "paint", 0.12)
+    for k in range(3):                                                                # séparations des tubes
+        z0, z1 = 5.6 + k * 2.0, 7.0 + k * 1.6
+        m.prism([(tx - 3.3, ty - 9.5, z0), (tx - 3.1, ty - 9.5, z0), (tx - 3.1, ty + 2.5, z1 - 1.4), (tx - 3.3, ty + 2.5, z1 - 1.4)],
+                [(tx - 3.3, ty - 9.5, z0 + 0.5), (tx - 3.1, ty - 9.5, z0 + 0.5), (tx - 3.1, ty + 2.5, z1 - 0.9), (tx - 3.3, ty + 2.5, z1 - 0.9)],
+                "dark")
+    m.box(tx - 1.2, tx + 1.2, ty - 10.5, ty - 9.5, 1.5, 4.0, "metal")                  # vérin de stabilisation
+
+
+def pinaka():
+    m = Model()
+    slab(m, mat="earth", tint=0.05)
+    m.box(4, 21, -22, 10, 1.5, 11, "concrete")                                         # hangar (fond)
+    arch = [(-16, 11), (16, 11), (12, 14.5), (-12, 14.5)]
+    extrude_x(m, [(y - 6, z) for y, z in arch], 4, 21, "metal", 0.1)                   # toit
+    m.box(3.5, 4, -18, -4, 1.5, 9, "dark")                                             # porte
+    hazard_band(m, 3.4, -19, -3, 9, 10, n=6)
+    m.box(3.4, 3.9, 0, 8, 7, 8.5, "paint")                                             # bandeau national
+    pinaka_launcher(m, -10, 2)
+    for i, (x, y) in enumerate(((-20, -20), (-20, -15.5), (-15.5, -20), (-8, -21))):   # caisses de roquettes
+        m.box(x, x + 3.5, y, y + 3.2, 1.5, 3.5 + (i % 2), "olive", 0.1 * (i % 3))
+    mast(m, 19, 19, 22, base=1.0, arms=2)
+    return m
+
+
+def pinaka_power_icon():
+    m = Model()
+    pinaka_launcher(m, 0, 1)
+    return m.transformed(lambda x, y, z: (x, y, z - 3))                             # recentré dans l'icône
+
+
+def jpew_power_icon():
+    m = Model()
+    for y0 in (-10, 1):
+        m.prism([(-3, y0, 0), (3, y0, 0), (3, y0 + 9, 0), (-3, y0 + 9, 0)],
+                [(-0.5, y0, 8), (0.5, y0, 8), (0.5, y0 + 9, 8), (-0.5, y0 + 9, 8)], "white", 0.02)
+        m.prism([(-3.4, y0 + 0.5, 0.5), (-3.0, y0 + 0.5, 0.5), (-3.0, y0 + 8.5, 0.5), (-3.4, y0 + 8.5, 0.5)],
+                [(-0.9, y0 + 0.5, 7.5), (-0.5, y0 + 0.5, 7.5), (-0.5, y0 + 8.5, 7.5), (-0.9, y0 + 8.5, 7.5)], "dark")
+    m.box(4, 6, 12, 14, 0, 14, "metal", 0.1)
+    for z in (4, 8, 12):
+        m.box(3.6, 6.4, 9, 17, z, z + 0.6, "white", 0.1)
+    m.box(4.6, 5.4, 12.6, 13.4, 14, 15.2, "red")
+    return m.transformed(lambda x, y, z: (x, y - 3.5, z - 3))                       # recentré dans l'icône
+
+# ---------------------------------------------------------------------------
 BUILDINGS = {
     # nom : (modèle, couleur d'icône, échelle d'icône, nom affiché)
     "pcscalp": (pcscalp, (60, 80, 150), 0.72, "PC SCALP"),
@@ -263,6 +362,17 @@ BUILDINGS = {
     "gchq": (gchq, (150, 132, 92), 0.72, "GCHQ"),
     "pcawacs": (pcawacs, (90, 110, 70), 0.72, "PC AWACS"),
     "pctos": (pctos, (70, 88, 52), 0.72, "PC TOS-1A"),
+    "jpew": (jpew, (180, 180, 184), 0.72, "GUERRE EL."),
+    "pinaka": (pinaka, (150, 128, 84), 0.72, "PC PINAKA"),
+}
+
+POWER_PAINT = {"jpew": (200, 200, 204), "pinaka": (170, 150, 96)}
+
+# Icône dédiée au pouvoir de soutien (sinon le jeu réutilise une icône RA).
+POWER_ICONS = {
+    # bâtiment : (modèle de l'icône, texte, échelle, orientation)
+    "jpew": (jpew_power_icon, "BROUILLAGE", 1.8, 0.86),
+    "pinaka": (pinaka_power_icon, "PINAKA", 2.3, 0.62),
 }
 
 
@@ -310,6 +420,11 @@ def build(name, palette):
     icon = render.render_icon(model, palette, scale=icon_scale, facing=0.9, paint=color,
                               bg=((96, 120, 150), (60, 72, 60)))
     render.save_sheet([render.label(icon, title)], os.path.join(OUT, f"{name}icon.png"), palette)
+    if name in POWER_ICONS:
+        icon_fn, text, scale, facing = POWER_ICONS[name]
+        picon = render.render_icon(icon_fn(), palette, scale=scale, facing=facing, paint=POWER_PAINT[name],
+                                   bg=((140, 40, 30), (40, 20, 20)))
+        render.save_sheet([render.label(picon, text)], os.path.join(OUT, f"{name}power.png"), palette)
     print(f"{name}: {len(frames)} images + icône")
 
 
