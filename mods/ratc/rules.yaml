@@ -331,7 +331,7 @@ LST:
 		MaxWeight: 25
 
 # ======================================================================
-# Sous-marin nucléaire lanceur d'engins (SNLE) : toutes factions
+# Sous-marin nucléaire lanceur d'engins (SNLE) : toutes factions, 3 max (5 pour la France, voir SNLE.FRANCE)
 # Porte une frappe nucléaire (pouvoir de soutien, recharge plus longue que le silo)
 # et des torpilles pour se défendre. Mobile et furtif, mais cher et sans antiaérien.
 # ======================================================================
@@ -343,7 +343,8 @@ SNLE:
 	Buildable:
 		Queue: Ship
 		BuildPaletteOrder: 70
-		Prerequisites: techcenter, ~techlevel.high
+		Prerequisites: techcenter, ~!structures.france, ~techlevel.high
+		BuildLimit: 3
 		Description: Sous-marin nucléaire lanceur d'engins.\nDonne accès à une frappe nucléaire tirée depuis sa position.\nTorpilles lourdes pour se défendre.\n  Fort contre : navires, sous-marins\n  Faible contre : aviation\n  Capacité : plongée, frappe nucléaire
 	Valued:
 		Cost: 3000
@@ -416,9 +417,17 @@ SNLE:
 	Selectable:
 		DecorationBounds: 2048, 2048
 
+# SNLE français : identique, mais la France peut en aligner 5.
+SNLE.FRANCE:
+	Inherits: SNLE
+	Buildable:
+		Prerequisites: techcenter, ~structures.france, ~techlevel.high
+		BuildLimit: 5
+
 # ======================================================================
 # PORTE-AVIONS
-# Les avions sont embarqués : 3 à la sortie du chantier naval, capacité 5 (8 pour le français).
+# Les avions sont embarqués : 3 à la sortie du chantier naval, capacité 5 (8 pour le français et l'américain).
+# 3 porte-avions maximum par joueur (4 pour la Chine, 5 pour les USA).
 # Touche de déploiement (F) : les avions prêts décollent.
 # Clic droit d'un avion sur son porte-avions : il appontera ; à court de munitions il revient seul.
 # À bord, un avion est réarmé et réparé (pastille jaune -> verte).
@@ -440,6 +449,8 @@ SNLE:
 	RevealsShroud@GAPGEN:
 		Range: 5c0
 	Reservable:
+	Buildable:
+		BuildLimit: 3
 	AircraftCarrier:
 		RearmDelay: 250
 	WithCarrierPipsDecoration:
@@ -560,6 +571,59 @@ PHUA:
 	Selectable:
 		Bounds: 2048, 2048
 		DecorationBounds: 2560, 2560
+
+# USA : supercarrier classe Gerald R. Ford, F-22, 8 avions. Jusqu'à 5 exemplaires.
+PAUS:
+	Inherits: ^RatcCarrier
+	RenderSprites:
+		Image: pan
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 80
+		BuildDuration: 5000
+		BuildLimit: 5
+		Prerequisites: ~ships.usa, techcenter, ~techlevel.high
+		Description: Supercarrier américain à propulsion nucléaire.\nLivré avec 3 F-22, capacité 8 avions.\nDéfense antiaérienne rapprochée.\nLimité à 5 exemplaires.\n  Déploiement : faire décoller les avions\n  Faible contre : sous-marins (à escorter)
+	Valued:
+		Cost: 3400
+	Tooltip:
+		Name: Porte-avions (classe Gerald R. Ford)
+	Health:
+		HP: 120000
+	Mobile:
+		Speed: 58
+	AircraftCarrier:
+		Types: f22
+		MaxAircraft: 8
+		InitialAircraft: f22, f22, f22
+	Explodes:
+		Weapon: PANReactorExplode
+		EmptyWeapon: PANReactorExplode
+
+# Chine : porte-avions Shandong (dérivé de la classe Kouznetsov), MiG. Jusqu'à 4 exemplaires.
+PACN:
+	Inherits: ^RatcCarrier
+	RenderSprites:
+		Image: paru
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 80
+		BuildDuration: 4200
+		BuildLimit: 4
+		Prerequisites: ~ships.china, techcenter, ~techlevel.high
+		Description: Porte-avions chinois.\nLivré avec 3 MiG, capacité 5 avions.\nDéfense antiaérienne rapprochée.\nLimité à 4 exemplaires.\n  Déploiement : faire décoller les avions\n  Faible contre : sous-marins (à escorter)
+	Valued:
+		Cost: 2600
+	Tooltip:
+		Name: Porte-avions Shandong
+	Health:
+		HP: 100000
+	Mobile:
+		Speed: 56
+	AircraftCarrier:
+		Types: mig
+		MaxAircraft: 5
+		InitialAircraft: mig, mig, mig
 
 # ======================================================================
 # AVIATION EMBARQUÉE
@@ -703,10 +767,10 @@ HARRIER:
 		WaitDistanceFromResupplyBase: 4c0
 		LandableTerrainTypes: Clear, Rough, Road, Ore, Beach, Gems
 
-# MiG russe : peut apponter sur l'Amiral Kouznetsov.
+# MiG : peut apponter sur l'Amiral Kouznetsov (Russie) et le Shandong (Chine).
 MIG:
 	Rearmable:
-		RearmActors: afld, afld.ukraine, paru
+		RearmActors: afld, afld.ukraine, paru, pacn
 	CarrierAircraft:
 
 # Mi-24 ukrainien (le Hind de Red Alert, désactivé à l'origine) : produit à l'aérodrome
@@ -734,62 +798,80 @@ MI24:
 # ======================================================================
 Player:
 	SquadManagerBotModule@rush:
-		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, snle, pan, pauk, paru, phua
-		AirUnitsTypes: mig, yak, heli, hind, mh60, rafale, harrier, mi24
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, snle, snle.france, pan, pauk, paru, phua, paus, pacn
+		AirUnitsTypes: mig, yak, heli, hind, mh60, rafale, harrier, mi24, f22
 	SquadManagerBotModule@normal:
-		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, snle, pan, pauk, paru, phua
-		AirUnitsTypes: mig, yak, heli, hind, mh60, rafale, harrier, mi24
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, snle, snle.france, pan, pauk, paru, phua, paus, pacn
+		AirUnitsTypes: mig, yak, heli, hind, mh60, rafale, harrier, mi24, f22
 	SquadManagerBotModule@turtle:
-		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, snle, pan, pauk, paru, phua
-		AirUnitsTypes: mig, yak, heli, hind, mh60, rafale, harrier, mi24
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, snle, snle.france, pan, pauk, paru, phua, paus, pacn
+		AirUnitsTypes: mig, yak, heli, hind, mh60, rafale, harrier, mi24, f22
 	SquadManagerBotModule@naval:
-		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, snle, pan, pauk, paru, phua
-		AirUnitsTypes: mig, yak, heli, hind, mh60, rafale, harrier, mi24
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, snle, snle.france, pan, pauk, paru, phua, paus, pacn
+		AirUnitsTypes: mig, yak, heli, hind, mh60, rafale, harrier, mi24, f22
 	UnitBuilderBotModule@normal:
 		UnitsToBuild:
 			snle: 3
+			snle.france: 3
 			pan: 5
 			pauk: 5
 			paru: 5
 			phua: 5
+			paus: 5
+			pacn: 5
 			rafale: 5
 			harrier: 5
 			mi24: 5
 		UnitLimits:
 			snle: 1
+			snle.france: 1
 			pan: 1
 			pauk: 1
 			paru: 1
 			phua: 1
+			paus: 1
+			pacn: 1
 	UnitBuilderBotModule@turtle:
 		UnitsToBuild:
 			snle: 3
+			snle.france: 3
 			pan: 5
 			pauk: 5
 			paru: 5
 			phua: 5
+			paus: 5
+			pacn: 5
 			rafale: 5
 			harrier: 5
 			mi24: 5
 		UnitLimits:
 			snle: 1
+			snle.france: 1
 			pan: 1
 			pauk: 1
 			paru: 1
 			phua: 1
+			paus: 1
+			pacn: 1
 	UnitBuilderBotModule@naval:
 		UnitsToBuild:
 			snle: 10
+			snle.france: 10
 			pan: 10
 			pauk: 10
 			paru: 10
 			phua: 10
+			paus: 10
+			pacn: 10
 		UnitLimits:
 			snle: 2
+			snle.france: 2
 			pan: 2
 			pauk: 2
 			paru: 2
 			phua: 2
+			paus: 2
+			pacn: 2
 	BaseBuilderBotModule@rush:
 		BuildingLimits:
 			pcscalp: 1

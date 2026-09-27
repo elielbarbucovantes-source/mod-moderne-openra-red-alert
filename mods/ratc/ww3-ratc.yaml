@@ -1,0 +1,8 @@
+# Ajustements ratc des unités importées de WW3.
+# Chargé APRÈS ww3/rules.yaml, qui est régénéré par tools/ww3-import/ : ne pas modifier ce dernier à la main.
+
+# F-22 américain : peut apponter sur le porte-avions classe Gerald R. Ford.
+F22:
+	CarrierAircraft:
+	Rearmable:
+		RearmActors: afld, afld.ukraine, abase, paus
