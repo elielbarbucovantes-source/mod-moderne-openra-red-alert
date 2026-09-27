@@ -10,7 +10,7 @@ CSAR:
 		Queue: Vehicle
 		BuildPaletteOrder: 235
 		Prerequisites: dome, ~vehicles.france, ~techlevel.medium
-		Description: French self-propelled rocket artillery.\nFires 3 rounds in rapid succession before reloading.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft
+		Description: Artillerie automotrice française.\nTire 3 obus en succession rapide avant de recharger.\n  Fort contre : infanterie, bâtiments\n  Faible contre : véhicules, aviation
 	Valued:
 		Cost: 2000
 	Tooltip:
@@ -30,7 +30,7 @@ JAGUAR:
 		Queue: Vehicle
 		BuildPaletteOrder: 238
 		Prerequisites: dome, ~vehicles.france, ~techlevel.high
-		Description: French reconnaissance vehicle.\\nFast anti-tank hunter with fire-and-forget missiles.
+		Description: Véhicule de reconnaissance français.\nChasseur de chars rapide, missiles tire-et-oublie.\n  Fort contre : véhicules\n  Faible contre : infanterie, aviation
 	Valued:
 		Cost: 1100
 	Health:
@@ -54,7 +54,7 @@ LEOPARD:
 		Queue: Vehicle
 		BuildPaletteOrder: 231
 		Prerequisites: dome, ~vehicles.germany, ~techlevel.high
-		Description: German main battle tank.\nAdvanced armor and high firepower.
+		Description: Char de combat allemand.\nBlindage avancé et forte puissance de feu.\nMoral renforcé : insensible à la démoralisation au-dessus de 50 % de PV.\n  Fort contre : véhicules\n  Faible contre : infanterie, aviation
 	Valued:
 		Cost: 1800
 	Tooltip:
@@ -115,7 +115,7 @@ PZH:
 		Queue: Vehicle
 		BuildPaletteOrder: 232
 		Prerequisites: dome, ~vehicles.germany, ~techlevel.medium
-		Description: German heavy self-propelled howitzer.\nHeavily armored, high single-shot damage.\n  Strong vs Infantry, Buildings, Vehicles\n  Weak vs Aircraft
+		Description: Obusier automoteur lourd allemand.\nFortement blindé, dégâts élevés à chaque tir.\n  Fort contre : infanterie, bâtiments, véhicules\n  Faible contre : aviation
 	Valued:
 		Cost: 1400
 	Health:
@@ -138,7 +138,7 @@ AS90:
 		Queue: Vehicle
 		BuildPaletteOrder: 234
 		Prerequisites: dome, ~vehicles.england, ~techlevel.medium
-		Description: British self-propelled howitzer.\\nBalanced range, damage and mobility.\\n  Strong vs Infantry, Buildings\\n  Weak vs Aircraft
+		Description: Obusier automoteur britannique.\nPortée, dégâts et mobilité équilibrés.\n  Fort contre : infanterie, bâtiments\n  Faible contre : aviation
 	Valued:
 		Cost: 1200
 	Health:
@@ -161,7 +161,7 @@ GRAD:
 		Queue: Vehicle
 		BuildPaletteOrder: 236
 		Prerequisites: dome, ~vehicles.russia, ~techlevel.medium
-		Description: Soviet multiple rocket launcher.\nSaturates an area with inaccurate rockets.\n  Strong vs Infantry, Light Armor\n  Cannot attack Aircraft\n  Weak vs single hardened targets
+		Description: Lance-roquettes multiple russe.\nSature une zone de roquettes imprécises.\n  Fort contre : infanterie, blindés légers\n  Ne peut pas attaquer l'aviation\n  Faible contre : cibles blindées isolées
 	Valued:
 		Cost: 700
 	Tooltip:
@@ -218,7 +218,7 @@ UARTY:
 		Queue: Vehicle
 		BuildPaletteOrder: 237
 		Prerequisites: dome, ~vehicles.ukraine, ~techlevel.high
-		Description: Ukrainian precision howitzer.\nExtreme range and damage, but requires direct line of sight — pair with a scout drone.\n  Strong vs everything\n  Cannot fire on unseen positions
+		Description: Obusier de précision ukrainien.\nPortée et dégâts extrêmes, mais exige une vue directe sur la cible : à associer à un drone de reconnaissance.\n  Fort contre : tout\n  Ne peut pas tirer sur une position non visible
 	Valued:
 		Cost: 1600
 	Health:
@@ -790,6 +790,58 @@ Player:
 			pauk: 2
 			paru: 2
 			phua: 2
+	BaseBuilderBotModule@rush:
+		BuildingLimits:
+			pcscalp: 1
+			pionier: 1
+			gchq: 1
+			pcawacs: 1
+			pctos: 1
+		BuildingFractions:
+			pcscalp: 1
+			pionier: 1
+			gchq: 1
+			pcawacs: 1
+			pctos: 1
+	BaseBuilderBotModule@normal:
+		BuildingLimits:
+			pcscalp: 1
+			pionier: 1
+			gchq: 1
+			pcawacs: 1
+			pctos: 1
+		BuildingFractions:
+			pcscalp: 1
+			pionier: 1
+			gchq: 1
+			pcawacs: 1
+			pctos: 1
+	BaseBuilderBotModule@turtle:
+		BuildingLimits:
+			pcscalp: 1
+			pionier: 1
+			gchq: 1
+			pcawacs: 1
+			pctos: 1
+		BuildingFractions:
+			pcscalp: 1
+			pionier: 1
+			gchq: 1
+			pcawacs: 1
+			pctos: 1
+	BaseBuilderBotModule@naval:
+		BuildingLimits:
+			pcscalp: 1
+			pionier: 1
+			gchq: 1
+			pcawacs: 1
+			pctos: 1
+		BuildingFractions:
+			pcscalp: 1
+			pionier: 1
+			gchq: 1
+			pcawacs: 1
+			pctos: 1
 	SupportPowerBotModule:
 		Decisions:
 			snlenuke:
@@ -807,6 +859,41 @@ Player:
 					Attractiveness: -10
 					TargetMetric: Value
 					CheckRadius: 7c0
+			# Pouvoirs nationaux (le SCALP et le pont restent réservés aux joueurs :
+			# il faut des GCP sur place ou une rivière à franchir).
+			englandjamming:
+				OrderName: EnglandJamming
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 4c0
+			ukraineawacs:
+				OrderName: UkraineAwacs
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Ground, Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 10c0
+			russiatos1:
+				OrderName: RussiaTOS1
+				MinimumAttractiveness: 1500
+				Consideration@1:
+					Against: Enemy
+					Types: Ground
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground
+					Attractiveness: -3
+					TargetMetric: Value
+					CheckRadius: 4c0
 
 # =====================================================================
 # MORAL : suppression (BMPT, Challenger 3) et démoralisation (TOS-1A)
@@ -879,14 +966,63 @@ Player:
 		BlinkPattern: On, Off
 
 # =====================================================================
-# POUVOIRS DE SOUTIEN NATIONAUX (portés par le Radar Dome)
+# POUVOIRS DE SOUTIEN NATIONAUX : un bâtiment spécialisé par nation
+# Chaque pouvoir est porté par son propre bâtiment (sprites générés par
+# tools/sprites/buildings.py). Cible stratégique : détruit, hors tension
+# (manque d'énergie ou courant coupé) ou brouillé par le SAS, il suspend
+# la charge du pouvoir. Un seul exemplaire par joueur.
 # =====================================================================
-DOME:
+^RatcPowerCenter:
+	Inherits: ^Building
+	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
+	Inherits@shape: ^2x2Shape
+	Selectable:
+		Bounds: 2048, 2048
+	Building:
+		Footprint: xx xx ==
+		Dimensions: 2,3
+		LocalCenterOffset: 0,-512,0
+	WithBuildingBib:
+	Targetable:
+		TargetTypes: GroundActor, Structure, C4, DetonateAttack, SpyInfiltrate
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
 	SupportPowerChargeBar:
-	# France : autorise les GCP de la zone à désigner une cible pour un SCALP (30 s).
+	InfiltrateForSupportPowerReset:
+		Types: SpyInfiltrate
+		PlayerExperience: 10
+	ExternalCondition@JAMMED:
+		Condition: jammed
+	ProvidesPrerequisite@buildingname:
+
+# France : bunker bétonné, paraboles satellite et mâts de liaison laser.
+PCSCALP:
+	Inherits: ^RatcPowerCenter
+	RenderSprites:
+		Image: pcscalp
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 142
+		BuildLimit: 1
+		Prerequisites: dome, ~structures.france, ~techlevel.medium
+		Description: Bunker de guidage des frappes de croisière.\nReçoit les désignations laser des commandos GCP.\nNécessite de l'électricité. 1 exemplaire maximum.\n  Pouvoir : frappe de croisière SCALP
+	Valued:
+		Cost: 1600
+	Tooltip:
+		Name: Centre de commandement SCALP
+	Health:
+		HP: 120000
+	Armor:
+		Type: Concrete
+	Power:
+		Amount: -100
+	# Autorise les GCP de la zone à désigner une cible pour un SCALP (30 s).
 	GrantExternalConditionPower@SCALP:
 		OrderName: FranceScalp
-		Prerequisites: structures.france
 		PauseOnCondition: disabled || jammed
 		Icon: abomb
 		ChargeInterval: 6000
@@ -898,13 +1034,77 @@ DOME:
 		Footprint: xxx xxx xxx
 		Sequence: idle
 		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
 		SelectTargetTextNotification: Sélectionnez vos commandos GCP.
+		InsufficientPowerTextNotification: Énergie insuffisante.
 		EndChargeTextNotification: Frappe SCALP prête.
 		SupportPowerPaletteOrder: 70
-	# Royaume-Uni : brouille radar et pouvoirs de soutien ennemis (30 s).
+
+# Allemagne : hangar d'assemblage, grue et travées de pont flottant.
+PIONIER:
+	Inherits: ^RatcPowerCenter
+	RenderSprites:
+		Image: pionier
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 142
+		BuildLimit: 1
+		Prerequisites: weap, ~structures.germany, ~techlevel.medium
+		Description: Centre de génie lourd et de franchissement.\nNécessite de l'électricité. 1 exemplaire maximum.\n  Pouvoir : pontage tactique rapide
+	Valued:
+		Cost: 1400
+	Tooltip:
+		Name: Pionierzentrum (génie tactique)
+	Health:
+		HP: 140000
+	Armor:
+		Type: Heavy
+	Power:
+		Amount: -80
+	SpawnActorPower@TACBRIDGE:
+		OrderName: GermanyBridge
+		PauseOnCondition: disabled || jammed
+		IconImage: tacbridge
+		Icon: icon
+		ChargeInterval: 4500
+		Name: Pontage tactique rapide
+		Description: Pose un pont flottant en croix (5 travées dans chaque sens)\nsur une rivière ou un plan d'eau explorés.\nLes chars et véhicules peuvent l'emprunter pendant 90 secondes\nou jusqu'à sa destruction.
+		Actor: tacbridge.center
+		LifeTime: -1
+		Terrain: River, Water
+		AllowUnderShroud: false
+		EffectImage: explosion
+		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
+		SelectTargetTextNotification: Sélectionnez une rivière.
+		InsufficientPowerTextNotification: Énergie insuffisante.
+		EndChargeTextNotification: Pontage tactique prêt.
+		SupportPowerPaletteOrder: 75
+
+# Royaume-Uni : station d'interception à dôme furtif et mâts de brouillage.
+GCHQ:
+	Inherits: ^RatcPowerCenter
+	RenderSprites:
+		Image: gchq
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 142
+		BuildLimit: 1
+		Prerequisites: dome, ~structures.england, ~techlevel.medium
+		Description: Station d'interception et de guerre électronique.\nNécessite de l'électricité. 1 exemplaire maximum.\n  Pouvoir : brouillage électronique SAS
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Station SIGINT (GCHQ Forward)
+	Health:
+		HP: 110000
+	Armor:
+		Type: Wood
+	Power:
+		Amount: -120
+	# Brouille radar et pouvoirs de soutien ennemis (30 s).
 	GrantExternalConditionPower@SASEW:
 		OrderName: EnglandJamming
-		Prerequisites: structures.england
 		PauseOnCondition: disabled || jammed
 		Icon: sonar
 		ChargeInterval: 5250
@@ -918,13 +1118,36 @@ DOME:
 		Sequence: idle
 		DisplayRadarPing: true
 		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
 		SelectTargetTextNotification: Sélectionnez la zone à brouiller.
+		InsufficientPowerTextNotification: Énergie insuffisante.
 		EndChargeTextNotification: Brouillage SAS prêt.
 		SupportPowerPaletteOrder: 71
-	# Ukraine : révèle une grande zone et marque les blindés lourds (15 s).
+
+# Ukraine : poste de commandement sous filet, rotodome et terminaux satellite.
+PCAWACS:
+	Inherits: ^RatcPowerCenter
+	RenderSprites:
+		Image: pcawacs
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 142
+		BuildLimit: 1
+		Prerequisites: dome, ~structures.ukraine, ~techlevel.medium
+		Description: Poste de commandement relié aux flux AWACS et drones.\nNécessite de l'électricité. 1 exemplaire maximum.\n  Pouvoir : renseignement OTAN (AWACS)
+	Valued:
+		Cost: 1300
+	Tooltip:
+		Name: PC de liaison ISR et AWACS
+	Health:
+		HP: 100000
+	Armor:
+		Type: Wood
+	Power:
+		Amount: -80
+	# Révèle une grande zone et marque les blindés lourds (15 s).
 	SpawnActorPower@AWACS:
 		OrderName: UkraineAwacs
-		Prerequisites: structures.ukraine
 		PauseOnCondition: disabled || jammed
 		Icon: spyplane
 		ChargeInterval: 3750
@@ -935,24 +1158,49 @@ DOME:
 		LifeTime: 375
 		DisplayRadarPing: true
 		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
 		SelectTargetTextNotification: Sélectionnez la zone à surveiller.
+		InsufficientPowerTextNotification: Énergie insuffisante.
 		EndChargeTextNotification: AWACS disponible.
 		SupportPowerPaletteOrder: 72
-	# Russie : salve thermobarique. Touche aussi les unités amies !
+
+# Russie : casemate enterrée, dépôts de munitions et lanceur TOS-1A.
+PCTOS:
+	Inherits: ^RatcPowerCenter
+	RenderSprites:
+		Image: pctos
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 142
+		BuildLimit: 1
+		Prerequisites: dome, ~structures.russia, ~techlevel.medium
+		Description: Casemate d'état-major et dépôt de munitions thermobariques.\nNécessite de l'électricité. 1 exemplaire maximum.\n  Pouvoir : frappe thermobarique TOS-1A
+	Valued:
+		Cost: 1700
+	Tooltip:
+		Name: PC d'appui thermobarique
+	Health:
+		HP: 150000
+	Armor:
+		Type: Concrete
+	Power:
+		Amount: -110
+	# Salve thermobarique. Touche aussi les unités amies !
 	SpawnActorPower@TOS1:
 		OrderName: RussiaTOS1
-		Prerequisites: structures.russia
 		PauseOnCondition: disabled || jammed
 		Icon: parabombs
 		ChargeInterval: 6750
 		Name: Frappe thermobarique TOS-1A
-		Description: Salve thermobarique sur une zone explorée.\nDévaste l'infanterie, démoralise toutes les unités\nprésentes, amies comme ennemies.
+		Description: Salve thermobarique sur une zone explorée.\nDévaste l'infanterie, démoralise pendant 10 secondes\ntoutes les unités présentes, amies comme ennemies.
 		Actor: tos1.strike
 		EffectImage: explosion
 		LifeTime: -1
 		AllowUnderShroud: false
 		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
 		SelectTargetTextNotification: Sélectionnez la cible.
+		InsufficientPowerTextNotification: Énergie insuffisante.
 		EndChargeTextNotification: TOS-1A prêt.
 		SupportPowerPaletteOrder: 73
 
@@ -1032,7 +1280,7 @@ GCP:
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 150
 		Prerequisites: dome, ~infantry.france, ~techlevel.medium
-		Description: Commandos parachutistes français.\nFurtifs à l'arrêt comme en mouvement, grande vision.\nDésignent les cibles des frappes SCALP.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+		Description: Commandos parachutistes français.\nFurtifs à l'arrêt comme en mouvement, grande vision.\nDésignent les cibles des frappes SCALP.\n  Fort contre : infanterie\n  Faible contre : véhicules, aviation
 	Valued:
 		Cost: 600
 	Tooltip:
@@ -1098,7 +1346,7 @@ NLAW:
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 151
 		Prerequisites: ~infantry.england, ~techlevel.medium
-		Description: Équipe antichar d'élite britannique.\nMissiles à attaque par le toit (ignorent le blindage réactif).\nEn garnison dans un pillbox : tir d'embuscade dévastateur.\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
+		Description: Équipe antichar d'élite britannique.\nMissiles à attaque par le toit (ignorent le blindage réactif).\nEn garnison dans un pillbox : tir d'embuscade dévastateur.\n  Fort contre : véhicules\n  Faible contre : infanterie, aviation
 	Valued:
 		Cost: 450
 	Tooltip:
@@ -1139,7 +1387,7 @@ CHALLENGER:
 		Queue: Vehicle
 		BuildPaletteOrder: 241
 		Prerequisites: dome, ~vehicles.england, ~techlevel.high
-		Description: Char de combat britannique, spécialiste du combat urbain.\nObus à effet de souffle : cloue l'infanterie au sol\nsans raser les bâtiments. Se répare seul sous 50 %.\n  Strong vs Infantry, Vehicles\n  Weak vs Buildings, Aircraft
+		Description: Char de combat britannique, spécialiste du combat urbain.\nObus à effet de souffle : cloue l'infanterie au sol\nsans raser les bâtiments. Se répare seul sous 50 %.\n  Fort contre : infanterie, véhicules\n  Faible contre : bâtiments, aviation
 	Valued:
 		Cost: 1700
 	Tooltip:
@@ -1276,7 +1524,7 @@ TRENCH:
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 153
 		Prerequisites: ~infantry.ukraine, ~techlevel.infonly
-		Description: Fantassin ukrainien.\nDéployé : creuse une tranchée instantanément.\nEn tranchée : dégâts reçus -50 %, portée +15 %,\nimmunisé à la suppression et à l'écrasement.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+		Description: Fantassin ukrainien.\nDéployé : creuse une tranchée instantanément.\nEn tranchée : dégâts reçus -50 %, portée +15 %,\nimmunisé à la suppression et à l'écrasement.\n  Fort contre : infanterie\n  Faible contre : véhicules, aviation
 	Valued:
 		Cost: 150
 	Tooltip:
@@ -1346,7 +1594,7 @@ T90M:
 		Queue: Vehicle
 		BuildPaletteOrder: 239
 		Prerequisites: dome, ~vehicles.russia, ~techlevel.medium
-		Description: Char de combat russe.\nBlindage réactif : le premier missile antichar\nne fait que 10 % de dégâts (rechargé à la réparation).\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
+		Description: Char de combat russe.\nBlindage réactif : le premier missile antichar\nne fait que 10 % de dégâts (rechargé à la réparation).\n  Fort contre : véhicules\n  Faible contre : infanterie, aviation
 	Valued:
 		Cost: 1500
 	Tooltip:
@@ -1401,7 +1649,7 @@ BMPT:
 		Queue: Vehicle
 		BuildPaletteOrder: 240
 		Prerequisites: dome, ~vehicles.russia, ~techlevel.medium
-		Description: Véhicule d'appui aux chars russe.\nDouble canon de 30 mm à feu continu : cloue l'infanterie\nau sol (lente, cadence réduite). Missiles Ataka antichar.\nBlindage réactif comme le T-90M.\n  Strong vs Infantry, Light armor\n  Weak vs Aircraft
+		Description: Véhicule d'appui aux chars russe.\nDouble canon de 30 mm à feu continu : cloue l'infanterie\nau sol (lente, cadence réduite). Missiles Ataka antichar.\nBlindage réactif comme le T-90M.\n  Fort contre : infanterie, blindés légers\n  Faible contre : aviation
 	Valued:
 		Cost: 1300
 	Tooltip:
@@ -1868,7 +2116,7 @@ COLIBRI:
 		EmptyWeapon: UnitExplodeHeli
 
 # =====================================================================
-# ALLEMAGNE — Pontage tactique rapide (pouvoir du Service Depot)
+# ALLEMAGNE — Pontage tactique rapide (pouvoir du Pionierzentrum, voir plus haut)
 # Pont flottant en croix de 5 travées dans chaque direction, posé uniquement
 # sur une rivière ou un plan d'eau. Chaque travée transforme sa case en
 # terrain « Bridge » : blindés et véhicules passent. Dure 90 s ou jusqu'à
@@ -1940,29 +2188,6 @@ tacbridge.center:
 	FreeActor@8:
 		Actor: tacbridge.ew
 		SpawnOffset: 2,0
-
-FIX:
-	ExternalCondition@JAMMED:
-		Condition: jammed
-	SupportPowerChargeBar:
-	SpawnActorPower@TACBRIDGE:
-		OrderName: GermanyBridge
-		Prerequisites: structures.germany
-		PauseOnCondition: jammed
-		IconImage: tacbridge
-		Icon: icon
-		ChargeInterval: 4500
-		Name: Pontage tactique rapide
-		Description: Pose un pont flottant en croix (5 travées dans chaque sens)\nsur une rivière ou un plan d'eau.\nLes chars et véhicules peuvent l'emprunter pendant 90 secondes\nou jusqu'à sa destruction.
-		Actor: tacbridge.center
-		LifeTime: -1
-		Terrain: River, Water
-		AllowUnderShroud: false
-		EffectImage: explosion
-		SelectTargetSpeechNotification: SelectTarget
-		SelectTargetTextNotification: Sélectionnez une rivière.
-		EndChargeTextNotification: Pontage tactique prêt.
-		SupportPowerPaletteOrder: 75
 
 # =====================================================================
 # DRONES DES NATIONS — modèle commun : pas de pilote, explose en vol,

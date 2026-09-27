@@ -210,8 +210,16 @@ def build(owner, delta_lines, base_of=None):
     head = [f"\tInherits{'' if i == 0 else '@WW3I' + str(i)}: {t}" for i, t in enumerate(inherits)]
     return head + [fix_refs(l) for l in dump_tree(merged)]
 
+# ratc aircraft that can land on a carrier (MIG, RAFALE...): WW3 aircraft inheriting them must not,
+# since no carrier accepts their type (the enter cursor would only ever show as blocked).
+carrier_aircraft = {n.lower() for n, v, body in blocks(f"{MOD}/mods/ratc/rules.yaml")
+                    if any(l.strip() == "CarrierAircraft:" for l in body)}
+
 for blk in new_blocks:
     blk[2] = build(blk[0], blk[2])
+    inherited = [l.split(":", 1)[1].strip().lower() for l in blk[2] if re.match(r'^\tInherits(@\S*)?:', l)]
+    if any(t in carrier_aircraft for t in inherited):
+        blk[2].insert(len(inherited), "\t-CarrierAircraft:")
     if blk[0] == "RMTRAN":
         # TRAN already inherits ^CargoPips and has no GAPGEN shroud in this ruleset
         blk[2] = [l for l in blk[2] if l.strip() not in ("-RevealsShroud@GAPGEN:", "-Selectable:", "Interactable:")

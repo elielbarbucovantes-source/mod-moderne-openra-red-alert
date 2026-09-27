@@ -440,3 +440,97 @@ fpvquad:
 lasermark:
 	idle:
 		Filename: ratc|bits/lasermark.png
+
+# ======================================================================
+# Bâtiments des pouvoirs de soutien nationaux (tools/sprites/buildings.py)
+# Images : intact, endommagé, puis 10 images de construction.
+# ======================================================================
+pcscalp:
+	Defaults:
+		Filename: ratc|bits/pcscalp.png
+	idle:
+	damaged-idle:
+		Start: 1
+	make:
+		Start: 2
+		Length: 10
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: ratc|bits/pcscalpicon.png
+
+pionier:
+	Defaults:
+		Filename: ratc|bits/pionier.png
+	idle:
+	damaged-idle:
+		Start: 1
+	make:
+		Start: 2
+		Length: 10
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: ratc|bits/pioniericon.png
+
+gchq:
+	Defaults:
+		Filename: ratc|bits/gchq.png
+	idle:
+	damaged-idle:
+		Start: 1
+	make:
+		Start: 2
+		Length: 10
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: ratc|bits/gchqicon.png
+
+pcawacs:
+	Defaults:
+		Filename: ratc|bits/pcawacs.png
+	idle:
+	damaged-idle:
+		Start: 1
+	make:
+		Start: 2
+		Length: 10
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: ratc|bits/pcawacsicon.png
+
+pctos:
+	Defaults:
+		Filename: ratc|bits/pctos.png
+	idle:
+	damaged-idle:
+		Start: 1
+	make:
+		Start: 2
+		Length: 10
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: ratc|bits/pctosicon.png

@@ -957,6 +957,7 @@ A10.Husk:
 F22:
 	Inherits: MIG
 	Inherits@WW3I1: ^AutoTargetAllAssaultMove
+	-CarrierAircraft:
 	Buildable:
 		Prerequisites: ~abase, ~techlevel.high
 		Queue: Aircraft
@@ -1123,6 +1124,7 @@ NHAW:
 SUK:
 	Inherits: MIG
 	Inherits@WW3I1: ^AutoTargetAir
+	-CarrierAircraft:
 	Buildable:
 		Prerequisites: afld, ~rtek, ~techlevel.high
 		BuildPaletteOrder: 70

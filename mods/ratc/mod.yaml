@@ -1,9 +1,9 @@
 Metadata:
-	Title: Red Alert (Tesla Coil Example)
+	Title: Mod moderne (Red Alert)
 	Version: release-20231010
 	Website: https://www.openra.net
 	WebIcon32: https://www.openra.net/images/icons/ra_32x32.png
-	WindowTitle: OpenRA - Red Alert
+	WindowTitle: OpenRA - Mod moderne (Red Alert)
 
 PackageFormats: Mix
 
@@ -358,4 +358,4 @@ DiscordService:
 	ApplicationId: 699222659766026240
 ModCredits:
 	ModCreditsFile: ratc|credits.txt
-	ModTabTitle: Tesla Coil Example
+	ModTabTitle: Mod moderne
