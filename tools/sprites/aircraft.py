@@ -538,3 +538,76 @@ def tapas():
     antenna(m, 1.0, 1.4, 1.2)
     antenna(m, -3.5, 1.3, 1.0)
     return m
+
+
+# ===========================================================================
+# RENFORTS NATIONAUX
+# ===========================================================================
+def f35b():
+    """F-35B Lightning II (Japon) : fuselage large et plat à arêtes vives,
+    prises d'air latérales, verrière, trappe de la soufflante de sustentation,
+    ailes en trapèze, plans horizontaux et deux dérives inclinées. Échelle des
+    avions du mod (~1,1 px/m)."""
+    m = Model()
+    m.loft_x([(-8.5, 0.9, 0.4, 0.2), (-6.0, 2.0, 0.6, 0.2), (-1.0, 2.4, 0.8, 0.2), (3.0, 2.0, 0.8, 0.25),
+              (6.0, 1.1, 0.6, 0.2), (8.4, 0.35, 0.3, 0.1), (9.2, 0.05, 0.05, 0.1)], "paint", 12)
+    m.loft_x([(2.6, 0.2, 0.2, 0.9), (4.0, 0.55, 0.45, 1.0), (6.0, 0.45, 0.35, 0.85), (7.0, 0.1, 0.1, 0.6)],
+             "glass", 8)                                                              # verrière
+    for s in (1, -1):
+        intake = Model().loft_x([(0.0, 0.3, 0.3, 0.1), (1.6, 0.6, 0.5, 0.1), (3.4, 0.5, 0.45, 0.1)], "paint", 8, tint=0.12)
+        m.solids += shift_y(intake, s * 2.0).solids                                  # prises d'air
+        m.plate([(-1.0, s * 2.2, 0.3), (-5.0, s * 7.0, 0.3), (-6.4, s * 7.0, 0.3), (-6.0, s * 2.2, 0.3)], 0.35, "paint")
+        m.plate([(-6.6, s * 1.6, 0.3), (-8.6, s * 4.4, 0.3), (-9.4, s * 4.4, 0.3), (-9.2, s * 1.6, 0.3)], 0.3, "paint", 0.06)
+        m.plate([(-5.8, s * 1.4, 0.7), (-7.8, s * 1.4, 0.7), (-8.8, s * 2.2, 3.0), (-7.6, s * 2.2, 3.0)], 0.3, "paint", 0.1)
+    m.box(0.6, 2.4, -0.7, 0.7, 0.95, 1.05, "dark")                                    # trappe de la soufflante
+    m.loft_x([(-9.6, 0.5, 0.5, 0.2), (-8.4, 0.7, 0.6, 0.2)], "dark", 8)               # tuyère
+    return m
+
+
+def tb2():
+    """Bayraktar TB2 (Turquie) : fuselage fin, longues ailes droites, deux
+    poutres de queue et empennage en V inversé, hélice propulsive, boule
+    optronique sous le nez, 4 bombes MAM-L sous les ailes. Agrandi ~1,6x."""
+    m = Model()
+    m.loft_x([(-5.6, 0.3, 0.3, 0.3), (-4.4, 0.7, 0.7, 0.2), (0.0, 0.95, 0.95, 0.1),
+              (3.6, 0.9, 0.95, 0.0), (5.4, 0.5, 0.6, -0.1), (6.2, 0.1, 0.15, -0.2)], "white", 12, tint=0.05)
+    wing(m, 1.2, -0.8, 0.8, -0.3, 0.9, 10.0, 0.6, 0.9, 0.35)
+    for s in (1, -1):
+        boom = Model().loft_x([(-9.0, 0.22, 0.22, 0.5), (0.6, 0.28, 0.28, 0.5)], "white", 6, tint=0.08)
+        m.solids += shift_y(boom, s * 2.6).solids                                    # poutres de queue
+        m.plate([(-7.6, s * 2.6, 0.5), (-9.2, s * 2.6, 0.5), (-9.6, s * 0.4, -1.4), (-8.4, s * 0.4, -1.4)],
+                0.25, "white", 0.1)                                                  # V inversé
+        for yy in (3.6, 5.6):
+            missile_under(m, 0.4, s * yy, -0.3, length=1.8, r=0.2)                   # MAM-L
+    prop(m, -5.9, 0.3, 1.8, blades=2)
+    sensor_ball(m, 4.2, -1.0, 0.55)
+    antenna(m, 0.5, 1.0, 0.8)
+    return m
+
+
+def prachand():
+    """LCH Prachand (Inde) : fuselage étroit à cockpit en tandem, poutre de
+    queue avec rotor anticouple et dérive, ailerons portant missiles Helina et
+    paniers de roquettes, tourelle de 20 mm sous le nez. Le rotor principal
+    est l'animation du jeu (lrotorlg)."""
+    m = Model()
+    m.loft_x([(-3.6, 0.6, 0.8, 0.5), (-1.0, 1.1, 1.3, 0.3), (2.2, 1.1, 1.3, 0.2),
+              (4.6, 0.8, 1.0, 0.0), (6.2, 0.35, 0.5, -0.2)], "paint", 12)
+    m.loft_x([(1.2, 0.5, 0.4, 1.3), (2.6, 0.75, 0.7, 1.2), (4.4, 0.6, 0.5, 0.8), (5.4, 0.2, 0.2, 0.3)],
+             "glass", 8)                                                              # verrières en tandem
+    m.loft_x([(-3.4, 0.9, 0.5, 1.6), (-1.0, 1.0, 0.6, 1.8), (0.8, 0.7, 0.4, 1.6)], "paint", 8, tint=0.12)  # moteurs
+    m.loft_x([(-12.0, 0.25, 0.3, 0.9), (-3.4, 0.5, 0.6, 0.6)], "paint", 8, tint=0.05)   # poutre de queue
+    m.plate([(-10.6, 0, 1.0), (-12.2, 0, 1.0), (-12.8, 0, 3.4), (-11.8, 0, 3.4)], 0.3, "paint", 0.08)  # dérive
+    m.plate([(-10.0, -1.8, 0.9), (-10.0, 1.8, 0.9), (-11.0, 1.8, 0.9), (-11.0, -1.8, 0.9)], 0.25, "paint", 0.1)
+    prop(m, -12.2, 2.2, 1.4, blades=4, y=-0.5)                                        # rotor anticouple
+    for s in (1, -1):
+        m.plate([(0.8, s * 1.0, 0.2), (0.8, s * 3.6, 0.3), (-0.8, s * 3.6, 0.3), (-0.8, s * 1.0, 0.2)], 0.3, "paint", 0.1)
+        missile_under(m, 0.2, s * 2.4, -0.4, length=2.2, r=0.28)                     # Helina
+        pod = Model().loft_x([(-1.2, 0.45, 0.45, -0.3), (1.0, 0.45, 0.45, -0.3), (1.3, 0.3, 0.3, -0.3)], "dark", 8)
+        m.solids += shift_y(pod, s * 3.4).solids                                     # paniers de roquettes
+    m.loft_x([(4.2, 0.3, 0.3, -1.1), (4.8, 0.45, 0.45, -1.2), (5.4, 0.3, 0.3, -1.1)], "dark", 8)
+    m.tube((5.2, 0, -1.2), (7.6, 0, -1.25), 0.18, "metal", sides=4)                  # canon de 20 mm
+    m.box(-4.0, -3.4, -1.4, 1.4, -1.4, -1.2, "dark")                                  # patins
+    for s in (1, -1):
+        m.box(-4.0, 3.6, s * 1.3 - 0.15, s * 1.3 + 0.15, -1.7, -1.5, "dark")
+    return m

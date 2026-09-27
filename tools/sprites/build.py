@@ -28,6 +28,13 @@ VEHICLES = {
     "m777": (models.m777, (90, 98, 64), "M777"),
     "grad": (models.grad, (82, 96, 60), "BM-21 GRAD"),
     "ravit": (models.ravit, (96, 104, 70), "RAVITAILL."),
+    # Renforts nationaux
+    "puma": (models.puma, (84, 96, 58), "PUMA"),
+    "skyranger": (models.skyranger, (84, 96, 58), "SKYRANGER"),
+    "chusam": (models.chusam, (96, 104, 70), "CHU-SAM"),
+    "dragon8x8": (models.dragon8x8, (110, 108, 76), "DRAGON"),
+    "altay": (models.altay, (96, 104, 70), "ALTAY"),
+    "izumo": (models.izumo, (120, 124, 128), "IZUMO"),
     # Japon
     "type10": (models.type10, (96, 104, 70), "TYPE 10"),
     "type16": (models.type16, (96, 104, 70), "TYPE 16"),
@@ -64,15 +71,26 @@ AIRCRAFT = {
     "seaguardian": (aircraft.seaguardian, (64, 64), 0.8, (150, 154, 156), "SEAGUARD"),
     # Inde
     "tapas": (aircraft.tapas, (64, 64), 1.1, (140, 144, 138), "TAPAS"),
+    # Renforts nationaux
+    "f35b": (aircraft.f35b, (48, 48), 1.6, (120, 126, 130), "F-35B"),
+    "tb2": (aircraft.tb2, (48, 48), 1.7, (170, 172, 170), "TB2"),
+    "prachand": (aircraft.prachand, (48, 48), 1.6, (96, 104, 70), "PRACHAND"),
 }
 SKY = ((104, 140, 176), (176, 196, 208))
+# Aéronefs rendus avec hd.py (camouflage éventuel).
+HD_AIRCRAFT = {"f35b": None, "tb2": None,
+               "prachand": {"scale": 5.0, "seed": 29, "tones": [(0.4, 0.14), (1.1, 0.0)]}}
 # Échelle d'icône propre à certains véhicules (défaut : 1.25).
-ICON_SCALE = {"leclerc": 1.4}
+ICON_SCALE = {"leclerc": 1.4, "izumo": 0.72}
+# Taille d'image propre à certains véhicules (défaut : SIZE).
+SIZES = {"izumo": (96, 96)}
 
 
 def build_aircraft(name, palette):
     fn, size, icon_scale, color, title = AIRCRAFT[name]
     model = fn()
+    if name in HD_AIRCRAFT:
+        render.hd_style(model, camo=HD_AIRCRAFT[name], ground_ao=False)
     frames = render.render_rotations(model, size, shadow=False)     # l'ombre est dessinée par le jeu
     if name == "colibri":                                          # image du piqué final
         frames.append(render.outline(render.render_frame(aircraft.colibri_diving(), 0.0, size, shadow=False)))
@@ -101,10 +119,11 @@ def build(name, palette):
     built = fn()
     if isinstance(built, tuple):
         hull, turret, offset = built
-        frames = render.render_rotations(hull, SIZE) + render.render_rotations(turret, SIZE, shadow=False)
+        size = SIZES.get(name, SIZE)
+        frames = render.render_rotations(hull, size) + render.render_rotations(turret, size, shadow=False)
         icon_model = combined(hull, turret, offset)
     else:
-        frames = render.render_rotations(built, SIZE)
+        frames = render.render_rotations(built, SIZES.get(name, SIZE))
         icon_model = built
     render.save_sheet(frames, os.path.join(OUT, f"{name}.png"), palette)
     icon = render.label(render.render_icon(icon_model, palette, scale=ICON_SCALE.get(name, 1.25), paint=icon_color), title)

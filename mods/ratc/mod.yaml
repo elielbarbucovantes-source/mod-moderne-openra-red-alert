@@ -65,6 +65,7 @@ Rules:
 	ratc|ww3/factions.yaml
 	ratc|ww3-ratc.yaml
 	ratc|rules-japon-inde.yaml
+	ratc|rules-espagne-turquie.yaml
 
 Sequences:
 	ra|sequences/ships.yaml

@@ -2727,3 +2727,125 @@ ORION:
 		Position: BottomLeft
 		Margin: 4, 3
 		RequiresSelection: true
+
+# =====================================================================
+# ALLEMAGNE — VCI Puma et antiaérien Skyranger 30
+# =====================================================================
+# Puma : véhicule de combat d'infanterie très bien blindé. Tourelle
+# téléopérée : canon de 30 mm contre l'infanterie et les blindés légers,
+# missile Spike pour se défendre contre un char. Transporte 6 fantassins.
+PUMA:
+	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@CARGOPIPS: ^CargoPips
+	RenderSprites:
+		Image: puma
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 245
+		Prerequisites: ~vehicles.germany, ~techlevel.medium
+		Description: Véhicule de combat d'infanterie allemand, très bien blindé.\nCanon de 30 mm et missile antichar Spike.\nTransporte 6 fantassins.\n  Fort contre : infanterie, blindés légers\n  Faible contre : chars (hors missile), aviation
+	Valued:
+		Cost: 1300
+	Tooltip:
+		Name: VCI Puma
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 40000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 16
+		Speed: 82
+		PauseOnCondition: notmobile || being-captured
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 32
+		Offset: -128,0,0
+	Armament@PRIMARY:
+		Weapon: PumaCannon
+		LocalOffset: 560,0,190
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: PumaSpike
+		LocalOffset: 0,200,260
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	Cargo:
+		Types: Infantry
+		MaxWeight: 6
+		LoadingCondition: notmobile
+		EjectOnDeath: true
+	WithCargoPipsDecoration:
+		PipCount: 6
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
+# Skyranger 30 (sur Boxer 8x8) : canon antiaérien de 30 mm à munitions
+# programmables. Spécialiste des drones : son radar repère aussi les
+# nano-drones furtifs. Ne tire pas au sol.
+SKYRANGER:
+	Inherits: ^Vehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetAir
+	RenderSprites:
+		Image: skyranger
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 246
+		Prerequisites: ~vehicles.germany, ~techlevel.medium
+		Description: Blindé antiaérien Skyranger 30 sur Boxer 8x8.\nCanon de 30 mm à obus programmables, cadence très élevée.\nRadar : repère les drones furtifs.\n  Fort contre : drones, hélicoptères, avions\n  Ne peut pas attaquer les cibles au sol
+	Valued:
+		Cost: 1100
+	Tooltip:
+		Name: Skyranger 30
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 22000
+	Armor:
+		Type: Light
+	Mobile:
+		TurnSpeed: 20
+		Speed: 115
+		Locomotor: wheeled
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 8c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 40
+		Offset: -170,0,0
+	Armament:
+		Weapon: SkyrangerAHEAD
+		LocalOffset: 520,0,300
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	DetectCloaked:
+		Range: 7c0
+	RenderDetectionCircle:
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1280, 1280
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded

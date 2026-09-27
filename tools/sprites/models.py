@@ -1058,3 +1058,312 @@ def leclerc():
         tur.box(-8.5, -8.2, y - 0.1, y + 0.1, 7.8, 9.0, "metal")
     tur.box(-6.6, -5.4, 2.6, 3.8, 6.9, 7.5, "white", 0.1)                          # antenne GPS / liaison
     return hull, tur, -1.5
+
+
+# ===========================================================================
+# RENFORTS NATIONAUX (rendu détaillé hd.py)
+# ===========================================================================
+JP2 = {"scale": 7.0, "seed": 17, "tones": [(0.42, 0.14), (1.1, 0.0)]}        # vert et brun des JGSDF
+ES3 = {"scale": 7.0, "seed": 19, "tones": [(0.3, 0.16), (0.6, 0.0), (1.1, 0.08)]}
+TR3 = {"scale": 7.5, "seed": 23, "tones": [(0.32, 0.15), (0.6, 0.0), (1.1, -0.07)]}
+
+
+# ---------------------------------------------------------------------------
+# VCI Puma : caisse haute et large, moteur à l'avant droit, modules de
+# blindage latéraux épais sur toute la longueur, porte arrière, épiscopes
+# des fantassins. Tourelle téléopérée RCT30 : canon MK30-2 de 30 mm,
+# lanceur Spike à gauche, viseur panoramique du chef, lance-pots.
+# ---------------------------------------------------------------------------
+def puma():
+    hull = Model()
+    hd_tracks(hull, -11.5, 11.5, 5.7, 2.0, wheels=6, wheel_r=1.1, sprocket="front")
+    hull.box(-11.3, 9.0, -3.7, 3.7, 0.7, 2.8, "dark")
+    hull.box(-11.8, 8.6, -5.6, 5.6, 2.8, 5.4)
+    hull.prism([(8.6, -5.6, 2.8), (12.2, -4.6, 3.4), (12.2, 4.6, 3.4), (8.6, 5.6, 2.8)],
+               [(8.6, -5.6, 5.4), (10.2, -4.8, 5.0), (10.2, 4.8, 5.0), (8.6, 5.6, 5.4)])
+    hd_skirts(hull, -11.6, 11.4, 5.6, 1.2, 5.2, panels=5, heavy=5, heavy_z0=1.2)
+    hull.box(-12.3, -11.8, -3.2, 3.2, 1.4, 5.0, "paint", 0.12)                    # porte arrière
+    hull.box(-12.4, -12.2, -2.6, 2.6, 1.8, 4.6, "dark")
+    hull.box(1.2, 8.2, -5.0, -0.8, 5.4, 5.8, "paint", 0.1)                        # moteur (avant droit)
+    for gx in (2.0, 3.8, 5.6):
+        hull.box(gx, gx + 1.2, -4.4, -1.4, 5.8, 6.0, "dark")
+    hatch(hull, 7.0, 2.8, 5.4, 0.9)                                              # pilote (avant gauche)
+    periscope(hull, 7.8, 8.4, 1.8, 3.8, 5.4, 0.35)
+    for x in (-10.0, -7.6, -5.2):                                                 # épiscopes du compartiment
+        for s in (1, -1):
+            periscope(hull, x, x + 1.2, *ys(s * 4.4, s * 5.2), 5.4, 0.35)
+    hatch(hull, -8.8, 0.0, 5.4, 1.1)
+    for s in (1, -1):
+        lights(hull, 10.0, s * 4.0, 5.1, s)
+        tow_cable(hull, -10.0, 0.0, s * 5.2, 5.55)
+    hd_style(hull, camo=NATO3, dust=0.8)
+
+    tur = Model()
+    base = [(-4.8, -3.6), (3.2, -3.6), (4.6, -2.2), (4.6, 2.2), (3.2, 3.6), (-4.8, 3.6)]
+    tur.prism([(x, y, 5.4) for x, y in base], [(x, y, 7.0) for x, y in scaled(base, 0.92, 0.85, -0.2)])
+    tur.box(4.2, 5.6, -1.0, 1.0, 5.7, 6.8, "paint", 0.12)
+    hd_barrel(tur, 5.4, 14.6, 6.3, 0.36, sleeves=((5.6, 8.4),), brake=0.9, mrs=False)
+    tur.box(-3.4, 1.8, *ys(3.6, 5.6), 5.8, 7.4, "paint", 0.14)                    # lanceur Spike (gauche)
+    for tz in (6.25, 7.0):
+        tur.cylinder_x(1.8, 2.1, 4.6, tz, 0.38, "dark")
+    tur.cylinder_z(-2.6, -2.2, 7.0, 8.0, 0.6, "metal")                           # panoramique du chef
+    tur.box(-3.4, -1.8, -3.0, -1.4, 8.0, 9.0, "paint", 0.05)
+    tur.box(-1.8, -1.55, -2.8, -1.6, 8.2, 8.8, "glass")
+    tur.box(0.8, 2.8, 1.0, 2.6, 7.0, 7.9, "paint", 0.1)                           # viseur du tireur
+    tur.box(2.8, 3.05, 1.2, 2.4, 7.2, 7.7, "glass")
+    for s in (1, -1):
+        smoke_launchers(tur, -4.4, s * 3.5, 6.6, s, 4, spacing=0.55)
+    antenna(tur, -4.2, 2.4, 7.0, 5.5)
+    hd_style(tur, camo=NATO3)
+    return hull, tur, -3.0
+
+
+# ---------------------------------------------------------------------------
+# Skyranger 30 sur Boxer 8x8 : caisse haute à flancs biseautés, module de
+# conduite et module de mission, 4 grandes roues par côté. Tourelle avec
+# canon revolver de 30 mm, 4 panneaux radar AESA, capteur optronique.
+# ---------------------------------------------------------------------------
+def skyranger():
+    hull = Model()
+    for x in (8.6, 4.4, -3.8, -8.0):
+        for s in (1, -1):
+            wheel(hull, x, s * 3.3, s * 5.0, 1.85)
+    hull.box(-11.6, 11.0, -3.2, 3.2, 1.3, 2.6, "dark")
+    hull.tapered_box(-12, 9.6, -5.2, 5.2, 2.4, 6.6, inset_side=0.9, inset_back=0.3)
+    hull.prism([(9.6, -5.2, 2.4), (12.6, -3.8, 3.2), (12.6, 3.8, 3.2), (9.6, 5.2, 2.4)],
+               [(9.6, -4.3, 6.6), (11.2, -3.4, 5.6), (11.2, 3.4, 5.6), (9.6, 4.3, 6.6)])
+    hull.box(-1.2, -0.9, -4.4, 4.4, 6.6, 6.7, "dark")                             # joint des modules
+    for s in (1, -1):
+        hull.box(-11.0, 10.4, *ys(s * 4.9, s * 5.4), 3.8, 4.2, "paint", 0.14)    # garde-boue
+        hull.box(-10.4, -5.0, *ys(s * 4.6, s * 5.3), 4.3, 5.8, "paint", 0.16)    # coffres
+        lights(hull, 11.0, s * 3.4, 5.4, s)
+        hull.tube((10.2, s * 4.0, 6.0), (10.8, s * 5.4, 6.6), 0.2, "dark", sides=4)
+        hull.box(10.6, 11.0, *ys(s * 5.2, s * 5.7), 6.2, 7.0, "dark")
+    periscope(hull, 10.0, 10.8, 1.2, 3.4, 6.2, 0.35)
+    hatch(hull, 8.6, 2.2, 6.6, 0.9)
+    hatch(hull, -9.6, -2.0, 6.6, 1.0)
+    hull.box(-12.4, -12.0, -3.0, 3.0, 2.8, 6.0, "paint", 0.12)                    # porte arrière
+    hd_style(hull, camo=NATO3, dust=0.8, dust_height=2.8, track_period=1.6)
+
+    tur = Model()
+    body = [(-4.2, -3.2), (2.6, -3.2), (4.0, -1.8), (4.0, 1.8), (2.6, 3.2), (-4.2, 3.2)]
+    tur.prism([(x, y, 6.6) for x, y in body], [(x, y, 9.0) for x, y in scaled(body, 0.9, 0.85, -0.2)])
+    tur.box(3.6, 5.0, -0.9, 0.9, 7.2, 8.4, "paint", 0.12)
+    hd_barrel(tur, 4.8, 15.0, 7.8, 0.38, sleeves=((4.8, 7.2),), brake=1.0, mrs=False)
+    tur.box(7.8, 8.6, -0.25, 0.25, 8.2, 8.5, "dark")                               # capteur de vitesse initiale
+    for s in (1, -1):                                                               # panneaux radar AESA
+        mirrored_prism(tur, [(1.0, 3.2, 7.0), (3.6, 2.2, 7.0), (3.8, 2.6, 7.0), (1.2, 3.6, 7.0)],
+                       [(1.0, 3.2, 8.8), (3.6, 2.2, 8.8), (3.8, 2.6, 8.8), (1.2, 3.6, 8.8)], s, "dark", 0.0)
+        mirrored_prism(tur, [(-4.2, 2.6, 7.0), (-2.0, 3.4, 7.0), (-2.2, 3.8, 7.0), (-4.4, 3.0, 7.0)],
+                       [(-4.2, 2.6, 8.8), (-2.0, 3.4, 8.8), (-2.2, 3.8, 8.8), (-4.4, 3.0, 8.8)], s, "dark", 0.0)
+        smoke_launchers(tur, -1.8, s * 3.3, 7.8, s, 3, spacing=0.55)
+    tur.cylinder_z(-1.2, 0.0, 9.0, 9.8, 0.9, "paint", sides=10, tint=0.08)       # boule optronique
+    tur.box(-0.4, 0.0, -0.5, 0.5, 9.1, 9.7, "glass")
+    antenna(tur, -3.6, -2.2, 9.0, 4.5)
+    hd_style(tur, camo=NATO3)
+    return hull, tur, -4.0
+
+
+# ---------------------------------------------------------------------------
+# Type 03 Chu-SAM : camion 6x6 à cabine avancée, plateau avec rampe
+# orientable de 6 conteneurs de missiles (2 rangées de 3) relevée à 25°.
+# ---------------------------------------------------------------------------
+def chusam():
+    hull = Model()
+    for x in (8.0, -3.4, -7.6):
+        for s in (1, -1):
+            wheel(hull, x, s * 2.8, s * 4.4, 1.8)
+    hull.box(-12.0, 11.0, -2.2, 2.2, 1.4, 2.4, "dark")
+    hull.box(-12.0, 5.2, -3.6, 3.6, 2.4, 3.2, "dark", 0.1)
+    hull.tapered_box(5.4, 11.8, -4.0, 4.0, 2.4, 7.4, inset_front=0.8, inset_side=0.3)   # cabine
+    hull.box(11.4, 11.95, -3.4, 3.4, 5.0, 6.9, "glass")
+    hull.box(11.7, 12.2, -3.4, 3.4, 2.8, 4.6, "dark")
+    for s in (1, -1):
+        hull.box(6.4, 10.2, *ys(s * 3.85, s * 4.05), 5.2, 6.8, "glass")
+        hull.box(11.5, 12.1, *ys(s * 2.6, s * 3.5), 4.8, 5.3, "white", 0.05)
+        hull.tube((9.8, s * 3.9, 6.4), (10.4, s * 5.0, 6.8), 0.2, "dark", sides=4)
+        hull.box(10.2, 10.6, *ys(s * 4.9, s * 5.3), 5.8, 7.0, "dark")
+        hull.box(6.2, 9.6, *ys(s * 3.4, s * 4.4), 1.4, 3.3, "paint", 0.2)
+        hull.box(-10.2, -0.8, *ys(s * 3.5, s * 4.6), 2.8, 3.4, "paint", 0.18)
+        hull.box(-1.0, 4.8, *ys(s * 3.3, s * 4.4), 3.2, 4.8, "paint", 0.12)       # coffres
+        hull.box(-11.6, -10.4, *ys(s * 3.0, s * 4.0), 1.0, 3.2, "metal", 0.1)     # vérins de calage
+    hull.box(-12.0, 5.0, -4.0, 4.0, 3.2, 3.8, "paint", 0.1)                        # plateau
+    hull.cylinder_z(-4.9, 0.0, 3.8, 4.6, 2.6, "paint", sides=12, tint=0.08)       # couronne
+    hd_style(hull, camo=JP2, dust=0.8, dust_height=2.6, track_period=1.6)
+
+    tur = Model()
+    tur.box(-2.4, 2.4, -2.2, 2.2, 4.6, 5.8, "paint", 0.04)                        # socle
+    for s in (1, -1):
+        tur.box(-1.0, 1.4, *ys(s * 2.2, s * 2.8), 4.6, 7.6, "paint", 0.12)       # bras
+    el = math.radians(25)
+    ce, se = math.cos(el), math.sin(el)
+    L0, L1 = -6.0, 6.5
+    for row in range(2):
+        for col in range(3):
+            y = -2.3 + col * 2.3
+            zc = 6.8 + row * 1.9
+            pts = []
+            for x in (L0, L1):
+                pts.append((x * ce, zc + x * se))
+            (xa, za), (xb, zb) = pts
+            tur.prism([(xa, y - 1.0, za - 0.85), (xb, y - 1.0, zb - 0.85), (xb, y + 1.0, zb - 0.85), (xa, y + 1.0, za - 0.85)],
+                      [(xa, y - 1.0, za + 0.85), (xb, y - 1.0, zb + 0.85), (xb, y + 1.0, zb + 0.85), (xa, y + 1.0, za + 0.85)],
+                      "paint", 0.06 + 0.08 * ((row + col) % 2))
+            tur.box(xb - 0.05, xb + 0.15, y - 0.7, y + 0.7, zb - 0.6, zb + 0.6, "white", 0.15)   # couvercle
+    antenna(tur, -2.0, 2.0, 5.8, 3.0)
+    hd_style(tur, camo=JP2)
+    return hull, tur, -4.9
+
+
+# ---------------------------------------------------------------------------
+# VCR 8x8 Dragón : caisse haute à nez en coin, 4 essieux, coffres latéraux,
+# tourelleau téléopéré Guardian 30 (30 mm) avec viseur et lance-pots.
+# ---------------------------------------------------------------------------
+def dragon8x8():
+    hull = Model()
+    for x in (8.4, 4.4, -3.6, -7.6):
+        for s in (1, -1):
+            wheel(hull, x, s * 3.3, s * 4.9, 1.8)
+    hull.box(-11.4, 10.8, -3.2, 3.2, 1.3, 2.6, "dark")
+    hull.tapered_box(-12, 9.0, -5.1, 5.1, 2.4, 6.2, inset_side=0.8, inset_back=0.3)
+    hull.prism([(9.0, -5.1, 2.4), (12.8, -2.8, 3.0), (12.8, 2.8, 3.0), (9.0, 5.1, 2.4)],
+               [(9.0, -4.3, 6.2), (10.8, -3.0, 5.2), (10.8, 3.0, 5.2), (9.0, 4.3, 6.2)])
+    hull.box(11.6, 12.9, -2.6, 2.6, 2.6, 3.2, "paint", 0.2)                        # déflecteur
+    for s in (1, -1):
+        hull.box(-10.6, 10.4, *ys(s * 4.8, s * 5.3), 3.6, 4.0, "paint", 0.14)
+        for x0, x1 in ((-10.2, -6.0), (-1.8, 2.2)):
+            hull.box(x0, x1, *ys(s * 4.5, s * 5.2), 4.0, 5.6, "paint", 0.16)
+        lights(hull, 10.2, s * 3.2, 5.2, s)
+        hull.box(-12.3, -11.9, *ys(s * 1.0, s * 4.0), 3.0, 5.2, "paint", 0.1)
+    periscope(hull, 9.2, 9.9, 1.4, 3.6, 5.8, 0.35)
+    hatch(hull, 8.0, 2.4, 6.2, 0.9)
+    for x in (-9.4, -6.6):
+        hatch(hull, x, 0.0, 6.2, 0.9)
+    hull.box(-12.4, -12.1, -2.2, 2.2, 2.8, 5.4, "dark", 0.1)                       # rampe arrière
+    antenna(hull, -11.0, -3.4, 6.2, 5.0)
+    hd_style(hull, camo=ES3, dust=0.8, dust_height=2.8, track_period=1.6)
+
+    tur = Model()
+    base = [(-3.0, -2.4), (2.2, -2.4), (3.2, -1.4), (3.2, 1.4), (2.2, 2.4), (-3.0, 2.4)]
+    tur.prism([(x, y, 6.2) for x, y in base], [(x, y, 7.8) for x, y in scaled(base, 0.9, 0.85)])
+    hd_barrel(tur, 2.8, 10.6, 7.0, 0.34, sleeves=((2.8, 5.0),), brake=0.8, mrs=False)
+    tur.box(-1.4, 0.8, *ys(2.4, 3.8), 6.6, 8.2, "paint", 0.12)                     # caisson à munitions
+    tur.box(0.2, 1.8, -2.2, -0.8, 7.8, 8.8, "paint", 0.06)                           # viseur
+    tur.box(1.8, 2.05, -2.0, -1.0, 8.0, 8.6, "glass")
+    tur.cylinder_x(1.6, 3.8, -1.6, 6.7, 0.18, "dark")                               # coaxiale
+    for s in (1, -1):
+        smoke_launchers(tur, -2.8, s * 2.4, 7.4, s, 3, spacing=0.5)
+    hd_style(tur, camo=ES3)
+    return hull, tur, -1.0
+
+
+# ---------------------------------------------------------------------------
+# Altay : caisse longue à 7 galets, jupes à modules lourds à l'avant,
+# grilles moteur. Tourelle anguleuse à blindage modulaire, capteurs radar et
+# lanceurs de la protection active AKKOR, viseur du chef à droite,
+# tourelleau SARP, nuque avec panier, canon de 120 mm L55.
+# ---------------------------------------------------------------------------
+def altay():
+    hull = Model()
+    hd_tracks(hull, -12.2, 12.2, 5.9, 2.2, wheels=7)
+    hull.box(-12.0, 9.6, -3.7, 3.7, 0.7, 2.8, "dark")
+    hull.box(-12.2, 9.6, -5.7, 5.7, 2.8, 4.3)
+    hull.prism([(9.6, -5.7, 2.8), (12.8, -4.6, 3.5), (12.8, 4.6, 3.5), (9.6, 5.7, 2.8)],
+               [(9.6, -5.7, 4.3), (11.0, -4.9, 4.3), (11.0, 4.9, 4.3), (9.6, 5.7, 4.3)])
+    hull.prism([(9.4, -3.7, 0.8), (11.8, -3.7, 0.8), (11.8, 3.7, 0.8), (9.4, 3.7, 0.8)],
+               [(9.4, -3.9, 2.8), (13.0, -3.9, 3.0), (13.0, 3.9, 3.0), (9.4, 3.9, 2.8)], "paint", 0.1)
+    hd_skirts(hull, -12.0, 11.6, 5.7, 1.3, 4.2, panels=7, heavy=3)
+    hull.box(-12.0, -4.8, -4.8, 4.8, 4.3, 4.6, "paint", 0.1)
+    for gx in (-11.4, -9.4, -7.4):
+        hull.box(gx, gx + 1.3, -4.0, 4.0, 4.6, 4.8, "dark")
+    hull.box(-12.6, -12.0, -4.8, 4.8, 1.6, 4.3, "dark", 0.1)
+    for s in (1, -1):
+        hull.box(-12.7, -11.8, *ys(s * 3.0, s * 4.9), 2.6, 4.5, "paint", 0.2)
+        tow_cable(hull, -10.4, 6.0, s * 5.0, 4.45)
+        lights(hull, 10.8, s * 4.1, 4.3, s)
+    hatch(hull, 8.2, 2.4, 4.3, 0.9)
+    periscope(hull, 8.8, 9.5, 1.4, 3.4, 4.3, 0.4)
+    hd_style(hull, camo=TR3, dust=0.8)
+
+    tur = Model()
+    body = [(-7.6, -4.5), (3.2, -4.8), (7.4, -3.2), (7.8, -1.4), (7.8, 1.4), (7.4, 3.2), (3.2, 4.8), (-7.6, 4.5)]
+    tur.prism([(x, y, 4.3) for x, y in body], [(x - 0.2, y * 0.95, 7.3) for x, y in body])
+    tur.box(-7.8, 3.4, -4.2, 4.2, 7.3, 7.5, "paint", 0.1)
+    for s in (1, -1):                                                               # modules avant
+        mirrored_prism(tur, [(3.4, 1.5, 4.5), (8.4, 1.5, 4.5), (7.2, 4.6, 4.5), (3.2, 5.0, 4.5)],
+                       [(3.4, 1.5, 7.3), (8.0, 1.5, 7.3), (6.9, 4.4, 7.3), (3.2, 4.8, 7.3)], s, "paint", 0.06)
+        mirrored_prism(tur, [(4.2, 4.9, 5.0), (6.8, 4.5, 5.0), (6.9, 4.9, 5.0), (4.3, 5.3, 5.0)],
+                       [(4.2, 4.9, 7.1), (6.8, 4.5, 7.1), (6.9, 4.9, 7.1), (4.3, 5.3, 7.1)], s, "dark")   # radar AKKOR
+        tur.box(-4.6, -1.8, *ys(s * 4.5, s * 5.4), 6.4, 7.6, "paint", 0.14)       # lanceurs AKKOR
+        tur.cylinder_z(-3.2, s * 4.95, 7.6, 8.1, 0.5, "metal", sides=8)
+        tur.box(-7.4, -4.8, *ys(s * 4.4, s * 5.2), 4.8, 6.6, "paint", 0.16)      # coffres
+        smoke_launchers(tur, -1.4, s * 4.6, 6.8, s, 4, spacing=0.55)
+    tur.box(-11.4, -7.4, -4.0, 4.0, 4.6, 7.0, "paint", 0.06)                        # nuque
+    for k in range(6):
+        tur.box(-12.2, -11.9, -3.6 + k * 1.44, -3.3 + k * 1.44, 5.0, 7.3, "dark")
+    tur.box(-12.1, -11.5, -3.3, 3.3, 5.2, 6.9, "olive", 0.1)
+    tur.box(7.4, 9.0, -1.2, 1.2, 4.9, 6.9, "paint", 0.12)
+    hd_barrel(tur, 8.8, 24.0, 5.9, 0.62, sleeves=((9.2, 12.8), (16.4, 19.6), (19.9, 22.8)), evacuator=(13.2, 16.0))
+    tur.cylinder_z(-2.2, -2.6, 7.4, 8.8, 0.8, "metal")                            # viseur du chef (droite)
+    tur.box(-3.2, -1.2, -3.6, -1.6, 8.8, 9.9, "paint", 0.06)
+    tur.box(-1.2, -0.95, -3.3, -1.9, 9.1, 9.7, "glass")
+    tur.box(2.0, 4.6, 1.8, 3.8, 7.4, 8.4, "paint", 0.1)                             # viseur du tireur
+    tur.box(4.6, 4.85, 2.1, 3.5, 7.6, 8.2, "glass")
+    tur.box(-5.6, -3.8, 0.6, 2.4, 7.4, 8.0, "dark")                                 # tourelleau SARP
+    tur.box(-5.3, -4.0, 0.9, 2.1, 8.0, 8.9, "paint", 0.08)
+    tur.tube((-4.2, 1.5, 8.5), (-1.8, 1.5, 8.55), 0.22, "metal", sides=4)
+    hatch(tur, -2.0, 2.6, 7.4, 0.9)
+    for y in (-3.2, 3.2):
+        antenna(tur, -9.6, y, 7.0, 6.5)
+    hd_style(tur, camo=TR3)
+    return hull, tur, -2.0
+
+
+# ---------------------------------------------------------------------------
+# Porte-avions Izumo : pont d'envol continu, îlot à tribord (radars plats,
+# mât, cheminées), ascenseurs, marquages blancs des spots d'appontage,
+# systèmes CIWS à la proue et à la poupe, deux F-35B garés sur le pont.
+# Sprite de 96 x 96.
+# ---------------------------------------------------------------------------
+def izumo():
+    m = Model()
+    hull_wl = [(-36, -5.0), (26, -5.4), (34, -3.0), (38, 0.0), (34, 3.0), (26, 5.4), (-36, 5.0)]
+    deck = [(-38, -6.6), (27, -6.8), (35, -3.8), (39, 0.0), (35, 3.8), (27, 6.8), (-38, 6.6)]
+    m.prism([(x, y, 0.0) for x, y in ccw(hull_wl)], [(x, y, 3.2) for x, y in ccw(deck)], "paint", 0.1)
+    m.extrude(ccw(deck), 3.2, 3.8, "dark", 0.15)                                     # pont d'envol
+    for x in range(-34, 36, 4):                                                     # axe central pointillé
+        m.box(x, x + 2.0, -0.25, 0.25, 3.8, 3.85, "white", 0.05)
+    for x in (-26, -14, -2, 10, 22):                                                # spots d'appontage
+        m.box(x - 1.3, x + 1.3, 2.4, 5.0, 3.8, 3.85, "white", 0.2)
+        m.box(x - 0.7, x + 0.7, 3.1, 4.3, 3.84, 3.86, "dark", 0.15)
+    for x0, x1 in ((-22, -16), (14, 20)):                                           # ascenseurs
+        m.box(x0, x1, -5.6, -2.0, 3.8, 3.82, "dark", 0.3)
+        for xa, xb, ya, yb in ((x0, x1, -5.6, -5.4), (x0, x1, -2.2, -2.0), (x0, x0 + 0.2, -5.6, -2.0), (x1 - 0.2, x1, -5.6, -2.0)):
+            m.box(xa, xb, ya, yb, 3.8, 3.87, "white", 0.1)
+    # îlot à tribord
+    m.box(-8, 14, -7.0, -4.6, 3.8, 8.4, "paint", 0.02)
+    m.box(-6, 12, -6.8, -4.9, 8.4, 11.0, "paint", 0.06)
+    m.box(-3, 8, -6.6, -5.1, 11.0, 13.2, "paint", 0.1)
+    for x0, x1 in ((-6.5, -3.5), (5.5, 8.5)):                                      # cheminées
+        m.box(x0, x1, -6.4, -5.2, 11.0, 12.8, "dark", 0.1)
+    for x, zz in ((12.3, 9.2), (-6.3, 9.2)):                                        # radars plats FCS-3
+        m.box(x, x + 0.3, -6.6, -5.0, zz, zz + 1.8, "dark")
+    m.box(8.0, 8.3, -6.4, -5.3, 11.2, 12.8, "glass")
+    m.box(12.0, 12.25, -6.8, -4.8, 8.6, 9.2, "glass")                               # passerelle
+    m.tube((2.0, -5.8, 13.2), (2.0, -5.8, 18.0), 0.35, "metal", sides=6)            # mât
+    m.box(1.0, 3.0, -6.8, -4.8, 16.0, 16.3, "metal")
+    m.box(1.6, 2.4, -6.1, -5.5, 18.0, 18.6, "white")
+    # CIWS et lance-missiles SeaRAM
+    for x, y in ((34.0, 2.2), (-36.0, -3.0), (-35.0, 3.2)):
+        m.cylinder_z(x, y, 3.8, 4.4, 0.9, "white", sides=8, tint=0.05)
+        m.cylinder_z(x, y, 4.4, 5.6, 0.6, "white", sides=8)
+    # deux F-35B garés
+    for x0 in (-30.0, -24.5):                                                       # sur l'axe, à l'arrière
+        m.loft_x([(x0 - 2.4, 0.3, 0.3, 4.3), (x0 - 1.0, 0.7, 0.4, 4.3), (x0 + 1.6, 0.6, 0.4, 4.3), (x0 + 2.6, 0.1, 0.1, 4.2)],
+                 "metal", 8, tint=0.1)
+        for s in (1, -1):
+            m.plate([(x0 + 0.2, s * 0.6, 4.2), (x0 - 1.4, s * 2.8, 4.2), (x0 - 2.2, s * 2.8, 4.2), (x0 - 1.6, s * 0.6, 4.2)],
+                    0.2, "metal", 0.1)
+    # bord de coque : ligne de flottaison sombre
+    m.prism([(x, y * 1.01, -0.2) for x, y in ccw(hull_wl)], [(x, y * 1.01, 0.6) for x, y in ccw(hull_wl)], "dark", 0.1)
+    return hd_style(m, camo=None, dust=0.0)

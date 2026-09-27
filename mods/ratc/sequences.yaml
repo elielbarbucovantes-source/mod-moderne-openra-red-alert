@@ -711,3 +711,137 @@ leclerc.destroyed:
 	turret:
 		Start: 32
 		Facings: 32
+
+# ======================================================================
+# Renforts nationaux : sprites générés par tools/sprites/build.py
+# (véhicules, navire, aéronefs) et tools/sprites/infantry.py (infanterie).
+# ======================================================================
+puma:
+	Defaults:
+		Filename: ratc|bits/puma.png
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/pumaicon.png
+
+skyranger:
+	Defaults:
+		Filename: ratc|bits/skyranger.png
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/skyrangericon.png
+
+chusam:
+	Defaults:
+		Filename: ratc|bits/chusam.png
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+	icon:
+		Filename: ratc|bits/chusamicon.png
+
+dragon8x8:
+	Defaults:
+		Filename: ratc|bits/dragon8x8.png
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/dragon8x8icon.png
+
+altay:
+	Defaults:
+		Filename: ratc|bits/altay.png
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: ratc|bits/altayicon.png
+
+altay.destroyed:
+	Defaults:
+		Filename: ratc|bits/altay.png
+		ZOffset: -512
+	idle:
+		Facings: 32
+	turret:
+		Start: 32
+		Facings: 32
+
+izumo:
+	idle:
+		Filename: ratc|bits/izumo.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/izumoicon.png
+
+f35b:
+	idle:
+		Filename: ratc|bits/f35b.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/f35bicon.png
+
+tb2:
+	idle:
+		Filename: ratc|bits/tb2.png
+		Facings: 32
+	icon:
+		Filename: ratc|bits/tb2icon.png
+
+prachand:
+	idle:
+		Filename: ratc|bits/prachand.png
+		Facings: 32
+	rotor:
+		Filename: lrotorlg.shp
+		Length: 4
+	slow-rotor:
+		Filename: lrotorlg.shp
+		Start: 4
+		Length: 8
+	muzzle:
+		Filename: minigun.shp
+		Length: 6
+		Facings: 8
+	icon:
+		Filename: ratc|bits/prachandicon.png
+
+parasf:
+	Inherits: e1
+	Defaults:
+		Filename: ratc|bits/parasf.png
+	icon:
+		Filename: ratc|bits/parasficon.png
+
+legion:
+	Inherits: e1
+	Defaults:
+		Filename: ratc|bits/legion.png
+	icon:
+		Filename: ratc|bits/legionicon.png

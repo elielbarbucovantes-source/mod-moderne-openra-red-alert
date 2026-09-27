@@ -3,7 +3,7 @@
 On garde toutes les animations RA (debout, course, tir, couché, morts...)
 et on ajoute l'équipement distinctif de chaque unité, pixel par pixel.
 
-Usage : python3 infantry.py temperat.pal DOSSIER_FRAMES
+Usage : python3 infantry.py temperat.pal DOSSIER_FRAMES [unité ...]
 DOSSIER_FRAMES contient e1/, e2/, e3/, e1icon/... produits par
   ./utility.sh --png e1.shp temperat.pal   (etc.)
 """
@@ -113,7 +113,7 @@ def union_jack(icon, pal, x0=48, y0=3, w=13, h=9):
     return icon
 
 
-def main(pal_path, frames_dir):
+def main(pal_path, frames_dir, only=()):
     pal = render.load_palette(pal_path)
     red = nearest(pal, (170, 20, 30))          # béret amarante
     olive = nearest(pal, (70, 100, 45))
@@ -123,6 +123,9 @@ def main(pal_path, frames_dir):
     grey = 136
     blue = nearest(pal, (20, 60, 170))
     white = nearest(pal, (240, 240, 240))
+    maroon = nearest(pal, (110, 20, 40))
+    saffron = nearest(pal, (240, 150, 40))
+    green = nearest(pal, (20, 120, 50))
 
     units = {
         # nom : (sprite RA, retouche, drapeau)
@@ -130,8 +133,14 @@ def main(pal_path, frames_dir):
         "nlaw": ("e3", dict(head=olive), "NLAW", lambda i: union_jack(i, pal)),
         "fpvop": ("e2", dict(goggles=black, antenna=grey), "DRONE FPV", lambda i: flag(i, [blue, yellow], vertical=False)),
         "trench": ("e1", dict(head=dkgreen, band=yellow), "TRANCHEE", lambda i: flag(i, [blue, yellow], vertical=False)),
+        # Inde : béret amarante, tenue sombre de commando
+        "parasf": ("e1", dict(head=maroon, darken=4), "PARA SF", lambda i: flag(i, [saffron, white, green], vertical=False)),
+        # Espagne : calot vert de La Legión à gland rouge
+        "legion": ("e1", dict(head=dkgreen, band=red), "LEGION", lambda i: flag(i, [red, yellow, yellow, red], vertical=False)),
     }
     for name, (base, opts, title, add_flag) in units.items():
+        if only and name not in only:
+            continue
         frames = [recolor(f, **opts) for f in load_frames(os.path.join(frames_dir, base), base)]
         render.save_sheet(frames, os.path.join(OUT, f"{name}.png"), pal)
         icon = load_frames(os.path.join(frames_dir, base + "icon"), base + "icon")[0]
@@ -140,4 +149,4 @@ def main(pal_path, frames_dir):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    main(sys.argv[1], sys.argv[2], sys.argv[3:])

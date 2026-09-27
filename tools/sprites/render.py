@@ -326,7 +326,7 @@ ICON_COLORS = {
 }
 
 
-def hd_style(m, camo=None, dust=0.0, dust_height=2.4, track_period=2.0):
+def hd_style(m, camo=None, dust=0.0, dust_height=2.4, track_period=2.0, ground_ao=True):
     """Active le rendu détaillé (hd.py) : ombres portées, camouflage, poussière, textures, liserés.
     camo : {"scale": taille des taches, "seed": graine, "tones": [(seuil, assombrissement), ...]}."""
     m.hd = True
@@ -334,6 +334,7 @@ def hd_style(m, camo=None, dust=0.0, dust_height=2.4, track_period=2.0):
     m.dust = dust
     m.dust_height = dust_height
     m.track_period = track_period
+    m.ground_ao = ground_ao            # assombrissement près du sol (False pour les aéronefs)
     return m
 
 

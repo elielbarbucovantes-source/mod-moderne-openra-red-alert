@@ -895,3 +895,129 @@ PinakaRocket:
 		ImpactSounds: splash9.aud
 		ValidTargets: Water, Underwater
 		InvalidTargets: Bridge
+
+# =====================================================================
+# RENFORTS NATIONAUX : Allemagne, Japon, Inde, Espagne, Turquie
+# =====================================================================
+# Puma : canon de 30 mm en rafales courtes.
+PumaCannon:
+	Inherits: 25mm
+	ReloadDelay: 18
+	Burst: 2
+	BurstDelays: 4
+	Range: 5c512
+	Warhead@1Dam: SpreadDamage
+		Damage: 2300
+		Versus:
+			None: 60
+			Wood: 50
+			Light: 120
+			Heavy: 35
+			Concrete: 30
+
+# Puma : missile Spike, défense contre les chars (recharge longue).
+PumaSpike:
+	Inherits: ^AntiGroundMissile
+	ReloadDelay: 250
+	Range: 6c0
+	MinRange: 1c0
+	Projectile: Missile
+		Speed: 280
+		RangeLimit: 7c512
+		TrailImage: smokey
+	Warhead@1Dam: SpreadDamage
+		Damage: 11000
+		Versus:
+			None: 10
+			Wood: 50
+			Light: 100
+			Heavy: 110
+			Concrete: 40
+
+# Skyranger 30 : obus programmables à éclatement aérien, très forte cadence.
+SkyrangerAHEAD:
+	Inherits: ZSU-23
+	Burst: 3
+	BurstDelays: 2
+	ReloadDelay: 8
+	Range: 7c0
+
+# Chu-SAM : missile sol-air à longue portée, salve de 2.
+ChuSAM:
+	Inherits: Nike
+	ReloadDelay: 150
+	Burst: 2
+	BurstDelays: 8
+	Range: 10c0
+	Projectile: Missile
+		RangeLimit: 13c0
+		Speed: 400
+	Warhead@1Dam: SpreadDamage
+		Damage: 7000
+
+# Para SF : fusil d'assaut à longue portée.
+ParaSFRifle:
+	Inherits: M1Carbine
+	ReloadDelay: 16
+	Range: 5c512
+
+# Prachand : canon de 20 mm et missile antichar Helina.
+PrachandGun:
+	Inherits: ChainGun
+	Range: 5c512
+Helina:
+	Inherits: HellfireAG
+	ReloadDelay: 60
+	Burst: 1
+	-BurstDelays:
+	Range: 7c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 9000
+
+# La Legión : fusil d'assaut, cadence un peu supérieure au fantassin de base.
+LegionRifle:
+	Inherits: M1Carbine
+	ReloadDelay: 17
+
+# Dragón : tourelleau téléopéré de 30 mm.
+DragonCannon:
+	Inherits: 25mm
+	ReloadDelay: 20
+	Range: 5c0
+
+# Bayraktar TB2 : mini-bombe guidée MAM-L, frappe par le dessus.
+MamL:
+	Inherits: ReaperGBU
+	ReloadDelay: 80
+	Range: 6c0
+	Warhead@1Dam: SpreadDamage
+		Spread: 192
+		Damage: 8500
+		Versus:
+			None: 70
+			Wood: 100
+			Light: 130
+			Heavy: 75
+			Concrete: 60
+			ERA: 100
+	Warhead@3Eff: CreateEffect
+		Explosions: med_explosion
+		ImpactSounds: kaboom12.aud
+
+# Altay : canon de 120 mm.
+AltayGun:
+	Inherits: ^Cannon
+	ReloadDelay: 85
+	Range: 5c512
+	Projectile: Bullet
+		Speed: 800
+	Warhead@1Dam: SpreadDamage
+		Spread: 96
+		Damage: 12500
+		Versus:
+			None: 25
+			Wood: 60
+			Light: 85
+			Heavy: 115
+			Concrete: 50
+		InvalidTargets: Air

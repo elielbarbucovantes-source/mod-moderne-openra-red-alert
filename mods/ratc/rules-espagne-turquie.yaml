@@ -1,0 +1,242 @@
+# =====================================================================
+# ESPAGNE ET TURQUIE — unités nationales ratc
+# Chargé après rules-japon-inde.yaml. Les factions et leurs unités WW3
+# sont définies dans ww3/ (générés par tools/ww3-import/).
+# =====================================================================
+
+# =====================================================================
+# ESPAGNE — La Legión et VCR 8x8 Dragón
+# =====================================================================
+# Légionnaires : infanterie d'assaut au moral inébranlable. Ni la
+# suppression ni la démoralisation ne les ralentissent.
+LEGION:
+	Inherits: ^Soldier
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: legion
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 155
+		Prerequisites: ~infantry.spain, ~techlevel.low
+		Description: Infanterie d'assaut de La Legión.\nMoral inébranlable : insensible à la suppression\net à la démoralisation. Rapide et robuste.\n  Fort contre : infanterie\n  Faible contre : véhicules, aviation
+	Valued:
+		Cost: 250
+	Tooltip:
+		Name: Légionnaire
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 6500
+	Mobile:
+		Speed: 64
+	-ExternalCondition@SUPPRESSED:
+	-ExternalCondition@DEMORALIZED:
+	-SpeedMultiplier@SUPPRESSED:
+	-ReloadDelayMultiplier@SUPPRESSED:
+	-SpeedMultiplier@DEMORALIZED:
+	-FirepowerMultiplier@DEMORALIZED:
+	Armament@PRIMARY:
+		Weapon: LegionRifle
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: LegionRifle
+		MuzzleSequence: garrison-muzzle
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		StandSequences: parachute
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
+	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: barracks.upgraded
+
+# VCR 8x8 Dragón : blindé à roues rapide, tourelleau téléopéré de 30 mm,
+# transporte 8 fantassins.
+DRAGON:
+	Inherits: ^Vehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@CARGOPIPS: ^CargoPips
+	RenderSprites:
+		Image: dragon8x8
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 245
+		Prerequisites: ~vehicles.spain, ~techlevel.medium
+		Description: Véhicule de combat à roues 8x8 Dragón.\nRapide, tourelleau téléopéré de 30 mm.\nTransporte 8 fantassins.\n  Fort contre : infanterie, blindés légers\n  Faible contre : chars, aviation
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: VCR 8x8 Dragón
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 26000
+	Armor:
+		Type: Light
+	Mobile:
+		TurnSpeed: 20
+		Speed: 120
+		Locomotor: wheeled
+		PauseOnCondition: notmobile || being-captured
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 32
+		Offset: -43,0,0
+	Armament:
+		Weapon: DragonCannon
+		LocalOffset: 420,0,190
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	Cargo:
+		Types: Infantry
+		MaxWeight: 8
+		LoadingCondition: notmobile
+		EjectOnDeath: true
+	WithCargoPipsDecoration:
+		PipCount: 8
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1194, 1194
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
+# =====================================================================
+# TURQUIE — Drone Bayraktar TB2 et char Altay
+# =====================================================================
+# Bayraktar TB2 : drone armé lent et endurant, 4 mini-bombes guidées MAM-L
+# qui frappent par le dessus (ignorent le blindage réactif).
+TB2:
+	Inherits: ^RatcDrone
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: tb2
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 61
+		Prerequisites: ~aircraft.turkey, ~techlevel.medium
+		Description: Drone armé Bayraktar TB2.\nLent et endurant, grande vision.\n4 mini-bombes guidées MAM-L frappant par le dessus.\n  Fort contre : véhicules, artillerie\n  Faible contre : défense antiaérienne, aviation
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Bayraktar TB2
+	Health:
+		HP: 4000
+	RevealsShroud:
+		Range: 11c0
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 12
+		Speed: 160
+	Armament:
+		Weapon: MamL
+		LocalOffset: 0,-280,-60, 0,280,-60
+	AttackAircraft:
+		FacingTolerance: 80
+		PersistentTargeting: false
+		OpportunityFire: False
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: ReturnFire
+	AmmoPool:
+		Ammo: 4
+	Rearmable:
+		RearmActors: afld, afld.ukraine
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
+	Selectable:
+		Bounds: 1792, 1280
+		DecorationBounds: 1792, 1280
+
+# Altay : char de combat turc. Protection active AKKOR : le premier missile
+# antichar ne fait que 25 % de dégâts, puis le système se recharge 30 s
+# (même mécanisme que le GALIX du Leclerc).
+ALTAY:
+	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	RenderSprites:
+		Image: altay
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 242
+		Prerequisites: dome, ~vehicles.turkey, ~techlevel.high
+		Description: Char de combat turc Altay.\nProtection active AKKOR : le premier missile antichar\nne fait que 25 % de dégâts (recharge 30 s).\n  Fort contre : véhicules\n  Faible contre : infanterie, aviation
+	Valued:
+		Cost: 1700
+	Tooltip:
+		Name: Altay
+		GenericName: Tank
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 68000
+	Armor:
+		Type: Heavy
+	Armor@AKKOR:
+		Type: APS
+		RequiresCondition: !galix-recharge
+	ExternalCondition@AKKOR:
+		Condition: galix-recharge
+	TimedConditionBar@AKKOR:
+		Condition: galix-recharge
+		Color: 40A0FF
+	Mobile:
+		TurnSpeed: 12
+		Speed: 68
+		Locomotor: heavytracked
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 20
+		Offset: -85,0,0
+	Armament:
+		Weapon: AltayGun
+		Recoil: 128
+		RecoilRecovery: 38
+		LocalOffset: 900,0,160
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: ALTAY.Husk
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Selectable:
+		DecorationBounds: 1280, 1280
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
+
+ALTAY.Husk:
+	Inherits: 2TNK.Husk
+	Tooltip:
+		Name: Épave (Altay)
+	TransformOnCapture:
+		IntoActor: altay
+	InfiltrateForTransform:
+		IntoActor: altay
+	RenderSprites:
+		Image: altay.destroyed

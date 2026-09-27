@@ -187,6 +187,7 @@ def raster(model, facing, W, H, cx, cy, k, cast_shadow=True):
     dust = getattr(model, "dust", 0.0)
     dust_h = getattr(model, "dust_height", 2.4)
     track_period = getattr(model, "track_period", 2.0)
+    ground_ao = getattr(model, "ground_ao", True)
     cache = {}
 
     n = W * H
@@ -251,7 +252,7 @@ def raster(model, facing, W, H, cx, cy, k, cast_shadow=True):
                 else:
                     dt += 0.12 * h * dust
         # Occlusion ambiante près du sol.
-        ao = 0.1 * max(0.0, 1.0 - mz / 1.6)
+        ao = 0.1 * max(0.0, 1.0 - mz / 1.6) if ground_ao else 0.0
         shade = 0.14 + 0.95 * diffuse + f.fill + spec - f.tint - dt - ao
         mats[i] = mat
         shades[i] = min(1.0, max(0.0, shade))
