@@ -1,0 +1,4038 @@
+============================================================================================
+                                 ENCYCLOPÉDIE ULTIME DU MOD                                 
+                             Mod moderne pour OpenRA Red Alert                              
+============================================================================================
+
+Chaque bâtiment, défense, unité et pouvoir de soutien du jeu : un peu d'histoire, les
+statistiques et la façon de s'en servir.
+
+Les statistiques sont lues directement dans les règles du jeu par
+tools/encyclopedie/generer.py : après un rééquilibrage, relancez ce script pour mettre
+l'encyclopédie à jour.
+
+Repères :
+  • PV : points de vie. Une case = une case de la carte.
+  • Les durées sont données à la vitesse de jeu normale (25 images par seconde).
+  • Faction « toutes » : disponible pour tout le monde ; « tous les Alliés » / « tous les
+    Soviétiques » : pour toutes les nations du camp.
+  • Blindage : aucun (infanterie), léger, lourd, béton, léger de bâtiment (bois) ; le blindage
+    réactif (ERA) et la protection active (APS) réduisent les dégâts des missiles antichar.
+
+SOMMAIRE
+  1. BÂTIMENTS (38)
+  2. DÉFENSES ET SUPERARMES (27)
+  3. LEURRES (11)
+  4. INFANTERIE (40)
+  5. VÉHICULES (70)
+  6. AVIATION (34)
+  7. MARINE (19)
+  8. POUVOIRS DE SOUTIEN (26)
+
+============================================================================================
+                                        1. BÂTIMENTS                                        
+============================================================================================
+
+  ▶ FACTION : TOUTES
+
+--------------------------------------------------------------------------------------------
+■ CENTRALE  (Power Plant)
+  Faction : toutes
+  Lore :
+    Centrale électrique de base.
+    Elle alimente les bâtiments et les défenses.
+    Sans elle, rien ne fonctionne.
+  Statistiques :
+    Coût 300 $ · PV 40 000 · Blindage léger de bâtiment (bois) · Vision 4 cases
+    Énergie +100
+    Prérequis : aucun · Niveau technologique : infanterie seule
+  Stratégie :
+    Construisez-en plusieurs en début de partie ; remplacez-les ensuite par des centrales
+    avancées.
+--------------------------------------------------------------------------------------------
+■ CENTRALE AVANCÉE  (Advanced Power Plant)
+  Faction : toutes
+  Lore :
+    Centrale électrique produisant le double d'une centrale standard.
+    Elle alimente les bâtiments avancés et les superarmes.
+    Une cible de choix pour les espions ennemis.
+  Statistiques :
+    Coût 500 $ · PV 70 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie +200
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Remplacez vos centrales standard pour économiser de la place. Protégez-les : sans
+    courant, défenses et pouvoirs s'arrêtent.
+--------------------------------------------------------------------------------------------
+■ RADAR DOME
+  Faction : toutes
+  Lore :
+    Radar qui fournit une vue d'ensemble du champ de bataille.
+    Il débloque les unités avancées et les bâtiments nationaux.
+    Sans radar, une armée combat à l'aveugle.
+  Statistiques :
+    Coût 1 500 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 10 cases
+    Énergie -40
+    Prérequis : Raffinerie · Niveau technologique : moyen
+  Stratégie :
+    Indispensable : il débloque la minicarte et la plupart des unités avancées. Protégez-le
+    du brouillage SAS.
+--------------------------------------------------------------------------------------------
+■ RAFFINERIE  (Ore Refinery)
+  Faction : toutes
+  Lore :
+    Raffinerie qui transforme le minerai et les gemmes en crédits.
+    Elle est livrée avec un camion de minerai.
+    Le cœur de l'économie.
+  Statistiques :
+    Coût 1 400 $ · PV 90 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -30
+    Prérequis : une centrale · Niveau technologique : infanterie seule
+  Stratégie :
+    Construisez-en deux ou trois près des champs de minerai. Protégez-les : elles sont la
+    cible favorite des raids.
+--------------------------------------------------------------------------------------------
+■ SERVICE DEPOT
+  Faction : toutes
+  Lore :
+    Atelier de réparation des véhicules.
+    Il répare les véhicules contre des crédits.
+    Une armée réparée vaut deux armées.
+  Statistiques :
+    Coût 1 200 $ · PV 80 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -30
+    Prérequis : Usine d'armement · Niveau technologique : moyen
+  Stratégie :
+    Placez-le près du front pour réparer rapidement vos chars (et recharger l'ERA des
+    T-90M).
+--------------------------------------------------------------------------------------------
+■ USINE D'ARMEMENT  (War Factory)
+  Faction : toutes
+  Lore :
+    Usine qui produit tous les véhicules.
+    Elle est au cœur de toute armée mécanisée.
+    Une usine détruite, c'est une armée qui cesse de grandir.
+  Statistiques :
+    Coût 2 000 $ · PV 150 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -30
+    Prérequis : Raffinerie · Niveau technologique : bas
+  Stratégie :
+    Construisez-en plusieurs pour accélérer la production de véhicules. Protégez-les.
+
+  ▶ FACTION : TOUS LES ALLIÉS
+
+--------------------------------------------------------------------------------------------
+■ CASERNE ALLIÉE  (Allied Barracks)
+  Faction : tous les Alliés
+  Lore :
+    Caserne où sont formés les fantassins alliés.
+    Elle forme l'infanterie de base et les spécialistes.
+    Le point de départ de toute armée alliée.
+  Statistiques :
+    Coût 500 $ · PV 60 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -20
+    Prérequis : une centrale · Niveau technologique : infanterie seule
+  Stratégie :
+    Construisez-la tôt ; plusieurs casernes accélèrent la production d'infanterie.
+--------------------------------------------------------------------------------------------
+■ CENTRE TECHNIQUE ALLIÉ  (Allied Tech Center)
+  Faction : tous les Alliés
+  Lore :
+    Centre de recherche des Alliés.
+    Il débloque les unités avancées et le satellite GPS.
+    Le cerveau de l'armée alliée.
+  Statistiques :
+    Coût 1 500 $ · PV 60 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -200
+    Prérequis : Usine d'armement, Radar Dome · Niveau technologique : élevé
+    Pouvoir de soutien : Satellite GPS (recharge 8 min)
+  Stratégie :
+    Construisez-le pour débloquer les unités de haut niveau et le satellite GPS.
+--------------------------------------------------------------------------------------------
+■ CHANTIER NAVAL  (Naval Yard)
+  Faction : tous les Alliés
+  Lore :
+    Chantier naval allié.
+    Il produit et répare les navires et les transports.
+    La marine alliée commence ici.
+  Statistiques :
+    Coût 1 000 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -30 · Détecte les furtifs (10 cases)
+    Prérequis : une centrale · Niveau technologique : bas
+  Stratégie :
+    Construisez-le pour les destroyers, croiseurs et porte-avions.
+--------------------------------------------------------------------------------------------
+■ HÉLIPORT  (Helipad)
+  Faction : tous les Alliés
+  Lore :
+    Héliport qui produit et réarme les hélicoptères.
+    Il débloque les hélicoptères alliés.
+    La base de l'aviation légère alliée.
+  Statistiques :
+    Coût 500 $ · PV 80 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -10
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Construisez-le pour les hélicoptères et les drones. Protégez-le avec des défenses
+    antiaériennes.
+
+  ▶ FACTION : TOUS LES SOVIÉTIQUES
+
+--------------------------------------------------------------------------------------------
+■ AÉRODROME  (Airfield)
+  Faction : tous les Soviétiques
+  Lore :
+    Aérodrome soviétique qui produit et réarme les avions.
+    Il débloque l'avion espion, les parachutistes et les parabombes.
+    Le ciel soviétique commence ici.
+  Statistiques :
+    Coût 500 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -20
+    Prérequis : Radar Dome · Niveau technologique : moyen
+    Pouvoir de soutien : Avion espion (recharge 2 min 30 s)
+    Pouvoir de soutien : Parachutistes (recharge 5 min)
+    Pouvoir de soutien : Parabombes (recharge 5 min)
+  Stratégie :
+    Construisez-le pour les MiG et Yak et pour ses pouvoirs de soutien. Protégez-le avec des
+    SAM.
+--------------------------------------------------------------------------------------------
+■ BASE SOUS-MARINE  (Sub Pen)
+  Faction : tous les Soviétiques
+  Lore :
+    Base sous-marine soviétique.
+    Elle produit et répare les sous-marins et les transports.
+    La marine soviétique commence ici.
+  Statistiques :
+    Coût 800 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -30 · Détecte les furtifs (10 cases)
+    Prérequis : une centrale · Niveau technologique : bas
+  Stratégie :
+    Construisez-la pour les sous-marins, qui dominent les flottes alliées.
+--------------------------------------------------------------------------------------------
+■ CASERNE SOVIÉTIQUE  (Soviet Barracks)
+  Faction : tous les Soviétiques
+  Lore :
+    Caserne où sont formés les fantassins soviétiques.
+    Elle forme l'infanterie de base et les spécialistes.
+    Le point de départ de toute armée soviétique.
+  Statistiques :
+    Coût 500 $ · PV 60 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -20
+    Prérequis : une centrale · Niveau technologique : infanterie seule
+  Stratégie :
+    Construisez-la tôt ; plusieurs casernes accélèrent la production d'infanterie.
+--------------------------------------------------------------------------------------------
+■ CENTRE TECHNIQUE SOVIÉTIQUE  (Soviet Tech Center)
+  Faction : tous les Soviétiques
+  Lore :
+    Centre de recherche soviétique.
+    Il débloque les unités avancées soviétiques.
+    Le cerveau de l'armée soviétique.
+  Statistiques :
+    Coût 1 500 $ · PV 80 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -100
+    Prérequis : Usine d'armement, Radar Dome · Niveau technologique : élevé
+  Stratégie :
+    Construisez-le pour le Mammouth, le char Tesla et le Rideau de fer.
+--------------------------------------------------------------------------------------------
+■ CHENIL  (Kennel)
+  Faction : tous les Soviétiques
+  Lore :
+    Chenil où sont dressés les chiens d'attaque soviétiques.
+    Il forme les chiens qui traquent l'infanterie et les espions.
+    La sécurité de la base soviétique.
+  Statistiques :
+    Coût 200 $ · PV 30 000 · Blindage léger de bâtiment (bois) · Vision 4 cases
+    Énergie -10
+    Prérequis : une centrale · Niveau technologique : infanterie seule
+  Stratégie :
+    Construisez-le tôt pour protéger votre base contre les espions.
+--------------------------------------------------------------------------------------------
+■ USINE INDUSTRIELLE  (Industrial Plant)
+  Faction : tous les Soviétiques
+  Lore :
+    Usine chinoise qui accélère et réduit le coût de production des véhicules.
+    Elle débloque l'industrialisation, un flux de chars lourds.
+    L'industrie comme arme de guerre.
+  Statistiques :
+    Coût 2 000 $ · PV 120 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -150 · Limite 1 exemplaire
+    Prérequis : Centre technique (Chine) · Niveau technologique : élevé
+    Pouvoir de soutien : Industrialisation (recharge 2 min)
+  Stratégie :
+    Construisez-la pour produire vos véhicules 15 % plus vite et 10 % moins cher.
+
+  ▶ FACTION : FRANCE
+
+--------------------------------------------------------------------------------------------
+■ CENTRE DE COMMANDEMENT SCALP
+  Faction : France
+  Lore :
+    Bunker français de guidage des frappes de croisière.
+    Il reçoit les désignations laser des commandos GCP.
+    Cible stratégique : détruit ou hors tension, la frappe SCALP est suspendue.
+  Statistiques :
+    Coût 1 600 $ · PV 120 000 · Blindage béton · Vision 5 cases
+    Énergie -100 · Limite 1 exemplaire
+    Prérequis : Radar Dome · Niveau technologique : moyen
+    Pouvoir de soutien : Frappe de croisière SCALP (recharge 4 min)
+  Stratégie :
+    Construisez-le pour la frappe SCALP. Son blindage béton le rend résistant ; protégez-le
+    quand même.
+--------------------------------------------------------------------------------------------
+■ CENTRE TECHNIQUE FRANÇAIS  (France Tech Center)
+  Faction : France
+  Lore :
+    Centre de recherche français de la carte WW3, camouflé.
+    Il débloque les unités avancées françaises et le GPS.
+    Il est invisible aux yeux de l'ennemi.
+  Statistiques :
+    Coût 1 500 $ · PV 60 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -200 · Furtif
+    Prérequis : Usine d'armement, Radar Dome · Niveau technologique : élevé
+    Pouvoir de soutien : Satellite GPS (recharge 8 min)
+    Pouvoir de soutien : Satellite GPS (recharge 3 min)
+  Stratégie :
+    Construisez-le pour le char Mirage, le Comanche, le Grand Canon et le générateur de
+    phase.
+
+  ▶ FACTION : ALLEMAGNE
+
+--------------------------------------------------------------------------------------------
+■ CENTRE TECHNIQUE ALLEMAND  (German Tech Center)
+  Faction : Allemagne
+  Lore :
+    Centre de recherche allemand de la carte WW3.
+    Il débloque les unités avancées allemandes, le GPS et le chronoshift avancé.
+    L'ingénierie allemande dans toute sa splendeur.
+  Statistiques :
+    Coût 1 500 $ · PV 60 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -200
+    Prérequis : Usine d'armement, Radar Dome · Niveau technologique : élevé
+    Pouvoir de soutien : Satellite GPS (recharge 8 min)
+    Pouvoir de soutien : Satellite GPS (recharge 3 min)
+    Pouvoir de soutien : Chronoshift avancé (recharge 2 min)
+  Stratégie :
+    Construisez-le pour le soldat Chrono, le Chrono Nighthawk et le chasseur de chars.
+--------------------------------------------------------------------------------------------
+■ PIONIERZENTRUM  (Pionierzentrum (génie tactique))
+  Faction : Allemagne
+  Lore :
+    Centre allemand de génie lourd et de franchissement.
+    Il porte le pontage tactique rapide.
+    Cible stratégique : détruit ou hors tension, le pontage est suspendu.
+  Statistiques :
+    Coût 1 400 $ · PV 140 000 · Blindage lourd · Vision 5 cases
+    Énergie -80 · Limite 1 exemplaire
+    Prérequis : Usine d'armement · Niveau technologique : moyen
+    Pouvoir de soutien : Pontage tactique rapide (recharge 3 min)
+  Stratégie :
+    Construisez-le pour le pontage tactique, qui permet de franchir une rivière défendue.
+
+  ▶ FACTION : ROYAUME-UNI
+
+--------------------------------------------------------------------------------------------
+■ CENTRE TECHNIQUE BRITANNIQUE  (England Tech Center)
+  Faction : Royaume-Uni
+  Lore :
+    Centre de recherche britannique de la carte WW3.
+    Il débloque les unités avancées britanniques, le GPS et l'impulsion sonar.
+    La science au service de la Couronne.
+  Statistiques :
+    Coût 1 500 $ · PV 60 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -200
+    Prérequis : Usine d'armement, Radar Dome · Niveau technologique : élevé
+    Pouvoir de soutien : Satellite GPS (recharge 8 min)
+    Pouvoir de soutien : Satellite GPS (recharge 3 min)
+    Pouvoir de soutien : Impulsion sonar (recharge 2 min)
+  Stratégie :
+    Construisez-le pour le Royal Marine, la forteresse de bataille et l'impulsion sonar.
+--------------------------------------------------------------------------------------------
+■ STATION SIGINT (GCHQ FORWARD)
+  Faction : Royaume-Uni
+  Lore :
+    Station britannique d'interception et de guerre électronique.
+    Elle porte le brouillage SAS, qui aveugle radar et pouvoirs ennemis.
+    Cible stratégique : détruite ou hors tension, le brouillage est suspendu.
+  Statistiques :
+    Coût 1 500 $ · PV 110 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -120 · Limite 1 exemplaire
+    Prérequis : Radar Dome · Niveau technologique : moyen
+    Pouvoir de soutien : Brouillage électronique SAS (recharge 3 min 30 s)
+  Stratégie :
+    Construisez-la pour le brouillage SAS, à utiliser juste avant un assaut. Protégez-la :
+    sans elle, pas de brouillage.
+
+  ▶ FACTION : USA
+
+--------------------------------------------------------------------------------------------
+■ BASE AÉRIENNE  (Airbase)
+  Faction : USA
+  Lore :
+    Base aérienne américaine de la carte WW3.
+    Elle produit et réarme les avions ; elle ouvre aussi les largages de snipers et les frappes aériennes.
+    Le cœur de la puissance aérienne américaine.
+  Statistiques :
+    Coût 500 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -30
+    Prérequis : Radar Dome · Niveau technologique : moyen
+    Pouvoir de soutien : Largage de snipers (recharge 5 min)
+    Pouvoir de soutien : Frappe aérienne (recharge 5 min)
+  Stratégie :
+    Construisez-la tôt pour débloquer l'A-10 et le F-22. Protégez-la avec des défenses
+    antiaériennes.
+--------------------------------------------------------------------------------------------
+■ CENTRE TECHNIQUE AMÉRICAIN  (USA Tech Center)
+  Faction : USA
+  Lore :
+    Centre de recherche américain de la carte WW3.
+    Il débloque les unités avancées américaines, le GPS et le canon à ions.
+    La puissance technologique américaine.
+  Statistiques :
+    Coût 1 500 $ · PV 60 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -200
+    Prérequis : Usine d'armement, Radar Dome · Niveau technologique : élevé
+    Pouvoir de soutien : Satellite GPS (recharge 8 min)
+    Pouvoir de soutien : Satellite GPS (recharge 3 min)
+    Pouvoir de soutien : Canon à ions (recharge 4 min 30 s)
+  Stratégie :
+    Construisez-le pour l'Apache, le commando, le Patriot et le canon à ions.
+
+  ▶ FACTION : ESPAGNE
+
+--------------------------------------------------------------------------------------------
+■ CENTRE TECHNIQUE ESPAGNOL  (Spain Tech Center)
+  Faction : Espagne
+  Lore :
+    Centre de recherche espagnol de la carte WW3.
+    Il débloque les unités prisme et la prise de contrôle hostile.
+    La technologie espagnole au service de la guerre.
+  Statistiques :
+    Coût 1 500 $ · PV 60 000 · Blindage léger de bâtiment (bois) · Vision 7 cases
+    Énergie -200
+    Prérequis : Usine d'armement, Radar Dome · Niveau technologique : élevé
+    Pouvoir de soutien : Satellite GPS (recharge 8 min)
+    Pouvoir de soutien : Satellite GPS (recharge 3 min)
+    Pouvoir de soutien : Prise de contrôle hostile (recharge 5 min 40 s)
+  Stratégie :
+    Construisez-le pour le Conquistador, les unités à coussin d'air et la prise de contrôle
+    hostile.
+
+  ▶ FACTION : JAPON
+
+--------------------------------------------------------------------------------------------
+■ CENTRE DE GUERRE ÉLECTRONIQUE
+  Faction : Japon
+  Lore :
+    Centre japonais de guerre électronique.
+    Il porte le brouillage japonais, qui réduit la portée ennemie.
+    Cible stratégique : détruit ou hors tension, le brouillage est suspendu.
+  Statistiques :
+    Coût 1 500 $ · PV 110 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -120 · Limite 1 exemplaire
+    Prérequis : Radar Dome · Niveau technologique : moyen
+    Pouvoir de soutien : Brouillage électronique japonais (recharge 3 min 30 s)
+  Stratégie :
+    Construisez-le pour le brouillage japonais, à utiliser pour casser un assaut ennemi.
+    Protégez-le.
+
+  ▶ FACTION : RUSSIE
+
+--------------------------------------------------------------------------------------------
+■ CENTRE TECHNIQUE RUSSE  (Russia Tech Center)
+  Faction : Russie
+  Lore :
+    Centre de recherche russe de la carte WW3.
+    Il produit de l'énergie et débloque les unités avancées russes.
+    La puissance russe dans toute sa splendeur.
+  Statistiques :
+    Coût 1 500 $ · PV 80 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie +250
+    Prérequis : Usine d'armement, Radar Dome · Niveau technologique : élevé
+  Stratégie :
+    Construisez-le pour le Mammouth Tesla, le Sukhoï et le Tesla avancé. Il produit aussi de
+    l'énergie.
+--------------------------------------------------------------------------------------------
+■ PC D'APPUI THERMOBARIQUE
+  Faction : Russie
+  Lore :
+    Casemate russe d'état-major et dépôt de munitions thermobariques.
+    Elle porte la frappe thermobarique TOS-1A.
+    Cible stratégique : détruite ou hors tension, la frappe TOS-1A est suspendue.
+  Statistiques :
+    Coût 1 700 $ · PV 150 000 · Blindage béton · Vision 5 cases
+    Énergie -110 · Limite 1 exemplaire
+    Prérequis : Radar Dome · Niveau technologique : moyen
+    Pouvoir de soutien : Frappe thermobarique TOS-1A (recharge 4 min 30 s)
+  Stratégie :
+    Construisez-le pour la frappe TOS-1A. Très résistant (béton, 150 000 PV).
+
+  ▶ FACTION : UKRAINE
+
+--------------------------------------------------------------------------------------------
+■ AÉRODROME UKRAINIEN  (Airfield)
+  Faction : Ukraine
+  Lore :
+    Aérodrome ukrainien, identique à l'aérodrome soviétique.
+    Il produit les aéronefs ukrainiens, dont le Mi-24.
+    La base de l'aviation ukrainienne.
+  Statistiques :
+    Coût 500 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -20
+    Prérequis : Radar Dome · Niveau technologique : moyen
+    Pouvoir de soutien : Avion espion (recharge 2 min 30 s)
+    Pouvoir de soutien : Parachutistes (recharge 5 min)
+    Pouvoir de soutien : Parabombes (recharge 5 min)
+  Stratégie :
+    Même emploi que l'aérodrome soviétique ; il produit les Mi-24 et les drones ukrainiens.
+--------------------------------------------------------------------------------------------
+■ CENTRE TECHNIQUE UKRAINIEN  (Ukraine Tech Center)
+  Faction : Ukraine
+  Lore :
+    Centre de recherche ukrainien de la carte WW3.
+    Il débloque les unités avancées ukrainiennes et le Rideau de fer avancé.
+    La technologie soviétique ukrainienne.
+  Statistiques :
+    Coût 1 500 $ · PV 80 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -250
+    Prérequis : Usine d'armement, Radar Dome · Niveau technologique : élevé
+    Pouvoir de soutien : Invulnérabilité (Rideau de fer) (recharge 2 min 40 s)
+  Stratégie :
+    Construisez-le pour le char Apocalypse, le char de siège et le Rideau de fer avancé.
+--------------------------------------------------------------------------------------------
+■ PC DE LIAISON ISR ET AWACS
+  Faction : Ukraine
+  Lore :
+    Poste de commandement ukrainien relié aux flux AWACS et drones.
+    Il porte le renseignement OTAN (AWACS).
+    Cible stratégique : détruit ou hors tension, l'AWACS est suspendu.
+  Statistiques :
+    Coût 1 300 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -80 · Limite 1 exemplaire
+    Prérequis : Radar Dome · Niveau technologique : moyen
+    Pouvoir de soutien : Renseignement OTAN (AWACS) (recharge 2 min 30 s)
+  Stratégie :
+    Construisez-le pour l'AWACS, à utiliser avant une frappe d'artillerie ou de FPV.
+    Protégez-le.
+
+  ▶ FACTION : CHINE
+
+--------------------------------------------------------------------------------------------
+■ CENTRE INTERNET  (Internet Centre)
+  Faction : Chine
+  Lore :
+    Centre chinois où les hackers volent de l'argent.
+    Plus il contient de hackers, plus il rapporte.
+    La guerre économique à l'ère numérique.
+  Statistiques :
+    Coût 1 000 $ · PV 80 000 · Vision 10 cases
+    Énergie -100 · Transport 8 places · Limite 1 exemplaire
+    Prérequis : Centre technique (Chine) · Niveau technologique : moyen
+  Stratégie :
+    Placez-y des hackers pour générer des crédits. Protégez-le.
+--------------------------------------------------------------------------------------------
+■ CENTRE TECHNIQUE CHINOIS  (China Tech Center)
+  Faction : Chine
+  Lore :
+    Centre de recherche chinois de la carte WW3.
+    Il débloque les unités avancées chinoises et le largage de chars.
+    L'industrie chinoise au service de la guerre.
+  Statistiques :
+    Coût 1 500 $ · PV 80 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -150
+    Prérequis : Usine d'armement, Radar Dome · Niveau technologique : élevé
+    Pouvoir de soutien : Largage de chars (recharge 5 min)
+  Stratégie :
+    Construisez-le pour l'Overlord, le hacker et le largage de chars.
+
+  ▶ FACTION : TURQUIE
+
+--------------------------------------------------------------------------------------------
+■ CENTRE TECHNIQUE TURC  (Turkey Tech Center)
+  Faction : Turquie
+  Lore :
+    Centre de recherche turc de la carte WW3.
+    Il débloque les unités avancées turques et les insurgés.
+    La subversion comme arme.
+  Statistiques :
+    Coût 1 500 $ · PV 80 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -50
+    Prérequis : Usine d'armement, Radar Dome · Niveau technologique : élevé
+    Pouvoir de soutien : Insurgés (recharge 3 min 20 s)
+  Stratégie :
+    Construisez-le pour le Kirov, le camion toxique et les insurgés.
+--------------------------------------------------------------------------------------------
+■ HÉLIPORT SOVIÉTIQUE  (Soviet Helipad)
+  Faction : Turquie
+  Lore :
+    Héliport soviétique de la carte WW3.
+    Il produit et réarme les hélicoptères et le dirigeable Kirov.
+    La base de l'aviation turque.
+  Statistiques :
+    Coût 500 $ · PV 80 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -10
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Construisez-le pour le dirigeable Kirov.
+
+  ▶ FACTION : GRÈCE
+
+--------------------------------------------------------------------------------------------
+■ CENTRE TECHNIQUE GREC  (Greek Tech Center)
+  Faction : Grèce
+  Lore :
+    Centre de recherche grec de la carte WW3.
+    Il débloque les hoplites, les armures Spartan et le Titan.
+    La technologie des armures de puissance.
+  Statistiques :
+    Coût 1 500 $ · PV 80 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -100
+    Prérequis : Usine d'armement, Radar Dome · Niveau technologique : élevé
+    Pouvoir de soutien : Largage de Spartan (recharge 5 min)
+  Stratégie :
+    Construisez-le pour les unités d'élite grecques et le largage de Spartan.
+
+  ▶ FACTION : INDE
+
+--------------------------------------------------------------------------------------------
+■ PC DU RÉGIMENT PINAKA
+  Faction : Inde
+  Lore :
+    PC et parc du régiment de lance-roquettes Pinaka indien.
+    Il porte le barrage Pinaka.
+    Cible stratégique : détruit ou hors tension, le barrage est suspendu.
+  Statistiques :
+    Coût 1 600 $ · PV 120 000 · Blindage lourd · Vision 5 cases
+    Énergie -100 · Limite 1 exemplaire
+    Prérequis : Radar Dome · Niveau technologique : moyen
+    Pouvoir de soutien : Barrage Pinaka (recharge 3 min 30 s)
+  Stratégie :
+    Construisez-le pour le barrage Pinaka, à utiliser contre l'infanterie groupée. Protégez-
+    le.
+
+  ▶ FACTION : SOVIÉTIQUES
+
+--------------------------------------------------------------------------------------------
+■ CENTRALE NUCLÉAIRE  (Nuclear Power Plant)
+  Faction : Soviétiques
+  Lore :
+    Centrale nucléaire soviétique de la carte WW3.
+    Elle produit quatre fois plus qu'une centrale avancée, mais explose violemment.
+    Une source d'énergie à double tranchant.
+  Statistiques :
+    Coût 800 $ · PV 90 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie +800
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Construisez-la loin des bâtiments importants : sa destruction provoque une grosse
+    explosion.
+
+============================================================================================
+                                 2. DÉFENSES ET SUPERARMES                                  
+============================================================================================
+
+  ▶ FACTION : TOUTES
+
+--------------------------------------------------------------------------------------------
+■ MUR EN BÉTON  (Concrete Wall)
+  Faction : toutes
+  Lore :
+    Mur en béton qui bloque les unités et les tirs ennemis.
+    Seuls les chars les plus lourds peuvent l'écraser.
+    Le mur le plus solide du jeu.
+  Statistiques :
+    Coût 200 $ · PV 40 000 · Blindage béton
+    Prérequis : Chantier de construction · Niveau technologique : moyen
+  Stratégie :
+    Protégez vos défenses et bâtiments clés, canalisez les assauts ennemis.
+--------------------------------------------------------------------------------------------
+■ PORTE HORIZONTALE  (Gate - (horizontal))
+  Faction : toutes
+  Lore :
+    Porte qui s'ouvre automatiquement pour les unités amies.
+    Elle bloque l'accès ennemi à votre base.
+    La porte d'entrée de votre forteresse.
+  Statistiques :
+    Coût 500 $ · PV 35 000 · Blindage lourd · Vision 1 case
+    Prérequis : une centrale · Niveau technologique : moyen
+  Stratégie :
+    Placez-la dans vos murs pour laisser passer vos troupes.
+--------------------------------------------------------------------------------------------
+■ PORTE VERTICALE  (Gate I (vertical))
+  Faction : toutes
+  Lore :
+    Porte qui s'ouvre automatiquement pour les unités amies.
+    Elle bloque l'accès ennemi à votre base.
+    La porte d'entrée de votre forteresse.
+  Statistiques :
+    Coût 500 $ · PV 35 000 · Blindage lourd · Vision 1 case
+    Prérequis : une centrale · Niveau technologique : moyen
+  Stratégie :
+    Placez-la dans vos murs pour laisser passer vos troupes.
+--------------------------------------------------------------------------------------------
+■ SILO DE STOCKAGE  (Silo)
+  Faction : toutes
+  Lore :
+    Silo qui stocke le minerai raffiné en excès.
+    Sans silos, les raffineries s'arrêtent quand leur capacité est pleine.
+    Le coffre-fort de votre économie.
+  Statistiques :
+    Coût 150 $ · PV 30 000 · Blindage léger de bâtiment (bois) · Vision 4 cases
+    Énergie -10
+    Prérequis : Raffinerie · Niveau technologique : infanterie seule
+  Stratégie :
+    Construisez-en quand vos raffineries sont pleines. Protégez-les des voleurs.
+--------------------------------------------------------------------------------------------
+■ SILO À MISSILES  (Missile Silo)
+  Faction : toutes
+  Lore :
+    Silo qui abrite une bombe atomique.
+    La superarme la plus destructrice du jeu.
+    Un silo construit, c'est une menace qui pèse sur toute la partie.
+  Statistiques :
+    Coût 2 500 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 6 cases
+    Énergie -150 · Limite 1 exemplaire
+    Prérequis : un centre technique · Niveau technologique : illimité (superarmes)
+    Pouvoir de soutien : Bombe atomique (recharge 9 min)
+  Stratégie :
+    Frappez la base ennemie, idéalement ses bâtiments clés. Protégez-le : il est la cible
+    prioritaire de l'ennemi. Limité à 1.
+
+  ▶ FACTION : TOUS LES ALLIÉS
+
+--------------------------------------------------------------------------------------------
+■ CANON ANTIAÉRIEN  (AA Gun)
+  Faction : tous les Alliés
+  Lore :
+    Défense antiaérienne des Alliés.
+    Elle crible le ciel d'obus explosifs.
+    Elle ne tire que sur les aéronefs.
+  Statistiques :
+    Coût 800 $ · PV 40 000 · Blindage lourd · Vision 6 cases
+    Arme : ZSU-23 : 900 dégâts, rafale de 2, portée 10 cases, recharge 0,2 s
+    Énergie -50
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Placez-en près de vos bâtiments clés contre les raids aériens.
+--------------------------------------------------------------------------------------------
+■ CHRONOSPHÈRE  (Chronosphere)
+  Faction : tous les Alliés
+  Lore :
+    Superarme alliée qui téléporte un groupe d'unités.
+    Pendant 20 secondes, les unités sont transportées n'importe où.
+    Le pouvoir de choisir le lieu de la bataille.
+  Statistiques :
+    Coût 1 500 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 6 cases
+    Énergie -200 · Limite 1 exemplaire
+    Prérequis : Centre technique allié · Niveau technologique : illimité (superarmes)
+    Pouvoir de soutien : Chronoshift (recharge 2 min)
+    Pouvoir de soutien : Chronoshift avancé (recharge 2 min)
+  Stratégie :
+    Téléportez un groupe de chars au cœur de la base ennemie. Limité à 1.
+--------------------------------------------------------------------------------------------
+■ GÉNÉRATEUR DE BROUILLARD  (Gap Generator)
+  Faction : tous les Alliés
+  Lore :
+    Générateur qui cache la base alliée dans le brouillard de guerre.
+    L'ennemi ne voit plus ce qui s'y passe.
+    La discrétion comme défense.
+  Statistiques :
+    Coût 800 $ · PV 50 000 · Blindage lourd · Vision 6 cases
+    Énergie -60
+    Prérequis : Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Cachez vos bâtiments clés et vos mouvements de troupes.
+--------------------------------------------------------------------------------------------
+■ MUR DE SACS DE SABLE  (Sandbag Wall)
+  Faction : tous les Alliés
+  Lore :
+    Mur de sacs de sable.
+    Il arrête l'infanterie et les véhicules légers, mais les chars l'écrasent.
+    Bon marché, il ralentit l'ennemi.
+  Statistiques :
+    Coût 30 $ · PV 15 000 · Blindage léger de bâtiment (bois)
+    Prérequis : Chantier de construction · Niveau technologique : bas
+  Stratégie :
+    Canalisez l'infanterie ennemie vers vos défenses.
+--------------------------------------------------------------------------------------------
+■ PILLBOX
+  Faction : tous les Alliés
+  Lore :
+    Pillbox en béton.
+    Il abrite un fantassin qui tire depuis l'intérieur ; il détecte les unités furtives.
+    La défense de base de l'infanterie.
+  Statistiques :
+    Coût 600 $ · PV 40 000 · Blindage lourd · Vision 6 cases
+    Énergie -20 · Transport 1 places · Détecte les furtifs (6 cases)
+    Prérequis : Caserne alliée · Niveau technologique : bas
+  Stratégie :
+    Placez-y une équipe NLAW pour un tir d'embuscade dévastateur.
+--------------------------------------------------------------------------------------------
+■ PILLBOX CAMOUFLÉ  (Camo Pillbox)
+  Faction : tous les Alliés
+  Lore :
+    Pillbox camouflé, invisible à distance.
+    Il abrite un fantassin qui tire depuis l'intérieur ; il détecte les unités furtives.
+    Une embuscade permanente.
+  Statistiques :
+    Coût 750 $ · PV 40 000 · Blindage lourd · Vision 6 cases
+    Énergie -20 · Transport 1 places · Furtif · Détecte les furtifs (6 cases)
+    Prérequis : Caserne alliée · Niveau technologique : moyen
+  Stratégie :
+    Placez-y une équipe NLAW pour un tir d'embuscade dévastateur, invisible.
+--------------------------------------------------------------------------------------------
+■ TOURELLE  (Turret)
+  Faction : tous les Alliés
+  Lore :
+    Tourelle antichar des Alliés.
+    Elle frappe les véhicules et détecte les unités furtives.
+    La défense antichar de base.
+  Statistiques :
+    Coût 800 $ · PV 40 000 · Blindage lourd · Vision 6,5 cases
+    Arme : TurretGun : 6 000 dégâts, portée 6,5 cases, recharge 1,2 s
+    Énergie -40 · Détecte les furtifs (6 cases)
+    Prérequis : Caserne alliée · Niveau technologique : moyen
+  Stratégie :
+    Placez-en aux accès de votre base contre les véhicules.
+
+  ▶ FACTION : TOUS LES SOVIÉTIQUES
+
+--------------------------------------------------------------------------------------------
+■ BOBINE TESLA  (Tesla Coil)
+  Faction : tous les Soviétiques
+  Lore :
+    Défense Tesla soviétique.
+    Ses arcs électriques frappent les véhicules et l'infanterie ; elle détecte les unités furtives.
+    La défense emblématique des Soviétiques.
+  Statistiques :
+    Coût 1 200 $ · PV 40 000 · Blindage lourd · Vision 7 cases
+    Arme : TeslaLaser : 12 000 dégâts, portée 6,5 cases, recharge 2,4 s
+    Énergie -100 · Détecte les furtifs (6 cases)
+    Prérequis : Usine d'armement · Niveau technologique : moyen
+  Stratégie :
+    Placez-en aux accès de votre base. Elle consomme beaucoup d'énergie (-100).
+--------------------------------------------------------------------------------------------
+■ CLÔTURE BARBELÉE  (Wire Fence)
+  Faction : tous les Soviétiques
+  Lore :
+    Clôture en fil barbelé.
+    Elle arrête l'infanterie et les véhicules légers, mais les chars l'écrasent.
+    Bon marché, elle ralentit l'ennemi.
+  Statistiques :
+    Coût 30 $ · PV 15 000 · Blindage léger de bâtiment (bois)
+    Prérequis : Chantier de construction · Niveau technologique : bas
+  Stratégie :
+    Canalisez l'infanterie ennemie vers vos défenses.
+--------------------------------------------------------------------------------------------
+■ RIDEAU DE FER  (Iron Curtain)
+  Faction : tous les Soviétiques
+  Lore :
+    Superarme soviétique qui rend un groupe d'unités invulnérable.
+    Pendant 20 secondes, rien ne peut les toucher.
+    La peur de l'ennemi est sa meilleure alliée.
+  Statistiques :
+    Coût 1 500 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 6 cases
+    Énergie -200 · Limite 1 exemplaire
+    Prérequis : Centre technique soviétique · Niveau technologique : illimité (superarmes)
+    Pouvoir de soutien : Invulnérabilité (Rideau de fer) (recharge 2 min)
+  Stratégie :
+    Utilisez-le sur un groupe de chars pour un assaut décisif. Limité à 1.
+--------------------------------------------------------------------------------------------
+■ SITE SAM  (SAM Site)
+  Faction : tous les Soviétiques
+  Lore :
+    Défense antiaérienne soviétique.
+    Ses missiles abattent les aéronefs à longue distance.
+    Le ciel soviétique est gardé.
+  Statistiques :
+    Coût 700 $ · PV 40 000 · Blindage lourd · Vision 8 cases
+    Arme : Nike : 4 500 dégâts, portée 7,5 cases, recharge 0,6 s
+    Énergie -40
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Placez-en près de vos bâtiments clés contre l'aviation.
+--------------------------------------------------------------------------------------------
+■ TOUR LANCE-FLAMMES  (Flame Tower)
+  Faction : tous les Soviétiques
+  Lore :
+    Tour défensive soviétique équipée d'un lance-flammes.
+    Elle incendie l'infanterie et les véhicules légers ; elle détecte les unités furtives.
+    La terreur de l'infanterie.
+  Statistiques :
+    Coût 600 $ · PV 40 000 · Blindage lourd · Vision 6 cases
+    Arme : FireballLauncher : 15 000 dégâts, rafale de 2, portée 5 cases, recharge 2,8 s
+    Énergie -20 · Détecte les furtifs (6 cases)
+    Prérequis : Caserne soviétique · Niveau technologique : bas
+  Stratégie :
+    Placez-en aux accès de votre base contre l'infanterie.
+
+  ▶ FACTION : FRANCE
+
+--------------------------------------------------------------------------------------------
+■ GRAND CANON  (Grand Cannon)
+  Faction : France
+  Lore :
+    Artillerie défensive française de la carte WW3, aux proportions épiques.
+    Elle frappe les véhicules et l'infanterie à 10 cases.
+    La défense la plus impressionnante du jeu.
+  Statistiques :
+    Coût 2 000 $ · PV 60 000 · Blindage lourd · Vision 8 cases
+    Arme : 203mm : 15 000 dégâts, rafale de 3, portée 10 cases, recharge 4,8 s
+    Énergie -100
+    Prérequis : Centre technique (France) · Niveau technologique : élevé
+  Stratégie :
+    Placez-le au centre de votre base pour couvrir une large zone.
+--------------------------------------------------------------------------------------------
+■ GÉNÉRATEUR DE PHASE  (Phase Generator)
+  Faction : France
+  Lore :
+    Superarme française de la carte WW3.
+    Elle rend un groupe d'unités invisible pendant 30 secondes.
+    Une armée invisible frappe là où elle veut.
+  Statistiques :
+    Coût 1 500 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 6 cases
+    Énergie -200 · Limite 1 exemplaire
+    Prérequis : Centre technique (France) · Niveau technologique : illimité (superarmes)
+    Pouvoir de soutien : Bouclier furtif (recharge 2 min)
+  Stratégie :
+    Rendez invisible un groupe d'unités pour un assaut surprise. Limité à 1.
+--------------------------------------------------------------------------------------------
+■ TRANCHÉE (EST-OUEST)
+  Faction : France
+  Lore :
+    Tranchée creusée par le génie français.
+    Elle abrite quatre fantassins qui tirent à couvert.
+    Elle se construit n'importe où, près d'un ingénieur militaire déployé.
+  Statistiques :
+    Coût 150 $ · PV 25 000 · Blindage lourd · Vision 5 cases
+    Transport 4 places
+    Prérequis : un Ingénieur militaire déployé à proximité · Niveau technologique : bas
+  Stratégie :
+    Construisez-en sur les positions avancées avec un ingénieur militaire déployé. Pas
+    besoin d'électricité.
+--------------------------------------------------------------------------------------------
+■ TRANCHÉE (NORD-SUD)
+  Faction : France
+  Lore :
+    Même tranchée, orientée nord-sud.
+    Elle abrite quatre fantassins qui tirent à couvert.
+    Elle se construit près d'un ingénieur militaire déployé.
+  Statistiques :
+    Coût 150 $ · PV 25 000 · Blindage lourd · Vision 5 cases
+    Transport 4 places
+    Prérequis : un Ingénieur militaire déployé à proximité · Niveau technologique : bas
+  Stratégie :
+    Même emploi que la tranchée est-ouest ; choisissez l'orientation selon le terrain.
+
+  ▶ FACTION : ALLEMAGNE
+
+--------------------------------------------------------------------------------------------
+■ TOURELLE À RAIL  (Railgun Turret)
+  Faction : Allemagne
+  Lore :
+    Tourelle antichar allemande de la carte WW3, armée d'un canon à rail.
+    Elle tire par-dessus les murs.
+    La défense antichar la plus puissante.
+  Statistiques :
+    Coût 800 $ · PV 40 000 · Blindage lourd · Vision 6,5 cases
+    Arme : TitanRailgun : 10 500 dégâts, portée 5,75 cases, recharge 2,4 s
+    Énergie -50 · Détecte les furtifs (4 cases)
+    Prérequis : Centre technique (Allemagne) · Niveau technologique : moyen
+  Stratégie :
+    Placez-en derrière vos murs contre les chars.
+
+  ▶ FACTION : USA
+
+--------------------------------------------------------------------------------------------
+■ MISSILES PATRIOT  (Patriot Missiles)
+  Faction : USA
+  Lore :
+    Défense américaine de la carte WW3, qui tire par-dessus les murs.
+    Elle frappe les véhicules et l'infanterie à 10 cases.
+    La défense américaine par excellence.
+  Statistiques :
+    Coût 800 $ · PV 40 000 · Blindage lourd · Vision 6,5 cases
+    Arme : Patriot : salve de 5 projectiles de 0 dégâts chacun
+    Énergie -50 · Détecte les furtifs (4 cases)
+    Prérequis : Centre technique (USA) · Niveau technologique : moyen
+  Stratégie :
+    Placez-en derrière vos murs pour couvrir une large zone.
+
+  ▶ FACTION : ESPAGNE
+
+--------------------------------------------------------------------------------------------
+■ TOUR PRISME  (Prism Tower)
+  Faction : Espagne
+  Lore :
+    Défense prisme espagnole de la carte WW3.
+    Son rayon frappe tout ce qui s'approche.
+    La défense la plus avancée de l'Espagne.
+  Statistiques :
+    Coût 1 300 $ · PV 45 000 · Blindage béton · Vision 8 cases
+    Arme : PrisLaser : salve de 3 projectiles de 6 500 dégâts chacun
+    Énergie -75
+    Prérequis : Usine d'armement · Niveau technologique : élevé
+  Stratégie :
+    Placez-en aux accès de votre base ; elles couvrent une large zone.
+
+  ▶ FACTION : RUSSIE
+
+--------------------------------------------------------------------------------------------
+■ TESLA AVANCÉE  (Advanced Tesla)
+  Faction : Russie
+  Lore :
+    Défense Tesla avancée russe de la carte WW3.
+    Ses arcs électriques frappent tout ce qui s'approche, à cadence très élevée.
+    La défense la plus puissante de la Russie.
+  Statistiques :
+    Coût 1 800 $ · PV 60 000 · Blindage lourd · Vision 5 cases
+    Arme : TeslaZap : 10 000 dégâts, portée 7 cases, recharge 0,1 s
+    Énergie -300 · Détecte les furtifs (6 cases)
+    Prérequis : Centre technique (Russie) · Niveau technologique : élevé
+  Stratégie :
+    Placez-en aux accès de votre base. Très gourmande en énergie (-300).
+
+  ▶ FACTION : CHINE
+
+--------------------------------------------------------------------------------------------
+■ CANON GATLING  (Gatling Gun)
+  Faction : Chine
+  Lore :
+    Défense antiaérienne chinoise à canon rotatif.
+    Sa cadence infernale déchire les aéronefs.
+    La réponse chinoise à l'aviation ennemie.
+  Statistiques :
+    Coût 800 $ · PV 40 000 · Blindage lourd · Vision 8 cases
+    Arme : VulcanAA : 1 000 dégâts, portée 8 cases, recharge 0,2 s
+    Énergie -50
+    Prérequis : Radar Dome · Niveau technologique : élevé
+  Stratégie :
+    Placez-en près de vos bâtiments clés contre l'aviation et les drones.
+--------------------------------------------------------------------------------------------
+■ TOUR DE PROPAGANDE  (Propaganda Tower)
+  Faction : Chine
+  Lore :
+    Tour de propagande chinoise de la carte WW3.
+    Elle améliore les capacités des troupes amies à portée.
+    La propagande comme multiplicateur de force.
+  Statistiques :
+    Coût 800 $ · PV 40 000 · Blindage lourd · Vision 6 cases
+    Énergie -60
+    Prérequis : Centre technique (Chine) · Niveau technologique : élevé
+  Stratégie :
+    Placez-la près de vos défenses pour les renforcer.
+
+============================================================================================
+                                         3. LEURRES                                         
+============================================================================================
+
+  ▶ FACTION : FRANCE
+
+--------------------------------------------------------------------------------------------
+■ FAUSSE CASERNE ALLIÉE  (Fake Allied Barracks)
+  Faction : France
+  Lore :
+    Leurre qui ressemble à une caserne alliée.
+    Il attire le feu ennemi loin de vos vrais bâtiments.
+    L'art de la tromperie.
+  Statistiques :
+    Coût 50 $ · PV 60 000 · Blindage léger de bâtiment (bois) · Vision 1 case
+    Prérequis : aucun · Niveau technologique : infanterie seule
+  Stratégie :
+    Attirez les frappes ennemies loin de votre vraie caserne.
+--------------------------------------------------------------------------------------------
+■ FAUSSE CENTRALE  (Fake Power Plant)
+  Faction : France
+  Lore :
+    Leurre qui ressemble à une centrale.
+    Il attire le feu ennemi loin de vos vrais bâtiments.
+    L'art de la tromperie.
+  Statistiques :
+    Coût 30 $ · PV 40 000 · Blindage léger de bâtiment (bois) · Vision 1 case
+    Prérequis : aucun · Niveau technologique : infanterie seule
+  Stratégie :
+    Attirez les frappes ennemies loin de vos vraies centrales.
+--------------------------------------------------------------------------------------------
+■ FAUSSE CENTRALE AVANCÉE  (Fake Advanced Power Plant)
+  Faction : France
+  Lore :
+    Leurre qui ressemble à une centrale avancée.
+    Il attire le feu ennemi loin de vos vrais bâtiments.
+    L'art de la tromperie.
+  Statistiques :
+    Coût 50 $ · PV 70 000 · Blindage léger de bâtiment (bois) · Vision 1 case
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Attirez les frappes ennemies loin de vos vraies centrales.
+--------------------------------------------------------------------------------------------
+■ FAUSSE CHRONOSPHÈRE  (Fake Chronosphere)
+  Faction : France
+  Lore :
+    Leurre qui ressemble à une Chronosphère.
+    Il attire le feu ennemi loin de vos vrais bâtiments.
+    L'art de la tromperie.
+  Statistiques :
+    Coût 150 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 1 case
+    Limite 1 exemplaire
+    Prérequis : aucun · Niveau technologique : illimité (superarmes)
+  Stratégie :
+    Attirez les frappes ennemies loin de votre vraie Chronosphère.
+--------------------------------------------------------------------------------------------
+■ FAUSSE USINE D'ARMEMENT  (Fake War Factory)
+  Faction : France
+  Lore :
+    Leurre qui ressemble à une usine d'armement.
+    Il attire le feu ennemi loin de vos vrais bâtiments.
+    L'art de la tromperie.
+  Statistiques :
+    Coût 200 $ · PV 150 000 · Blindage léger de bâtiment (bois) · Vision 1 case
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Attirez les frappes ennemies loin de votre vraie usine d'armement.
+--------------------------------------------------------------------------------------------
+■ FAUX CENTRE TECHNIQUE ALLIÉ  (Fake Allied Tech Center)
+  Faction : France
+  Lore :
+    Leurre qui ressemble à un centre technique allié.
+    Il attire le feu ennemi loin de vos vrais bâtiments.
+    L'art de la tromperie.
+  Statistiques :
+    Coût 150 $ · PV 40 000 · Blindage léger de bâtiment (bois) · Vision 1 case
+    Prérequis : aucun · Niveau technologique : élevé
+  Stratégie :
+    Placez-le pour attirer les frappes ennemies (espions, superarmes) loin de votre vrai
+    centre technique.
+--------------------------------------------------------------------------------------------
+■ FAUX CHANTIER DE CONSTRUCTION  (Fake Construction Yard)
+  Faction : France
+  Lore :
+    Leurre qui ressemble à un chantier de construction.
+    Il attire le feu ennemi loin de vos vrais bâtiments.
+    L'art de la tromperie.
+  Statistiques :
+    Coût 200 $ · PV 150 000 · Blindage léger de bâtiment (bois) · Vision 1 case
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Attirez les frappes ennemies loin de votre vrai chantier de construction.
+--------------------------------------------------------------------------------------------
+■ FAUX CHANTIER NAVAL  (Fake Naval Yard)
+  Faction : France
+  Lore :
+    Leurre qui ressemble à un chantier naval.
+    Il attire le feu ennemi loin de vos vrais bâtiments.
+    L'art de la tromperie.
+  Statistiques :
+    Coût 100 $ · PV 100 000 · Blindage léger · Vision 1 case
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Attirez les frappes ennemies loin de votre vrai chantier naval.
+--------------------------------------------------------------------------------------------
+■ FAUX RADAR DOME  (Fake Radar Dome)
+  Faction : France
+  Lore :
+    Leurre qui ressemble à un Radar Dome.
+    Il attire le feu ennemi loin de vos vrais bâtiments.
+    L'art de la tromperie.
+  Statistiques :
+    Coût 180 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 1 case
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Attirez les frappes ennemies loin de votre vrai radar.
+--------------------------------------------------------------------------------------------
+■ FAUX SERVICE DEPOT  (Fake Service Depot)
+  Faction : France
+  Lore :
+    Leurre qui ressemble à un Service Depot.
+    Il attire le feu ennemi loin de vos vrais bâtiments.
+    L'art de la tromperie.
+  Statistiques :
+    Coût 120 $ · PV 80 000 · Blindage léger de bâtiment (bois) · Vision 1 case
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Attirez les frappes ennemies loin de votre vrai Service Depot.
+--------------------------------------------------------------------------------------------
+■ FAUX SILO À MISSILES  (Fake Missile Silo)
+  Faction : France
+  Lore :
+    Leurre qui ressemble à un silo à missiles.
+    Il attire le feu ennemi loin de vos vrais bâtiments.
+    Il fait craindre une frappe nucléaire qui n'existe pas.
+  Statistiques :
+    Coût 250 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 1 case
+    Limite 1 exemplaire
+    Prérequis : aucun · Niveau technologique : illimité (superarmes)
+  Stratégie :
+    Faites croire à l'ennemi que vous avez une bombe atomique, pour qu'il gaspille ses
+    ressources à la chercher.
+
+============================================================================================
+                                       4. INFANTERIE                                        
+============================================================================================
+
+  ▶ FACTION : TOUTES
+
+--------------------------------------------------------------------------------------------
+■ FOURMI GÉANTE  (Giant Ant)
+  Faction : toutes
+  Lore :
+    Insecte irradié devenu monstrueux dans les laboratoires biologiques.
+    Ses mandibules broient l'acier comme la chair.
+    Personne ne sait vraiment ce qui s'est passé dans ces laboratoires.
+  Statistiques :
+    Coût 300 $ · PV 75 000 · Blindage aucun · Vitesse 92 · Vision 4 cases
+    Arme : mandible : 6 000 dégâts, rafale de 2, portée 1,5 case, recharge 0,4 s
+    Détecte les furtifs (1 case)
+    Prérequis : une caserne, Laboratoire biologique (capturé)
+  Stratégie :
+    Disponible seulement après capture d'un laboratoire biologique. Envoyez-la en masse :
+    très résistante (75 000 PV) mais au corps à corps uniquement.
+--------------------------------------------------------------------------------------------
+■ FUSILIER  (Rifle Infantry)
+  Faction : toutes
+  Lore :
+    Fantassin de base, l'âme de toutes les armées.
+    Bon marché et remplaçable, il tient les positions et nettoie l'infanterie.
+    Des millions d'entre eux ont gagné des guerres que les chars ont prises en photo.
+  Statistiques :
+    Coût 100 $ · PV 5 000 · Blindage aucun · Vitesse 54 · Vision 4 cases
+    Arme : M1Carbine : 1 000 dégâts, portée 5 cases, recharge 0,8 s
+    Arme : Vulcan : 1 000 dégâts, portée 6 cases, recharge 1,4 s
+    Détecte les furtifs (1 case)
+    Prérequis : une caserne · Niveau technologique : infanterie seule
+  Stratégie :
+    Utilisez-le en masse pour tenir des positions et éliminer l'infanterie adverse.
+    Garnissez les pillbox et les tranchées.
+--------------------------------------------------------------------------------------------
+■ INGÉNIEUR  (Engineer)
+  Faction : toutes
+  Lore :
+    Spécialiste capable de capturer les bâtiments ennemis ou de réparer les vôtres.
+    Sans arme, il vaut pourtant plus que dix soldats au bon endroit.
+    Une raffinerie capturée change le cours d'une partie.
+  Statistiques :
+    Coût 400 $ · PV 2 500 · Blindage aucun · Vitesse 54 · Vision 4 cases
+    Arme : aucune
+    Détecte les furtifs (1 case)
+    Prérequis : une caserne · Niveau technologique : infanterie seule
+  Stratégie :
+    Transportez-le jusqu'à un bâtiment ennemi clé (usine, raffinerie, centre technique) pour
+    le capturer. Réparez aussi les ponts et bâtiments amis.
+--------------------------------------------------------------------------------------------
+■ LANCE-ROQUETTES  (Rocket Soldier)
+  Faction : toutes
+  Lore :
+    Fantassin antichar et antiaérien, commun à toutes les armées.
+    Ses roquettes frappent les chars comme les hélicoptères.
+    Aucun blindé ne se sent en sécurité face à un groupe de lance-roquettes.
+  Statistiques :
+    Coût 300 $ · PV 4 500 · Blindage aucun · Vitesse 54 · Vision 4 cases
+    Arme : RedEye : 2 400 dégâts, portée 7,5 cases, recharge 2 s
+    Arme : Dragon : 5 000 dégâts, portée 5 cases, recharge 2 s
+    Détecte les furtifs (1 case)
+    Prérequis : une caserne · Niveau technologique : infanterie seule
+  Stratégie :
+    Escortez vos chars contre les blindés et l'aviation ennemis. Protégez-les de
+    l'infanterie ennemie, qu'ils gèrent mal.
+--------------------------------------------------------------------------------------------
+■ ZOMBIE
+  Faction : toutes
+  Lore :
+    Créature mort-vivante issue des laboratoires biologiques.
+    Lente mais très résistante, elle attaque au corps à corps.
+    Personne ne veut vraiment savoir comment elle est apparue.
+  Statistiques :
+    Coût 100 $ · PV 25 000 · Blindage aucun · Vitesse 39 · Vision 4 cases
+    Arme : claw : 3 000 dégâts, portée 1,5 case, recharge 1,2 s
+    Détecte les furtifs (1 case)
+    Prérequis : une caserne, Laboratoire biologique (capturé)
+  Stratégie :
+    Disponible après capture d'un laboratoire biologique. Envoyez-les en masse pour
+    submerger l'ennemi.
+
+  ▶ FACTION : TOUS LES ALLIÉS
+
+--------------------------------------------------------------------------------------------
+■ INFIRMIER  (Medic)
+  Faction : tous les Alliés
+  Lore :
+    Infirmier des Alliés, soigne l'infanterie blessée.
+    Il ne tire pas, mais il maintient une escouade en vie bien plus longtemps.
+    Chaque soldat soigné est un soldat qui ne coûte rien.
+  Statistiques :
+    Coût 200 $ · PV 6 000 · Blindage aucun · Vitesse 49 · Vision 3 cases
+    Arme : Heal : portée 4 cases, recharge 3,2 s
+    Détecte les furtifs (1 case)
+    Prérequis : Caserne alliée · Niveau technologique : infanterie seule
+  Stratégie :
+    Accompagnez vos groupes d'infanterie pour les soigner entre les engagements.
+--------------------------------------------------------------------------------------------
+■ MÉCANICIEN  (Mechanic)
+  Faction : tous les Alliés
+  Lore :
+    Mécanicien des Alliés, spécialiste de la réparation de véhicules.
+    Il répare les blindés sur le terrain et remet en état les épaves.
+    Il transforme une défaite en une armée prête à repartir.
+  Statistiques :
+    Coût 500 $ · PV 8 000 · Blindage aucun · Vitesse 49 · Vision 3 cases
+    Arme : Repair : portée 4 cases, recharge 3,2 s
+    Détecte les furtifs (1 case)
+    Prérequis : Caserne alliée, Service Depot · Niveau technologique : moyen
+  Stratégie :
+    Suivez vos colonnes pour réparer les chars entre deux combats et capturez les épaves
+    pour les remettre en service.
+--------------------------------------------------------------------------------------------
+■ TANYA
+  Faction : tous les Alliés
+  Lore :
+    Commando d'élite des Alliés, armée de deux pistolets et de charges C4.
+    Elle détruit les bâtiments d'une charge et élimine l'infanterie d'une balle.
+    Une seule Tanya a changé plus d'une guerre.
+  Statistiques :
+    Coût 1 500 $ · PV 10 000 · Blindage aucun · Vitesse 68 · Vision 6 cases
+    Arme : Colt45 : 5 000 dégâts, portée 7 cases, recharge 0,3 s
+    Détecte les furtifs (1 case) · Limite 1 exemplaire
+    Prérequis : Caserne alliée, Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Infiltrez-la via un transport pour poser du C4 sur les bâtiments clés. Évitez les chars
+    et les chiens ; une seule peut exister.
+
+  ▶ FACTION : TOUS LES SOVIÉTIQUES
+
+--------------------------------------------------------------------------------------------
+■ CHIEN D'ATTAQUE  (Attack Dog)
+  Faction : tous les Soviétiques
+  Lore :
+    Chien dressé par les Soviétiques pour traquer l'infanterie.
+    Une morsure suffit à neutraliser un fantassin ; il flaire aussi les espions.
+    Les meilleurs gardes du corps d'une base soviétique.
+  Statistiques :
+    Coût 200 $ · PV 1 800 · Blindage aucun · Vitesse 100 · Vision 5,5 cases
+    Arme : DogJaw : 100 000 dégâts, portée 3 cases, recharge 0,4 s
+    Détecte les furtifs (1 case)
+    Prérequis : Chenil · Niveau technologique : infanterie seule
+  Stratégie :
+    Protégez votre base contre les espions et l'infanterie infiltrée. Inutile contre les
+    véhicules.
+--------------------------------------------------------------------------------------------
+■ GRENADIER
+  Faction : tous les Soviétiques
+  Lore :
+    Fantassin soviétique armé de grenades.
+    Ses grenades frappent l'infanterie groupée et les bâtiments.
+    Il faut une bonne dose de courage pour les lancer au bon moment.
+  Statistiques :
+    Coût 160 $ · PV 5 000 · Blindage aucun · Vitesse 68 · Vision 4 cases
+    Arme : Grenade : 6 000 dégâts, portée 4 cases, recharge 2,4 s
+    Détecte les furtifs (1 case)
+    Prérequis : Caserne soviétique · Niveau technologique : infanterie seule
+  Stratégie :
+    Nettoyez l'infanterie groupée et endommagez les bâtiments. Évitez les chars.
+--------------------------------------------------------------------------------------------
+■ INFIRMIER SOVIÉTIQUE  (Medic)
+  Faction : tous les Soviétiques
+  Lore :
+    Infirmier des armées soviétiques, disponible après la capture d'un hôpital.
+    Il soigne l'infanterie blessée sur le champ de bataille.
+    Chaque soldat sauvé est un soldat de plus sur le front.
+  Statistiques :
+    Coût 200 $ · PV 6 000 · Blindage aucun · Vitesse 49 · Vision 3 cases
+    Arme : Heal : portée 4 cases, recharge 3,2 s
+    Détecte les furtifs (1 case)
+    Prérequis : Hôpital (capturé)
+  Stratégie :
+    Accompagnez vos groupes d'infanterie pour soigner les blessés entre deux combats.
+--------------------------------------------------------------------------------------------
+■ LANCE-FLAMMES  (Flamethrower)
+  Faction : tous les Soviétiques
+  Lore :
+    Fantassin soviétique équipé d'un lance-flammes.
+    Il incendie infanterie et bâtiments à courte portée.
+    L'ennemi préfère souvent fuir que de l'affronter.
+  Statistiques :
+    Coût 300 $ · PV 4 000 · Blindage aucun · Vitesse 54 · Vision 4 cases
+    Arme : Flamer : 1 000 dégâts, rafale de 15, portée 5 cases, recharge 2 s
+    Détecte les furtifs (1 case)
+    Prérequis : Caserne soviétique, Tour lance-flammes · Niveau technologique : bas
+  Stratégie :
+    Attaquez les bâtiments et l'infanterie retranchée. Courte portée : approchez sous
+    couverture.
+--------------------------------------------------------------------------------------------
+■ VOLEUR  (Thief)
+  Faction : tous les Soviétiques
+  Lore :
+    Voleur furtif capable de dérober les crédits ennemis.
+    Il détourne aussi les véhicules ennemis.
+    La guerre économique à l'état pur.
+  Statistiques :
+    Coût 500 $ · PV 5 000 · Blindage aucun · Vitesse 68 · Vision 5 cases
+    Arme : aucune
+    Furtif · Détecte les furtifs (1 case)
+    Prérequis : Caserne soviétique, Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Volez les crédits des raffineries et silos ennemis, ou détournez un véhicule précieux.
+
+  ▶ FACTION : FRANCE
+
+--------------------------------------------------------------------------------------------
+■ COMMANDO PARACHUTISTE (GCP)
+  Faction : France
+  Lore :
+    Groupement des commandos parachutistes français, forces spéciales d'élite.
+    Furtifs, ils voient loin et désignent au laser les cibles des frappes SCALP.
+    Là où ils passent, les missiles de croisière suivent.
+  Statistiques :
+    Coût 600 $ · PV 6 500 · Blindage aucun · Vitesse 68 · Vision 8 cases
+    Arme : GCPRifle : 1 000 dégâts, portée 5,5 cases, recharge 0,7 s
+    Arme : ScalpDesignator : portée 10 cases, recharge 40 s
+    Arme : ScalpMissile : 45 000 dégâts, portée 10 cases, recharge 40 s
+    Furtif · Détecte les furtifs (1 case)
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Infiltrez-les près des cibles clés, puis activez la frappe SCALP pour guider un missile
+    dévastateur. Ils activent aussi la liaison SCORPION des Leclerc proches.
+--------------------------------------------------------------------------------------------
+■ INGÉNIEUR MILITAIRE
+  Faction : France
+  Lore :
+    Ingénieur du génie français, spécialiste des fortifications de campagne.
+    Déployé, il ouvre une zone de construction pour défenses et tranchées.
+    Il transforme n'importe quelle position en bastion.
+  Statistiques :
+    Coût 500 $ · PV 4 000 · Blindage aucun · Vitesse 54 · Vision 4 cases
+    Arme : aucune
+    Détecte les furtifs (1 case)
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Déployez-le sur une position avancée pour y construire des défenses et des tranchées,
+    loin de la base. Protégez-le : il est non armé.
+--------------------------------------------------------------------------------------------
+■ SNIPER
+  Faction : France
+  Lore :
+    Tireur d'élite français de la carte WW3.
+    Son fusil longue portée élimine l'infanterie à 10 cases.
+    Il ne manque jamais sa cible.
+  Statistiques :
+    Coût 600 $ · PV 9 500 · Blindage aucun · Vitesse 46 · Vision 7 cases
+    Arme : sniper : 14 000 dégâts, portée 10 cases, recharge 3,6 s
+    Détecte les furtifs (1 case)
+    Prérequis : Caserne alliée, Radar Dome
+  Stratégie :
+    Éliminez l'infanterie ennemie de très loin. Protégez-le des véhicules et des chiens.
+
+  ▶ FACTION : ALLEMAGNE
+
+--------------------------------------------------------------------------------------------
+■ SOLDAT CHRONO  (Chrono Soldier)
+  Faction : Allemagne
+  Lore :
+    Fantassin d'élite allemand de la carte WW3, armé d'un canon chronosphérique portatif.
+    Il efface littéralement ses cibles du temps.
+    Efficace contre l'infanterie comme contre les véhicules.
+  Statistiques :
+    Coût 450 $ · PV 5 000 · Blindage aucun · Vitesse 54 · Vision 5 cases
+    Arme : ChronoHandGun : 4 500 dégâts, portée 5 cases, recharge 2,8 s
+    Détecte les furtifs (1 case)
+    Prérequis : Caserne alliée, Centre technique (Allemagne) · Niveau technologique : élevé
+  Stratégie :
+    Infanterie polyvalente de haut niveau : utilisez-le contre infanterie et véhicules
+    légers. Protégez-le de l'aviation.
+
+  ▶ FACTION : ROYAUME-UNI
+
+--------------------------------------------------------------------------------------------
+■ ESPION BRITANNIQUE  (SPY.England)
+  Faction : Royaume-Uni
+  Lore :
+    Espion des services britanniques, moins cher que ses homologues.
+    Même rôle : infiltration et sabotage.
+    Le MI6 a toujours eu le goût de l'efficacité.
+  Statistiques :
+    Coût 250 $ · PV 2 500 · Blindage aucun · Vitesse 54 · Vision 5 cases
+    Arme : SilencedPPK : 15 000 dégâts, portée 2,5 cases, recharge 3,2 s
+    Détecte les furtifs (1 case)
+    Prérequis : Radar Dome, Caserne alliée · Niveau technologique : moyen
+  Stratégie :
+    Même emploi que l'espion, pour moitié prix : multipliez les infiltrations.
+--------------------------------------------------------------------------------------------
+■ ROYAL MARINE
+  Faction : Royaume-Uni
+  Lore :
+    Fusilier d'élite britannique.
+    Armé d'un fusil et de grenades, il est redoutable contre l'infanterie et les bâtiments.
+    L'élite de l'infanterie de la Couronne.
+  Statistiques :
+    Coût 250 $ · PV 6 000 · Blindage aucun · Vitesse 54 · Vision 6 cases
+    Arme : M1Carbine2 : 1 000 dégâts, portée 5 cases, recharge 0,8 s
+    Arme : BuildingGrenade : 6 000 dégâts, portée 4 cases, recharge 2,4 s
+    Arme : Vulcan : 1 000 dégâts, portée 6 cases, recharge 1,4 s
+    Détecte les furtifs (1 case)
+    Prérequis : Centre technique (Royaume-Uni), Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Infanterie d'élite polyvalente : attaquez l'infanterie et les bâtiments.
+--------------------------------------------------------------------------------------------
+■ ÉQUIPE NLAW
+  Faction : Royaume-Uni
+  Lore :
+    Équipe antichar d'élite britannique armée de missiles à attaque par le toit.
+    Ses missiles ignorent le blindage réactif.
+    En pillbox, elle devient une embuscade mortelle.
+  Statistiques :
+    Coût 450 $ · PV 5 000 · Blindage aucun · Vitesse 54 · Vision 4 cases
+    Arme : NLAW : 9 000 dégâts, portée 5,5 cases, recharge 3,2 s
+    Arme : NLAWAmbush : 24 000 dégâts, portée 7 cases, recharge 7 s
+    Détecte les furtifs (1 case)
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Placez-la en garnison dans un pillbox pour un tir d'embuscade dévastateur. Excellente
+    contre le T-90M et le BMPT, dont l'ERA ne la gêne pas.
+
+  ▶ FACTION : USA
+
+--------------------------------------------------------------------------------------------
+■ COMMANDO
+  Faction : USA
+  Lore :
+    Commando d'élite américain de la carte WW3.
+    Il est armé d'une mitrailleuse lourde, de grenades et de roquettes.
+    Seul, il peut tenir une position face à une escouade.
+  Statistiques :
+    Coût 400 $ · PV 8 000 · Blindage aucun + lourd · Vitesse 71 · Vision 6 cases
+    Arme : C60mg : 1 000 dégâts, rafale de 5, portée 5 cases, recharge 0,4 s
+    Arme : BuildingGrenade : 6 000 dégâts, portée 4 cases, recharge 2,4 s
+    Arme : RedEye : 2 400 dégâts, portée 7,5 cases, recharge 2 s
+    Arme : Dragon : 5 000 dégâts, portée 5 cases, recharge 2 s
+    Détecte les furtifs (1 case)
+    Prérequis : Caserne alliée, Centre technique (USA) · Niveau technologique : élevé
+  Stratégie :
+    Infiltrez-le pour nettoyer l'infanterie et les bâtiments. Déployé, il gagne en
+    résistance.
+--------------------------------------------------------------------------------------------
+■ GI
+  Faction : USA
+  Lore :
+    Fantassin américain de la carte WW3, bien équipé et entraîné.
+    Il porte des grenades antibâtiment en plus de son fusil.
+    Le GI est la base de la puissance terrestre américaine.
+  Statistiques :
+    Coût 110 $ · PV 5 000 · Blindage aucun · Vitesse 54 · Vision 4 cases
+    Arme : M1Carbine : 1 000 dégâts, portée 5 cases, recharge 0,8 s
+    Arme : Vulcan : 1 000 dégâts, portée 6 cases, recharge 1,4 s
+    Arme : BuildingGrenade : 6 000 dégâts, portée 4 cases, recharge 2,4 s
+    Détecte les furtifs (1 case)
+    Prérequis : aucun · Niveau technologique : infanterie seule
+  Stratégie :
+    Fusilier polyvalent américain : tenez les positions et harcelez les bâtiments avec les
+    grenades.
+--------------------------------------------------------------------------------------------
+■ SOLDAT À RÉACTEUR DORSAL  (Jump-Jet Trooper)
+  Faction : USA
+  Lore :
+    Fantassin américain équipé d'un réacteur dorsal.
+    Il survole les obstacles et frappe l'infanterie comme les aéronefs.
+    Les murs et les rivières ne l'arrêtent plus.
+  Statistiques :
+    Coût 450 $ · PV 8 000 · Blindage léger · Vitesse 99 · Vision 7 cases
+    Arme : M60mgJJ : 1 000 dégâts, rafale de 3, portée 4,75 cases, recharge 1,2 s
+    Arme : BuildingGrenade : 6 000 dégâts, portée 4 cases, recharge 2,4 s
+    Arme : M60mgJJ.Ground : 1 000 dégâts, rafale de 3, portée 4,75 cases, recharge 1,2 s
+    Arme : M60mgJJAA : 350 dégâts, rafale de 3, portée 5,5 cases, recharge 1,2 s
+    Détecte les furtifs (3 cases)
+    Prérequis : Centre technique (USA) · Niveau technologique : moyen
+  Stratégie :
+    Franchissez les obstacles pour frapper l'infanterie et les unités de soutien derrière
+    les lignes.
+
+  ▶ FACTION : ESPAGNE
+
+--------------------------------------------------------------------------------------------
+■ CONQUISTADOR
+  Faction : Espagne
+  Lore :
+    Fantassin d'élite espagnol armé d'un fusil prisme portatif.
+    Il combat à distance et peut capturer les bâtiments ennemis.
+    Il perpétue la tradition des conquérants, en version haute technologie.
+  Statistiques :
+    Coût 500 $ · PV 6 000 · Blindage aucun · Vitesse 66 · Vision 5 cases
+    Arme : PrisHH : 5 000 dégâts, portée 6 cases, recharge 3,8 s
+    Détecte les furtifs (1 case)
+    Prérequis : Centre technique (Espagne) · Niveau technologique : moyen
+  Stratégie :
+    Combinez attaque et capture : éliminez les défenseurs puis capturez les bâtiments.
+    Fragile contre les chars.
+
+  ▶ FACTION : RUSSIE
+
+--------------------------------------------------------------------------------------------
+■ SOLDAT DE CHOC  (Shock Trooper)
+  Faction : Russie
+  Lore :
+    Fantassin d'élite russe équipé d'une bobine Tesla portable.
+    Ses arcs électriques frappent l'infanterie et les véhicules.
+    Une bobine Tesla qui marche.
+  Statistiques :
+    Coût 350 $ · PV 5 000 · Blindage aucun · Vitesse 54 · Vision 5 cases
+    Arme : PortaTesla : 4 500 dégâts, portée 6 cases, recharge 2,8 s
+    Détecte les furtifs (1 case)
+    Prérequis : Caserne soviétique, Centre technique soviétique, Bobine Tesla · Niveau
+    technologique : élevé
+  Stratégie :
+    Unité polyvalente contre infanterie et véhicules : accompagnez vos chars Tesla.
+
+  ▶ FACTION : UKRAINE
+
+--------------------------------------------------------------------------------------------
+■ FANTASSIN DE TRANCHÉE
+  Faction : Ukraine
+  Lore :
+    Fantassin ukrainien spécialiste de la défense retranchée.
+    Déployé, il creuse une tranchée qui le protège et augmente sa portée.
+    Il transforme chaque position en ligne de défense.
+  Statistiques :
+    Coût 150 $ · PV 5 500 · Blindage aucun · Vitesse 54 · Vision 4 cases
+    Arme : M1Carbine : 1 000 dégâts, portée 5 cases, recharge 0,8 s
+    Arme : Vulcan : 1 000 dégâts, portée 6 cases, recharge 1,4 s
+    Détecte les furtifs (1 case)
+    Prérequis : aucun · Niveau technologique : infanterie seule
+  Stratégie :
+    Déployez-le en ligne pour tenir une position : dégâts reçus -50 %, portée +15 %,
+    immunisé à l'écrasement et à la suppression.
+--------------------------------------------------------------------------------------------
+■ MORTIER  (Mortar)
+  Faction : Ukraine
+  Lore :
+    Fantassin ukrainien armé d'un mortier.
+    Il tire au-dessus des obstacles sur l'infanterie et les bâtiments.
+    Discret et efficace, il est le soutien de feu de l'infanterie.
+  Statistiques :
+    Coût 250 $ · PV 5 200 · Blindage aucun · Vitesse 54 · Vision 4 cases
+    Arme : Mortar : 6 500 dégâts, portée 7 cases, recharge 3,6 s
+    Détecte les furtifs (1 case)
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Pilonnez l'infanterie et les bâtiments à 7 cases, derrière votre ligne. Il est
+    vulnérable aux chars.
+--------------------------------------------------------------------------------------------
+■ OPÉRATEUR DE DRONE FPV
+  Faction : Ukraine
+  Lore :
+    Opérateur ukrainien de drones kamikazes à vue immersive.
+    Couché, il verrouille sa cible et lance un drone qui fonce sur elle.
+    Bon marché, il change la valeur des blindés sur le champ de bataille.
+  Statistiques :
+    Coût 400 $ · PV 3 500 · Blindage aucun · Vitesse 54 · Vision 4 cases
+    Arme : FPVDrone : 11 000 dégâts, portée 9 cases, recharge 1,2 s
+    Arme : Pistol : 100 dégâts, portée 3 cases, recharge 0,3 s
+    Détecte les furtifs (1 case)
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Déployez-le derrière une ligne défensive : ses drones à 9 cases frappent le toit des
+    blindés (ignorent l'ERA). Un drone toutes les 10 s : groupez plusieurs opérateurs pour
+    tuer un char lourd.
+
+  ▶ FACTION : CHINE
+
+--------------------------------------------------------------------------------------------
+■ CONSCRIT CHINOIS  (Chinese Conscript)
+  Faction : Chine
+  Lore :
+    Fantassin chinois conscrit, produit en masse à bas prix.
+    Moins résistant que les fusiliers étrangers, il compense par le nombre.
+    Il arme aussi l'Overlord s'il est embarqué.
+  Statistiques :
+    Coût 90 $ · PV 4 000 · Blindage aucun · Vitesse 54 · Vision 4 cases
+    Arme : M1Carbine : 1 000 dégâts, portée 5 cases, recharge 0,8 s
+    Arme : Vulcan : 1 000 dégâts, portée 6 cases, recharge 1,4 s
+    Arme : BuildingGrenade : 6 000 dégâts, portée 4 cases, recharge 2,4 s
+    Détecte les furtifs (1 case)
+    Prérequis : aucun · Niveau technologique : infanterie seule
+  Stratégie :
+    Produisez-en beaucoup : il est moins cher que les autres fusiliers. Placez-en dans
+    l'Overlord pour lui donner une mitrailleuse.
+--------------------------------------------------------------------------------------------
+■ HACKER
+  Faction : Chine
+  Lore :
+    Pirate informatique chinois.
+    Il pirate les bâtiments ennemis et vole des ressources sur Internet.
+    La guerre de l'information, version Pékin.
+  Statistiques :
+    Coût 500 $ · PV 8 000 · Blindage aucun · Vitesse 54 · Vision 3 cases
+    Arme : aucune
+    Détecte les furtifs (1 case)
+    Prérequis : Caserne soviétique, Radar Dome, Centre technique (Chine) · Niveau
+    technologique : élevé
+  Stratégie :
+    Piratez les bâtiments ennemis pour les neutraliser. Placez-le dans un Internet Centre
+    pour générer des crédits, ou dans l'Overlord pour la propagande.
+
+  ▶ FACTION : TURQUIE
+
+--------------------------------------------------------------------------------------------
+■ CRAZY IVAN
+  Faction : Turquie
+  Lore :
+    Spécialiste de la démolition turc de la carte WW3.
+    Il colle des charges explosives sur les bâtiments et les véhicules.
+    Sa réputation de folie n'est plus à faire.
+  Statistiques :
+    Coût 600 $ · PV 7 000 · Blindage aucun · Vitesse 66 · Vision 5 cases
+    Arme : TNT : salve de 3 projectiles de 0 dégâts chacun
+    Détecte les furtifs (1 case)
+    Prérequis : Caserne soviétique, Centre technique (Turquie) · Niveau technologique :
+    élevé
+  Stratégie :
+    Posez des explosifs sur les défenses et bâtiments ennemis. Il vise mal les cibles
+    mobiles : attaquez les structures.
+--------------------------------------------------------------------------------------------
+■ SABOTEUR  (Sabotuer)
+  Faction : Turquie
+  Lore :
+    Agent turc de la carte WW3, porteur d'une mini-bombe nucléaire.
+    Il se déguise pour s'infiltrer dans la base ennemie.
+    Il ne revient jamais, mais son passage non plus ne s'oublie pas.
+  Statistiques :
+    Coût 500 $ · PV 5 000 · Blindage aucun · Vitesse 68 · Vision 5 cases
+    Arme : DemoTruckTargeting : portée 2 cases
+    Détecte les furtifs (1 case) · Limite 1 exemplaire
+    Prérequis : Caserne soviétique, Centre technique (Turquie) · Niveau technologique :
+    moyen
+  Stratégie :
+    Déguisez-le et infiltrez-le au cœur de la base ennemie pour détruire un bâtiment clé.
+
+  ▶ FACTION : GRÈCE
+
+--------------------------------------------------------------------------------------------
+■ ARMURE SPARTAN  (Spartan Powersuit)
+  Faction : Grèce
+  Lore :
+    Armure de puissance lourde grecque de la carte WW3.
+    Elle combine une mitrailleuse et un canon à grenades.
+    Presque un véhicule, mais avec l'agilité d'un fantassin.
+  Statistiques :
+    Coût 1 000 $ · PV 32 000 · Blindage léger · Vitesse 54 · Vision 6 cases
+    Arme : M60mg : 1 000 dégâts, rafale de 5, portée 4 cases, recharge 1,2 s
+    Arme : mGrenade : 7 000 dégâts, rafale de 3, portée 6 cases, recharge 1,2 s
+    Prérequis : Centre technique (Grèce) · Niveau technologique : élevé
+  Stratégie :
+    Unité de percée : avancez en tête contre l'infanterie et les véhicules légers.
+--------------------------------------------------------------------------------------------
+■ FUSILIER GREC  (Rifle Infantry)
+  Faction : Grèce
+  Lore :
+    Fusilier grec des premières phases, avant l'arrivée des armures.
+    Il ajoute des grenades antibâtiment à l'équipement standard.
+    Il laisse sa place aux hoplites dès que le centre technique est construit.
+  Statistiques :
+    Coût 100 $ · PV 5 000 · Blindage aucun · Vitesse 54 · Vision 4 cases
+    Arme : M1Carbine : 1 000 dégâts, portée 5 cases, recharge 0,8 s
+    Arme : Vulcan : 1 000 dégâts, portée 6 cases, recharge 1,4 s
+    Arme : BuildingGrenade : 6 000 dégâts, portée 4 cases, recharge 2,4 s
+    Détecte les furtifs (1 case)
+    Prérequis : aucun
+  Stratégie :
+    Infanterie de base grecque : tenez les positions en attendant les hoplites. Les grenades
+    aident contre les bâtiments.
+--------------------------------------------------------------------------------------------
+■ HIPPEIS
+  Faction : Grèce
+  Lore :
+    Cavalerie moderne grecque de la carte WW3, armée de roquettes.
+    Rapide, elle frappe à la fois au sol et dans les airs.
+    Les cavaliers de l'Antiquité ont trouvé de dignes héritiers.
+  Statistiques :
+    Coût 500 $ · PV 11 000 · Blindage léger · Vitesse 170 · Vision 5 cases
+    Arme : APTusk : 5 000 dégâts, portée 6 cases, recharge 2,4 s
+    Arme : SidewinderAA : 2 400 dégâts, rafale de 3, portée 7,5 cases, recharge 2 s
+    Prérequis : Centre technique (Grèce)
+  Stratégie :
+    Unité de harcèlement rapide : frappez les véhicules et les aéronefs, puis repliez-vous.
+--------------------------------------------------------------------------------------------
+■ HOPLITE
+  Faction : Grèce
+  Lore :
+    Fantassin grec en armure de puissance légère.
+    Il résiste deux fois mieux qu'un fusilier et tire en rafales.
+    La phalange moderne de la Grèce.
+  Statistiques :
+    Coût 250 $ · PV 10 000 · Blindage aucun · Vitesse 54 · Vision 5 cases
+    Arme : C60mg : 1 000 dégâts, rafale de 5, portée 5 cases, recharge 0,4 s
+    Arme : Vulcan : 1 000 dégâts, portée 6 cases, recharge 1,4 s
+    Détecte les furtifs (1 case)
+    Prérequis : Centre technique (Grèce) · Niveau technologique : moyen
+  Stratégie :
+    Tenez les positions en ligne compacte : sa résistance lui permet de tenir face à
+    l'infanterie ennemie.
+--------------------------------------------------------------------------------------------
+■ HOPLITE LANCE-FLAMMES  (Hoplite Flamer)
+  Faction : Grèce
+  Lore :
+    Hoplite grec en armure moyenne, armé d'un lance-flammes lourd.
+    Il incendie l'infanterie et les bâtiments tout en résistant aux tirs.
+    Il n'avance pas vite, mais il n'a pas besoin de courir.
+  Statistiques :
+    Coût 600 $ · PV 20 000 · Blindage lourd · Vitesse 54 · Vision 6 cases
+    Arme : HeavyFlamer.Hop : 1 260 dégâts, rafale de 18, portée 5,5 cases, recharge 4,4 s
+    Détecte les furtifs (1 case)
+    Prérequis : Centre technique (Grèce), Tour lance-flammes · Niveau technologique : élevé
+  Stratégie :
+    Nettoyez l'infanterie retranchée et les bâtiments, en première ligne grâce à son
+    blindage.
+--------------------------------------------------------------------------------------------
+■ LANCE-FLAMMES GREC  (Flamethrower)
+  Faction : Grèce
+  Lore :
+    Lance-flammes grec des premières phases.
+    Identique au lance-flammes soviétique.
+    Il cède ensuite sa place à l'hoplite lance-flammes.
+  Statistiques :
+    Coût 300 $ · PV 4 000 · Blindage aucun · Vitesse 54 · Vision 4 cases
+    Arme : Flamer : 1 000 dégâts, rafale de 15, portée 5 cases, recharge 2 s
+    Détecte les furtifs (1 case)
+    Prérequis : Tour lance-flammes
+  Stratégie :
+    Même emploi que le lance-flammes : bâtiments et infanterie retranchée.
+--------------------------------------------------------------------------------------------
+■ LANCE-ROQUETTES GREC  (Rocket Soldier)
+  Faction : Grèce
+  Lore :
+    Lance-roquettes grec des premières phases.
+    Identique au soldat roquette standard.
+    Il reste utile tant que les armures grecques ne sont pas disponibles.
+  Statistiques :
+    Coût 300 $ · PV 4 500 · Blindage aucun · Vitesse 54 · Vision 4 cases
+    Arme : RedEye : 2 400 dégâts, portée 7,5 cases, recharge 2 s
+    Arme : Dragon : 5 000 dégâts, portée 5 cases, recharge 2 s
+    Détecte les furtifs (1 case)
+    Prérequis : aucun
+  Stratégie :
+    Antichar et antiaérien de base pour la Grèce : couvrez vos hoplites contre les chars et
+    l'aviation.
+
+  ▶ FACTION : TOUTES SAUF LE ROYAUME-UNI (QUI A SA PROPRE VERSION)
+
+--------------------------------------------------------------------------------------------
+■ ESPION  (SPY)
+  Faction : toutes sauf le Royaume-Uni (qui a sa propre version)
+  Lore :
+    Agent de renseignement déguisé.
+    Il s'infiltre dans les bâtiments ennemis pour voler des informations ou saboter.
+    Le résultat dépend du bâtiment infiltré.
+  Statistiques :
+    Coût 500 $ · PV 2 500 · Blindage aucun · Vitesse 54 · Vision 5 cases
+    Arme : SilencedPPK : 15 000 dégâts, portée 2,5 cases, recharge 3,2 s
+    Détecte les furtifs (1 case)
+    Prérequis : Radar Dome, Caserne alliée · Niveau technologique : moyen
+  Stratégie :
+    Infiltrez les bâtiments ennemis : centrale (coupure de courant), raffinerie (vol
+    d'argent), usine (technologie), radar (vision). Méfiez-vous des chiens.
+
+============================================================================================
+                                        5. VÉHICULES                                        
+============================================================================================
+
+  ▶ FACTION : TOUTES
+
+--------------------------------------------------------------------------------------------
+■ CAMION DE MINERAI  (Ore Truck)
+  Faction : toutes
+  Lore :
+    Le véhicule le plus important de toute partie, même si personne ne le dit.
+    Il collecte le minerai et les gemmes pour alimenter l'effort de guerre.
+    Blindé, lent et sans arme, il se contente de faire vivre l'économie.
+  Statistiques :
+    Coût 1 100 $ · PV 60 000 · Blindage lourd · Vitesse 72 · Vision 4 cases
+    Arme : aucune
+    Prérequis : Raffinerie · Niveau technologique : infanterie seule
+  Stratégie :
+    Protégez vos camions avant tout : chaque camion perdu, c'est la production qui s'arrête.
+    Construisez-en 2 par raffinerie et placez des défenses près des champs de minerai.
+--------------------------------------------------------------------------------------------
+■ CAMION DE RAVITAILLEMENT
+  Faction : toutes
+  Lore :
+    Camion de transport militaire non armé, commun à toutes les armées.
+    Il transporte quinze fantassins ou trois véhicules sur de longues distances.
+    L'arme secrète des offensives rapides : la logistique.
+  Statistiques :
+    Coût 100 $ · PV 15 000 · Blindage léger · Vitesse 113 · Vision 5 cases
+    Arme : aucune
+    Transport 15 places
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Déployez rapidement l'infanterie et les véhicules vers une base avancée. Escortez-le
+    toujours : il n'a aucune arme.
+--------------------------------------------------------------------------------------------
+■ CAMION DE RAVITAILLEMENT EN CRÉDITS  (Supply Truck)
+  Faction : toutes
+  Lore :
+    Camion qui transporte de l'argent vers un allié.
+    Il ne combat pas ; il fait vivre les coalitions.
+    Un bon allié sait quand envoyer ses crédits.
+  Statistiques :
+    Coût 500 $ · PV 11 000 · Blindage léger · Vitesse 113 · Vision 4 cases
+    Arme : aucune
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    En partie en équipe, envoyez des crédits à un allié en difficulté. Escortez-le.
+--------------------------------------------------------------------------------------------
+■ POSEUR DE MINES  (Minelayer)
+  Faction : toutes
+  Lore :
+    Véhicule qui sème des mines antichars sur les axes de passage.
+    Il détecte aussi les mines adverses.
+    Une route minée vaut souvent mieux que dix défenses.
+  Statistiques :
+    Coût 800 $ · PV 30 000 · Blindage lourd · Vitesse 113 · Vision 5 cases
+    Arme : aucune
+    Détecte les furtifs (5 cases)
+    Prérequis : Service Depot · Niveau technologique : moyen
+  Stratégie :
+    Minez les accès à votre base et les passages obligés. Posez des mines sur les chemins
+    des camions de minerai ennemis.
+--------------------------------------------------------------------------------------------
+■ VÉHICULE DE CONSTRUCTION MOBILE  (Mobile Construction Vehicle)
+  Faction : toutes
+  Lore :
+    Base mobile capable de se déployer en chantier de construction.
+    C'est la naissance de toute armée, et sa seconde chance.
+    Le perdre en début de partie, c'est souvent perdre la partie.
+  Statistiques :
+    Coût 2 000 $ · PV 60 000 · Blindage léger · Vitesse 60 · Vision 4 cases
+    Arme : aucune
+    Prérequis : Service Depot · Niveau technologique : moyen
+  Stratégie :
+    Déployez-en un second pour étendre votre base près d'un champ de minerai ou fonder une
+    base de secours. Escortez-le toujours.
+
+  ▶ FACTION : TOUS LES ALLIÉS
+
+--------------------------------------------------------------------------------------------
+■ ARTILLERIE  (Artillery)
+  Faction : tous les Alliés
+  Lore :
+    Obusier automoteur allié de 155 mm, la pièce d'artillerie standard des années 50.
+    Ses obus portent à 12 cases et font trembler les bases soviétiques.
+    Mais il est aussi fragile qu'une jeep et le sait.
+  Statistiques :
+    Coût 850 $ · PV 10 000 · Blindage léger · Vitesse 72 · Vision 5 cases
+    Arme : 155mm : 23 000 dégâts, portée 12 cases, recharge 3,4 s
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Pilonnez défenses et infanterie depuis l'arrière, avec une vision fournie par des
+    éclaireurs. Ne la laissez jamais sans escorte : n'importe quel char la détruit en deux
+    tirs.
+--------------------------------------------------------------------------------------------
+■ BROUILLEUR RADAR MOBILE  (Mobile Radar Jammer)
+  Faction : tous les Alliés
+  Lore :
+    Véhicule allié qui brouille les radars ennemis proches.
+    Il dévie aussi les missiles entrants.
+    L'ennemi perd sa carte là où votre armée passe.
+  Statistiques :
+    Coût 1 000 $ · PV 22 000 · Blindage lourd · Vitesse 68 · Vision 7 cases
+    Arme : aucune
+    Prérequis : Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Approchez-le des bases ennemies pour couper leur radar pendant un assaut. Il protège
+    aussi vos colonnes des missiles.
+--------------------------------------------------------------------------------------------
+■ CHAR LÉGER  (Light Tank)
+  Faction : tous les Alliés
+  Lore :
+    Premier blindé des Alliés, conçu pour la reconnaissance rapide des années 50.
+    Son canon de 25 mm n'impressionne plus personne, mais sa vitesse reste précieuse.
+    Les équipages disent qu'on ne le voit passer qu'une fois : à l'aller.
+  Statistiques :
+    Coût 700 $ · PV 26 000 · Blindage lourd · Vitesse 113 · Vision 5 cases
+    Arme : 25mm : 2 500 dégâts, portée 4,75 cases, recharge 0,8 s
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Éclaireur et chasseur de blindés légers en début de partie. Harcelez les camions de
+    minerai et fuyez tout char moyen ; ne l'engagez jamais contre l'infanterie antichar.
+--------------------------------------------------------------------------------------------
+■ CHAR MOYEN  (Medium Tank)
+  Faction : tous les Alliés
+  Lore :
+    Char de bataille standard des Alliés, fiable et facile à produire en série.
+    Son canon de 90 mm a gagné plus de batailles que n'importe quelle superarme.
+    Le Leclerc et le Leopard lui doivent leur doctrine d'emploi.
+  Statistiques :
+    Coût 850 $ · PV 46 000 · Blindage lourd · Vitesse 72 · Vision 6 cases
+    Arme : 90mm : 4 000 dégâts, portée 4,75 cases, recharge 2 s
+    Prérequis : Service Depot · Niveau technologique : moyen
+  Stratégie :
+    Colonne vertébrale d'une armée alliée à bas niveau technologique. Groupez-le par 6 à 8
+    avec quelques lance-roquettes pour tenir face aux chars lourds soviétiques.
+--------------------------------------------------------------------------------------------
+■ RANGER
+  Faction : tous les Alliés
+  Lore :
+    Jeep armée d'une mitrailleuse, éclaireur standard des Alliés.
+    Elle file sur les routes et emmène un fantassin dans les coins reculés.
+    Personne ne compte sur elle pour tenir une ligne ; tout le monde compte sur elle pour la trouver.
+  Statistiques :
+    Coût 500 $ · PV 15 000 · Blindage léger · Vitesse 164 · Vision 7 cases
+    Arme : M60mg : 1 000 dégâts, rafale de 5, portée 4 cases, recharge 1,2 s
+    Transport 1 places
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Reconnaissance et harcèlement des camions de minerai. Évitez tout véhicule blindé ; elle
+    est faite pour voir et fuir.
+--------------------------------------------------------------------------------------------
+■ VÉHICULE DE COMBAT D'INFANTERIE  (Empty IFV)
+  Faction : tous les Alliés
+  Lore :
+    Transport modulaire allié de la carte WW3, dont l'arme dépend de son passager.
+    Un ingénieur le transforme en engin de réparation, un soldat roquette en lanceur antiaérien.
+    Sa polyvalence le rend imprévisible au combat.
+  Statistiques :
+    Coût 800 $ · PV 26 000 · Blindage léger · Vitesse 158 · Vision 8 cases
+    Arme : m60mg : 1 000 dégâts, rafale de 5, portée 4 cases, recharge 1,2 s
+    Arme : ChronoHandGun : 4 500 dégâts, portée 5 cases, recharge 2,8 s
+    Arme : SidewinderAA : 2 400 dégâts, rafale de 3, portée 7,5 cases, recharge 2 s
+    Arme : APTusk : 5 000 dégâts, portée 6 cases, recharge 2,4 s
+    Arme : mHeal : portée 6 cases, recharge 2,8 s
+    Arme : mRepair : portée 6 cases, recharge 3,2 s
+    Arme : mSniper : 15 000 dégâts, portée 10 cases, recharge 1,6 s
+    Arme : mGrenade : 7 000 dégâts, rafale de 3, portée 6 cases, recharge 1,2 s
+    Arme : Flamer : 1 000 dégâts, rafale de 15, portée 5 cases, recharge 2 s
+    Arme : WW3TTankZap : 10 000 dégâts, portée 7 cases, recharge 3,6 s
+    Transport 1 places · Furtif
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Changez l'occupant selon la menace : soldat roquette contre l'aviation, médecin pour
+    soigner, sniper pour la longue portée. Furtif : idéal pour des embuscades.
+
+  ▶ FACTION : TOUS LES SOVIÉTIQUES
+
+--------------------------------------------------------------------------------------------
+■ CANON ANTIAÉRIEN MOBILE  (Mobile Flak)
+  Faction : tous les Soviétiques
+  Lore :
+    Canon de DCA soviétique monté sur camion.
+    Il crible le ciel d'obus explosifs et fauche aussi l'infanterie au sol.
+    Un compagnon indispensable de toute colonne soviétique.
+  Statistiques :
+    Coût 600 $ · PV 15 000 · Blindage léger · Vitesse 113 · Vision 6 cases
+    Arme : FLAK-23-AA : 1 200 dégâts, portée 8 cases, recharge 0,4 s
+    Arme : FLAK-23-AG : 2 000 dégâts, portée 6 cases, recharge 0,4 s
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Escortez vos colonnes et vos bases avancées contre les hélicoptères et drones. Il est
+    fragile : gardez-le derrière les chars.
+--------------------------------------------------------------------------------------------
+■ CHAR LANCE-FLAMMES  (Flame Tank)
+  Faction : tous les Soviétiques
+  Lore :
+    Char équipé d'un lance-flammes lourd.
+    Il incendie l'infanterie et les bâtiments à courte portée.
+    Rien ne résiste longtemps à sa chaleur.
+  Statistiques :
+    Coût 800 $ · PV 18 000 · Vitesse 90 · Vision 5 cases
+    Arme : Flamer.Tank : 1 000 dégâts, rafale de 10, portée 5 cases, recharge 2,4 s
+    Prérequis : Tour lance-flammes · Niveau technologique : bas
+  Stratégie :
+    Nettoyez l'infanterie et les bâtiments légers. Courte portée : approchez-le sous
+    couverture.
+--------------------------------------------------------------------------------------------
+■ CHAR LOURD  (Heavy Tank)
+  Faction : tous les Soviétiques
+  Lore :
+    Char de bataille soviétique à double canon, héritier des grandes plaines d'Ukraine.
+    Plus lent que ses rivaux alliés, il encaisse et rend chaque coup deux fois.
+    Sa silhouette massive reste le symbole de la puissance blindée de l'Est.
+  Statistiques :
+    Coût 1 150 $ · PV 60 000 · Blindage lourd · Vitesse 60 · Vision 6 cases
+    Arme : 105mm : 4 000 dégâts, rafale de 2, portée 4,75 cases, recharge 2,8 s
+    Prérequis : Service Depot · Niveau technologique : moyen
+  Stratégie :
+    Char de ligne des Soviétiques : avancez en masse, laissez l'ennemi s'épuiser sur son
+    blindage, et réparez entre deux vagues. Protégez-le de l'infanterie antichar avec des
+    lance-flammes ou des chiens.
+--------------------------------------------------------------------------------------------
+■ CHAR MAD  (MAD Tank)
+  Faction : tous les Soviétiques
+  Lore :
+    Char soviétique qui ancre son châssis au sol et génère des ondes sismiques.
+    Il détruit les véhicules et bâtiments proches, puis explose.
+    Une arme de dernier recours, redoutée même par ses alliés.
+  Statistiques :
+    Coût 2 000 $ · PV 90 000 · Blindage lourd · Vitesse 46 · Vision 6 cases
+    Arme : aucune
+    Prérequis : Service Depot, Centre technique soviétique · Niveau technologique : élevé
+  Stratégie :
+    Approchez-le d'une concentration de véhicules ou d'une base, puis déployez-le. Protégez-
+    le de l'infanterie pendant qu'il charge.
+--------------------------------------------------------------------------------------------
+■ CHAR MAMMOUTH  (Mammoth Tank)
+  Faction : tous les Soviétiques
+  Lore :
+    Monstre à double tube de 120 mm et lance-missiles, le plus lourd des blindés soviétiques.
+    Il écrase les murs de béton et abat les hélicoptères qui s'approchent trop.
+    Aucune armée ne l'arrête seul ; toutes les armées le craignent en groupe.
+  Statistiques :
+    Coût 2 000 $ · PV 90 000 · Blindage lourd · Vitesse 43 · Vision 6 cases
+    Arme : 120mm : 6 000 dégâts, rafale de 2, portée 4,75 cases, recharge 3,6 s
+    Arme : MammothTusk : 5 000 dégâts, rafale de 2, portée 6,5 cases, recharge 2,4 s
+    Prérequis : Service Depot, Centre technique soviétique · Niveau technologique : élevé
+  Stratégie :
+    Fer de lance d'un assaut final. Lent : accompagnez-le de réparations (mécaniciens,
+    Service Depot proche) et d'unités rapides pour couvrir ses flancs contre l'artillerie.
+--------------------------------------------------------------------------------------------
+■ LANCE-V2  (V2 Rocket Launcher)
+  Faction : tous les Soviétiques
+  Lore :
+    Lance-missiles balistique soviétique hérité de la Seconde Guerre mondiale.
+    Ses missiles V2 frappent l'infanterie et les bâtiments à longue portée.
+    Il reste redoutable malgré son âge.
+  Statistiques :
+    Coût 900 $ · PV 20 000 · Blindage léger · Vitesse 72 · Vision 5 cases
+    Arme : SCUD : 4 500 dégâts, portée 10 cases, recharge 9,6 s
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Artillerie soviétique de base : pilonnez défenses et infanterie depuis l'arrière.
+    Fragile face aux véhicules.
+--------------------------------------------------------------------------------------------
+■ RÉSEAU DE CAPTEURS MOBILE  (Mobile Sensor Array)
+  Faction : tous les Soviétiques
+  Lore :
+    Poste d'écoute soviétique qui se déploie comme un radar mobile.
+    Déployé, il augmente la vision des véhicules proches et détecte les furtifs.
+    Il voit ce que les yeux ne voient pas.
+  Statistiques :
+    Coût 1 000 $ · PV 22 000 · Blindage lourd · Vitesse 82 · Vision 6 cases
+    Arme : aucune
+    Prérequis : Usine d'armement · Niveau technologique : moyen
+  Stratégie :
+    Déployez-le près du front pour détecter les unités furtives (Mirage, GCP) et étendre la
+    vision de vos véhicules.
+--------------------------------------------------------------------------------------------
+■ TRANSPORT DE TROUPES BLINDÉ  (Armored Personnel Carrier)
+  Faction : tous les Soviétiques
+  Lore :
+    Véhicule soviétique conçu pour amener cinq fantassins au contact sous le feu.
+    Sa mitrailleuse couvre le débarquement, son blindage fait le reste.
+    Les vétérans l'appellent « le cercueil qui roule », avec une certaine affection.
+  Statistiques :
+    Coût 850 $ · PV 35 000 · Blindage lourd · Vitesse 128 · Vision 5 cases
+    Arme : M60mg : 1 000 dégâts, rafale de 5, portée 4 cases, recharge 1,2 s
+    Transport 5 places
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Transportez ingénieurs, lance-flammes ou Tanya jusqu'aux bâtiments ennemis. Sa
+    mitrailleuse ne sert qu'à nettoyer l'infanterie légère autour du point de débarquement.
+
+  ▶ FACTION : FRANCE
+
+--------------------------------------------------------------------------------------------
+■ CANON CÉSAR
+  Faction : France
+  Lore :
+    Artillerie automotrice française sur camion, célèbre pour sa mobilité.
+    Elle tire trois obus en rafale puis quitte sa position avant la riposte.
+    La doctrine « tirer et disparaître » a été écrite pour elle.
+  Statistiques :
+    Coût 1 300 $ · PV 20 000 · Blindage léger · Vitesse 164 · Vision 5 cases
+    Arme : CesarObus : 4 500 dégâts, rafale de 3, portée 10 cases, recharge 15 s
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Tirez une salve puis déplacez-la : elle est très rapide (164) mais fragile. Idéale pour
+    le harcèlement de bases, guidée par des GCP ou des drones.
+--------------------------------------------------------------------------------------------
+■ CHAR MIRAGE  (Mirage Tank)
+  Faction : France
+  Lore :
+    Char français de la carte WW3 qui se camoufle en arbre à l'arrêt.
+    Il attend immobile que l'ennemi passe à portée de son canon.
+    Beaucoup ont découvert le Mirage en perdant leur colonne.
+  Statistiques :
+    Coût 1 100 $ · PV 47 000 · Blindage lourd · Vitesse 75 · Vision 6 cases
+    Arme : 90mmHEAT : 4 100 dégâts, portée 4,75 cases, recharge 2 s
+    Prérequis : Service Depot, Centre technique (France) · Niveau technologique : moyen
+  Stratégie :
+    Embusquez-le sur les axes de passage ennemis. Il ne se camoufle qu'à l'arrêt : frappez
+    puis repositionnez-vous.
+--------------------------------------------------------------------------------------------
+■ EBRC JAGUAR
+  Faction : France
+  Lore :
+    Véhicule blindé français de reconnaissance et de combat, 6x6 rapide.
+    Ses missiles tire-et-oublie MMP frappent les blindés avant même d'être repérés.
+    Il incarne la doctrine française : voir, frapper, disparaître.
+  Statistiques :
+    Coût 1 100 $ · PV 12 000 · Blindage léger · Vitesse 130 · Vision 8 cases
+    Arme : JaguarMissile : 13 000 dégâts, portée 6,5 cases, recharge 4,8 s
+    Prérequis : Radar Dome · Niveau technologique : élevé
+  Stratégie :
+    Chassez les blindés en flanquement puis repliez-vous. Fragile : n'engagez pas
+    l'infanterie ni les chars de face. Il active la liaison SCORPION des Leclerc proches.
+--------------------------------------------------------------------------------------------
+■ LECLERC XLR
+  Faction : France
+  Lore :
+    Char de combat français rénové, mobile et hyperconnecté.
+    Son chargeur automatique lui donne une cadence que peu de chars égalent.
+    Relié au réseau SCORPION, il frappe ce que ses éclaireurs ont repéré.
+  Statistiques :
+    Coût 1 900 $ · PV 62 000 · Blindage lourd + protection active (APS) · Vitesse 78 ·
+    Vision 7 cases
+    Arme : LeclercGun : 11 000 dégâts, portée 6 cases, recharge 2,6 s
+    Prérequis : Radar Dome · Niveau technologique : élevé
+  Stratégie :
+    Opérez-le avec des GCP, drones ou Jaguar à proximité pour la liaison SCORPION
+    (rechargement -20 %). Utilisez sa vitesse pour tirer, se déplacer et exploiter les
+    brèches ; sa protection GALIX absorbe le premier missile.
+--------------------------------------------------------------------------------------------
+■ TRANSPORT À PHASE  (Phase Transport)
+  Faction : France
+  Lore :
+    Transport de troupes furtif français de la carte WW3.
+    Il amène cinq fantassins derrière les lignes ennemies sans être vu.
+    Ses missiles lui permettent de se défendre contre les blindés légers.
+  Statistiques :
+    Coût 1 000 $ · PV 35 000 · Blindage léger · Vitesse 128 · Vision 7 cases
+    Arme : APTusk.stnk : 5 000 dégâts, portée 6 cases, recharge 4 s
+    Transport 5 places · Furtif
+    Prérequis : Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Infiltrez ingénieurs, GCP ou Tanya dans la base ennemie. Évitez de tirer : attaquer
+    révèle sa position.
+
+  ▶ FACTION : ALLEMAGNE
+
+--------------------------------------------------------------------------------------------
+■ CHAR CHRONO  (Chrono Tank)
+  Faction : Allemagne
+  Lore :
+    Char allemand de la carte WW3, équipé d'un téléporteur chronosphérique.
+    Il saute d'un point à l'autre du champ de bataille pour frapper là où on l'attend le moins.
+    Ses missiles antichar achèvent ce que la surprise a commencé.
+  Statistiques :
+    Coût 1 350 $ · PV 40 000 · Blindage léger · Vitesse 86 · Vision 6 cases
+    Arme : APTusk : 5 000 dégâts, portée 6 cases, recharge 2,4 s
+    Prérequis : Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Téléportez-le derrière les lignes pour détruire l'artillerie ou les bâtiments clés, puis
+    repliez-vous. Il est léger : évitez les combats prolongés.
+--------------------------------------------------------------------------------------------
+■ CHAR PANZER  (Panzer Tank)
+  Faction : Allemagne
+  Lore :
+    Char de combat allemand de la carte WW3.
+    Il associe un canon de 90 mm et une mitrailleuse puissante.
+    Polyvalent, il répond aussi bien à l'infanterie qu'aux blindés.
+  Statistiques :
+    Coût 850 $ · PV 45 000 · Blindage lourd · Vitesse 85 · Vision 6 cases
+    Arme : P90mm : 4 000 dégâts, portée 4,75 cases, recharge 2 s
+    Arme : P60mg : 3 500 dégâts, rafale de 5, portée 4 cases, recharge 2 s
+    Prérequis : Service Depot · Niveau technologique : moyen
+  Stratégie :
+    Char polyvalent allemand : utile contre l'infanterie comme contre les véhicules. Il
+    complète bien le Leopard en ligne.
+--------------------------------------------------------------------------------------------
+■ CHASSEUR DE CHARS  (Tank Destroyer)
+  Faction : Allemagne
+  Lore :
+    Chasseur de chars allemand de la carte WW3, armé d'un canon à rail.
+    Sa puissance de feu antichar est exceptionnelle.
+    Il n'a qu'une mission : détruire les blindés.
+  Statistiques :
+    Coût 900 $ · PV 67 000 · Blindage lourd · Vitesse 74 · Vision 6 cases
+    Arme : 130mm : 7 500 dégâts, portée 4,75 cases, recharge 2,8 s
+    Arme : Railgun : 9 000 dégâts, portée 8 cases, recharge 2,8 s
+    Arme : TitanRailgun : 10 500 dégâts, portée 5,75 cases, recharge 2,4 s
+    Prérequis : Service Depot, Centre technique (Allemagne) · Niveau technologique : élevé
+  Stratégie :
+    Placez-le en seconde ligne contre les chars ennemis. Faible contre l'infanterie :
+    escortez-le.
+--------------------------------------------------------------------------------------------
+■ LEOPARD 2A7+
+  Faction : Allemagne
+  Lore :
+    Char de combat allemand, référence mondiale en matière de blindage.
+    Son canon L55 et sa protection avancée en font un adversaire redoutable.
+    Ses équipages gardent leur sang-froid tant que la caisse tient.
+  Statistiques :
+    Coût 1 800 $ · PV 75 000 · Blindage lourd · Vitesse 70 · Vision 6 cases
+    Arme : LeopardGun : 14 000 dégâts, portée 5,5 cases, recharge 3,8 s
+    Prérequis : Radar Dome · Niveau technologique : élevé
+  Stratégie :
+    Formez un bloc blindé qui encaisse en première ligne, guidé par un drone Luna qui
+    désigne les cibles (+25 % de dégâts). Moins rapide que le Leclerc : choisissez vos
+    combats.
+--------------------------------------------------------------------------------------------
+■ PANZERHAUBITZE 2000
+  Faction : Allemagne
+  Lore :
+    Obusier automoteur allemand, l'un des plus puissants au monde.
+    Chaque obus frappe avec une violence que peu d'artilleries égalent.
+    Fortement blindé, il peut tenir une position que d'autres doivent quitter.
+  Statistiques :
+    Coût 1 400 $ · PV 24 000 · Blindage lourd · Vitesse 60 · Vision 5 cases
+    Arme : PZHShell : 30 000 dégâts, portée 8 cases, recharge 3,6 s
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Guidé par un drone KZO, pilonnez les concentrations ennemies avec de gros obus. Il peut
+    rester plus près du front que les autres artilleries grâce à son blindage.
+
+  ▶ FACTION : ROYAUME-UNI
+
+--------------------------------------------------------------------------------------------
+■ AS-90
+  Faction : Royaume-Uni
+  Lore :
+    Obusier automoteur britannique, héritier de la tradition d'artillerie royale.
+    Portée, puissance et mobilité y sont dosées sans excès, à l'anglaise.
+    Ses équipages le considèrent comme le couteau suisse de la brigade.
+  Statistiques :
+    Coût 1 200 $ · PV 19 000 · Blindage lourd · Vitesse 68 · Vision 5 cases
+    Arme : AS90Shell : 18 000 dégâts, portée 10 cases, recharge 4 s
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Artillerie polyvalente : placez-la derrière une ligne de Challenger et des NLAW en
+    pillbox. Elle porte à 10 cases, ce qui suffit à pilonner les défenses sans s'exposer.
+--------------------------------------------------------------------------------------------
+■ CHALLENGER 3
+  Faction : Royaume-Uni
+  Lore :
+    Char de combat britannique, spécialiste du combat urbain.
+    Ses obus à effet de souffle clouent l'infanterie sans raser les bâtiments qu'il doit tenir.
+    Son système de maintenance embarqué le remet en état quand il est gravement touché.
+  Statistiques :
+    Coût 1 700 $ · PV 70 000 · Blindage lourd · Vitesse 58 · Vision 6 cases
+    Arme : ChallengerGun : 11 000 dégâts, portée 5,75 cases, recharge 3,6 s
+    Prérequis : Radar Dome · Niveau technologique : élevé
+  Stratégie :
+    Tenez les villes et les passages étroits : il encaisse, se répare seul sous 50 % et
+    plaque l'infanterie ennemie. Laissez l'AS-90 s'occuper des bâtiments, qu'il endommage
+    mal.
+--------------------------------------------------------------------------------------------
+■ FORTERESSE DE BATAILLE  (Battle Fortress)
+  Faction : Royaume-Uni
+  Lore :
+    Forteresse roulante britannique de la carte WW3, hérissée de tourelles.
+    Elle doit être équipée de fantassins pour tirer à pleine puissance.
+    Elle écrase les murs de béton et ne connaît aucun faible.
+  Statistiques :
+    Coût 2 100 $ · PV 100 000 · Blindage lourd · Vitesse 50 · Vision 6 cases
+    Arme : 130mm : 7 500 dégâts, portée 4,75 cases, recharge 2,8 s
+    Arme : ApocalypseTusk : 4 000 dégâts, rafale de 4, portée 8 cases, recharge 2,4 s
+    Transport 8 places
+    Prérequis : Service Depot, Centre technique (Royaume-Uni) · Niveau technologique : élevé
+  Stratégie :
+    Remplissez-la d'infanterie d'élite pour démultiplier sa puissance de feu. Utilisez-la
+    comme bélier contre les défenses, en la faisant suivre par des unités de réparation.
+--------------------------------------------------------------------------------------------
+■ GÉNÉRATEUR DE BROUILLARD MOBILE  (Mobile Gap Generator)
+  Faction : Royaume-Uni
+  Lore :
+    Véhicule britannique qui régénère le brouillard de guerre autour de lui.
+    Il cache vos troupes au regard ennemi, radar compris.
+    Une armée invisible est une armée qui choisit ses combats.
+  Statistiques :
+    Coût 1 000 $ · PV 22 000 · Blindage lourd · Vitesse 72 · Vision 6 cases
+    Arme : aucune
+    Prérequis : Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Accompagnez vos colonnes pour masquer leur approche ; placez-le près de votre artillerie
+    pour cacher sa position.
+
+  ▶ FACTION : USA
+
+--------------------------------------------------------------------------------------------
+■ CHAR GRIZZLY  (Grizzly Tank)
+  Faction : USA
+  Lore :
+    Char de combat américain de la carte WW3, rapide et bien armé.
+    Il combine un canon de 90 mm et un lance-missiles antiaérien.
+    Il symbolise la doctrine américaine : polyvalence et production industrielle.
+  Statistiques :
+    Coût 850 $ · PV 45 000 · Blindage lourd · Vitesse 82 · Vision 6 cases
+    Arme : 90mm : 4 000 dégâts, portée 4,75 cases, recharge 2 s
+    Arme : RedEye : 2 400 dégâts, portée 7,5 cases, recharge 2 s
+    Prérequis : Service Depot · Niveau technologique : moyen
+  Stratégie :
+    Char polyvalent : il peut se défendre contre l'aviation légère. Utilisez-le en masse,
+    soutenu par l'aviation américaine.
+--------------------------------------------------------------------------------------------
+■ HUMVEE
+  Faction : USA
+  Lore :
+    Véhicule tout-terrain américain, emblème des guerres modernes.
+    Rapide, il transporte quatre fantassins et une mitrailleuse lourde.
+    Il ne gagne pas de bataille, mais il y arrive toujours le premier.
+  Statistiques :
+    Coût 500 $ · PV 15 000 · Blindage léger · Vitesse 170 · Vision 8 cases
+    Arme : M60mg : 1 000 dégâts, rafale de 5, portée 4 cases, recharge 1,2 s
+    Transport 4 places · Détecte les furtifs (3 cases)
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Éclaireur rapide et transport d'infanterie : reconnaissance, raids contre les camions de
+    minerai, déploiement rapide d'ingénieurs.
+--------------------------------------------------------------------------------------------
+■ OBUSIER  (Howitzer)
+  Faction : USA
+  Lore :
+    Obusier américain de 155 mm de la carte WW3.
+    Il pilonne l'ennemi à 12 cases avec la précision de l'artillerie moderne.
+    Sa puissance est celle de l'artillerie alliée, avec l'industrie américaine derrière.
+  Statistiques :
+    Coût 850 $ · PV 10 000 · Blindage léger · Vitesse 64 · Vision 5 cases
+    Arme : 155mm : 23 000 dégâts, portée 12 cases, recharge 3,4 s
+    Arme : 155mmElite : salve de 6 projectiles de 6 000 dégâts chacun
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Même emploi que l'artillerie alliée : derrière la ligne, avec des éclaireurs. Protégez-
+    le de l'aviation ennemie.
+
+  ▶ FACTION : ESPAGNE
+
+--------------------------------------------------------------------------------------------
+■ CAMION DE MINERAI À COUSSIN D'AIR  (Hover Ore Truck)
+  Faction : Espagne
+  Lore :
+    Version espagnole du camion de minerai, capable de naviguer sur l'eau.
+    Il atteint les gisements des îles et des rivages inaccessibles aux autres.
+    Sa discrétion sur l'eau a sauvé plus d'une économie espagnole.
+  Statistiques :
+    Coût 1 100 $ · PV 60 000 · Blindage lourd · Vitesse 77 · Vision 4 cases
+    Arme : aucune
+    Prérequis : aucun · Niveau technologique : élevé
+  Stratégie :
+    Exploitez les champs de minerai isolés par l'eau que l'ennemi ne peut pas atteindre
+    facilement.
+--------------------------------------------------------------------------------------------
+■ CANON PRISME  (Prism Cannon)
+  Faction : Espagne
+  Lore :
+    Prototype espagnol d'artillerie à rayon lumineux concentré.
+    Il frappe les bâtiments à 11 cases avec une précision chirurgicale.
+    Chaque tir concentre l'énergie d'une tour prisme entière.
+  Statistiques :
+    Coût 1 500 $ · PV 12 000 · Blindage léger · Vitesse 60 · Vision 6 cases
+    Arme : PrisCLaser : 18 000 dégâts, portée 11 cases, recharge 5 s
+    Prérequis : Tour prisme, Centre technique (Espagne) · Niveau technologique : élevé
+  Stratégie :
+    Détruisez les bâtiments et défenses ennemis à distance, sous escorte. Fragile : repliez-
+    le dès qu'il est menacé.
+--------------------------------------------------------------------------------------------
+■ CHAR PRISME  (Prism Tank)
+  Faction : Espagne
+  Lore :
+    Char espagnol équipé d'une arme à rayon prisme.
+    Ses faisceaux se reflètent et frappent défenses et infanterie à distance.
+    L'arme la plus spectaculaire de l'arsenal espagnol.
+  Statistiques :
+    Coût 1 500 $ · PV 12 000 · Blindage léger · Vitesse 82 · Vision 6 cases
+    Arme : PrisTLaser : salve de 3 projectiles de 2 700 dégâts chacun
+    Prérequis : Radar Dome, Tour prisme · Niveau technologique : élevé
+  Stratégie :
+    Artillerie à moyenne portée : détruisez défenses et infanterie, laissez les chars aux
+    autres unités. Protégez-le de l'aviation.
+--------------------------------------------------------------------------------------------
+■ CHAR À COUSSIN D'AIR  (Hover Tank)
+  Faction : Espagne
+  Lore :
+    Version espagnole du char moyen, soulevée par un coussin antigravité.
+    Il franchit l'eau comme la terre ferme et embarque un lanceur antiaérien.
+    La doctrine espagnole en fait le premier maillon de ses assauts amphibies.
+  Statistiques :
+    Coût 950 $ · PV 46 000 · Blindage lourd · Vitesse 76 · Vision 6 cases
+    Arme : 90mm : 4 000 dégâts, portée 4,75 cases, recharge 2 s
+    Arme : 90mmHEAT : 4 100 dégâts, portée 4,75 cases, recharge 2 s
+    Arme : StingerAA : 1 650 dégâts, rafale de 2, portée 7,5 cases, recharge 2,4 s
+    Prérequis : Centre technique (Espagne) · Niveau technologique : moyen
+  Stratégie :
+    Attaquez par la mer ou par les rivières là où l'ennemi n'attend pas de blindés. Son
+    antiaérien lui permet d'escorter seul une tête de pont contre les hélicoptères.
+--------------------------------------------------------------------------------------------
+■ MAMMOUTH À COUSSIN D'AIR  (Hover Mammoth Tank)
+  Faction : Espagne
+  Lore :
+    Le Mammouth adapté à la technologie antigravité espagnole.
+    Il garde son blindage colossal mais traverse désormais rivières et bras de mer.
+    Un débarquement de Mammouths flottants a de quoi glacer n'importe quel état-major.
+  Statistiques :
+    Coût 2 000 $ · PV 90 000 · Blindage lourd · Vitesse 53 · Vision 6 cases
+    Arme : 120mm : 6 000 dégâts, rafale de 2, portée 4,75 cases, recharge 3,6 s
+    Arme : MammothTusk : 5 000 dégâts, rafale de 2, portée 6,5 cases, recharge 2,4 s
+    Prérequis : Centre technique (Espagne) · Niveau technologique : élevé
+  Stratégie :
+    Utilisez les rivières et la côte pour frapper là où l'ennemi n'a pas de défenses
+    lourdes. Plus rapide que le Mammouth classique, il pardonne un peu mieux les mauvais
+    placements.
+
+  ▶ FACTION : JAPON
+
+--------------------------------------------------------------------------------------------
+■ TYPE 10
+  Faction : Japon
+  Lore :
+    Char de combat japonais, léger, rapide et très précis.
+    Sa conduite de tir moderne lui permet de frapper fort à longue distance.
+    Il privilégie la mobilité et la précision à la masse.
+  Statistiques :
+    Coût 1 700 $ · PV 60 000 · Blindage lourd · Vitesse 88 · Vision 7 cases
+    Arme : Type10GunLong : 13 500 dégâts, portée 6,75 cases, recharge 3 s
+    Arme : Type10Gun : 11 000 dégâts, portée 4 cases, recharge 3 s
+    Prérequis : Radar Dome · Niveau technologique : élevé
+  Stratégie :
+    Harcelez les blindés ennemis à longue distance (au-delà de 4 cases, obus plus puissant),
+    puis repositionnez-vous. Moins résistant que le Leopard : évitez les combats rapprochés
+    prolongés.
+--------------------------------------------------------------------------------------------
+■ TYPE 16  (Type 16 (chasseur de chars))
+  Faction : Japon
+  Lore :
+    Chasseur de chars japonais à roues, conçu pour la défense mobile.
+    Il file sur les routes et frappe les blindés avec un canon de 105 mm.
+    Mais il ne tient pas longtemps un combat de face.
+  Statistiques :
+    Coût 1 150 $ · PV 12 000 · Blindage léger · Vitesse 130 · Vision 7 cases
+    Arme : Type16Gun : 11 000 dégâts, portée 6 cases, recharge 4,4 s
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Flanquez l'ennemi, tirez, puis repliez-vous : son canon recharge lentement et son
+    blindage est léger. Ne l'engagez jamais en combat frontal prolongé.
+--------------------------------------------------------------------------------------------
+■ TYPE 19  (Type 19 (obusier automoteur))
+  Faction : Japon
+  Lore :
+    Obusier japonais de 155 mm sur camion 8x8.
+    Rapide et précis, il tire vite et change de position aussitôt.
+    Il privilégie la précision aux gros calibres.
+  Statistiques :
+    Coût 1 300 $ · PV 16 000 · Blindage léger · Vitesse 85 · Vision 5 cases
+    Arme : Type19Shell : 16 000 dégâts, portée 9,75 cases, recharge 2,8 s
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Pilonnez à longue portée avec précision, puis déplacez-vous. Plus mobile que le PzH :
+    utilisez cette mobilité pour éviter la contre-batterie.
+
+  ▶ FACTION : RUSSIE
+
+--------------------------------------------------------------------------------------------
+■ BM-21 GRAD
+  Faction : Russie
+  Lore :
+    Lance-roquettes multiple russe, conçu pour saturer une zone plutôt que viser.
+    Ses quarante tubes font pleuvoir le feu sur tout ce qui n'est pas enterré.
+    L'artillerie la plus répandue au monde, et pour de bonnes raisons.
+  Statistiques :
+    Coût 700 $ · PV 15 000 · Blindage léger · Vitesse 90
+    Arme : GradRocketsA : 5 000 dégâts, rafale de 3, portée 8,75 cases, recharge 9,6 s
+    Arme : GradRocketsB : 5 000 dégâts, rafale de 3, portée 8,75 cases, recharge 9,6 s
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Saturez infanterie et véhicules légers regroupés. Imprécis : visez les zones, pas les
+    cibles isolées. Bon marché, il se remplace facilement.
+--------------------------------------------------------------------------------------------
+■ BMPT TERMINATOR
+  Faction : Russie
+  Lore :
+    Véhicule russe d'appui aux chars, né des leçons du combat urbain.
+    Ses deux canons de 30 mm clouent l'infanterie au sol, ses missiles Ataka percent les blindés.
+    Il protège les T-90 de l'ennemi qu'ils redoutent le plus : le fantassin antichar.
+  Statistiques :
+    Coût 1 300 $ · PV 50 000 · Blindage lourd + réactif (ERA) · Vitesse 64 · Vision 6 cases
+    Arme : BMPT30mm : 1 500 dégâts, rafale de 2, portée 5,5 cases, recharge 0,8 s
+    Arme : BMPTAtaka : 9 000 dégâts, portée 6,5 cases, recharge 8 s
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Placez-le au contact de vos chars : il neutralise l'infanterie antichar qui les menace.
+    Son blindage réactif encaisse le premier missile ; réparez-le entre deux engagements.
+--------------------------------------------------------------------------------------------
+■ BTR  (Bronetransporter)
+  Faction : Russie
+  Lore :
+    Transport de troupes russe à roues, amphibie et rapide.
+    Il amène huit fantassins là où la route s'arrête et où la rivière commence.
+    Son canon de 25 mm suffit à tenir à distance les véhicules légers.
+  Statistiques :
+    Coût 850 $ · PV 35 000 · Blindage lourd · Vitesse 110 · Vision 5 cases
+    Arme : 25mm : 2 500 dégâts, portée 4,75 cases, recharge 0,8 s
+    Transport 8 places
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Transportez l'infanterie à travers les rivières pour des raids surprises. Évitez les
+    chars : son rôle est le transport et la chasse aux blindés légers, pas le combat de
+    ligne.
+--------------------------------------------------------------------------------------------
+■ CHAR TESLA  (Tesla Tank)
+  Faction : Russie
+  Lore :
+    Char soviétique équipé d'une bobine Tesla.
+    Ses arcs électriques traversent infanterie, véhicules et bâtiments.
+    Il porte la puissance d'une défense Tesla sur des chenilles.
+  Statistiques :
+    Coût 1 350 $ · PV 40 000 · Blindage léger · Vitesse 92 · Vision 7 cases
+    Arme : TTankZap : 10 000 dégâts, portée 7 cases, recharge 4,8 s
+    Prérequis : Bobine Tesla, Centre technique soviétique · Niveau technologique : élevé
+  Stratégie :
+    Char polyvalent à courte portée : ses arcs gèrent infanterie et véhicules. Il est léger
+    : ne l'exposez pas aux chars lourds sans soutien.
+--------------------------------------------------------------------------------------------
+■ LANCE-V3  (V3 Launcher)
+  Faction : Russie
+  Lore :
+    Lance-missiles russe de la carte WW3, à très longue portée.
+    Ses missiles V3 frappent à 14 cases les bases ennemies.
+    Aucune défense statique n'est à l'abri.
+  Statistiques :
+    Coût 1 500 $ · PV 20 000 · Blindage léger · Vitesse 85 · Vision 5 cases
+    Arme : V3Launcher : 4 500 dégâts, portée 14 cases, recharge 9,6 s
+    Prérequis : Radar Dome · Niveau technologique : élevé
+  Stratégie :
+    Pilonnez les bases ennemies de très loin. Fragile : protégez-le des raids et de
+    l'aviation.
+--------------------------------------------------------------------------------------------
+■ MAMMOUTH TESLA  (Tesla Mammoth Tank)
+  Faction : Russie
+  Lore :
+    Char Mammouth russe adapté avec deux bobines Tesla.
+    Ses arcs électriques détruisent aussi bien l'infanterie que les blindés.
+    Une forteresse électrique qui avance lentement.
+  Statistiques :
+    Coût 2 250 $ · PV 80 000 · Blindage lourd · Vitesse 43 · Vision 6 cases
+    Arme : WW3TTankZap : 10 000 dégâts, portée 7 cases, recharge 3,6 s
+    Prérequis : Bobine Tesla, Centre technique (Russie) · Niveau technologique : élevé
+  Stratégie :
+    Unité de percée russe : avancez contre les blindés lourds et l'infanterie. Protégez-le
+    de l'aviation, qu'il ne peut pas attaquer.
+--------------------------------------------------------------------------------------------
+■ SAM MOBILE  (Mobile SAM)
+  Faction : Russie
+  Lore :
+    Lanceur de missiles antiaériens russe de la carte WW3.
+    Ses missiles Nike abattent les avions et les drones à longue distance.
+    Il transforme n'importe quelle colonne en zone d'exclusion aérienne.
+  Statistiques :
+    Coût 600 $ · PV 35 000 · Blindage léger · Vitesse 95 · Vision 5 cases
+    Arme : MobileNike : 4 500 dégâts, portée 7,5 cases, recharge 1,6 s
+    Arme : Nike : 4 500 dégâts, portée 7,5 cases, recharge 0,6 s
+    Prérequis : Radar Dome · Niveau technologique : élevé
+  Stratégie :
+    Escortez vos chars contre l'aviation et les drones. Gardez-le derrière la ligne : il ne
+    vaut rien contre les unités terrestres.
+--------------------------------------------------------------------------------------------
+■ T-90M PRORYV
+  Faction : Russie
+  Lore :
+    Char de combat russe modernisé, héritier de la lignée T-72.
+    Son blindage réactif neutralise presque entièrement le premier missile antichar.
+    Il a été conçu pour survivre aux guerres de missiles.
+  Statistiques :
+    Coût 1 500 $ · PV 65 000 · Blindage lourd + réactif (ERA) · Vitesse 66 · Vision 6 cases
+    Arme : T90Gun : 12 500 dégâts, portée 5,5 cases, recharge 3,4 s
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Utilisez-le pour percer les lignes appuyées par l'infanterie antichar : son blindage
+    réactif encaisse le premier missile. Réparez-le pour recharger l'ERA ; attention au NLAW
+    et au FPV, qui l'ignorent.
+
+  ▶ FACTION : UKRAINE
+
+--------------------------------------------------------------------------------------------
+■ CAMION DE DÉMOLITION  (Demolition Truck)
+  Faction : Ukraine
+  Lore :
+    Camion bourré d'explosifs nucléaires, piloté par un conducteur qui ne reviendra pas.
+    Son blindage est ridicule ; sa charge ne l'est pas.
+    En Ukraine, on murmure qu'il s'agit plus d'une arme de dissuasion que d'un véhicule.
+  Statistiques :
+    Coût 2 500 $ · PV 2 800 · Blindage léger · Vitesse 67 · Vision 4 cases
+    Arme : DemoTruckTargeting : portée 2 cases
+    Prérequis : Centre technique soviétique · Niveau technologique : élevé
+  Stratégie :
+    Frappez les concentrations ennemies ou un bâtiment clé en profitant d'une diversion. Il
+    meurt au moindre tir : faites-le passer par un chemin imprévu ou sous couverture de
+    fumée.
+--------------------------------------------------------------------------------------------
+■ CHAR APOCALYPSE  (Apocalypse Tank)
+  Faction : Ukraine
+  Lore :
+    Le blindé ultime de l'arsenal ukrainien de la carte WW3 : obus à l'uranium et missiles antiaériens.
+    Il est si lourd que les ponts le redoutent davantage que l'ennemi.
+    Sa simple apparition sur le radar suffit à faire reculer une offensive.
+  Statistiques :
+    Coût 2 600 $ · PV 110 000 · Blindage lourd · Vitesse 40 · Vision 6 cases
+    Arme : 120mm.Apoc : 6 000 dégâts, rafale de 2, portée 4,75 cases, recharge 3,2 s
+    Arme : ApocalypseTusk : 4 000 dégâts, rafale de 4, portée 8 cases, recharge 2,4 s
+    Prérequis : Service Depot, Centre technique (Ukraine) · Niveau technologique : élevé
+  Stratégie :
+    Unité de percée tardive. Accompagnez-le d'artillerie et de drones de reconnaissance : sa
+    lenteur en fait une cible pour l'aviation et les missiles à longue portée.
+--------------------------------------------------------------------------------------------
+■ CHAR DE SIÈGE  (Siege Tank)
+  Faction : Ukraine
+  Lore :
+    Artillerie lourde ukrainienne de la carte WW3, à obus à fragmentation.
+    Blindée comme un char, elle peut s'approcher des défenses sans craindre la riposte.
+    Chaque obus se disperse en sous-munitions sur la zone d'impact.
+  Statistiques :
+    Coût 1 800 $ · PV 65 000 · Blindage lourd · Vitesse 66 · Vision 6 cases
+    Arme : 360mm : salve de 3 projectiles de 6 000 dégâts chacun
+    Prérequis : Service Depot, Centre technique (Ukraine) · Niveau technologique : élevé
+  Stratégie :
+    Approchez des bases ennemies sous escorte et démolissez défenses et infanterie. Elle
+    résiste mieux que les artilleries légères, mais reste lente.
+--------------------------------------------------------------------------------------------
+■ M777 (EXCALIBUR)
+  Faction : Ukraine
+  Lore :
+    Obusier ultraléger américain utilisé par l'Ukraine, tirant des obus guidés Excalibur.
+    Sa portée et sa précision sont extrêmes, mais il doit voir sa cible.
+    Associé à un drone, il frappe à 12 cases avec une précision chirurgicale.
+  Statistiques :
+    Coût 1 600 $ · PV 13 000 · Blindage léger · Vitesse 55 · Vision 5 cases
+    Arme : ExcaliburShell : 20 000 dégâts, portée 12 cases, recharge 8 s
+    Prérequis : Radar Dome · Niveau technologique : élevé
+  Stratégie :
+    Associez-le toujours à un drone de reconnaissance (Leleka, Shark) qui fournit la vision.
+    Il ne tire pas sur une cible non visible : restez loin et laissez les drones voir pour
+    lui.
+--------------------------------------------------------------------------------------------
+■ RIDEAU DE FER PORTABLE  (Portable Iron Curtain)
+  Faction : Ukraine
+  Lore :
+    Projecteur de Rideau de fer ukrainien monté sur véhicule.
+    Il rend invulnérables les unités amies qu'il cible pour un court instant.
+    Il ne tire pas pour tuer, mais pour empêcher de mourir.
+  Statistiques :
+    Coût 3 000 $ · PV 30 000 · Blindage léger · Vitesse 90 · Vision 5 cases
+    Arme : IronCannon : 25 dégâts, portée 10 cases, recharge 12 s
+    Limite 1 exemplaire
+    Prérequis : Centre technique (Ukraine)
+  Stratégie :
+    Accompagnez un assaut de chars lourds : rendez invulnérable l'unité la plus exposée au
+    moment critique. Il est lui-même fragile et coûteux ; gardez-le derrière.
+
+  ▶ FACTION : CHINE
+
+--------------------------------------------------------------------------------------------
+■ CANON INFERNO  (Inferno Cannon)
+  Faction : Chine
+  Lore :
+    Artillerie chinoise à très longue portée, montée sur un châssis rapide.
+    Ses obus incendiaires transforment les quartiers ennemis en brasiers.
+    Fragile, elle n'existe que tant que personne ne la trouve.
+  Statistiques :
+    Coût 1 350 $ · PV 11 000 · Blindage léger · Vitesse 92 · Vision 6 cases
+    Arme : 155mm.CIC : salve de 3 projectiles de 10 000 dégâts chacun
+    Prérequis : Radar Dome · Niveau technologique : élevé
+  Stratégie :
+    Tirez depuis l'arrière, sous couverture antiaérienne, sur les bases et l'infanterie.
+    Déplacez-la après chaque salve : 11 000 PV ne survivent pas à une contre-attaque.
+--------------------------------------------------------------------------------------------
+■ CHAR DRAGON  (Dragon Tank)
+  Faction : Chine
+  Lore :
+    Char chinois équipé de deux lance-flammes lourds.
+    Il nettoie les tranchées, les bunkers et les rues d'un seul passage.
+    Un cauchemar pour l'infanterie retranchée.
+  Statistiques :
+    Coût 1 100 $ · PV 46 000 · Blindage lourd · Vitesse 56 · Vision 6 cases
+    Arme : HeavyFlamer : 1 260 dégâts, rafale de 28, portée 5,5 cases, recharge 4,4 s
+    Prérequis : Tour lance-flammes, Centre technique (Chine) · Niveau technologique : moyen
+  Stratégie :
+    Envoyez-le contre l'infanterie retranchée et les bâtiments légers. Courte portée :
+    couvrez son approche avec des chars lourds.
+--------------------------------------------------------------------------------------------
+■ CHAR GATLING  (GatlingTank)
+  Faction : Chine
+  Lore :
+    Char chinois équipé d'un canon rotatif à tir ultra-rapide.
+    Sa cadence infernale déchire l'infanterie comme les aéronefs.
+    Il est la réponse de Pékin aux drones et aux hélicoptères ennemis.
+  Statistiques :
+    Coût 600 $ · PV 20 000 · Blindage léger · Vitesse 110 · Vision 5 cases
+    Arme : VulcanAA : 1 000 dégâts, portée 8 cases, recharge 0,2 s
+    Arme : Vulcan : 1 000 dégâts, portée 6 cases, recharge 1,4 s
+    Prérequis : Radar Dome · Niveau technologique : bas
+  Stratégie :
+    Escortez vos colonnes contre l'infanterie et l'aviation. Évitez les chars ennemis : son
+    blindage léger ne tient pas.
+--------------------------------------------------------------------------------------------
+■ CHAR LOURD CHINOIS  (China Heavy Tank)
+  Faction : Chine
+  Lore :
+    Copie chinoise du char lourd soviétique, simplifiée pour la production de masse.
+    Moins résistant que l'original, il gagne un lance-flammes de caisse contre l'infanterie.
+    Pékin compte sur le nombre plus que sur la qualité de chaque exemplaire.
+  Statistiques :
+    Coût 950 $ · PV 47 000 · Blindage lourd · Vitesse 65 · Vision 6 cases
+    Arme : 105mm : 4 000 dégâts, rafale de 2, portée 4,75 cases, recharge 2,8 s
+    Arme : 120mm : 6 000 dégâts, rafale de 2, portée 4,75 cases, recharge 3,6 s
+    Arme : Flamer.Tank : 1 000 dégâts, rafale de 10, portée 5 cases, recharge 2,4 s
+    Prérequis : Service Depot · Niveau technologique : moyen
+  Stratégie :
+    Produisez-le en très grand nombre : il est moins cher que le char lourd soviétique et
+    gère mieux l'infanterie. Noyez les défenses ennemies sous les vagues.
+--------------------------------------------------------------------------------------------
+■ CHAR OVERLORD  (Overlord Tank)
+  Faction : Chine
+  Lore :
+    Le plus gros char de la Chine, une forteresse équipée d'obus d'artillerie.
+    Un fantassin embarqué lui ajoute une arme : mitrailleuse, missiles, lance-flammes ou propagande.
+    Il avance lentement, mais rien ne l'arrête vraiment.
+  Statistiques :
+    Coût 3 000 $ · PV 110 000 · Blindage lourd · Vitesse 40 · Vision 6 cases
+    Arme : 380mm : 3 500 dégâts, rafale de 2, portée 7,75 cases, recharge 7,2 s
+    Arme : Vulcan : 1 000 dégâts, portée 6 cases, recharge 1,4 s
+    Arme : MammothTusk : 5 000 dégâts, rafale de 2, portée 6,5 cases, recharge 2,4 s
+    Arme : Flamer.Tank.Rank : 1 000 dégâts, rafale de 5, portée 5 cases, recharge 2,4 s
+    Transport 1 places
+    Prérequis : Service Depot, Centre technique (Chine) · Niveau technologique : élevé
+  Stratégie :
+    Adaptez l'occupant à la menace : conscrit contre l'infanterie, soldat roquette contre
+    l'aviation, hacker pour la propagande. Accompagnez-le d'antiaérien : l'aviation est sa
+    grande faiblesse.
+
+  ▶ FACTION : TURQUIE
+
+--------------------------------------------------------------------------------------------
+■ CAMION TOXIQUE  (Toxin Truck)
+  Faction : Turquie
+  Lore :
+    Camion turc chargé d'armes chimiques mortelles.
+    Il répand un nuage toxique qui décime l'infanterie.
+    Son blindage est aussi faible que sa réputation est terrible.
+  Statistiques :
+    Coût 2 500 $ · PV 3 800 · Blindage léger · Vitesse 67 · Vision 4 cases
+    Arme : TxTruckTargeting : portée 2 cases
+    Prérequis : Centre technique (Turquie) · Niveau technologique : élevé
+  Stratégie :
+    Envoyez-le au cœur des concentrations d'infanterie ennemie. Il meurt vite : profitez
+    d'une diversion.
+--------------------------------------------------------------------------------------------
+■ CHAR LASHER  (Lasher Tank)
+  Faction : Turquie
+  Lore :
+    Char de combat turc de la carte WW3, combinant deux calibres.
+    Il cumule un canon de 90 mm et un double canon de 105 mm.
+    Robuste et bon marché, il porte l'essentiel des assauts turcs.
+  Statistiques :
+    Coût 950 $ · PV 50 000 · Blindage lourd · Vitesse 70 · Vision 6 cases
+    Arme : 90mm : 4 000 dégâts, portée 4,75 cases, recharge 2 s
+    Arme : 105mm : 4 000 dégâts, rafale de 2, portée 4,75 cases, recharge 2,8 s
+    Prérequis : Service Depot · Niveau technologique : moyen
+  Stratégie :
+    Char de ligne turc : groupez-le avec des saboteurs et Crazy Ivan pour ouvrir les
+    défenses. Il manque de réponse à l'aviation.
+--------------------------------------------------------------------------------------------
+■ KATIOUCHA  (Katyusha)
+  Faction : Turquie
+  Lore :
+    Lance-roquettes turc de la carte WW3, héritier des « orgues de Staline ».
+    Ses salves à longue portée ravagent les défenses et l'infanterie.
+    Imprécis, il compense par le nombre de projectiles.
+  Statistiques :
+    Coût 700 $ · PV 15 000 · Blindage léger · Vitesse 49 · Vision 5 cases
+    Arme : KatyushaRockets : 5 000 dégâts, rafale de 3, portée 8,75 cases, recharge 9,6 s
+    Arme : KatyushaRocketsWide : 5 000 dégâts, rafale de 3, portée 8,75 cases, recharge 9,6
+    s
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Saturez les défenses et l'infanterie ennemies à distance. Très lent : planifiez sa
+    position à l'avance et protégez-le.
+--------------------------------------------------------------------------------------------
+■ LANCE-SCUD  (Scud Launcher)
+  Faction : Turquie
+  Lore :
+    Lance-missiles balistique turc de la carte WW3.
+    Ses missiles Scud portent à 11 cases et frappent les bases ennemies.
+    Imprécis, il compte sur la terreur plus que sur la précision.
+  Statistiques :
+    Coût 900 $ · PV 20 000 · Blindage léger · Vitesse 70 · Vision 5 cases
+    Arme : SCUDMISS : salve de 3 projectiles de 10 000 dégâts chacun
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Frappez les bâtiments ennemis à longue distance. Il ne fait pas le poids contre les
+    véhicules : protégez-le.
+
+  ▶ FACTION : GRÈCE
+
+--------------------------------------------------------------------------------------------
+■ TITAN
+  Faction : Grèce
+  Lore :
+    Robot de combat grec de la carte WW3, un mech lourd et lent.
+    Son canon de 130 mm et ses missiles dominent le champ de bataille.
+    Il marche là où les chars ne passent pas.
+  Statistiques :
+    Coût 2 000 $ · PV 98 000 · Blindage lourd · Vitesse 43 · Vision 6 cases
+    Arme : 130mm : 7 500 dégâts, portée 4,75 cases, recharge 2,8 s
+    Arme : MammothTusk : 5 000 dégâts, rafale de 2, portée 6,5 cases, recharge 2,4 s
+    Prérequis : Centre technique (Grèce) · Niveau technologique : élevé
+  Stratégie :
+    Unité d'appui lourde : avancez avec les hoplites et les Spartan. Lent : couvrez-le
+    contre l'aviation.
+
+  ▶ FACTION : INDE
+
+--------------------------------------------------------------------------------------------
+■ ARJUN MK1A
+  Faction : Inde
+  Lore :
+    Char de combat indien, fruit de décennies de développement national.
+    Lourd, fiable et robuste, il privilégie la solidité sur la sophistication.
+    C'est le char des longues campagnes, qui revient toujours du front.
+  Statistiques :
+    Coût 1 600 $ · PV 66 000 · Blindage lourd · Vitesse 65 · Vision 6 cases
+    Arme : ArjunGun : 14 000 dégâts, portée 5,75 cases, recharge 3,6 s
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Char de ligne de l'Inde : formez des lignes compactes appuyées par les NAMICA à
+    l'arrière. Lent, il doit être déplacé tôt vers les points chauds ; ne le lancez pas à la
+    poursuite d'unités rapides.
+--------------------------------------------------------------------------------------------
+■ DHANUSH  (Dhanush (obusier de 155 mm))
+  Faction : Inde
+  Lore :
+    Obusier indien de 155 mm, dérivé d'un canon suédois et produit localement.
+    Rustique et économique, il offre beaucoup de puissance pour son prix.
+    L'Inde en aligne des batteries entières là où d'autres en alignent deux.
+  Statistiques :
+    Coût 1 050 $ · PV 14 000 · Blindage léger · Vitesse 65 · Vision 5 cases
+    Arme : DhanushShell : 15 000 dégâts, portée 8 cases, recharge 4 s
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Achetez-en plusieurs et groupez-les en batterie, guidées par un TAPAS pour gagner en
+    portée. Contre-batterie facile : changez de position si l'ennemi vous repère.
+--------------------------------------------------------------------------------------------
+■ NAMICA (MISSILES NAG)
+  Faction : Inde
+  Lore :
+    Chasseur de chars indien sur châssis BMP-2, armé de missiles Nag.
+    Ses missiles guidés font des ravages parmi les blindés lourds.
+    Il doit s'immobiliser pour tirer : c'est à la fois sa force et sa faiblesse.
+  Statistiques :
+    Coût 950 $ · PV 9 000 · Blindage léger · Vitesse 75 · Vision 7 cases
+    Arme : NagMissile : 16 000 dégâts, portée 8,5 cases, recharge 8 s
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Placez-le en embuscade derrière votre ligne pour briser les charges blindées. Il doit
+    être à l'arrêt : ne lui demandez pas de poursuivre. Protégez-le de l'infanterie et de
+    l'artillerie.
+
+============================================================================================
+                                        6. AVIATION                                         
+============================================================================================
+
+  ▶ FACTION : TOUS LES ALLIÉS
+
+--------------------------------------------------------------------------------------------
+■ BLACK HAWK
+  Faction : tous les Alliés
+  Lore :
+    Hélicoptère d'attaque allié armé de mitrailleuses.
+    Il déchire l'infanterie et les véhicules légers.
+    Un classique des guerres modernes.
+  Statistiques :
+    Coût 1 500 $ · PV 10 000 · Blindage léger · Vitesse 112 · Vision 10 cases
+    Arme : ChainGun : 2 500 dégâts, portée 5 cases, recharge 0,4 s
+    Prérequis : Héliport · Niveau technologique : moyen
+  Stratégie :
+    Chassez l'infanterie et les véhicules légers. Évitez les chars et l'antiaérien.
+--------------------------------------------------------------------------------------------
+■ CHINOOK
+  Faction : tous les Alliés
+  Lore :
+    Hélicoptère de transport lourd des Alliés.
+    Il transporte huit fantassins au-dessus des obstacles.
+    L'outil des débarquements rapides.
+  Statistiques :
+    Coût 900 $ · PV 14 000 · Blindage léger · Vitesse 128 · Vision 8 cases
+    Arme : aucune
+    Transport 8 places
+    Prérequis : Héliport · Niveau technologique : moyen
+  Stratégie :
+    Transportez l'infanterie derrière les lignes ennemies ou vers des positions isolées.
+--------------------------------------------------------------------------------------------
+■ LONGBOW
+  Faction : tous les Alliés
+  Lore :
+    Hélicoptère d'attaque allié armé de missiles polyvalents.
+    Il frappe les blindés, les bâtiments et même les aéronefs.
+    La plateforme de combat la plus polyvalente des Alliés.
+  Statistiques :
+    Coût 2 000 $ · PV 12 000 · Blindage léger · Vitesse 149 · Vision 12 cases
+    Arme : HellfireAA : 3 000 dégâts, rafale de 2, portée 4 cases, recharge 1,2 s
+    Arme : HellfireAG : 6 000 dégâts, rafale de 2, portée 5 cases, recharge 1,4 s
+    Prérequis : Héliport, Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Frappez les blindés et les bâtiments. Évitez l'infanterie antiaérienne et les SAM.
+
+  ▶ FACTION : TOUS LES SOVIÉTIQUES
+
+--------------------------------------------------------------------------------------------
+■ MIG  (MiG Attack Plane)
+  Faction : tous les Soviétiques
+  Lore :
+    Avion d'attaque soviétique rapide, armé de missiles air-sol.
+    Il frappe les bâtiments et les véhicules avant de rentrer se réarmer.
+    Il peut apponter sur les porte-avions russe et chinois.
+  Statistiques :
+    Coût 2 000 $ · PV 8 000 · Blindage léger · Vitesse 223 · Vision 13 cases
+    Arme : Maverick : 7 000 dégâts, rafale de 2, portée 9 cases, recharge 2 s
+    Prérequis : Aérodrome, Centre technique soviétique · Niveau technologique : élevé
+  Stratégie :
+    Frappez les bâtiments et véhicules isolés. Évitez les zones couvertes d'antiaérien.
+--------------------------------------------------------------------------------------------
+■ YAK  (Yak Attack Plane)
+  Faction : tous les Soviétiques
+  Lore :
+    Avion d'attaque soviétique armé de mitrailleuses.
+    Il déchire l'infanterie et les véhicules légers.
+    Rapide et bon marché, il vit dangereusement.
+  Statistiques :
+    Coût 1 350 $ · PV 6 000 · Blindage léger · Vitesse 178 · Vision 11 cases
+    Arme : ChainGun.Yak : 4 000 dégâts, portée 5 cases, recharge 0,1 s
+    Prérequis : Aérodrome · Niveau technologique : moyen
+  Stratégie :
+    Chassez l'infanterie et les véhicules légers. Évitez les chars et l'antiaérien.
+
+  ▶ FACTION : FRANCE
+
+--------------------------------------------------------------------------------------------
+■ COMANCHE
+  Faction : France
+  Lore :
+    Hélicoptère d'attaque furtif français de la carte WW3.
+    Il approche sans être vu et frappe avec des roquettes puissantes.
+    L'arme idéale pour les frappes surprises.
+  Statistiques :
+    Coût 1 800 $ · PV 18 000 · Blindage léger · Vitesse 157 · Vision 10 cases
+    Arme : APTusk : 5 000 dégâts, portée 6 cases, recharge 2,4 s
+    Furtif
+    Prérequis : Centre technique (France) · Niveau technologique : élevé
+  Stratégie :
+    Frappez les cibles clés par surprise grâce à sa furtivité.
+--------------------------------------------------------------------------------------------
+■ DRONE DE RECONNAISSANCE  (Recon Drone)
+  Faction : France
+  Lore :
+    Drone de reconnaissance français de la carte WW3.
+    Il survole le champ de bataille sans être vu.
+    Un œil dans le ciel, très résistant.
+  Statistiques :
+    Coût 1 100 $ · PV 40 000 · Blindage léger · Vitesse 190 · Vision 12 cases
+    Arme : aucune
+    Furtif · Limite 1 exemplaire
+    Prérequis : Héliport, Centre technique (France) · Niveau technologique : moyen
+  Stratégie :
+    Explorez le champ de bataille et détectez les mouvements ennemis.
+--------------------------------------------------------------------------------------------
+■ MQ-9 REAPER
+  Faction : France
+  Lore :
+    Drone MALE français armé de bombes guidées et de missiles.
+    Sa caméra thermique détecte les unités furtives.
+    Il frappe loin et haut, là où l'ennemi ne le voit pas.
+  Statistiques :
+    Coût 1 800 $ · PV 6 000 · Blindage léger · Vitesse 150 · Vision 16 cases
+    Arme : ReaperGBU : 16 000 dégâts, portée 7 cases, recharge 2,4 s
+    Arme : ReaperHellfire : 6 000 dégâts, rafale de 2, portée 7 cases, recharge 1,4 s
+    Détecte les furtifs (8 cases) · Limite 2 exemplaires
+    Prérequis : Radar Dome · Niveau technologique : élevé
+  Stratégie :
+    Frappez les véhicules et bâtiments à distance, détectez les unités furtives. Limité à 2
+    exemplaires.
+--------------------------------------------------------------------------------------------
+■ MUNITION RÔDEUSE COLIBRI
+  Faction : France
+  Lore :
+    Munition rôdeuse française qui tourne au-dessus de la zone avant de frapper.
+    Elle fonce sur sa cible et explose, frappant le blindage par le dessus.
+    Deux minutes de vol, une seule attaque.
+  Statistiques :
+    Coût 400 $ · PV 800 · Blindage léger · Vitesse 230 · Vision 5 cases
+    Arme : ColibriDive : 9 000 dégâts, portée 4 cases, recharge 2 s
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Lancez-la contre l'artillerie, les véhicules légers ou les bâtiments. Elle ignore le
+    blindage réactif : excellente contre le T-90M.
+--------------------------------------------------------------------------------------------
+■ PATROLLER
+  Faction : France
+  Lore :
+    Drone tactique français d'appui aux blindés.
+    Ses roquettes guidées laser frappent par paires ; il étend la portée des véhicules alliés.
+    L'escorte aérienne des blindés français.
+  Statistiques :
+    Coût 1 000 $ · PV 4 500 · Blindage léger · Vitesse 170 · Vision 11 cases
+    Arme : PatrollerRocket : 4 500 dégâts, rafale de 2, portée 6 cases, recharge 1 s
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Accompagnez vos blindés : +15 % de portée pour les véhicules proches et liaison SCORPION
+    pour les Leclerc.
+--------------------------------------------------------------------------------------------
+■ RAFALE
+  Faction : France
+  Lore :
+    Avion de combat multirôle français.
+    Il porte des missiles air-air, air-sol et des torpilles.
+    Il peut apponter sur le porte-avions nucléaire.
+  Statistiques :
+    Coût 2 200 $ · PV 9 000 · Blindage léger · Vitesse 240 · Vision 13 cases
+    Arme : RafaleAG : 7 000 dégâts, rafale de 2, portée 8 cases, recharge 2 s
+    Arme : RafaleAA : 4 000 dégâts, rafale de 2, portée 6 cases, recharge 1,2 s
+    Arme : RafaleTorpedo : 15 000 dégâts, portée 5 cases, recharge 2,4 s
+    Détecte les furtifs (3 cases)
+    Prérequis : un centre technique · Niveau technologique : élevé
+  Stratégie :
+    Frappez les véhicules, navires et sous-marins, et combattez l'aviation ennemie. Réarmez-
+    le sur le porte-avions.
+
+  ▶ FACTION : ALLEMAGNE
+
+--------------------------------------------------------------------------------------------
+■ ALADIN (GUERRE ÉLECTRONIQUE)
+  Faction : Allemagne
+  Lore :
+    Mini-drone allemand équipé de brouilleurs.
+    Il dégrade la précision, le verrouillage et la vision des ennemis proches.
+    Invisible dans ses effets, redoutable dans ses conséquences.
+  Statistiques :
+    Coût 750 $ · PV 3 000 · Blindage léger · Vitesse 170 · Vision 7 cases
+    Arme : aucune
+    Prérequis : aucun · Niveau technologique : élevé
+  Stratégie :
+    Faites-le planer au-dessus de l'armée ennemie pendant votre assaut pour dégrader leurs
+    tirs. Inutile contre une armée sans armes guidées.
+--------------------------------------------------------------------------------------------
+■ CHRONO NIGHTHAWK
+  Faction : Allemagne
+  Lore :
+    Hélicoptère de transport allemand de la carte WW3, équipé d'un canon chronosphérique.
+    Il transporte de l'infanterie et saute d'un point à l'autre.
+    Le transport le plus surprenant du jeu.
+  Statistiques :
+    Coût 1 150 $ · PV 24 000 · Blindage léger · Vitesse 155 · Vision 8 cases
+    Arme : ChronoHandGun : 4 500 dégâts, portée 5 cases, recharge 2,8 s
+    Transport 8 places
+    Prérequis : Centre technique (Allemagne) · Niveau technologique : moyen
+  Stratégie :
+    Téléportez de l'infanterie derrière les lignes ennemies pour des raids surprises.
+--------------------------------------------------------------------------------------------
+■ KZO
+  Faction : Allemagne
+  Lore :
+    Drone de reconnaissance allemand à longue portée.
+    Très rapide, il peut rester stationnaire au-dessus d'une zone.
+    L'œil du PzH 2000.
+  Statistiques :
+    Coût 450 $ · PV 2 500 · Blindage aucun · Vitesse 270 · Vision 12 cases
+    Arme : aucune
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Fournissez la vision au PzH 2000 et à l'artillerie allemande. Très fragile : gardez-le
+    loin des défenses antiaériennes.
+--------------------------------------------------------------------------------------------
+■ LUNA X-2000
+  Faction : Allemagne
+  Lore :
+    Drone allemand de désignation laser.
+    Tant qu'il garde une cible en vue, celle-ci subit +25 % de dégâts.
+    Il ne tue pas, il fait tuer.
+  Statistiques :
+    Coût 600 $ · PV 3 500 · Blindage léger · Vitesse 170 · Vision 9 cases
+    Arme : LunaDesignator : portée 6 cases, recharge 0,8 s
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Désignez la cible prioritaire (char lourd, défense) pendant que vos Leopard et PzH la
+    frappent.
+
+  ▶ FACTION : ROYAUME-UNI
+
+--------------------------------------------------------------------------------------------
+■ BLACK HORNET
+  Faction : Royaume-Uni
+  Lore :
+    Nano-drone britannique de reconnaissance, pas plus grand qu'une main.
+    Invisible sauf à courte portée, il explore les lignes ennemies.
+    L'œil qu'on ne voit jamais.
+  Statistiques :
+    Coût 250 $ · PV 500 · Blindage aucun · Vitesse 280 · Vision 7 cases
+    Arme : aucune
+    Furtif
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Explorez derrière les lignes ennemies sans être vu. Ne le laissez pas s'approcher des
+    détecteurs.
+--------------------------------------------------------------------------------------------
+■ HARRIER
+  Faction : Royaume-Uni
+  Lore :
+    Avion d'attaque britannique à décollage vertical.
+    Il se pose n'importe où et fait du vol stationnaire.
+    Missiles air-sol et torpilles : il frappe la terre comme la mer.
+  Statistiques :
+    Coût 2 000 $ · PV 9 000 · Blindage léger · Vitesse 240 · Vision 13 cases
+    Arme : RafaleAG : 7 000 dégâts, rafale de 2, portée 8 cases, recharge 2 s
+    Arme : RafaleTorpedo : 15 000 dégâts, portée 5 cases, recharge 2,4 s
+    Détecte les furtifs (3 cases)
+    Prérequis : un centre technique · Niveau technologique : élevé
+  Stratégie :
+    Frappez les véhicules, navires et sous-marins. Il peut apponter sur le porte-avions
+    britannique.
+--------------------------------------------------------------------------------------------
+■ PROTECTOR RG MK1
+  Faction : Royaume-Uni
+  Lore :
+    Drone armé britannique de harcèlement.
+    Il tire des salves de deux missiles légers guidés.
+    Il use l'ennemi à distance, lentement mais sûrement.
+  Statistiques :
+    Coût 800 $ · PV 4 000 · Blindage léger · Vitesse 160 · Vision 8 cases
+    Arme : ProtectorMissile : 5 000 dégâts, rafale de 2, portée 7 cases, recharge 7 s
+    Prérequis : aucun · Niveau technologique : élevé
+  Stratégie :
+    Harcelez les véhicules légers et l'infanterie. Évitez l'antiaérien.
+--------------------------------------------------------------------------------------------
+■ WATCHKEEPER WK450
+  Faction : Royaume-Uni
+  Lore :
+    Drone de surveillance britannique.
+    Il transmet les coordonnées : +15 % de portée pour les véhicules proches.
+    Il orbite au-dessus de la zone sans relâche.
+  Statistiques :
+    Coût 500 $ · PV 3 000 · Blindage léger · Vitesse 230 · Vision 11 cases
+    Arme : aucune
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Placez-le au-dessus de votre artillerie et de vos chars pour augmenter leur portée.
+
+  ▶ FACTION : USA
+
+--------------------------------------------------------------------------------------------
+■ A-10 WARTHOG  (A10 Warthog)
+  Faction : USA
+  Lore :
+    Avion d'appui rapproché américain, construit autour de son canon de 30 mm.
+    Il chasse les chars comme personne, en rase-mottes.
+    Son grondement fait fuir des colonnes entières.
+  Statistiques :
+    Coût 2 500 $ · PV 35 000 · Blindage léger · Vitesse 180 · Vision 11 cases
+    Arme : 30mm : 6 000 dégâts, portée 5 cases, recharge 0,1 s
+    Arme : HellfireA10 : 7 000 dégâts, rafale de 2, portée 9 cases, recharge 2 s
+    Limite 5 exemplaires
+    Prérequis : Base aérienne, Centre technique (USA) · Niveau technologique : élevé
+  Stratégie :
+    Frappez les colonnes blindées ennemies, après avoir neutralisé leur défense
+    antiaérienne. Il revient se réarmer à la base aérienne.
+--------------------------------------------------------------------------------------------
+■ APACHE
+  Faction : USA
+  Lore :
+    Hélicoptère d'attaque américain, l'un des plus redoutés au monde.
+    Missiles Hellfire, canon et missiles antiaériens : il frappe tout.
+    Aucune cible ne lui échappe vraiment.
+  Statistiques :
+    Coût 2 100 $ · PV 16 500 · Blindage léger · Vitesse 145 · Vision 10 cases
+    Arme : ApacheHellfire : 6 000 dégâts, rafale de 4, portée 5 cases, recharge 1,4 s
+    Arme : ApacheChainGun : 2 500 dégâts, portée 5 cases, recharge 0,4 s
+    Arme : SidewinderAA : 2 400 dégâts, rafale de 3, portée 7,5 cases, recharge 2 s
+    Prérequis : Héliport, Centre technique (USA) · Niveau technologique : élevé
+  Stratégie :
+    Unité polyvalente : frappez blindés, infanterie et aéronefs. Évitez l'antiaérien lourd.
+--------------------------------------------------------------------------------------------
+■ F-22 RAPTOR  (F22 Raptor)
+  Faction : USA
+  Lore :
+    Chasseur furtif américain de supériorité aérienne.
+    Il frappe au sol comme dans les airs avec ses missiles.
+    Le prédateur le plus rapide du ciel.
+  Statistiques :
+    Coût 2 000 $ · PV 8 000 · Blindage léger · Vitesse 253 · Vision 13 cases
+    Arme : Maverick : 7 000 dégâts, rafale de 2, portée 9 cases, recharge 2 s
+    Arme : HellfireAA : 3 000 dégâts, rafale de 2, portée 4 cases, recharge 1,2 s
+    Prérequis : Base aérienne · Niveau technologique : élevé
+  Stratégie :
+    Dominez le ciel et frappez les cibles au sol. Il peut apponter sur le porte-avions
+    américain.
+--------------------------------------------------------------------------------------------
+■ HALO
+  Faction : USA
+  Lore :
+    Hélicoptère de transport lourd américain de la carte WW3.
+    Il transporte des véhicules entiers au-dessus des obstacles.
+    Furtif, il se glisse derrière les lignes.
+  Statistiques :
+    Coût 900 $ · PV 14 000 · Blindage léger · Vitesse 108 · Vision 8 cases
+    Arme : aucune
+    Furtif
+    Prérequis : Service Depot, Héliport · Niveau technologique : moyen
+  Stratégie :
+    Transportez des véhicules derrière les lignes ennemies. Il n'est pas armé : évitez
+    l'antiaérien.
+
+  ▶ FACTION : JAPON
+
+--------------------------------------------------------------------------------------------
+■ MQ-9B SEAGUARDIAN
+  Faction : Japon
+  Lore :
+    Drone japonais de patrouille maritime et terrestre.
+    Il désigne les cibles au laser et détecte les sous-marins.
+    L'œil qui voit à travers la mer.
+  Statistiques :
+    Coût 900 $ · PV 5 000 · Blindage léger · Vitesse 170 · Vision 13 cases
+    Arme : LunaDesignator : portée 6 cases, recharge 0,8 s
+    Détecte les furtifs (6 cases)
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Désignez la cible prioritaire (+25 % de dégâts) et détectez les sous-marins. Non armé.
+
+  ▶ FACTION : RUSSIE
+
+--------------------------------------------------------------------------------------------
+■ ORION
+  Faction : Russie
+  Lore :
+    Drone lourd russe armé de missiles air-sol.
+    Il lui faut plusieurs passages pour détruire un char lourd.
+    Le premier grand drone armé russe.
+  Statistiques :
+    Coût 900 $ · PV 6 000 · Blindage léger · Vitesse 150 · Vision 9 cases
+    Arme : OrionMissile : 13 000 dégâts, portée 7 cases, recharge 4 s
+    Prérequis : aucun · Niveau technologique : élevé
+  Stratégie :
+    Frappez les véhicules, l'artillerie et les bâtiments légers. Évitez l'antiaérien : il
+    est lent et cher.
+--------------------------------------------------------------------------------------------
+■ ORLAN-10
+  Faction : Russie
+  Lore :
+    Drone de reconnaissance russe bon marché.
+    Il guide l'artillerie : les véhicules alliés proches gagnent 15 % de portée.
+    L'œil omniprésent du front russe.
+  Statistiques :
+    Coût 300 $ · PV 3 500 · Blindage léger · Vitesse 220 · Vision 10 cases
+    Arme : aucune
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Placez-le au-dessus de votre artillerie pour augmenter sa portée. Bon marché :
+    remplaçable.
+--------------------------------------------------------------------------------------------
+■ SUKHOÏ  (Sukhoi SU-29 Attack Plane)
+  Faction : Russie
+  Lore :
+    Chasseur russe de la carte WW3, spécialisé dans la chasse aux hélicoptères.
+    Ses missiles air-air ne laissent aucune chance aux aéronefs ennemis.
+    Il ne frappe pas le sol.
+  Statistiques :
+    Coût 2 000 $ · PV 10 000 · Blindage léger · Vitesse 225 · Vision 13 cases
+    Arme : HellfireAA : 3 000 dégâts, rafale de 2, portée 4 cases, recharge 1,2 s
+    Prérequis : Aérodrome, Centre technique (Russie) · Niveau technologique : élevé
+  Stratégie :
+    Chassez l'aviation ennemie, en particulier les hélicoptères. Inutile contre les unités
+    au sol.
+--------------------------------------------------------------------------------------------
+■ ZALA LANCET
+  Faction : Russie
+  Lore :
+    Munition rôdeuse russe qui fonce sur sa cible et explose.
+    Elle est spécialisée contre l'artillerie et les véhicules légers.
+    Un char lourd survit à un Lancet ; une artillerie, rarement.
+  Statistiques :
+    Coût 350 $ · PV 700 · Blindage léger · Vitesse 280 · Vision 5 cases
+    Arme : LancetDive : 12 000 dégâts, portée 4 cases, recharge 2 s
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Chassez l'artillerie et les véhicules de soutien ennemis. Contre les chars lourds,
+    utilisez-en plusieurs.
+
+  ▶ FACTION : UKRAINE
+
+--------------------------------------------------------------------------------------------
+■ BOMBARDIER TACTIQUE  (Tactical Bomber)
+  Faction : Ukraine
+  Lore :
+    Bombardier ukrainien de la carte WW3, chargé de bombes incendiaires.
+    Il incendie l'infanterie et les véhicules légers sur son passage.
+    Il vole haut et frappe fort.
+  Statistiques :
+    Coût 2 500 $ · PV 17 500 · Blindage léger · Vitesse 130 · Vision 11 cases
+    Arme : FireBombs : 8 000 dégâts, rafale de 4, portée 3 cases, recharge 2 s
+    Prérequis : Aérodrome, Centre technique (Ukraine) · Niveau technologique : élevé
+  Stratégie :
+    Frappez les concentrations d'infanterie et de véhicules légers. Évitez les défenses
+    antiaériennes.
+--------------------------------------------------------------------------------------------
+■ LELEKA-100
+  Faction : Ukraine
+  Lore :
+    Drone de reconnaissance ukrainien bon marché.
+    Excellente vision : il guide l'artillerie, notamment le M777.
+    Il a changé la guerre de l'artillerie.
+  Statistiques :
+    Coût 300 $ · PV 4 000 · Blindage léger · Vitesse 220 · Vision 12 cases
+    Arme : aucune
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Fournissez la vision au M777 pour ses tirs de précision. Bon marché : remplaçable.
+--------------------------------------------------------------------------------------------
+■ MI-24
+  Faction : Ukraine
+  Lore :
+    Hélicoptère d'attaque ukrainien à deux mitrailleuses.
+    Il peut apponter sur le porte-hélicoptères.
+    Le « char volant » de la guerre froide.
+  Statistiques :
+    Coût 1 500 $ · PV 10 000 · Blindage léger · Vitesse 112 · Vision 10 cases
+    Arme : ChainGun : 2 500 dégâts, portée 5 cases, recharge 0,4 s
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Chassez l'infanterie et les blindés légers. Utilisez le porte-hélicoptères comme base
+    flottante.
+--------------------------------------------------------------------------------------------
+■ SHARK
+  Faction : Ukraine
+  Lore :
+    Drone de reconnaissance stratégique ukrainien.
+    Sa vision énorme marque les blindés chenillés ennemis pour toute l'armée.
+    Il transforme chaque char ennemi en cible visible.
+  Statistiques :
+    Coût 650 $ · PV 3 000 · Blindage léger · Vitesse 230 · Vision 15 cases
+    Arme : aucune
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Survolez les concentrations blindées ennemies pour les marquer, puis frappez avec
+    l'artillerie et les FPV.
+
+  ▶ FACTION : TURQUIE
+
+--------------------------------------------------------------------------------------------
+■ DIRIGEABLE KIROV  (Kirov Airship)
+  Faction : Turquie
+  Lore :
+    Dirigeable blindé turc de la carte WW3, chargé de bombes massives.
+    Lent, il avance comme une menace inévitable vers la base ennemie.
+    Quand il arrive, il est souvent trop tard.
+  Statistiques :
+    Coût 2 500 $ · PV 130 000 · Blindage lourd · Vitesse 50 · Vision 10 cases
+    Arme : KirovBomb : 4 500 dégâts, portée 1 case, recharge 1,4 s
+    Limite 5 exemplaires
+    Prérequis : Héliport soviétique, Centre technique (Turquie) · Niveau technologique :
+    élevé
+  Stratégie :
+    Escortez-le vers la base ennemie en neutralisant les défenses antiaériennes. Très
+    résistant, mais très lent.
+
+  ▶ FACTION : INDE
+
+--------------------------------------------------------------------------------------------
+■ TAPAS BH-201
+  Faction : Inde
+  Lore :
+    Drone de reconnaissance indien à longue endurance.
+    Sa vision énorme guide l'artillerie : +15 % de portée pour les véhicules proches.
+    L'œil de l'artillerie indienne.
+  Statistiques :
+    Coût 500 $ · PV 2 500 · Blindage léger · Vitesse 180 · Vision 14 cases
+    Arme : aucune
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Placez-le au-dessus de vos Dhanush et NAMICA pour augmenter leur portée. Très fragile.
+
+============================================================================================
+                                         7. MARINE                                          
+============================================================================================
+
+  ▶ FACTION : TOUTES
+
+--------------------------------------------------------------------------------------------
+■ NAVIRE DE DÉBARQUEMENT  (Transport)
+  Faction : toutes
+  Lore :
+    Navire de transport polyvalent, capable de transporter infanterie et véhicules.
+    Il débarque des armées entières sur les plages ennemies.
+    Sa capacité a été portée à 25 places.
+  Statistiques :
+    Coût 700 $ · PV 35 000 · Blindage lourd · Vitesse 128 · Vision 6 cases
+    Arme : aucune
+    Transport 25 places
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Débarquez des troupes sur les côtes ennemies, loin des défenses. Escortez-le.
+--------------------------------------------------------------------------------------------
+■ POSEUR DE MINES NAVAL  (Naval Minelayer)
+  Faction : toutes
+  Lore :
+    Navire poseur de mines marines.
+    Il détecte les sous-marins et les mines.
+    Il transforme la mer en champ de mines.
+  Statistiques :
+    Coût 900 $ · PV 20 000 · Blindage lourd · Vitesse 128 · Vision 7 cases
+    Arme : aucune
+    Détecte les furtifs (4 cases)
+    Prérequis : Radar Dome · Niveau technologique : naval
+  Stratégie :
+    Minez les accès maritimes à votre base et les routes des flottes ennemies.
+
+  ▶ FACTION : TOUS LES ALLIÉS
+
+--------------------------------------------------------------------------------------------
+■ CROISEUR  (Cruiser)
+  Faction : tous les Alliés
+  Lore :
+    Croiseur lourd des Alliés, armé de canons de 8 pouces à très longue portée.
+    Il pilonne les côtes et les bases à 20 cases.
+    Lent, il est la cible favorite des sous-marins.
+  Statistiques :
+    Coût 2 400 $ · PV 80 000 · Blindage lourd · Vitesse 44 · Vision 7 cases
+    Arme : 8Inch : 2 500 dégâts, rafale de 2, portée 20 cases, recharge 10 s
+    Prérequis : Chantier naval, Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Pilonnez les bases côtières à distance. Escortez-le avec des destroyers contre les sous-
+    marins.
+--------------------------------------------------------------------------------------------
+■ DESTROYER
+  Faction : tous les Alliés
+  Lore :
+    Destroyer polyvalent des Alliés.
+    Il détecte les sous-marins et frappe les navires, les véhicules et les aéronefs.
+    L'escorte indispensable de toute flotte.
+  Statistiques :
+    Coût 1 000 $ · PV 40 000 · Blindage lourd · Vitesse 92 · Vision 5 cases
+    Arme : Stinger : 2 500 dégâts, rafale de 2, portée 7,5 cases, recharge 2,4 s
+    Arme : DepthCharge : 6 000 dégâts, portée 5 cases, recharge 2,4 s
+    Arme : StingerAA : 1 650 dégâts, rafale de 2, portée 7,5 cases, recharge 2,4 s
+    Détecte les furtifs (4 cases)
+    Prérequis : Chantier naval, Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Protégez votre flotte contre les sous-marins et l'aviation. Détectez les sous-marins
+    ennemis.
+--------------------------------------------------------------------------------------------
+■ VEDETTE  (Gunboat)
+  Faction : tous les Alliés
+  Lore :
+    Vedette rapide des Alliés.
+    Elle détecte les sous-marins et frappe les navires légers.
+    Rapide et bon marché, elle patrouille les côtes.
+  Statistiques :
+    Coût 500 $ · PV 20 000 · Blindage lourd · Vitesse 142 · Vision 8 cases
+    Arme : 2Inch : 2 500 dégâts, portée 5,5 cases, recharge 2,4 s
+    Arme : DepthCharge : 6 000 dégâts, portée 5 cases, recharge 2,4 s
+    Détecte les furtifs (4 cases)
+    Prérequis : Chantier naval · Niveau technologique : bas
+  Stratégie :
+    Patrouillez les côtes et détectez les sous-marins.
+
+  ▶ FACTION : TOUS LES SOVIÉTIQUES
+
+--------------------------------------------------------------------------------------------
+■ SOUS-MARIN  (Submarine)
+  Faction : tous les Soviétiques
+  Lore :
+    Sous-marin d'attaque soviétique armé de torpilles.
+    Il frappe les navires ennemis depuis les profondeurs.
+    Il détecte aussi les autres sous-marins.
+  Statistiques :
+    Coût 950 $ · PV 25 000 · Blindage léger · Vitesse 78 · Vision 8 cases
+    Arme : TorpTube : 18 000 dégâts, rafale de 2, portée 9 cases, recharge 4 s
+    Furtif · Détecte les furtifs (5 cases)
+    Prérequis : Base sous-marine · Niveau technologique : bas
+  Stratégie :
+    Chassez les navires ennemis, en particulier les porte-avions et croiseurs. Évitez les
+    destroyers.
+--------------------------------------------------------------------------------------------
+■ SOUS-MARIN LANCE-MISSILES  (Missile Submarine)
+  Faction : tous les Soviétiques
+  Lore :
+    Sous-marin soviétique armé de missiles de siège à longue portée.
+    Il frappe les bases ennemies depuis la mer.
+    Il détecte aussi les autres sous-marins.
+  Statistiques :
+    Coût 2 000 $ · PV 40 000 · Blindage léger · Vitesse 44 · Vision 8 cases
+    Arme : SubMissile : 2 500 dégâts, rafale de 2, portée 20 cases, recharge 12 s
+    Arme : SubMissileAA : 450 dégâts, rafale de 2, portée 8 cases, recharge 12 s
+    Furtif · Détecte les furtifs (4 cases)
+    Prérequis : Base sous-marine, Centre technique soviétique · Niveau technologique : élevé
+  Stratégie :
+    Pilonnez les bases côtières ennemies. Évitez les destroyers.
+
+  ▶ FACTION : FRANCE
+
+--------------------------------------------------------------------------------------------
+■ PORTE-AVIONS NUCLÉAIRE
+  Faction : France
+  Lore :
+    Porte-avions français à propulsion nucléaire.
+    Il embarque huit Rafale et les réarme en mer.
+    Sa destruction provoque une grande explosion du réacteur.
+  Statistiques :
+    Coût 3 200 $ · PV 110 000 · Blindage lourd · Vitesse 62 · Vision 9 cases
+    Arme : PANAA : 1 650 dégâts, rafale de 2, portée 8 cases, recharge 2,4 s
+    Limite 3 exemplaires
+    Prérequis : un centre technique · Niveau technologique : élevé
+  Stratégie :
+    Projetez vos Rafale partout sur la carte. Escortez-le absolument contre les sous-marins.
+--------------------------------------------------------------------------------------------
+■ SOUS-MARIN NUCLÉAIRE LANCEUR D'ENGINS (FRANCE)  (Sous-marin nucléaire lanceur d'engins)
+  Faction : France
+  Lore :
+    Version française du SNLE, la dissuasion française.
+    Identique aux autres, mais la France peut en aligner cinq.
+    La force de frappe océanique française.
+  Statistiques :
+    Coût 3 000 $ · PV 50 000 · Blindage léger · Vitesse 80 · Vision 8 cases
+    Arme : SNATorpedo : 22 000 dégâts, rafale de 2, portée 10 cases, recharge 4,4 s
+    Furtif · Détecte les furtifs (6 cases) · Limite 5 exemplaires
+    Prérequis : un centre technique · Niveau technologique : élevé
+    Pouvoir de soutien : Frappe nucléaire du SNLE (recharge 11 min 15 s)
+  Stratégie :
+    Même emploi que le SNLE ; la France peut en aligner 5 pour multiplier les frappes
+    nucléaires.
+
+  ▶ FACTION : ROYAUME-UNI
+
+--------------------------------------------------------------------------------------------
+■ FRÉGATE  (Frigate)
+  Faction : Royaume-Uni
+  Lore :
+    Frégate britannique de la carte WW3, armée d'un canon, de flak et de grenades anti-sous-marines.
+    Elle combat sur mer, sur terre et dans les airs.
+    La frégate la plus polyvalente des mers.
+  Statistiques :
+    Coût 1 900 $ · PV 60 000 · Blindage lourd · Vitesse 70 · Vision 6 cases
+    Arme : FLAK-23-AA : 1 200 dégâts, portée 8 cases, recharge 0,4 s
+    Arme : 130mm : 7 500 dégâts, portée 4,75 cases, recharge 2,8 s
+    Arme : DepthCharge : 6 000 dégâts, portée 5 cases, recharge 2,4 s
+    Détecte les furtifs (5 cases)
+    Prérequis : Chantier naval, Centre technique (Royaume-Uni) · Niveau technologique :
+    naval
+  Stratégie :
+    Escortez votre flotte : elle gère navires, sous-marins et aéronefs.
+--------------------------------------------------------------------------------------------
+■ NAVIRE GÉNÉRATEUR DE BROUILLARD  (Gap Ship)
+  Faction : Royaume-Uni
+  Lore :
+    Navire britannique générateur de brouillard.
+    Il cache la flotte ennemie dans le brouillard de guerre.
+    La mer devient aveugle.
+  Statistiques :
+    Coût 1 000 $ · PV 20 000 · Blindage lourd · Vitesse 82 · Vision 7 cases
+    Arme : aucune
+    Prérequis : Chantier naval · Niveau technologique : naval
+  Stratégie :
+    Cachez votre flotte à l'approche des côtes ennemies.
+--------------------------------------------------------------------------------------------
+■ PORTE-AVIONS CLASSE QUEEN ELIZABETH  (Porte-avions (classe Queen Elizabeth))
+  Faction : Royaume-Uni
+  Lore :
+    Porte-avions britannique.
+    Il embarque cinq Harrier et les réarme en mer.
+    La Royal Navy retrouve sa puissance aérienne.
+  Statistiques :
+    Coût 2 600 $ · PV 100 000 · Blindage lourd · Vitesse 56 · Vision 9 cases
+    Arme : PANAA : 1 650 dégâts, rafale de 2, portée 8 cases, recharge 2,4 s
+    Limite 3 exemplaires
+    Prérequis : un centre technique · Niveau technologique : élevé
+  Stratégie :
+    Projetez vos Harrier loin de vos bases. Escortez-le contre les sous-marins.
+
+  ▶ FACTION : USA
+
+--------------------------------------------------------------------------------------------
+■ PORTE-AVIONS CLASSE GERALD R. FORD  (Porte-avions (classe Gerald R. Ford))
+  Faction : USA
+  Lore :
+    Supercarrier américain à propulsion nucléaire.
+    Il embarque huit F-22 et les réarme en mer.
+    Les USA peuvent en aligner jusqu'à cinq.
+  Statistiques :
+    Coût 3 400 $ · PV 120 000 · Blindage lourd · Vitesse 58 · Vision 9 cases
+    Arme : PANAA : 1 650 dégâts, rafale de 2, portée 8 cases, recharge 2,4 s
+    Limite 5 exemplaires
+    Prérequis : un centre technique · Niveau technologique : élevé
+  Stratégie :
+    Projetez vos F-22 partout sur la carte. Escortez-le contre les sous-marins.
+
+  ▶ FACTION : ESPAGNE
+
+--------------------------------------------------------------------------------------------
+■ CROISEUR PRISME  (Prism Cruiser)
+  Faction : Espagne
+  Lore :
+    Croiseur espagnol de la carte WW3, armé d'un canon prisme.
+    Il frappe les cibles terrestres avec un rayon puissant.
+    Lent, il domine pourtant les côtes.
+  Statistiques :
+    Coût 2 400 $ · PV 80 000 · Blindage lourd · Vitesse 44 · Vision 7 cases
+    Arme : PrisCLaser : 18 000 dégâts, portée 11 cases, recharge 5 s
+    Prérequis : Chantier naval, Centre technique (Espagne) · Niveau technologique : élevé
+  Stratégie :
+    Pilonnez les côtes et les bases ennemies. Escortez-le contre les sous-marins.
+
+  ▶ FACTION : RUSSIE
+
+--------------------------------------------------------------------------------------------
+■ MAMMOUTH DES MERS  (Sea Mammoth)
+  Faction : Russie
+  Lore :
+    Grand sous-marin russe de la carte WW3, armé de torpilles et de missiles.
+    Il combine la puissance d'un sous-marin et d'un Mammouth.
+    Lent, mais très dangereux.
+  Statistiques :
+    Coût 2 200 $ · PV 95 000 · Blindage lourd · Vitesse 40 · Vision 8 cases
+    Arme : TorpTube : 18 000 dégâts, rafale de 2, portée 9 cases, recharge 4 s
+    Arme : MammothTusk : 5 000 dégâts, rafale de 2, portée 6,5 cases, recharge 2,4 s
+    Furtif · Détecte les furtifs (5 cases)
+    Prérequis : Base sous-marine, Centre technique (Russie) · Niveau technologique : naval
+  Stratégie :
+    Frappez les flottes et les cibles côtières ennemies depuis les profondeurs.
+--------------------------------------------------------------------------------------------
+■ PORTE-AVIONS AMIRAL KOUZNETSOV
+  Faction : Russie
+  Lore :
+    Porte-avions russe.
+    Il embarque cinq MiG et les réarme en mer.
+    La puissance aérienne russe à la mer.
+  Statistiques :
+    Coût 2 600 $ · PV 100 000 · Blindage lourd · Vitesse 56 · Vision 9 cases
+    Arme : PANAA : 1 650 dégâts, rafale de 2, portée 8 cases, recharge 2,4 s
+    Limite 3 exemplaires
+    Prérequis : un centre technique · Niveau technologique : élevé
+  Stratégie :
+    Projetez vos MiG loin des aérodromes. Escortez-le contre les sous-marins.
+
+  ▶ FACTION : UKRAINE
+
+--------------------------------------------------------------------------------------------
+■ PORTE-HÉLICOPTÈRES
+  Faction : Ukraine
+  Lore :
+    Porte-hélicoptères ukrainien, moins cher et moins résistant qu'un porte-avions.
+    Il embarque quatre Mi-24 et les réarme en mer.
+    Une base flottante pour les hélicoptères.
+  Statistiques :
+    Coût 1 800 $ · PV 70 000 · Blindage lourd · Vitesse 52 · Vision 8 cases
+    Arme : PHUAAA : 1 650 dégâts, rafale de 2, portée 6 cases, recharge 2,4 s
+    Limite 3 exemplaires
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Utilisez vos Mi-24 depuis la mer contre l'infanterie côtière. Escortez-le.
+
+  ▶ FACTION : CHINE
+
+--------------------------------------------------------------------------------------------
+■ PORTE-AVIONS SHANDONG
+  Faction : Chine
+  Lore :
+    Porte-avions chinois dérivé de la classe Kouznetsov.
+    Il embarque cinq MiG et les réarme en mer.
+    La Chine peut en aligner jusqu'à quatre.
+  Statistiques :
+    Coût 2 600 $ · PV 100 000 · Blindage lourd · Vitesse 56 · Vision 9 cases
+    Arme : PANAA : 1 650 dégâts, rafale de 2, portée 8 cases, recharge 2,4 s
+    Limite 4 exemplaires
+    Prérequis : un centre technique · Niveau technologique : élevé
+  Stratégie :
+    Projetez la puissance aérienne loin de vos bases. Escortez-le contre les sous-marins.
+
+  ▶ FACTION : TOUTES SAUF LA FRANCE (QUI A SA PROPRE VERSION)
+
+--------------------------------------------------------------------------------------------
+■ SOUS-MARIN NUCLÉAIRE LANCEUR D'ENGINS
+  Faction : toutes sauf la France (qui a sa propre version)
+  Lore :
+    Sous-marin nucléaire capable de tirer une frappe nucléaire depuis sa position.
+    Il est armé de torpilles lourdes pour se défendre.
+    La dissuasion qui ne dort jamais.
+  Statistiques :
+    Coût 3 000 $ · PV 50 000 · Blindage léger · Vitesse 80 · Vision 8 cases
+    Arme : SNATorpedo : 22 000 dégâts, rafale de 2, portée 10 cases, recharge 4,4 s
+    Furtif · Détecte les furtifs (6 cases) · Limite 3 exemplaires
+    Prérequis : un centre technique · Niveau technologique : élevé
+    Pouvoir de soutien : Frappe nucléaire du SNLE (recharge 11 min 15 s)
+  Stratégie :
+    Gardez-le furtif et loin des destroyers ; utilisez sa frappe nucléaire depuis une
+    position sûre. Limité à 3 exemplaires.
+
+============================================================================================
+                                   8. POUVOIRS DE SOUTIEN                                   
+============================================================================================
+--------------------------------------------------------------------------------------------
+■ AVION ESPION
+  Lore :
+    Avion espion qui survole une zone et la révèle.
+    Il fournit une vision temporaire de la base ennemie.
+    Connaître l'ennemi, c'est déjà le vaincre.
+  Statistiques :
+    Porté par : Aérodrome (tous les Soviétiques), recharge 2 min 30 s
+    Porté par : Aérodrome ukrainien (Ukraine), recharge 2 min 30 s
+  Stratégie :
+    Révélez la base ennemie avant une frappe de superarme ou un assaut.
+--------------------------------------------------------------------------------------------
+■ BARRAGE PINAKA
+  Lore :
+    Dix roquettes s'abattent au hasard sur une large zone.
+    Excellent contre l'infanterie, bon contre les bâtiments légers.
+    Limité contre les blindés lourds.
+  Statistiques :
+    Porté par : PC du régiment Pinaka (Inde), recharge 3 min 30 s
+  Stratégie :
+    Saturez les concentrations d'infanterie ou les bases légères ; la zone devient
+    dangereuse pendant quelques secondes.
+--------------------------------------------------------------------------------------------
+■ BOMBE ATOMIQUE
+  Lore :
+    L'arme ultime, lancée depuis le silo à missiles.
+    Elle rase tout dans sa zone d'impact et laisse une zone irradiée.
+    Son lancement est annoncé à tous les joueurs.
+  Statistiques :
+    Porté par : Silo à missiles (toutes), recharge 9 min
+  Stratégie :
+    Visez la concentration de bâtiments clés de l'ennemi (chantier de construction, usines,
+    centrales).
+--------------------------------------------------------------------------------------------
+■ BOUCLIER FURTIF
+  Lore :
+    Rend un groupe d'unités invisible pendant 30 secondes.
+    Elles peuvent s'approcher de l'ennemi sans être vues.
+    Une armée fantôme.
+  Statistiques :
+    Porté par : Générateur de phase (France), recharge 2 min
+  Stratégie :
+    Approchez un groupe d'unités de la base ennemie pour un assaut surprise.
+--------------------------------------------------------------------------------------------
+■ BROUILLAGE ÉLECTRONIQUE JAPONAIS
+  Lore :
+    Brouille une zone de 7 cases pendant 20 secondes.
+    Portée ennemie -40 %, tirs moins précis, zone et furtifs révélés.
+    Un outil défensif, pas un bouton « je gagne ».
+  Statistiques :
+    Porté par : Centre de guerre électronique (Japon), recharge 3 min 30 s
+  Stratégie :
+    Brouillez un assaut ennemi pour le combattre hors de sa portée, avec vos Type 10 à
+    longue distance.
+--------------------------------------------------------------------------------------------
+■ BROUILLAGE ÉLECTRONIQUE SAS
+  Lore :
+    Brouillage d'une grande zone pendant 30 secondes.
+    Radar ennemi coupé, pouvoirs de soutien suspendus, vision réduite de moitié.
+    Aucun dégât, mais un aveuglement total.
+  Statistiques :
+    Porté par : Station SIGINT (GCHQ Forward) (Royaume-Uni), recharge 3 min 30 s
+  Stratégie :
+    Brouillez juste avant votre assaut, ou pour bloquer une superarme ennemie.
+--------------------------------------------------------------------------------------------
+■ CANON À IONS
+  Lore :
+    Frappe du canon à ions orbital américain.
+    Des dégâts instantanés sur une petite zone.
+    La puissance spatiale américaine.
+  Statistiques :
+    Porté par : Centre technique américain (USA), recharge 4 min 30 s
+  Stratégie :
+    Frappez un bâtiment clé ou une unité isolée de grande valeur.
+--------------------------------------------------------------------------------------------
+■ CHRONOSHIFT
+  Lore :
+    La Chronosphère téléporte un groupe d'unités.
+    Elles reviennent à leur point de départ après 20 secondes.
+    Le pouvoir de choisir le champ de bataille.
+  Statistiques :
+    Porté par : Chronosphère (tous les Alliés), recharge 2 min
+  Stratégie :
+    Téléportez un groupe de chars au cœur de la base ennemie, sur ses bâtiments clés.
+--------------------------------------------------------------------------------------------
+■ CHRONOSHIFT AVANCÉ
+  Lore :
+    Version avancée du Chronoshift, qui téléporte un groupe plus large.
+    Elle est disponible via la Chronosphère et le centre technique allemand.
+    Une armée entière qui disparaît et réapparaît.
+  Statistiques :
+    Porté par : Chronosphère (tous les Alliés), recharge 2 min
+    Porté par : Centre technique allemand (Allemagne), recharge 2 min
+  Stratégie :
+    Téléportez un grand groupe d'unités pour un assaut décisif.
+--------------------------------------------------------------------------------------------
+■ FRAPPE AÉRIENNE
+  Lore :
+    Une escouade de B-2 Spirit largue des bombes incendiaires.
+    La frappe la plus destructrice de l'aviation américaine.
+    Rien ne résiste à un bombardement furtif.
+  Statistiques :
+    Porté par : Base aérienne (USA), recharge 5 min
+  Stratégie :
+    Frappez les concentrations de bâtiments ou d'unités ennemies.
+--------------------------------------------------------------------------------------------
+■ FRAPPE DE CROISIÈRE SCALP
+  Lore :
+    Les GCP désignent une cible au laser pendant 30 secondes.
+    Un missile de croisière tiré hors-carte la frappe alors avec 45 000 dégâts.
+    Sans GCP ni cible visible, pas de frappe.
+  Statistiques :
+    Porté par : Centre de commandement SCALP (France), recharge 4 min
+  Stratégie :
+    Infiltrez vos GCP près d'une cible clé, puis activez le pouvoir en les sélectionnant.
+--------------------------------------------------------------------------------------------
+■ FRAPPE NUCLÉAIRE DU SNLE
+  Lore :
+    Missile balistique nucléaire tiré depuis la position du SNLE.
+    60 % de la puissance de la bombe du silo.
+    La dissuasion océanique.
+  Statistiques :
+    Porté par : Sous-marin nucléaire lanceur d'engins (toutes sauf la France (qui a sa
+    propre version)), recharge 11 min 15 s
+    Porté par : Sous-marin nucléaire lanceur d'engins (France) (France), recharge 11 min 15
+    s
+  Stratégie :
+    Frappez depuis une position sûre ; la charge plus longue que le silo impose de bien
+    choisir la cible.
+--------------------------------------------------------------------------------------------
+■ FRAPPE THERMOBARIQUE TOS-1A
+  Lore :
+    Salve thermobarique sur une zone explorée.
+    Elle dévaste l'infanterie et démoralise pendant 10 secondes toutes les unités présentes.
+    Amies comme ennemies.
+  Statistiques :
+    Porté par : PC d'appui thermobarique (Russie), recharge 4 min 30 s
+  Stratégie :
+    Frappez les concentrations d'infanterie ennemie, en évitant vos propres unités.
+--------------------------------------------------------------------------------------------
+■ IMPULSION SONAR
+  Lore :
+    Révèle tous les sous-marins dans une zone.
+    Elle permet de chasser les sous-marins ennemis.
+    La mer n'a plus de secrets.
+  Statistiques :
+    Porté par : Centre technique britannique (Royaume-Uni), recharge 2 min
+  Stratégie :
+    Révélez les sous-marins ennemis avant d'engager vos destroyers.
+--------------------------------------------------------------------------------------------
+■ INDUSTRIALISATION
+  Lore :
+    L'industrie chinoise produit un flux de chars lourds.
+    Des chars supplémentaires apparaissent régulièrement.
+    La production de masse comme arme.
+  Statistiques :
+    Porté par : Usine industrielle (tous les Soviétiques), recharge 2 min
+  Stratégie :
+    Utilisez-la dès que possible pour renforcer votre armée.
+--------------------------------------------------------------------------------------------
+■ INSURGÉS
+  Lore :
+    Une foule d'insurgés apparaît dans la zone.
+    Ils submergent l'ennemi par le nombre.
+    La subversion turque.
+  Statistiques :
+    Porté par : Centre technique turc (Turquie), recharge 3 min 20 s
+  Stratégie :
+    Faites apparaître les insurgés au cœur de la base ennemie pour semer le chaos.
+--------------------------------------------------------------------------------------------
+■ INVULNÉRABILITÉ (RIDEAU DE FER)
+  Lore :
+    Le Rideau de fer rend un groupe d'unités invulnérable.
+    Pendant ce temps, rien ne peut les endommager.
+    La version avancée ukrainienne couvre une zone plus large.
+  Statistiques :
+    Porté par : Rideau de fer (tous les Soviétiques), recharge 2 min
+    Porté par : Centre technique ukrainien (Ukraine), recharge 2 min 40 s
+  Stratégie :
+    Activez-le au moment où vos chars pénètrent dans la zone de défense ennemie.
+--------------------------------------------------------------------------------------------
+■ LARGAGE DE CHARS
+  Lore :
+    Des bombardiers Badger larguent trois chars.
+    Ils atterrissent n'importe où sur la carte.
+    Une percée blindée tombée du ciel.
+  Statistiques :
+    Porté par : Centre technique chinois (Chine), recharge 5 min
+  Stratégie :
+    Larguez-les derrière les lignes ennemies pour frapper l'artillerie ou les bâtiments.
+--------------------------------------------------------------------------------------------
+■ LARGAGE DE SNIPERS
+  Lore :
+    Un avion largue une escouade de snipers.
+    Ils atterrissent n'importe où sur la carte.
+    La précision américaine derrière les lignes.
+  Statistiques :
+    Porté par : Base aérienne (USA), recharge 5 min
+  Stratégie :
+    Larguez-les près de l'infanterie ennemie pour l'éliminer à distance.
+--------------------------------------------------------------------------------------------
+■ LARGAGE DE SPARTAN
+  Lore :
+    Un avion largue des armures Spartan.
+    Elles atterrissent n'importe où sur la carte.
+    L'élite grecque tombée du ciel.
+  Statistiques :
+    Porté par : Centre technique grec (Grèce), recharge 5 min
+  Stratégie :
+    Larguez-les derrière les lignes ennemies pour une percée.
+--------------------------------------------------------------------------------------------
+■ PARABOMBES
+  Lore :
+    Un bombardier Badger largue une série de bombes parachutées.
+    Elles frappent une zone précise.
+    Une frappe aérienne à la demande.
+  Statistiques :
+    Porté par : Aérodrome (tous les Soviétiques), recharge 5 min
+    Porté par : Aérodrome ukrainien (Ukraine), recharge 5 min
+  Stratégie :
+    Frappez les concentrations de bâtiments ou d'unités ennemies. Évitez les défenses
+    antiaériennes.
+--------------------------------------------------------------------------------------------
+■ PARACHUTISTES
+  Lore :
+    Un bombardier Badger largue une escouade d'infanterie.
+    Elle atterrit n'importe où sur la carte.
+    Une attaque par surprise.
+  Statistiques :
+    Porté par : Aérodrome (tous les Soviétiques), recharge 5 min
+    Porté par : Aérodrome ukrainien (Ukraine), recharge 5 min
+  Stratégie :
+    Larguez-les derrière les lignes ennemies pour frapper l'artillerie ou les bâtiments.
+--------------------------------------------------------------------------------------------
+■ PONTAGE TACTIQUE RAPIDE
+  Lore :
+    Pont flottant en croix posé sur une rivière ou un plan d'eau.
+    Les chars peuvent l'emprunter pendant 90 secondes.
+    Chaque travée peut être détruite séparément.
+  Statistiques :
+    Porté par : Pionierzentrum (Allemagne), recharge 3 min
+  Stratégie :
+    Franchissez une rivière défendue pour contourner les positions ennemies.
+--------------------------------------------------------------------------------------------
+■ PRISE DE CONTRÔLE HOSTILE
+  Lore :
+    Un avion largue une escouade de Conquistadors et d'ingénieurs.
+    Ils atterrissent n'importe où sur la carte.
+    Une conquête espagnole moderne.
+  Statistiques :
+    Porté par : Centre technique espagnol (Espagne), recharge 5 min 40 s
+  Stratégie :
+    Larguez-les près d'un bâtiment clé ennemi pour le capturer.
+--------------------------------------------------------------------------------------------
+■ RENSEIGNEMENT OTAN (AWACS)
+  Lore :
+    Révèle une très grande zone pendant 15 secondes.
+    Il détecte les unités furtives et marque les blindés chenillés.
+    L'information comme arme.
+  Statistiques :
+    Porté par : PC de liaison ISR et AWACS (Ukraine), recharge 2 min 30 s
+  Stratégie :
+    Révélez la position de l'ennemi avant une frappe d'artillerie ou de FPV.
+--------------------------------------------------------------------------------------------
+■ SATELLITE GPS
+  Lore :
+    Satellite qui révèle toute la carte.
+    Il nécessite un radar actif.
+    Plus aucun secret sur le champ de bataille.
+  Statistiques :
+    Porté par : Centre technique allié (tous les Alliés), recharge 8 min
+    Porté par : Centre technique américain (USA), recharge 8 min
+    Porté par : Centre technique allemand (Allemagne), recharge 8 min
+    Porté par : Centre technique britannique (Royaume-Uni), recharge 8 min
+    Porté par : Centre technique français (France), recharge 8 min
+    Porté par : Centre technique espagnol (Espagne), recharge 8 min
+  Stratégie :
+    Lancez-le dès que possible pour connaître la position de l'ennemi.
+
+============================================================================================
+                                   Fin de l'encyclopédie.                                   
+============================================================================================
