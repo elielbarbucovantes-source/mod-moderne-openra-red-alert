@@ -28,6 +28,14 @@ Sous macOS (Intel ou Apple Silicon) : installer le [SDK .NET 6](https://dotnet.m
 
 Au premier lancement, le jeu propose de télécharger les fichiers d'origine de Red Alert (version gratuite de 2008) : choisir « Quick Install ».
 
+## Générateur de cartes aléatoires
+
+Dans le sélecteur de cartes (lobby d'escarmouche ou de partie en réseau), le bouton **Générer une carte** ouvre le générateur de cartes aléatoires d'OpenRA. Il est repris du playtest-20260222 et adapté au moteur release-20231010 du mod. On y choisit le climat, la taille, le type de terrain, la forme, le nombre de joueurs, la symétrie, les ressources, les bâtiments technologiques, les zones d'expansion, les villages civils et les routes. **Nouvelle carte** tire une autre graine.
+
+Différence avec le playtest : quand on clique sur **Jouer cette carte**, la carte est enregistrée comme un fichier `.oramap` dans le dossier des cartes de l'utilisateur (`maps/ra/release-20231010/aleatoire-…oramap`). Elle apparaît ensuite dans l'onglet **Custom Maps**, et on peut la rejouer, la partager ou l'ouvrir dans l'éditeur comme n'importe quelle autre carte.
+
+Pour tester sans lancer le jeu : `./utility.sh --generate-random-maps 20 /tmp/cartes` génère 20 cartes avec des réglages au hasard, puis les enregistre avec leur aperçu.
+
 ## Organisation
 
 | Chemin | Rôle |
@@ -35,12 +43,15 @@ Au premier lancement, le jeu propose de télécharger les fichiers d'origine de 
 | `mods/ratc/` | Règles, armes, séquences et sprites du mod |
 | `mods/ratc/ww3/` | Contenu repris de la carte « Europe: WW3 » |
 | `OpenRA.Mods.Ratc/` | Traits C# (porte-avions) |
+| `mods/ratc/mapgen/` | Réglages du générateur de cartes aléatoires, pinceaux de tuiles des tilesets, sélecteur de cartes et panneau du générateur |
+| `OpenRA.Mods.Ratc/MapGen/` | Générateur de cartes aléatoires rétroporté d'OpenRA (playtest-20260222) |
 | `tools/sprites/` | Scripts Python qui génèrent les sprites des véhicules |
 
 ## Crédits
 
 - Mod : Leile.
 - Contenu WW3 : carte « Europe: WW3 » de Trump, H, Therapist, Leile, Ruben et d'autres ; merci à Frenzy, Widow, Pinkthoth, SirCake, MedalMonkey, Inq8, Zypres et bien d'autres pour les graphismes, le code et l'aide.
+- Générateur de cartes aléatoires : code et données d'[OpenRA](https://github.com/OpenRA/OpenRA) (playtest-20260222, licence GPL v3) par les développeurs et contributeurs d'OpenRA, adaptés au moteur release-20231010.
 - Basé sur l'[OpenRA Mod SDK](https://github.com/OpenRA/OpenRAModSDK).
 
 ## Licence
