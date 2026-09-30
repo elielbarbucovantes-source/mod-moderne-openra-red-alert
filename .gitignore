@@ -53,5 +53,10 @@ __pycache__/
 *.bak
 *.save
 
+# Mise à jour depuis le menu
+update.log
+update-result.txt
+.version-commit
+
 # Données géographiques téléchargées par tools/monde.py
 tools/monde-cache/
