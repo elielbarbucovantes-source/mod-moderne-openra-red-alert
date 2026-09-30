@@ -43,6 +43,7 @@
 		RandomFactionMembers: russia, ukraine, china, turkey, greece, india
 
 World:
+	UnitInfoPanel:
 	StartingUnits@mcvonly:
 		Factions: allies, england, france, germany, soviet, russia, ukraine, usa, spain, japan, china, turkey, greece, india
 	StartingUnits@lightallies:
