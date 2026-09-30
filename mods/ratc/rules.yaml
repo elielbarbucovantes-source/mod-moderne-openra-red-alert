@@ -2377,6 +2377,33 @@ tacbridge.center:
 		Actor: tacbridge.ew
 		SpawnOffset: 2,0
 
+# ---------------------------------------------------------------------
+# Ponts permanents des cartes « Monde immense (continents reliés) » du
+# générateur : travées du pont tactique qui ne disparaissent pas. Très
+# solides, mais on peut les détruire pour couper un continent.
+# ---------------------------------------------------------------------
+^PontPermanent:
+	Inherits: ^TacBridgeSegment
+	-KillsSelf:
+	Tooltip:
+		Name: Pont
+	Health:
+		HP: 150000
+	Targetable:
+		TargetTypes: GroundActor, Structure, NoAutoTarget
+	MapEditorData:
+		Categories: Bridge
+
+PONT.NS:
+	Inherits: ^PontPermanent
+	WithSpriteBody:
+		Sequence: ns
+
+PONT.EW:
+	Inherits: ^PontPermanent
+	WithSpriteBody:
+		Sequence: ew
+
 # =====================================================================
 # DRONES DES NATIONS — modèle commun : pas de pilote, explose en vol,
 # fume quand il est endommagé.

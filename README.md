@@ -34,6 +34,13 @@ Dans le sélecteur de cartes (lobby d'escarmouche ou de partie en réseau), le b
 
 Différence avec le playtest : quand on clique sur **Jouer cette carte**, la carte est enregistrée comme un fichier `.oramap` dans le dossier des cartes de l'utilisateur (`maps/ra/release-20231010/aleatoire-…oramap`). Elle apparaît ensuite dans l'onglet **Custom Maps**, et on peut la rejouer, la partager ou l'ouvrir dans l'éditeur comme n'importe quelle autre carte.
 
+Options ajoutées au générateur :
+
+- **Région du monde** : Aléatoire (relief inventé, comme avant) ou une région réelle (Europe, France, Golfe Persique, Japon, Amériques, Australie…), avec ses vraies côtes et son vrai relief. Les trois cartes **Monde immense** font 512 cases de large : réaliste, continents séparés, ou continents reliés par des ponts permanents (solides, mais destructibles).
+- **Oil derricks** : Auto (selon « Bâtiments tech. ») ou un nombre exact de derricks, de 1 à 100.
+
+Pour tester sans lancer le jeu : `./utility.sh --generate-random-maps 20 /tmp/cartes` génère 20 cartes avec des réglages au hasard ; `Option=Choix` impose un réglage (ex. `WorldRegion=monde-ponts Players=4`).
+
 Pour tester sans lancer le jeu : `./utility.sh --generate-random-maps 20 /tmp/cartes` génère 20 cartes avec des réglages au hasard, puis les enregistre avec leur aperçu.
 
 ## Organisation
@@ -52,6 +59,7 @@ Pour tester sans lancer le jeu : `./utility.sh --generate-random-maps 20 /tmp/ca
 - Mod : Leile.
 - Contenu WW3 : carte « Europe: WW3 » de Trump, H, Therapist, Leile, Ruben et d'autres ; merci à Frenzy, Widow, Pinkthoth, SirCake, MedalMonkey, Inq8, Zypres et bien d'autres pour les graphismes, le code et l'aide.
 - Générateur de cartes aléatoires : code et données d'[OpenRA](https://github.com/OpenRA/OpenRA) (playtest-20260222, licence GPL v3) par les développeurs et contributeurs d'OpenRA, adaptés au moteur release-20231010.
+- Régions du monde réel du générateur (`mods/ratc/mapgen/monde/`, produites par `tools/monde.py`) : côtes et lacs de [Natural Earth](https://www.naturalearthdata.com/) (domaine public) ; relief des [Terrain Tiles](https://registry.opendata.aws/terrain-tiles/) d'AWS (SRTM, GMTED2010, ETOPO1 et autres sources publiques, voir leur page d'attribution).
 - Basé sur l'[OpenRA Mod SDK](https://github.com/OpenRA/OpenRAModSDK).
 
 ## Licence
