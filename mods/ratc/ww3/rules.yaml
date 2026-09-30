@@ -1928,13 +1928,13 @@ GTEK:
 		Produces: GPSPower
 	Tooltip:
 		Name: German Tech Center
-	ChronoshiftPower@advancedchronoshift:
-		OrderName: AdvancedChronoshift
+	HostileChronoshiftPower@advancedchronoshift:
+		OrderName: HostileAdvancedChronoshift
 		PauseOnCondition: disabled
 		Icon: chrono
 		ChargeInterval: 3000
 		Name: Advanced Chronoshift
-		Description: Teleports a large group of units across\nthe map for 20 seconds.
+		Description: Teleports a large group of units across\nthe map for 20 seconds.\nEnemy vehicles sent into water (or enemy\nships sent onto land) are destroyed.
 		SelectTargetSpeechNotification: SelectTarget
 		InsufficientPowerSpeechNotification: InsufficientPower
 		BeginChargeSpeechNotification: ChronosphereCharging
