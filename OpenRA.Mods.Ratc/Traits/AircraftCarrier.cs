@@ -21,7 +21,8 @@ namespace OpenRA.Mods.Ratc.Traits
 {
 	[Desc("Carries aircraft on board. Aircraft with the " + nameof(CarrierAircraft) + " trait land on the carrier",
 		"(the carrier needs the Reservable trait and must be listed in the aircraft's Rearmable.RearmActors)",
-		"and are stowed, rearmed and repaired. The deploy order launches every ready aircraft.")]
+		"and are stowed, rearmed and repaired. Units in the carrier's Cargo hold, if any, are repaired too.",
+		"The deploy order launches every ready aircraft (and unloads the Cargo hold when possible).")]
 	public class AircraftCarrierInfo : TraitInfo
 	{
 		[ActorReference]
@@ -38,6 +39,10 @@ namespace OpenRA.Mods.Ratc.Traits
 
 		[Desc("Ticks needed on board to fully rearm and repair an aircraft.")]
 		public readonly int RearmDelay = 250;
+
+		[Desc("Units carried in the Cargo hold are repaired every this many ticks",
+			"(a fully damaged passenger is back to full health after RearmDelay ticks).")]
+		public readonly int PassengerRepairInterval = 25;
 
 		[Desc("Ticks between two consecutive launches.")]
 		public readonly int LaunchInterval = 15;
@@ -83,6 +88,27 @@ namespace OpenRA.Mods.Ratc.Traits
 		int launchesPending;
 		int launchCooldown;
 
+		// Porte-avions qui transporte aussi des troupes (Porta Aguila) : le
+		// déploiement fait décoller les avions ET débarquer les troupes.
+		Cargo cargo;
+		bool cargoResolved;
+
+		Cargo CarriedTroops
+		{
+			get
+			{
+				if (!cargoResolved)
+				{
+					cargo = self.TraitOrDefault<Cargo>();
+					cargoResolved = true;
+				}
+
+				return cargo;
+			}
+		}
+
+		bool CanUnloadTroops => CarriedTroops != null && !CarriedTroops.IsEmpty() && CarriedTroops.CanUnload();
+
 		public AircraftCarrier(ActorInitializer init, AircraftCarrierInfo info)
 		{
 			self = init.Self;
@@ -116,12 +142,27 @@ namespace OpenRA.Mods.Ratc.Traits
 			launchesPending = stowed.Count;
 		}
 
+		/// <summary>
+		/// Déploiement (touche F ou clic sur le navire) : fait décoller les avions prêts
+		/// et, si le navire touche la côte, débarque ses troupes.
+		/// </summary>
+		public void Deploy(bool queued)
+		{
+			LaunchAll();
+
+			if (CanUnloadTroops)
+				self.QueueActivity(queued, new UnloadCargo(self, CarriedTroops.Info.LoadRange));
+		}
+
 		void ITick.Tick(Actor self)
 		{
 			ticks++;
 
 			if (Info.BotLaunchInterval > 0 && self.Owner.IsBot && ticks % Info.BotLaunchInterval == 0)
 				LaunchAll();
+
+			if (Info.PassengerRepairInterval > 0 && ticks % Info.PassengerRepairInterval == 0)
+				RepairPassengers();
 
 			if (launchCooldown > 0)
 				launchCooldown--;
@@ -166,6 +207,26 @@ namespace OpenRA.Mods.Ratc.Traits
 				}
 
 				Stow(a, aircraft);
+			}
+		}
+
+		/// <summary>
+		/// Les unités en soute (troupes, véhicules...) sont réparées à bord, au même
+		/// rythme que les avions : remises à neuf en RearmDelay ticks.
+		/// </summary>
+		void RepairPassengers()
+		{
+			if (CarriedTroops == null || CarriedTroops.IsEmpty())
+				return;
+
+			foreach (var passenger in CarriedTroops.Passengers)
+			{
+				var health = passenger.TraitOrDefault<IHealth>();
+				if (health == null || health.IsDead || health.HP >= health.MaxHP)
+					continue;
+
+				var step = System.Math.Max(1, (int)((long)health.MaxHP * Info.PassengerRepairInterval / System.Math.Max(1, Info.RearmDelay)));
+				health.InflictDamage(passenger, self, new Damage(-System.Math.Min(step, health.MaxHP - health.HP)), true);
 			}
 		}
 
@@ -222,8 +283,10 @@ namespace OpenRA.Mods.Ratc.Traits
 		{
 			get
 			{
-				yield return new DeployOrderTargeter("LaunchAircraft", 10,
-					() => HasReadyAircraft ? Info.LaunchCursor : Info.LaunchBlockedCursor);
+				// Priorité supérieure à l'ordre « Unload » de Cargo (10), qui sinon
+				// serait ignoré ou choisi au hasard : Deploy() gère les deux.
+				yield return new DeployOrderTargeter("LaunchAircraft", 11,
+					() => HasReadyAircraft || CanUnloadTroops ? Info.LaunchCursor : Info.LaunchBlockedCursor);
 			}
 		}
 
@@ -245,7 +308,7 @@ namespace OpenRA.Mods.Ratc.Traits
 		void IResolveOrder.ResolveOrder(Actor self, Order order)
 		{
 			if (order.OrderString == "LaunchAircraft")
-				LaunchAll();
+				Deploy(order.Queued);
 		}
 
 		string IOrderVoice.VoicePhraseForOrder(Actor self, Order order)
